@@ -11,14 +11,27 @@
 
 <button onclick="savePhone()">登録する</button>
 
+<h1>📱 機種登録</h1>
+
+<input id="maker" placeholder="メーカー"><br><br>
+
+<input id="model" placeholder="機種名"><br><br>
+
+<button onclick="savePhone()">登録する</button>
+
 <script>
 
 function savePhone() {
-    alert("ボタン押された！");
+
+    const maker = document.getElementById("maker").value;
+    const model = document.getElementById("model").value;
+
+    alert(
+        "メーカー：" + maker +
+        "\n機種名：" + model
+    );
+
 }
-
-alert("ページ読込成功");
-
 </script>
 
 </body>
