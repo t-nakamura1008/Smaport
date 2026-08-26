@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>機種登録 | Smaport</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Yu Gothic",sans-serif;
+}
+
+body{
+    background:#f8fafc;
+}
+
+header{
+    background:#10B981;
+    color:white;
+    padding:20px;
+}
+
+.container{
+    max-width:800px;
+    margin:30px auto;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.form-group{
+    margin-bottom:20px;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:bold;
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    padding:12px;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+}
+
+button{
+    background:#10B981;
+    color:white;
+    border:none;
+    padding:15px 24px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#059669;
+}
+
+.back{
+    display:inline-block;
+    margin-top:20px;
+    color:#10B981;
+    text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>📱 機種登録</h1>
+</header>
+
+<div class="container">
+
+    <div class="form-group">
+        <label>メーカー</label>
+        <input type="text" placeholder="Apple">
+    </div>
+
+    <div class="form-group">
+        <label>機種名</label>
+        <input type="text" placeholder="iPhone 16 Pro">
+    </div>
+
+    <div class="form-group">
+        <label>カラー</label>
+        <input type="text" placeholder="ブラックチタニウム">
+    </div>
+
+    <div class="form-group">
+        <label>RAM</label>
+        <input type="text" placeholder="8GB">
+    </div>
+
+    <div class="form-group">
+        <label>ROM</label>
+        <input type="text" placeholder="256GB">
+    </div>
+
+    <div class="form-group">
+        <label>バッテリー</label>
+        <input type="text" placeholder="3582mAh">
+    </div>
+
+    <div class="form-group">
+        <label>カメラ</label>
+        <input type="text" placeholder="48MP">
+    </div>
+
+    <div class="form-group">
+        <label>価格</label>
+        <input type="text" placeholder="218,790円">
+    </div>
+
+    <div class="form-group">
+        <label>おすすめポイント</label>
+        <textarea rows="4" placeholder="カメラ性能が高い"></textarea>
+    </div>
+
+    <button>登録する</button>
+
+<br><br>
+
+<a href="dashboard.html" class="back">
+    ← 管理画面へ戻る
+</a>
+
+</div>
+</body>
+</html>
