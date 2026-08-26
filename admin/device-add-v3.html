@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>機種登録 | Smaport</title>
+
+<style>
+
+body{
+    background:#f0fdf4;
+    font-family:"Yu Gothic",sans-serif;
+    padding:30px;
+}
+
+.container{
+    max-width:700px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+h1{
+    color:#10B981;
+}
+
+input,
+textarea{
+    width:100%;
+    padding:12px;
+    margin-bottom:15px;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+    box-sizing:border-box;
+}
+
+button{
+    background:#10B981;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#059669;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📱 機種登録</h1>
+
+<input id="maker" placeholder="メーカー">
+
+<input id="model" placeholder="機種名">
+
+<input id="color" placeholder="カラー">
+
+<input id="image_url" placeholder="画像URL">
+
+<input id="ram" placeholder="RAM">
+
+<input id="rom" placeholder="ROM">
+
+<input id="battery" placeholder="バッテリー">
+
+<input id="camera" placeholder="カメラ画素数">
+
+<input id="price" placeholder="一括価格">
+
+<input id="monthly_1_23" placeholder="1回目～23回目">
+
+<input id="monthly_24_47" placeholder="24回目～47回目">
+
+<textarea
+id="recommend"
+placeholder="おすすめポイント"
+rows="4"></textarea>
+
+<button onclick="savePhone()">登録する</button>
+
+</div>
+
+<script>
+
+function savePhone() {
+    alert("たいち最新版");
+}
+
+</script>
+
+</body>
+</html>
