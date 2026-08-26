@@ -194,10 +194,14 @@ async function savePhone() {
         .from("phones")
         .insert([data]);
 
-    if(error){
-        alert("登録失敗: " + error.message);
-    } else {
-        alert("登録成功！");
+   if(error){
+    alert("登録失敗: " + error.message);
+} else {
+    alert("登録成功！");
+}
+
+}
 </script>
+
 </body>
 </html>
