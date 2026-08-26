@@ -2,20 +2,19 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>device-add-v2</title>
+<title>テスト</title>
 </head>
 <body>
 
-<h1>テスト画面</h1>
-
-<button onclick="savePhone()">登録する</button>
-
 <h1>📱 機種登録</h1>
 
-<input id="maker" placeholder="メーカー"><br><br>
+<input id="maker" placeholder="メーカー">
 
-<input id="model" placeholder="機種名"><br><br>
+<br><br>
+
+<input id="model" placeholder="機種名">
+
+<br><br>
 
 <button onclick="savePhone()">登録する</button>
 
@@ -27,11 +26,12 @@ function savePhone() {
     const model = document.getElementById("model").value;
 
     alert(
-        "メーカー：" + maker +
-        "\n機種名：" + model
+        "メーカー: " + maker +
+        "\n機種名: " + model
     );
 
 }
+
 </script>
 
 </body>
