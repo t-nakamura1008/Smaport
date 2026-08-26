@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>機種一覧 | Smaport</title>
+
+<style>
+body{
+    margin:0;
+    font-family:"Yu Gothic",sans-serif;
+    background:#f8fafc;
+}
+
+header{
+    background:#10B981;
+    color:white;
+    padding:20px;
+}
+
+.container{
+    max-width:1000px;
+    margin:30px auto;
+    padding:20px;
+}
+
+.device{
+    background:white;
+    padding:20px;
+    margin-bottom:15px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.device h3{
+    margin:0 0 10px;
+}
+
+.btn{
+    border:none;
+    padding:10px 15px;
+    border-radius:10px;
+    cursor:pointer;
+    margin-right:10px;
+}
+
+.edit{
+    background:#3B82F6;
+    color:white;
+}
+
+.delete{
+    background:#EF4444;
+    color:white;
+}
+
+.back{
+    display:inline-block;
+    margin-top:20px;
+    color:#10B981;
+    text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>📱 機種一覧</h1>
+</header>
+
+<div class="container">
+
+    <div id="deviceList"></div>
+
+    <a href="dashboard.html" class="back">
+        ← 管理画面へ戻る
+    </a>
+
+</div>
+
+https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const supabaseUrl = "https://butujlsbdxaiuxitfyty.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1dHVqbHNiZHhhaXV4aXRmeXR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3MjI2OTUsImV4cCI6MjEwMzI5ODY5NX0.yDC6HpV6rQzeG88sVwDlLOPB1dC_I-r5ID1JXoTeCAU";
+
+const supabase = window.supabase.createClient(
+    supabaseUrl,
+    supabaseKey
+);
+
+async function loadDevices(){
+
+    const { data, error } = await supabase
+        .from("phones")
+        .select("*");
+
+    const deviceList = document.getElementById("deviceList");
+
+    deviceList.innerHTML = "";
+
+    data.forEach(phone => {
+
+        deviceList.innerHTML += `
+            <div class="device">
+                <h3>${phone.model}</h3>
+
+                <p>メーカー：${phone.maker}</p>
+
+                <button class="btn edit">
+                    編集
+                </button>
+
+                <button
+                    class="btn delete"
+                    onclick="deletePhone(${phone.id})">
+                    削除
+                </button>
+            </div>
+        `;
+    });
+}
+
+async function deletePhone(id){
+
+    if(!confirm("削除しますか？")){
+        return;
+    }
+
+    const { error } = await supabase
+        .from("phones")
+        .delete()
+        .eq("id", id);
+
+    if(error){
+        alert("削除失敗");
+    }else{
+        alert("削除成功");
+        loadDevices();
+    }
+}
+
+loadDevices();
+
+</script>
+
+</body>
+</html>
