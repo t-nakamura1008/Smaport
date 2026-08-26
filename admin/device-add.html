@@ -83,50 +83,50 @@ button:hover{
 
     <div class="form-group">
         <label>メーカー</label>
-        <input type="text" placeholder="Apple">
+        <input id="maker" type="text" placeholder="Apple">
     </div>
 
     <div class="form-group">
         <label>機種名</label>
-        <input type="text" placeholder="iPhone 16 Pro">
+<input id="model" type="text" placeholder="iPhone 16 Pro">
     </div>
 
     <div class="form-group">
         <label>カラー</label>
-        <input type="text" placeholder="ブラックチタニウム">
+       <input id="color" type="text" placeholder="ブラックチタニウム"
     </div>
 
     <div class="form-group">
         <label>RAM</label>
-        <input type="text" placeholder="8GB">
+        <input id="ram" type="text" placeholder="8GB">
     </div>
 
     <div class="form-group">
         <label>ROM</label>
-        <input type="text" placeholder="256GB">
+       <input id="rom" type="text" placeholder="256GB">
     </div>
 
     <div class="form-group">
         <label>バッテリー</label>
-        <input type="text" placeholder="3582mAh">
+       <input id="battery" type="text" placeholder="3582mAh">
     </div>
 
     <div class="form-group">
         <label>カメラ</label>
-        <input type="text" placeholder="48MP">
+        <input id="camera" type="text" placeholder="48MP">
     </div>
 
     <div class="form-group">
         <label>価格</label>
-        <input type="text" placeholder="218,790円">
+        <input id="price" type="text" placeholder="218,790円">
     </div>
 
     <div class="form-group">
         <label>おすすめポイント</label>
-        <textarea rows="4" placeholder="カメラ性能が高い"></textarea>
+        <textarea id="recommend" rows="4" placeholder="カメラ性能が高い"></textarea>
     </div>
 
-    <button>登録する</button>
+    <button onclick="savePhone()">登録する</button>
 
 <br><br>
 
@@ -135,5 +135,41 @@ button:hover{
 </a>
 
 </div>
+    https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2
+
+<script>
+const supabaseUrl = "https://butujlsbdxaiuxitfyty.supabase.co/rest/v1/";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1dHVqbHNiZHhhaXV4aXRmeXR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3MjI2OTUsImV4cCI6MjEwMzI5ODY5NX0.yDC6HpV6rQzeG88sVwDlLOPB1dC_I-r5ID1JXoTeCAU";
+
+const supabase = window.supabase.createClient(
+    supabaseUrl,
+    supabaseKey
+);
+
+async function savePhone() {
+
+    const data = {
+        maker: document.getElementById("maker").value,
+        model: document.getElementById("model").value,
+        color: document.getElementById("color").value,
+        ram: document.getElementById("ram").value,
+        rom: document.getElementById("rom").value,
+        battery: document.getElementById("battery").value,
+        camera: document.getElementById("camera").value,
+        price: document.getElementById("price").value,
+        recommend: document.getElementById("recommend").value
+    };
+
+    const { error } = await supabase
+        .from("phones")
+        .insert([data]);
+
+    if(error){
+        alert("登録失敗: " + error.message);
+    } else {
+        alert("登録成功！");
+    }
+}
+</script>
 </body>
 </html>
