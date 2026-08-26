@@ -111,46 +111,10 @@ button:hover{
 
 <button onclick="savePhone()">登録する</button>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script>
 
-const supabaseUrl = "https://butujlsbdxaiuxitfyty.supabase.co";
-
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1dHVqbHNiZHhhaXV4aXRmeXR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3MjI2OTUsImV4cCI6MjEwMzI5ODY5NX0.yDC6HpV6rQzeG88sVwDlLOPB1dC_I-r5ID1JXoTeCAU";
-
-const supabase = window.supabase.createClient(
-    supabaseUrl,
-    supabaseKey
-);
-
-async function savePhone() {
-
-    const data = {
-        maker: document.getElementById("maker").value,
-        model: document.getElementById("model").value,
-        color: document.getElementById("color").value,
-        image_url: document.getElementById("image_url").value,
-        ram: document.getElementById("ram").value,
-        rom: document.getElementById("rom").value,
-        battery: document.getElementById("battery").value,
-        camera: document.getElementById("camera").value,
-        price: document.getElementById("price").value,
-        monthly_1_23: document.getElementById("monthly_1_23").value,
-        monthly_24_47: document.getElementById("monthly_24_47").value,
-        recommend: document.getElementById("recommend").value
-    };
-
-    const { error } = await supabase
-        .from("phones")
-        .insert([data]);
-
-    if (error) {
-        alert("登録失敗: " + error.message);
-        console.error(error);
-    } else {
-        alert("登録成功！");
-    }
+function savePhone() {
+    alert("ここまで来た！");
 }
 
 </script>
