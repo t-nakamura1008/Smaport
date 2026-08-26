@@ -67,39 +67,47 @@
 
 <script>
 
-function savePhone() {
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    const maker = document.getElementById("maker").value;
-    const model = document.getElementById("model").value;
-    const color = document.getElementById("color").value;
-    const image_url = document.getElementById("image_url").value;
-    const ram = document.getElementById("ram").value;
-    const rom = document.getElementById("rom").value;
-    const battery = document.getElementById("battery").value;
-    const camera = document.getElementById("camera").value;
-    const price = document.getElementById("price").value;
-    const monthly_1_23 = document.getElementById("monthly_1_23").value;
-    const monthly_24_47 = document.getElementById("monthly_24_47").value;
-    const recommend = document.getElementById("recommend").value;
+<script>
 
-    alert(
-        "メーカー: " + maker +
-        "\n機種名: " + model +
-        "\nカラー: " + color +
-        "\n画像URL: " + image_url +
-        "\nRAM: " + ram +
-        "\nROM: " + rom +
-        "\nバッテリー: " + battery +
-        "\nカメラ: " + camera +
-        "\n価格: " + price +
-        "\n1～23回目: " + monthly_1_23 +
-        "\n24～47回目: " + monthly_24_47 +
-        "\nおすすめ: " + recommend
-    );
+const supabaseUrl = "https://butujlsbdxaiuxitfyty.supabase.co";
 
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1dHVqbHNiZHhhaXV4aXRmeXR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3MjI2OTUsImV4cCI6MjEwMzI5ODY5NX0.yDC6HpV6rQzeG88sVwDlLOPB1dC_I-r5ID1JXoTeCAU";
+
+const supabase = window.supabase.createClient(
+    supabaseUrl,
+    supabaseKey
+);
+
+async function savePhone() {
+
+    const data = {
+        maker: document.getElementById("maker").value,
+        model: document.getElementById("model").value,
+        color: document.getElementById("color").value,
+        image_url: document.getElementById("image_url").value,
+        ram: document.getElementById("ram").value,
+        rom: document.getElementById("rom").value,
+        battery: document.getElementById("battery").value,
+        camera: document.getElementById("camera").value,
+        price: document.getElementById("price").value,
+        monthly_1_23: document.getElementById("monthly_1_23").value,
+        monthly_24_47: document.getElementById("monthly_24_47").value,
+        recommend: document.getElementById("recommend").value
+    };
+
+    const { error } = await supabase
+        .from("phones")
+        .insert([data]);
+
+    if(error){
+        alert("登録失敗: " + error.message);
+    } else {
+        alert("登録成功！");
+    }
 }
 
 </script>
-
 </body>
 </html>
