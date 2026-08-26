@@ -111,10 +111,12 @@ button:hover{
 
 <button onclick="savePhone()">登録する</button>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
 
 function savePhone() {
-    alert("ここまで来た！");
+    alert(typeof window.supabase);
 }
 
 </script>
