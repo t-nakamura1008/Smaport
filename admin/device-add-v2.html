@@ -16,6 +16,14 @@
 
 <br><br>
 
+<input id="color" placeholder="カラー">
+
+<br><br>
+
+<input id="price" placeholder="一括価格">
+
+<br><br>
+
 <button onclick="savePhone()">登録する</button>
 
 <script>
@@ -24,10 +32,14 @@ function savePhone() {
 
     const maker = document.getElementById("maker").value;
     const model = document.getElementById("model").value;
+    const color = document.getElementById("color").value;
+    const price = document.getElementById("price").value;
 
     alert(
         "メーカー: " + maker +
-        "\n機種名: " + model
+        "\n機種名: " + model +
+        "\nカラー: " + color +
+        "\n価格: " + price
     );
 
 }
