@@ -152,7 +152,7 @@ td{
 <script>
 
 const supabaseUrl = "https://butujlsbdxaiuxitfyty.supabase.co";
-const supabaseKey = "あなたのAnonKey";
+const supabaseKey = "AnonKey";
 
 const supabase = window.supabase.createClient(
     supabaseUrl,
@@ -161,16 +161,20 @@ const supabase = window.supabase.createClient(
 
 async function loadPhones(){
 
+    alert("loadPhones開始");
+
     const { data, error } = await supabase
         .from("Phones")
         .select("*");
+
+    alert("取得処理後");
 
     if(error){
         alert("エラー: " + error.message);
         return;
     }
 
-    alert("取得件数: " + data.length);
+    alert("件数：" + data.length);
 
 }
 
