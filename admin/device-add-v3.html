@@ -134,6 +134,20 @@ const supabase = window.supabase.createClient(
 
 alert("接続OK");
 
+    alert("insert開始");
+
+const { error } = await supabase
+    .from("phones")
+    .insert([data]);
+
+alert("insert完了");
+
+if(error){
+    alert("エラー: " + error.message);
+}else{
+    alert("登録成功！");
+}
+
 
     console.log(data);
 
