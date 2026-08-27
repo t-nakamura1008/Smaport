@@ -137,7 +137,7 @@ alert("接続OK");
     alert("insert開始");
 
 const { error } = await supabase
-    .from("phones")
+    .from("Phones")
     .insert([data]);
 
 alert("insert完了");
