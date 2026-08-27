@@ -125,13 +125,17 @@ const supabase = window.supabase.createClient(
     supabaseUrl,
     supabaseKey
 );
-    
-   if(error){
+
+const { error } = await supabase
+    .from("Phones")
+    .insert([data]);
+
+if(error){
     alert("登録失敗: " + error.message);
 }else{
     alert("登録成功！");
 }
-
+    
     console.log(data);
 
 }
