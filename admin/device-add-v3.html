@@ -110,36 +110,18 @@ const supabase = window.supabase.createClient(
     supabaseKey
 );
 
-async function savePhone() {
+<button onclick="savePhone()">登録する</button>
 
-    const data = {
-        maker: document.getElementById("maker").value,
-        model: document.getElementById("model").value,
-        color: document.getElementById("color").value,
-        image_url: document.getElementById("image_url").value,
-        ram: document.getElementById("ram").value,
-        rom: document.getElementById("rom").value,
-        battery: document.getElementById("battery").value,
-        camera: document.getElementById("camera").value,
-        price: document.getElementById("price").value,
-        monthly_1_23: document.getElementById("monthly_1_23").value,
-        monthly_24_47: document.getElementById("monthly_24_47").value,
-        recommend: document.getElementById("recommend").value
-    };
+</div>
 
-    const { error } = await supabase
-        .from("phones")
-        .insert([data]);
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    if (error) {
-        alert("登録失敗: " + error.message);
-        console.error(error);
-    } else {
-        alert("登録成功！");
-    }
+<script>
+
+function savePhone() {
+    alert(typeof window.supabase);
 }
 
-</script>
 </script>
 
 </body>
