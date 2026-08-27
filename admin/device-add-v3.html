@@ -100,25 +100,28 @@ rows="4"></textarea>
 
 <script>
 
-const supabaseUrl = "https://butujlsbdxaiuxitfyty.supabase.co";
-
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1dHVqbHNiZHhhaXV4aXRmeXR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3MjI2OTUsImV4cCI6MjEwMzI5ODY5NX0.yDC6HpV6rQzeG88sVwDlLOPB1dC_I-r5ID1JXoTeCAU";
-
-const supabase = window.supabase.createClient(
-    supabaseUrl,
-    supabaseKey
-);
-
 async function savePhone() {
 
     alert("開始");
 
     const data = {
         maker: document.getElementById("maker").value,
-        model: document.getElementById("model").value
+        model: document.getElementById("model").value,
+        color: document.getElementById("color").value,
+        image_url: document.getElementById("image_url").value,
+        ram: document.getElementById("ram").value,
+        rom: document.getElementById("rom").value,
+        battery: document.getElementById("battery").value,
+        camera: document.getElementById("camera").value,
+        price: document.getElementById("price").value,
+        monthly_1_23: document.getElementById("monthly_1_23").value,
+        monthly_24_47: document.getElementById("monthly_24_47").value,
+        recommend: document.getElementById("recommend").value
     };
 
     alert("データ取得OK");
+
+    console.log(data);
 
 }
 
