@@ -121,6 +121,20 @@ async function savePhone() {
 
     alert("データ取得OK");
 
+    alert("保存開始");
+
+const supabaseUrl = "https://butujlsbdxaiuxitfyty.supabase.co";
+
+const supabaseKey = "君のAnonKey";
+
+const supabase = window.supabase.createClient(
+    supabaseUrl,
+    supabaseKey
+);
+
+alert("接続OK");
+
+
     console.log(data);
 
 }
