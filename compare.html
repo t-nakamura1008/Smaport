@@ -156,13 +156,19 @@ td{
 
 alert("①");
 
-alert(typeof window.supabase);
+const supabaseUrl = "https://butujlsbdxaiuxitfyty.supabase.co";
+const supabaseKey = "本物のAnonKey";
+
+alert("②");
+
+const supabase = window.supabase.createClient(
+    supabaseUrl,
+    supabaseKey
+);
+
+alert("③");
 
 </script>
-
-</body>
-</html>
-
 
 </body>
 </html>
