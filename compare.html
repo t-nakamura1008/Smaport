@@ -151,14 +151,32 @@ td{
 
 <script>
 
-alert("Supabase確認");
+const supabaseUrl = "https://butujlsbdxaiuxitfyty.supabase.co";
+const supabaseKey = "あなたのAnonKey";
 
-alert(typeof window.supabase);
+const supabase = window.supabase.createClient(
+    supabaseUrl,
+    supabaseKey
+);
+
+async function loadPhones(){
+
+    const { data, error } = await supabase
+        .from("Phones")
+        .select("*");
+
+    if(error){
+        alert("エラー: " + error.message);
+        return;
+    }
+
+    alert("取得件数: " + data.length);
+
+}
+
+loadPhones();
 
 </script>
-
-</body>
-</html>
 
 </body>
 <h2 style="color:red;">COMPARE TEST</h2>
