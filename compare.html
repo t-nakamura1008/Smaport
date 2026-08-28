@@ -252,7 +252,7 @@ document.getElementById("color1").textContent =
 phone.color;
 
 document.getElementById("image1").innerHTML =
-`${phone.image_url}`;
+    phone.image_url;
 
 document.getElementById("display1").textContent=
     phone.display_size;
@@ -278,10 +278,10 @@ function showPhone2(){
 
     if(!phone) return;
 
-    document.getElementById("color2").textContent = phone.color;
+document.getElementById("color2").textContent = phone.color;
     
-    document.getElementById("image2").innerHTML =
-    `${phone.image_url}`;
+document.getElementById("image2").innerHTML =
+    phone.image_url;
 
 document.getElementById("display2").textContent =
     phone.display_size;
