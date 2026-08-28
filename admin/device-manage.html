@@ -148,35 +148,35 @@ data.forEach(phone => {
 
 }
 
-loadPhones();
+async function loadPhones(){
 
-async function deletePhone(id){
-
-    alert("削除ボタン押された");
-
-}
-    
-    async function deletePhone(id){
-
-    if(!confirm("削除しますか？")){
-        return;
-    }
-
-    const { error } = await supabase
+    const { data, error } = await supabase
         .from("Phones")
-        .delete()
-        .eq("id", id);
+        .select("*");
 
     if(error){
         alert(error.message);
         return;
     }
 
-    alert("削除しました");
+    const phoneList =
+        document.getElementById("phoneList");
 
-    loadPhones();
+    phoneList.innerHTML = "";
+
+    data.forEach(phone => {
+
+        phoneList.innerHTML += `
+            ${phone.maker}
+            ${phone.model}
+            <br>
+        `;
+
+    });
 
 }
+    
+loadPhones();
 
 } catch(e){
 
