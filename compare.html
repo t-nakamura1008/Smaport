@@ -248,21 +248,23 @@ function showPhone1(){
 
     if(!phone) return;
 
-document.getElementById("color1").**xtContent = phone.color;
+document.getElementById("color1").textContent =
+phone.color;
 
-documen**getElementById("image1").innerHTM**=
-    `<img**e.image_url}`;
+document.getElementById("image1").innerHTML =
+`${phone.image_url}`;
 
-document.get**ementById("display1").textContent**
+document.getElementById("display1").textContent=
     phone.display_size;
 
-documen**getElementById("ram1").textConten**= phone.ram;
-document.get**ementById("rom1").textContent = p**ne.rom;
-document.get**ementById("battery1").textContent** phone.battery;
-document.getEleme**ById("camera1").textContent = pho**.camera;
-document.getElementById(**rice1").textContent = phone.price**document.getElement**Id("monthly123_1").textContent = **one.monthly_1_23;
-document.get**ementById("monthly2447_1").textCo**ent = phone.monthly_24_47;
-docume**.getElement**Id("recommend1").textContent = ph**e.recommend;
+document.getElementById("ram1").textContent = phone.ram;
+document.getElementById("rom1").textContent = phone.rom;
+document.getElementById("battery1").textContent = phone.battery;
+document.getElementById("camera1").textContent = phone.camera;
+document.getElementById("price1").textContent = phone.price;
+document.getElementById("monthly123_1").textContent = phone.monthly_1_23;
+document.getElementById("monthly2447_1").textContent = phone.monthly_24_47;
+document.getElementById("recommend1").textContent = phone.recommend;
 
 }
 
