@@ -175,24 +175,30 @@ alert("⑤");
 
 async function loadPhones(){
 
-alert("⑥");
+    alert("⑥");
 
-const { data, error } = await supabase
-    .from("Phones")
-    .select("*");
+    try {
 
-alert("⑦");
+        const { data, error } = await supabase
+            .from("Phones")
+            .select("*");
+
+        alert("⑦");
+
+        if(error){
+            alert("エラー：" + error.message);
+            return;
+        }
+
+        alert("件数：" + data.length);
+
+    } catch(e) {
+
+        alert("取得エラー：" + e.message);
+
+    }
 
 }
-
-loadPhones();
-
-} catch(e) {
-
-alert("エラー：" + e.message);
-
-}
-
 </script>
     
 </body>
