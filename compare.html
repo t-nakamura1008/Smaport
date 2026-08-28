@@ -144,16 +144,9 @@ td{
 
 <script>
 
-alert("①");
-alert(typeof window.supabase);
-
 const supabaseUrl = "https://butujlsbdxaiuxitfyty.supabase.co";
-
-alert("②");
-
+    
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1dHVqbHNiZHhhaXV4aXRmeXR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3MjI2OTUsImV4cCI6MjEwMzI5ODY5NX0.yDC6HpV6rQzeG88sVwDlLOPB1dC_I-r5ID1JXoTeCAU";
-
-alert("③");
 
 try {
 
@@ -162,25 +155,16 @@ const supabase = window.supabase.createClient(
     supabaseKey
 );
 
-alert("④");
-alert("⑤");
-
 async function loadPhones(){
-
-alert("⑥");
 
 const { data, error } = await supabase
     .from("Phones")
     .select("*");
 
-alert("⑦");
-
 if(error){
 alert("エラー：" + error.message);
 return;
 }
-
-alert("件数：" + data.length);
     
 const select1 = document.getElementById("phone1");
 const select2 = document.getElementById("phone2");
