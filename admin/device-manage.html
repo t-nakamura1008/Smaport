@@ -85,12 +85,20 @@ alert(typeof window.supabase.createClient);
 
 alert("④前");
 
+try {
+
 const supabase = window.supabase.createClient(
     supabaseUrl,
     supabaseKey
 );
 
 alert("④後");
+
+} catch(e){
+
+alert(e.message);
+
+}
 
 </script>
     
