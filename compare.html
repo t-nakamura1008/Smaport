@@ -211,24 +211,34 @@ return;
 }
 
 phonesData = data;
+
+const maker1 = document.getElementById("maker1");
+const maker2 = document.getElementById("maker2");
+
+const makers = [...new Set(
+    data.map(phone => phone.maker)
+)];
+
+makers.forEach(maker => {
+
+    const option1 = document.createElement("option");
+    option1.value = maker;
+    option1.textContent = maker;
+
+    const option2 = document.createElement("option");
+    option2.value = maker;
+    option2.textContent = maker;
+
+    maker1.appendChild(option1);
+    maker2.appendChild(option2);
+
+});    
+
+}
+
     
 const select1 = document.getElementById("phone1");
 const select2 = document.getElementById("phone2");
-
-data.forEach(phone => {
-
-const option1 = document.createElement("option");
-option1.value = phone.id;
-option1.textContent = phone.model;
-
-const option2 = document.createElement("option");
-option2.value = phone.id;
-option2.textContent = phone.model;
-
-select1.appendChild(option1);
-select2.appendChild(option2);
-
-});
 
 }
 
@@ -280,6 +290,60 @@ document.getElementById("recommend1").textContent =
 }
 
 function showPhone2(){
+
+function loadModels1(){
+
+const maker =
+    document.getElementById("maker1").value;
+
+const select =
+    document.getElementById("phone1");
+
+select.innerHTML =
+    '<option value="">機種①を選択</option>';
+
+phonesData
+    .filter(phone => phone.maker === maker)
+    .forEach(phone => {
+
+const option =
+    document.createElement("option");
+
+option.value = phone.id;
+option.textContent = phone.model;
+
+select.appendChild(option);
+
+});
+
+}
+
+function loadModels2(){
+
+const maker =
+    document.getElementById("maker2").value;
+
+const select =
+    document.getElementById("phone2");
+
+select.innerHTML =
+    '<option value="">機種②を選択</option>';
+
+phonesData
+    .filter(phone => phone.maker === maker)
+    .forEach(phone => {
+
+const option =
+　　document.createElement("option");
+
+option.value = phone.id;
+option.textContent = phone.model;
+
+select.appendChild(option);
+
+});
+
+}
 
 const selectedId =
     document.getElementById("phone2").value;
