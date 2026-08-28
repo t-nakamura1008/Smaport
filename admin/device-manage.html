@@ -120,6 +120,16 @@ async function loadPhones(){
 
     alert("取得件数：" + data.length);
 
+    phoneList.innerHTML = "";
+
+data.forEach(phone => {
+
+    phoneList.innerHTML +=
+        phone.maker + " " +
+        phone.model + "<br>";
+
+});
+
 }
 
 loadPhones();
