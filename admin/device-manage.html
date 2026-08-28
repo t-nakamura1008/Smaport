@@ -123,8 +123,17 @@ async function loadPhones(){
 const phoneList =
     document.getElementById("phoneList");
 
-phoneList.innerHTML =
-    data[0].model;
+phoneList.innerHTML = "";
+
+data.forEach(phone => {
+
+    phoneList.innerHTML += `
+        ${phone.maker}
+        ${phone.model}
+        <br>
+    `;
+
+});
 
 }
 
