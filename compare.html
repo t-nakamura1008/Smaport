@@ -174,14 +174,14 @@ alert("④");
 alert("⑤");
 
 async function loadPhones(){
+
 alert("⑥");
-}
 
-loadPhones();
+const { data, error } = await supabase
+    .from("Phones")
+    .select("*");
 
-} catch(e) {
-
-alert("エラー：" + e.message);
+alert("⑦");
 
 }
 
