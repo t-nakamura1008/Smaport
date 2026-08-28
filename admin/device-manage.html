@@ -146,38 +146,17 @@ loadPhones();
 
 window.deletePhone = async function(id){
 
+    alert(typeof supabase);
+    alert(typeof supabase.from);
+
     alert("ID=" + id);
 
     if(!confirm("削除しますか？")){
         return;
     }
 
-    alert("削除処理開始");
-
-    try {
-
-        const { error } = await supabase
-            .from("Phones")
-            .delete()
-            .eq("id", id);
-
-        alert("DELETE実行後");
-
-        if(error){
-            alert("エラー：" + error.message);
-            return;
-        }
-
-        alert("削除成功");
-
-    } catch(e){
-
-        alert("catch：" + e.message);
-
-    }
 
 }
-
 
 </script>
     
