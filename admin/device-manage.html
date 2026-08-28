@@ -94,6 +94,25 @@ const supabase = window.supabase.createClient(
 
 alert("④後");
 
+async function loadPhones(){
+
+alert("⑤開始");
+
+const { data, error } = await supabase
+    .from("Phones")
+    .select("*");
+
+if(error){
+    alert(error.message);
+return;
+    }
+
+    alert("取得件数：" + data.length);
+
+}
+
+loadPhones();
+
 } catch(e){
 
 alert(e.message);
