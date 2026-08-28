@@ -125,8 +125,9 @@ async function loadPhones(){
 data.forEach(phone => {
 
     phoneList.innerHTML +=
-        phone.maker + " " +
-        phone.model + "<br>";
+    phone.maker + " " +
+    phone.model +
+    ' <button onclick="alert(\'削除テスト\')">削除</button><br>';
 
 });
 
