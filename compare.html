@@ -185,6 +185,8 @@ const supabase = window.supabase.createClient(
     supabaseKey
 );
 
+let phonesData = [];
+
 async function loadPhones(){
 
 const { data, error } = await supabase
