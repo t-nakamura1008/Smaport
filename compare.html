@@ -177,33 +177,19 @@ async function loadPhones(){
 
 alert("⑥");
 
-try {
+const { data, error } = await supabase
+    .from("Phones")
+    .select("*");
 
-    const supabase = window.supabase.createClient(
-        supabaseUrl,
-        supabaseKey
-    );
+alert("⑦");
 
-    alert("④");
-    alert("⑤");
+}
 
-    async function loadPhones(){
-
-        alert("⑥");
-
-        const { data, error } = await supabase
-            .from("Phones")
-            .select("*");
-
-        alert("⑦");
-
-    }
-
-    loadPhones();
+loadPhones();
 
 } catch(e) {
 
-    alert("エラー：" + e.message);
+alert("エラー：" + e.message);
 
 }
     
