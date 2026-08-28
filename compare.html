@@ -183,7 +183,17 @@ const { data, error } = await supabase
 
 alert("⑦");
 
+if(error){
+alert(error.message);
+return;
+    
 }
+
+alert("件数：" + data.length);
+
+}
+
+</script>
     
 </body>
 </html>
