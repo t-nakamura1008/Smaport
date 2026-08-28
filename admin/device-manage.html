@@ -44,14 +44,14 @@ header{
 }
 
 .phone-item{
-  * background:#f8fafc;
-    padding:1*px;
+    background:#f8fafc;
+    padding:15px;
     margin-bottom:10px;
-   *border-radius:10px;
+    border-radius:10px;
 }
 
-.phone-item*button{
-    margin*left:10px;
+.phone-item button{
+    margin-left:10px;
 }
     
 </style>
@@ -128,10 +128,21 @@ phoneList.innerHTML = "";
 data.forEach(phone => {
 
     phoneList.innerHTML += `
-        ${phone.maker}
+    <div class="phone-item">
+
+        <strong>${phone.maker}</strong>
         ${phone.model}
-        <br>
-    `;
+
+        <button>
+            編集
+        </button>
+
+        <button>
+            削除
+        </button>
+
+    </div>
+`;
 
 });
 
