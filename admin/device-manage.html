@@ -151,21 +151,29 @@ window.deletePhone = async function(id){
 
     alert("削除処理開始");
 
-    const { error } = await supabase
-        .from("Phones")
-        .delete()
-        .eq("id", id);
+    try {
 
-    alert("DELETE実行後");
+        const { error } = await supabase
+            .from("Phones")
+            .delete()
+            .eq("id", id);
 
-    if(error){
-        alert("エラー：" + error.message);
-        return;
+        alert("DELETE実行後");
+
+        if(error){
+            alert("エラー：" + error.message);
+            return;
+        }
+
+        alert("削除成功");
+
+    } catch(e){
+
+        alert("catch：" + e.message);
+
     }
 
-    alert("削除成功");
 }
-
 
 
 </script>
