@@ -163,6 +163,21 @@ const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 
 alert("③");
 
+try {
+
+const supabase = window.supabase.createClient(
+    supabaseUrl,
+    supabaseKey
+);
+
+alert("④");
+
+} catch(e) {
+
+alert("エラー：" + e.message);
+
+}
+
 </script>
 
 </body>
