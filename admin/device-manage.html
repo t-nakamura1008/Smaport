@@ -127,7 +127,7 @@ data.forEach(phone => {
 　 phoneList.innerHTML +=
     phone.maker + " " +
     phone.model +
-    ' <button onclick="testDelete()">削除</button><br>';
+    ' <button onclick="deletePhone(' + phone.id + ')">削除</button><br>';
 
 });
 
@@ -141,9 +141,9 @@ loadPhones();
 
 }
 
-function testDelete(){
+async function deletePhone(id){
 
-    alert("関数つながった");
+    alert("削除ボタン押された");
 
 }
 
