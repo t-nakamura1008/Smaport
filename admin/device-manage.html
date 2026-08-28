@@ -120,62 +120,8 @@ async function loadPhones(){
 
     alert("取得件数：" + data.length);
 
-const phoneList =
-    document.getElementById("phoneList");
-
-phoneList.innerHTML = "";
-
-data.forEach(phone => {
-
-    phoneList.innerHTML += `
-    <div class="phone-item">
-
-        <strong>${phone.maker}</strong>
-        ${phone.model}
-
-        <button>
-            編集
-        </button>
-
-<button onclick="deletePhone(${phone.id})">
-    削除
-</button>
-
-    </div>
-`;
-
-});
-
 }
 
-async function loadPhones(){
-
-    const { data, error } = await supabase
-        .from("Phones")
-        .select("*");
-
-    if(error){
-        alert(error.message);
-        return;
-    }
-
-    const phoneList =
-        document.getElementById("phoneList");
-
-    phoneList.innerHTML = "";
-
-    data.forEach(phone => {
-
-        phoneList.innerHTML += `
-            ${phone.maker}
-            ${phone.model}
-            <br>
-        `;
-
-    });
-
-}
-    
 loadPhones();
 
 } catch(e){
