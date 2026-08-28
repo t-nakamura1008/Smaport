@@ -83,6 +83,15 @@ alert(window.supabase ? "あり" : "なし");
 
 alert(typeof window.supabase.createClient);
 
+alert("④前");
+
+const supabase = window.supabase.createClient(
+    supabaseUrl,
+    supabaseKey
+);
+
+alert("④後");
+    
 </script>
     
 </body>
