@@ -248,17 +248,21 @@ function showPhone1(){
 
     if(!phone) return;
 
-    document.getElementById("color1").textContent = phone.color;
-    document.getElementById("display1").textContent = phone.display_size;
-    document.getElementById("image1").innerHTML = phone.image_url;
-    document.getElementById("ram1").textContent = phone.ram;
-    document.getElementById("rom1").textContent = phone.rom;
-    document.getElementById("battery1").textContent = phone.battery;
-    document.getElementById("camera1").textContent = phone.camera;
-    document.getElementById("price1").textContent = phone.price;
-    document.getElementById("monthly123_1").textContent = phone.monthly_1_23;
-    document.getElementById("monthly2447_1").textContent = phone.monthly_24_47;
-    document.getElementById("recommend1").textContent = phone.recommend;
+document.getElementById("color1").**xtContent = phone.color;
+
+documen**getElementById("image1").innerHTM**=
+    `<img**e.image_url}`;
+
+document.get**ementById("display1").textContent**
+    phone.display_size;
+
+documen**getElementById("ram1").textConten**= phone.ram;
+document.get**ementById("rom1").textContent = p**ne.rom;
+document.get**ementById("battery1").textContent** phone.battery;
+document.getEleme**ById("camera1").textContent = pho**.camera;
+document.getElementById(**rice1").textContent = phone.price**document.getElement**Id("monthly123_1").textContent = **one.monthly_1_23;
+document.get**ementById("monthly2447_1").textCo**ent = phone.monthly_24_47;
+docume**.getElement**Id("recommend1").textContent = ph**e.recommend;
 
 }
 
@@ -273,16 +277,36 @@ function showPhone2(){
     if(!phone) return;
 
     document.getElementById("color2").textContent = phone.color;
-    document.getElementById("display2").textContent = phone.display_size;
-    document.getElementById("image2").innerHTML = phone.image_url;
-    document.getElementById("ram2").textContent = phone.ram;
-    document.getElementById("rom2").textContent = phone.rom;
-    document.getElementById("battery2").textContent = phone.battery;
-    document.getElementById("camera2").textContent = phone.camera;
-    document.getElementById("price2").textContent = phone.price;
-    document.getElementById("monthly123_2").textContent = phone.monthly_1_23;
-    document.getElementById("monthly2447_2").textContent = phone.monthly_24_47;
-    document.getElementById("recommend2").textContent = phone.recommend;
+    
+    document.getElementById("image2").innerHTML =
+    `${phone.image_url}`;
+
+document.getElementById("display2").textContent =
+    phone.display_size;
+
+document.getElementById("ram2").textContent =
+    phone.ram;
+
+document.getElementById("rom2").textContent =
+    phone.rom;
+
+document.getElementById("battery2").textContent =
+    phone.battery;
+
+document.getElementById("camera2").textContent =
+    phone.camera;
+
+document.getElementById("price2").textContent =
+    phone.price;
+
+document.getElementById("monthly123_2").textContent =
+    phone.monthly_1_23;
+
+document.getElementById("monthly2447_2").textContent =
+    phone.monthly_24_47;
+
+document.getElementById("recommend2").textContent =
+    phone.recommend;
 
 }
 
