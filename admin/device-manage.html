@@ -135,28 +135,6 @@ data.forEach(phone => {
 
 loadPhones();
 
-    async function deletePhone(id){
-
-    if(!confirm("削除しますか？")){
-        return;
-    }
-
-    const { error } = await supabase
-        .from("Phones")
-        .delete()
-        .eq("id", id);
-
-    if(error){
-        alert(error.message);
-        return;
-    }
-
-    alert("削除しました");
-
-    loadPhones();
-
-}
-
 } catch(e){
 
 alert(e.message);
