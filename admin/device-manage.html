@@ -42,6 +42,17 @@ header{
     margin-left:10px;
     padding:8px 12px;
 }
+
+.phone-item{
+  * background:#f8fafc;
+    padding:1*px;
+    margin-bottom:10px;
+   *border-radius:10px;
+}
+
+.phone-item*button{
+    margin*left:10px;
+}
     
 </style>
 
@@ -96,8 +107,6 @@ alert("④後");
 
 async function loadPhones(){
 
-alert("⑤開始");
-
 const { data, error } = await supabase
     .from("Phones")
     .select("*");
@@ -106,8 +115,6 @@ if(error){
     alert(error.message);
 return;
     }
-
-    alert("取得件数：" + data.length);
 
     const ph*neList =
     document*getElementById("phoneList");
