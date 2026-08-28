@@ -80,6 +80,14 @@ const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 alert("③");
 
 alert(window.supabase ? "supabaseあり" : "supabaseなし");
+
+const supabase = window.supabase.createClient(
+　　supabaseUrl,
+　　supabaseKey
+
+);
+
+alert("④Client OK");
     
 </script>
     
