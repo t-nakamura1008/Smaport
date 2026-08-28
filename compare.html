@@ -172,9 +172,30 @@ try {
 
     alert("④");
 
+    async function loadPhones(){
+
+        alert("⑤");
+
+        const { data, error } = await supabase
+            .from("Phones")
+            .select("*");
+
+        alert("⑥");
+
+        *f(error){
+            alert("エラー："*+ error.message);
+            retu*n;
+        }
+
+        alert("件数：" * data.length);
+
+    }
+
+    loadPho*es();
+
 } catch(e) {
 
-    alert("エラー：" + e.message);
+    alert("エラ*：" + e.message);
 
 }
 
