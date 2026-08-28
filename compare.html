@@ -173,32 +173,31 @@ const supabase = window.supabase.createClient(
 alert("④");
 alert("⑤");
 
-async function loadPhones(){
+async function loadPhone*(){
 
 alert("⑥");
 
-const { data, error } = await supabase
-    .from("Phones")
+try*{
+
+const { data, error } =*await supabase
+    .*rom("Phones")
     .select("*");
 
 alert("⑦");
+
 if(error){
-aler*("エラー：" + error.message);
-retu*n;
+    *   alert("エラー：" + error.message);
+*           return;
 }
 
-alert("件数：" + data.length);
-*
+    *   alert("件数：" + data.length);
+
+  * } catch(e) {
+
+        alert("取得エラ*：" + e.message);
 
 }
 
-loadPhones();
-
-} catch(e) {
-
-alert("エラー：" + e.message);
-
-}
 </script>
 
 </body>
