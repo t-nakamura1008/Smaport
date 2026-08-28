@@ -143,7 +143,11 @@ loadPhones();
 
 async function deletePhone(id){
 
-    alert("削除ボタン押された");
+    if(!confirm("削除しますか？")){
+        return;
+    }
+
+    alert("OK押された");
 
 }
 
