@@ -84,12 +84,12 @@ td{
 
 <div class="selector">
 
-<select id="phone1">
-    <option>機種①を選択</option>
+<select id="phone1" onchange="showPhone1()">
+    <option value="">機種①を選択</option>
 </select>
 
 <select id="phone2">
-    <option>機種②を選択</option>
+    <option value="">機種②を選択</option>
 </select>
 
 </div>
@@ -225,6 +225,48 @@ select2.appendChild(option2);
 }
 
 loadPhones();
+
+function showPhone1(){
+
+const selectedId =
+    document.getElementById("phone1").value;
+
+const phone =
+    phonesData.find(p => p.id == selectedId);
+
+if(!phone) return;
+
+document.getElementById("color1").textContent =
+    phone.color;
+
+document.getElementById("display1").textContent =
+    phone.display_size;
+
+document.getElementById("ram1").textContent =
+    phone.ram;
+
+document.getElementById("rom1").textContent =
+    phone.rom;
+
+document.getElementById("battery1").textContent =
+    phone.battery;
+
+document.getElementById("camera1").textContent =
+    phone.camera;
+
+document.getElementById("price1").textContent =
+    phone.price;
+
+document.getElementById("monthly123_1").textContent =
+    phone.monthly_1_23;
+
+document.getElementById("monthly2447_1").textContent =
+    phone.monthly_24_47;
+
+document.getElementById("recommend1").textContent =
+    phone.recommend;
+
+}
 
 } catch(e) {
 
