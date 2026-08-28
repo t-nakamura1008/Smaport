@@ -183,6 +183,13 @@ const { data, error } = await supabase
 
 alert("⑦");
 
+if(error){
+alert("エラー：" + error.message);
+return;
+}
+
+alert("件数：" + data.length);
+
 }
 
 loadPhones();
