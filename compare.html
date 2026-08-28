@@ -173,6 +173,12 @@ const supabase = window.supabase.createClient(
 alert("④");
 alert("⑤");
 
+async function loadPhones(){
+alert("⑥");
+}
+
+loadPhones();
+
 } catch(e) {
 
 alert("エラー：" + e.message);
