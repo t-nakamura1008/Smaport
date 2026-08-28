@@ -149,13 +149,17 @@ window.deletePhone = async function(id){
         return;
     }
 
+    alert("削除処理開始");
+
     const { error } = await supabase
         .from("Phones")
         .delete()
         .eq("id", id);
 
+    alert("DELETE実行後");
+
     if(error){
-        alert(error.message);
+        alert("エラー：" + error.message);
         return;
     }
 
