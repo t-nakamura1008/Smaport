@@ -147,25 +147,9 @@ async function deletePhone(id){
 
 }
 
-async function deletePhone(id){
+window.deletePhone = async function(id){
 
-    if(!confirm("削除しますか？")){
-        return;
-    }
-
-    const { error } = await supabase
-        .from("Phones")
-        .delete()
-        .eq("id", id);
-
-    if(error){
-        alert(error.message);
-        return;
-    }
-
-    alert("削除しました");
-
-    loadPhones();
+    alert("ID=" + id);
 
 }
 
