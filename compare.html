@@ -179,26 +179,34 @@ alert("⑥");
 
 try {
 
-const { data, error } = await supabase
-    .from("Phones")
-    .select("*");
+    const supabase = window.supabase.createClient(
+        supabaseUrl,
+        supabaseKey
+    );
 
-alert("⑦");
+    alert("④");
+    alert("⑤");
 
-if(error){
-alert("エラー：" + error.message);
-return;
-}
+    async function loadPhones(){
 
-alert("件数：" + data.length);
+        alert("⑥");
+
+        const { data, error } = await supabase
+            .from("Phones")
+            .select("*");
+
+        alert("⑦");
+
+    }
+
+    loadPhones();
 
 } catch(e) {
 
-alert("取得エラー：" + e.message);
+    alert("エラー：" + e.message);
 
 }
-
-}
+    
 </script>
 
 </body>
