@@ -107,39 +107,18 @@ alert("④後");
 
 async function loadPhones(){
 
-const { data, error } = await supabase
-    .from("Phones")
-    .select("*");
+    alert("⑤開始");
 
-if(error){
-    alert(error.message);
-return;
+    const { data, error } = await supabase
+        .from("Phones")
+        .select("*");
+
+    if(error){
+        alert(error.message);
+        return;
     }
 
-    const ph*neList =
-    document*getElementById("phoneList");
-
-phon*List.innerHTML = "";
-
-data.forEach*phone => {
-
-    phoneList.innerHTM* += `
-        <div class="phone-it*m">
-
-            <strong>${phone.m*ker}</strong>
-            ${phone.*odel}
-
-            <button>
-      *         編集
-            </button>
-*            <button>
-             *  削除
-            </button>
-
-      * </div>
-    `;
-
-});
+    alert("取得件数：" + data.length);
 
 }
 
