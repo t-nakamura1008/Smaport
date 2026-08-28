@@ -124,10 +124,10 @@ async function loadPhones(){
 
 data.forEach(phone => {
 
-    phoneList.innerHTML +=
+　 phoneList.innerHTML +=
     phone.maker + " " +
     phone.model +
-    ' <button onclick="alert(\'削除テスト\')">削除</button><br>';
+    ' <button onclick="testDelete()">削除</button><br>';
 
 });
 
@@ -136,6 +136,12 @@ data.forEach(phone => {
 loadPhones();
 
 } catch(e){
+
+function testDelete(){
+
+alert("関数つながった");
+
+}
 
 alert(e.message);
 
