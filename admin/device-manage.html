@@ -81,14 +81,14 @@ alert("③");
 
 alert(window.supabase ? "supabaseあり" : "supabaseなし");
 
-const { createClient } = window.supabase;
+alert("④前");
 
-const supabase = createClient(
+const supabase = window.supabase.createClient(
     supabaseUrl,
     supabaseKey
 );
 
-alert("④Client OK");
+alert("⑤後");
     
 </script>
     
