@@ -236,158 +236,110 @@ makers.forEach(maker => {
     maker2.appendChild(option2);
 
 });    
-
-}
-
-    
-const select1 = document.getElementById("phone1");
-const select2 = document.getElementById("phone2");
-
+   
 }
 
 loadPhones();
 
 function showPhone1(){
 
-const selectedId =
-    document.getElementById("phone1").value;
+    const selectedId =
+        document.getElementById("phone1").value;
 
-const phone =
-    phonesData.find(p => p.id == selectedId);
+    const phone =
+        phonesData.find(p => p.id == selectedId);
 
-if(!phone) return;
+    if(!phone) return;
 
-document.getElementById("color1").textContent =
-    phone.color;
-
-document.getElementById("display1").textContent =
-    phone.display_size;
-
-document.getElementById("image1").innerHTML =
-    phone.image_url;
-
-document.getElementById("ram1").textContent =
-    phone.ram;
-
-document.getElementById("rom1").textContent =
-    phone.rom;
-
-document.getElementById("battery1").textContent =
-    phone.battery;
-
-document.getElementById("camera1").textContent =
-    phone.camera;
-
-document.getElementById("price1").textContent =
-    phone.price;
-
-document.getElementById("monthly123_1").textContent =
-    phone.monthly_1_23;
-
-document.getElementById("monthly2447_1").textContent =
-    phone.monthly_24_47;
-
-document.getElementById("recommend1").textContent =
-    phone.recommend;
+    document.getElementById("color1").textContent = phone.color;
+    document.getElementById("display1").textContent = phone.display_size;
+    document.getElementById("image1").innerHTML = phone.image_url;
+    document.getElementById("ram1").textContent = phone.ram;
+    document.getElementById("rom1").textContent = phone.rom;
+    document.getElementById("battery1").textContent = phone.battery;
+    document.getElementById("camera1").textContent = phone.camera;
+    document.getElementById("price1").textContent = phone.price;
+    document.getElementById("monthly123_1").textContent = phone.monthly_1_23;
+    document.getElementById("monthly2447_1").textContent = phone.monthly_24_47;
+    document.getElementById("recommend1").textContent = phone.recommend;
 
 }
 
 function showPhone2(){
 
+    const selectedId =
+        document.getElementById("phone2").value;
+
+    const phone =
+        phonesData.find(p => p.id == selectedId);
+
+    if(!phone) return;
+
+    document.getElementById("color2").textContent = phone.color;
+    document.getElementById("display2").textContent = phone.display_size;
+    document.getElementById("image2").innerHTML = phone.image_url;
+    document.getElementById("ram2").textContent = phone.ram;
+    document.getElementById("rom2").textContent = phone.rom;
+    document.getElementById("battery2").textContent = phone.battery;
+    document.getElementById("camera2").textContent = phone.camera;
+    document.getElementById("price2").textContent = phone.price;
+    document.getElementById("monthly123_2").textContent = phone.monthly_1_23;
+    document.getElementById("monthly2447_2").textContent = phone.monthly_24_47;
+    document.getElementById("recommend2").textContent = phone.recommend;
+
+}
+
 function loadModels1(){
 
-const maker =
-    document.getElementById("maker1").value;
+    const maker =
+        document.getElementById("maker1").value;
 
-const select =
-    document.getElementById("phone1");
+    const select =
+        document.getElementById("phone1");
 
-select.innerHTML =
-    '<option value="">機種①を選択</option>';
+    select.innerHTML =
+        '<option value="">機種①を選択</option>';
 
-phonesData
-    .filter(phone => phone.maker === maker)
-    .forEach(phone => {
+    phonesData
+        .filter(phone => phone.maker === maker)
+        .forEach(phone => {
 
-const option =
-    document.createElement("option");
+            const option =
+                document.createElement("option");
 
-option.value = phone.id;
-option.textContent = phone.model;
+            option.value = phone.id;
+            option.textContent = phone.model;
 
-select.appendChild(option);
+            select.appendChild(option);
 
-});
+        });
 
 }
 
 function loadModels2(){
 
-const maker =
-    document.getElementById("maker2").value;
+    const maker =
+        document.getElementById("maker2").value;
 
-const select =
-    document.getElementById("phone2");
+    const select =
+        document.getElementById("phone2");
 
-select.innerHTML =
-    '<option value="">機種②を選択</option>';
+    select.innerHTML =
+        '<option value="">機種②を選択</option>';
 
-phonesData
-    .filter(phone => phone.maker === maker)
-    .forEach(phone => {
+    phonesData
+        .filter(phone => phone.maker === maker)
+        .forEach(phone => {
 
-const option =
-　　document.createElement("option");
+            const option =
+                document.createElement("option");
 
-option.value = phone.id;
-option.textContent = phone.model;
+            option.value = phone.id;
+            option.textContent = phone.model;
 
-select.appendChild(option);
+            select.appendChild(option);
 
-});
-
-}
-
-const selectedId =
-    document.getElementById("phone2").value;
-
-const phone =
-    phonesData.find(p => p.id == selectedId);
-
-if(!phone) return;
-
-document.getElementById("color2").textContent =
-    phone.color;
-
-document.getElementById("image2").innerHTML =
-    phone.image_url;
-    
-document.getElementById("display2").textContent =
-    phone.display_size;
-
-document.getElementById("ram2").textContent =
-    phone.ram;
-
-document.getElementById("rom2").textContent =
-    phone.rom;
-
-document.getElementById("battery2").textContent =
-    phone.battery;
-
-document.getElementById("camera2").textContent =
-    phone.camera;
-
-document.getElementById("price2").textContent =
-    phone.price;
-
-document.getElementById("monthly123_2").textContent =
-    phone.monthly_1_23;
-
-document.getElementById("monthly2447_2").textContent =
-    phone.monthly_24_47;
-
-document.getElementById("recommend2").textContent =
-    phone.recommend;
+        });
 
 }
     
