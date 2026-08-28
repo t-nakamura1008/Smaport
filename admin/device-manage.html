@@ -127,47 +127,13 @@ data.forEach(phone => {
     phoneList.innerHTML +=
     phone.maker + " " +
     phone.model +
-    ' <button onclick="deletePhone(' + phone.id + ')">削除</button><br>';
+    ' <button onclick="alert(\'削除テスト\')">削除</button><br>';
 
 });
 
 }
 
 loadPhones();
-
-    async function loadPhones(){
-
-}
-
-loadPhones();
-
-async function deletePhone(id){
-
-    if(!confirm("削除しますか？")){
-        return;
-    }
-
-    const { error } = await supabase
-        .from("Phones")
-        .delete()
-        .eq("id", id);
-
-    if(error){
-        alert(error.message);
-        return;
-    }
-
-    alert("削除しました");
-
-    loadPhones();
-
-}
-
-} catch(e){
-
-    alert(e.message);
-
-}
 
 } catch(e){
 
