@@ -172,10 +172,18 @@ phoneList.innerHTML = "";
 
 data
 .filter(phone =>
-    phone.model &&
-    phone.model.toLowerCase().includes(keyword)
+    (
+        phone.maker &&
+        phone.maker.toLowerCase().includes(keyword)
+    )
+    ||
+    (
+        phone.model &&
+        phone.model.toLowerCase().includes(keyword)
+    )
 )
 .forEach(phone => {
+
 
 
 phoneList.innerHTML +=
