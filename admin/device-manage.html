@@ -136,14 +136,6 @@ const supabaseUrl = "https://butujlsbdxaiuxitfyty.supabase.co";
 
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1dHVqbHNiZHhhaXV4aXRmeXR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3MjI2OTUsImV4cCI6MjEwMzI5ODY5NX0.yDC6HpV6rQzeG88sVwDlLOPB1dC_I-r5ID1JXoTeCAU";
 
-alert("③");
-
-alert(window.supabase ? "あり" : "なし");
-
-alert(typeof window.supabase.createClient);
-
-alert("④前");
-
 const sb = window.supabase.createClient(
     supabaseUrl,
     supabaseKey
@@ -155,11 +147,7 @@ try {
 alert(typeof sb);
 alert(typeof sb.from);
 
-alert("④後");
-
 async function loadPhones(){
-
-    alert("⑤開始");
 
     const { data, error } = await sb
         .from("Phones")
@@ -169,8 +157,6 @@ async function loadPhones(){
         alert(error.message);
         return;
     }
-
-    alert("取得件数：" + data.length);
 
     phoneList.innerHTML = "";
 
