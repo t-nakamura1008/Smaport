@@ -163,13 +163,12 @@ async function loadPhones(){
         return;
     }
 
- const keyword =
+const keyword =
     document.getElementById("searchBox").value
-        .toLowerCase();
-   
-    alert(keyword);
+    .toLowerCase();
 
 phoneList.innerHTML = "";
+
 
 data
 .filter(phone =>
