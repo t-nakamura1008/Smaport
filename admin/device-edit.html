@@ -52,7 +52,7 @@ async function loadPhone(){
 }
 
 loadPhone();
-    
+
 window.updatePhone = async function(){
 
     const { error } = await sb
@@ -68,14 +68,10 @@ window.updatePhone = async function(){
         return;
     }
 
-alert("更新成功");
-alert("今から戻る");
+    alert("更新成功");
 
-location.href = "device-manage.html";
+    location.href = "device-manage.html";
 
-
-
-
-loadPhone();
+}
 
 </script>
