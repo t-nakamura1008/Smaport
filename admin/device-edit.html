@@ -1,16 +1,75 @@
-<h1>機種編集</h1>
+<html>
+<head>
 
-メーカー
-<input id="maker">
+<style>
 
-<br><br>
+body{
+    background:#E0F2FE;
+    font-family:"Yu Gothic",sans-serif;
+    margin:0;
+}
 
-機種名
-<input id="model">
+.container{
+    max-width:700px;
+    margin:50px auto;
+}
 
-<br><br>
+.card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
 
-<button onclick="updatePhone()">更新</button>
+h1{
+    color:#0284C7;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border:1px solid #CBD5E1;
+    border-radius:10px;
+}
+
+button{
+    background:#38BDF8;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0EA5E9;
+}
+
+</style>
+
+</head>
+<body>
+
+
+<div class="container">
+    <div class="card">
+
+        <h1>機種編集</h1>
+
+        メーカー
+        <input id="maker">
+
+        <br><br>
+
+        機種名
+        <input id="model">
+
+        <br><br>
+
+        <button onclick="updatePhone()">更新</button>
+
+    </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -29,22 +88,16 @@ const id = params.get("id");
 
 async function loadPhone(){
 
-    alert("開始");
-
     const { data, error } = await sb
         .from("Phones")
         .select("*")
         .eq("id", id)
         .single();
 
-    alert("取得後");
-
     if(error){
         alert(error.message);
         return;
     }
-
-    alert(JSON.stringify(data));
 
     maker.value = data.maker;
     model.value = data.model;
@@ -75,3 +128,6 @@ window.updatePhone = async function(){
 }
 
 </script>
+
+</body>
+</html>
