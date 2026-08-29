@@ -137,14 +137,25 @@ const sb = window.supabase.createClient(
 
 window.login = async function(){
 
-    const { data } = await sb
+    const { data, error } = await sb
         .from("Admins")
-        .select("*");
+        .select("*")
+        .eq("login_id", loginId.value.trim())
+        .eq("password", password.value.trim())
+        .single();
 
-    alert(JSON.stringify(data));
+    if(error || !data){
+
+        alert("IDまたはパスワードが違います");
+        return;
+
+    }
+
+    alert("ログイン成功");
+
+    location.href = "dashboard.html";
 
 }
-
 
 
 </script>
