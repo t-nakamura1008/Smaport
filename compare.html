@@ -109,8 +109,11 @@ th{
     color:#EF4444 !important;
     font-weight:bold;
 }
-
+.equal{
+    color:#F59E0B;
+    font-weight:bold;
 }
+
 </style>
 
 </head>
@@ -389,7 +392,16 @@ function compareRam(){
         document.getElementById("ram2")
             .classList.add("good");
 
-    }
+    }else{
+
+    document.getElementById("ram1")
+        .classList.add("equal");
+
+    document.getElementById("ram2")
+        .classList.add("equal");
+
+   }
+
 }
 function compareRom(){
 
