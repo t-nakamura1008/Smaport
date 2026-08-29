@@ -126,12 +126,9 @@ button:hover{
 
 <script>
 
- alert("script開始");   
-    
 const supabaseUrl = "https://butujlsbdxaiuxitfyty.supabase.co";
-    
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1dHVqbHNiZHhhaXV4aXRmeXR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3MjI2OTUsImV4cCI6MjEwMzI5ODY5NX0.yDC6HpV6rQzeG88sVwDlLOPB1dC_I-r5ID1JXoTeCAU";
 
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1dHVqbHNiZHhhaXV4aXRmeXR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3MjI2OTUsImV4cCI6MjEwMzI5ODY5NX0.yDC6HpV6rQzeG88sVwDlLOPB1dC_I-r5ID1JXoTeCAU";
 
 const sb = window.supabase.createClient(
     supabaseUrl,
@@ -140,14 +137,16 @@ const sb = window.supabase.createClient(
 
 window.login = async function(){
 
-    alert("ログインボタン押された");
-
-}
+    const { data, error } = await sb
+        .from("Admins")
+        .select("*")
+        .eq("login_id", loginId.value)
+        .eq("password", password.value)
+        .single();
 
     if(error || !data){
 
         alert("IDまたはパスワードが違います");
-
         return;
 
     }
@@ -158,8 +157,9 @@ window.login = async function(){
 
 }
 
-
 </script>
+
+
 
 </body>
 </html>
