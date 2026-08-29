@@ -358,7 +358,7 @@ document.getElementById("recommend2").textContent =
     phone.recommend;
 
 compareRam();
-
+compareRom();
 }
 
 function compareRam(){
@@ -389,6 +389,36 @@ function compareRam(){
             .classList.add("good");
 
     }
+function compareRom(){
+
+    const rom1 =
+        parseInt(document.getElementById("rom1").textContent);
+
+    const rom2 =
+        parseInt(document.getElementById("rom2").textContent);
+
+    document.getElementById("rom1").className = "";
+    document.getElementById("rom2").className = "";
+
+    if(rom1 > rom2){
+
+        document.getElementById("rom1")
+            .classList.add("good");
+
+        document.getElementById("rom2")
+            .classList.add("bad");
+
+    }else if(rom2 > rom1){
+
+        document.getElementById("rom1")
+            .classList.add("bad");
+
+        document.getElementById("rom2")
+            .classList.add("good");
+
+    }
+
+}
 
 }
 
