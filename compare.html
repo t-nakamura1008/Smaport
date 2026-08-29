@@ -355,6 +355,9 @@ function loadModels1(){
 
     phonesData
         .filter(phone => phone.maker === maker)
+        .sort((a,b) =>
+            a.model.localeCompare(b.model, "ja")
+        )
         .forEach(phone => {
 
             const option =
@@ -381,8 +384,11 @@ function loadModels2(){
         '<option value="">機種②を選択</option>';
 
     phonesData
-        .filter(phone => phone.maker === maker)
-        .forEach(phone => {
+    .filter(phone => phone.maker === maker)
+    .sort((a,b) =>
+        a.model.localeCompare(b.model, "ja")
+    )
+    .forEach(phone => {
 
             const option =
                 document.createElement("option");
