@@ -53,6 +53,49 @@ header{
 .phone-item button{
     margin-left:10px;
 }
+
+.edit-btn{
+    background:#FACC15;
+    color:white;
+    border:none;
+    padding:8px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    margin-left:10px;
+}
+
+.edit-btn:hover{
+    background:#EAB308;
+}
+
+.delete-btn{
+    background:#EF4444;
+    color:white;
+    border:none;
+    padding:8px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    margin-left:10px;
+}
+
+.delete-btn:hover{
+    background:#DC2626;
+}
+
+.back-btn{
+    background:#10B981;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.back-btn:hover{
+    background:#059669;
+}
+    
     
 </style>
 
@@ -76,15 +119,20 @@ header{
 
 </div>
 
+<br><br>
+
+<button class="back-btn"
+        onclick="location.href='dashboard.html'">
+    ← 管理画面に戻る
+</button>
+
+    
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
-alert("①");
-
 const supabaseUrl = "https://butujlsbdxaiuxitfyty.supabase.co";
-
-alert("②");
 
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1dHVqbHNiZHhhaXV4aXRmeXR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3MjI2OTUsImV4cCI6MjEwMzI5ODY5NX0.yDC6HpV6rQzeG88sVwDlLOPB1dC_I-r5ID1JXoTeCAU";
 
@@ -128,11 +176,11 @@ async function loadPhones(){
 
 data.forEach(phone => {
 
-　 phoneList.innerHTML +=
+phoneList.innerHTML +=
     phone.maker + " " +
     phone.model +
-    ' <button onclick="location.href=\'device-edit.html?id=' + phone.id + '\'">編集</button>' +
-    ' <button onclick="deletePhone(' + phone.id + ')">削除</button><br>';
+    ' <button class="edit-btn" onclick="location.href=\'device-edit.html?id=' + phone.id + '\'">編集</button>' +
+    ' <button class="delete-btn" onclick="deletePhone(' + phone.id + ')">削除</button><br>';
 
 });
 
