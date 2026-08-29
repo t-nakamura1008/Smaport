@@ -112,6 +112,30 @@ border-radius:10px;
 font-size:16px;
 }
 
+.device{
+    background:white;
+    border:1px solid #e5e7eb;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:15px;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.maker{
+    color:#6b7280;
+    font-size:14px;
+    margin-bottom:5px;
+}
+
+.device h3{
+    margin:0 0 15px;
+}
+
+.button-area{
+    display:flex;
+    gap:10px;
+}
+    
 </style>
 
 </head>
@@ -201,15 +225,33 @@ data
 
 
 
-phoneList.innerHTML +=
-    phone.maker + " " +
-    phone.model +
-    ' <button class="edit-btn" onclick="location.href=\'device-edit.html?id=' + phone.id + '\'">編集</button>' +
-    ' <button class="delete-btn" onclick="deletePhone(' + phone.id + ')">削除</button><br>';
+phoneList.innerHTML += `
+<div class="device">
 
-});
+    <div class="maker">
+        ${phone.maker}
+    </div>
 
-}
+    <h3>${phone.model}</h3>
+
+    <div class="button-area">
+
+        <button
+            class="edit-btn"
+            onclick="location.href='device-edit.html?id=${phone.id}'">
+            編集
+        </button>
+
+        <button
+            class="delete-btn"
+            onclick="deletePhone(${phone.id})">
+            削除
+        </button>
+
+    </div>
+
+</div>
+`;
 
 window.loadPhones = loadPhones;
     
