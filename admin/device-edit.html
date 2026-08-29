@@ -54,19 +54,78 @@ button:hover{
 <div class="container">
     <div class="card">
 
-        <h1>機種編集</h1>
+<h1>機種編集</h1>
 
-        メーカー
-        <input id="maker">
+メーカー
+<input id="maker" placeholder="メーカー">
 
-        <br><br>
+<br><br>
 
-        機種名
-        <input id="model">
+機種名
+<input id="model" placeholder="機種名">
 
-        <br><br>
+<br><br>
 
-        <button onclick="updatePhone()">更新</button>
+カラー
+<input id="color" placeholder="カラー">
+
+<br><br>
+
+画像URL
+<input id="image_url" placeholder="画像URL">
+
+<br><br>
+
+ディスプレイサイズ
+<input id="display_size" placeholder="ディスプレイサイズ">
+
+<br><br>
+
+RAM
+<input id="ram" placeholder="RAM">
+
+<br><br>
+
+ROM
+<input id="rom" placeholder="ROM">
+
+<br><br>
+
+バッテリー
+<input id="battery" placeholder="バッテリー">
+
+<br><br>
+
+カメラ画素数
+<input id="camera" placeholder="カメラ画素数">
+
+<br><br>
+
+一括価格
+<input id="price" placeholder="一括価格">
+
+<br><br>
+
+1回目～23回目
+<input id="monthly_1_23" placeholder="1回目～23回目">
+
+<br><br>
+
+24回目～47回目
+<input id="monthly_24_47" placeholder="24回目～47回目">
+
+<br><br>
+
+おすすめポイント
+<textarea
+    id="recommend"
+    placeholder="おすすめポイント"
+    rows="4"></textarea>
+
+<br><br>
+
+<button onclick="updatePhone()">更新</button>
+
 
     </div>
 </div>
@@ -99,8 +158,20 @@ async function loadPhone(){
         return;
     }
 
-    maker.value = data.maker;
-    model.value = data.model;
+maker.value = data.maker;
+model.value = data.model;
+color.value = data.color;
+image_url.value = data.image_url;
+display_size.value = data.display_size;
+ram.value = data.ram;
+rom.value = data.rom;
+battery.value = data.battery;
+camera.value = data.camera;
+price.value = data.price;
+monthly_1_23.value = data.monthly_1_23;
+monthly_24_47.value = data.monthly_24_47;
+recommend.value = data.recommend;
+
 
 }
 
@@ -111,9 +182,21 @@ window.updatePhone = async function(){
     const { error } = await sb
         .from("Phones")
         .update({
-            maker: maker.value,
-            model: model.value
-        })
+           .update({
+    maker: maker.value,
+    model: model.value,
+    color: color.value,
+    image_url: image_url.value,
+    display_size: display_size.value,
+    ram: ram.value,
+    rom: rom.value,
+    battery: battery.value,
+    camera: camera.value,
+    price: price.value,
+    monthly_1_23: monthly_1_23.value,
+    monthly_24_47: monthly_24_47.value,
+    recommend: recommend.value
+})
         .eq("id", id);
 
     if(error){
