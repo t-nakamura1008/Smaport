@@ -359,6 +359,7 @@ document.getElementById("recommend2").textContent =
 
 compareRam();
 compareRom();
+compareBattery();
 }
 
 function compareRam(){
@@ -415,6 +416,66 @@ function compareRom(){
             .classList.add("bad");
 
         document.getElementById("rom2")
+            .classList.add("good");
+
+    }
+
+}
+    function compareBattery(){
+
+    const battery1 =
+        parseInt(document.getElementById("battery1").textContent);
+
+    const battery2 =
+        parseInt(document.getElementById("battery2").textContent);
+
+    document.getElementById("battery1").className = "";
+    document.getElementById("battery2").className = "";
+
+    if(battery1 > battery2){
+
+        document.getElementById("battery1")
+            .classList.add("good");
+
+        document.getElementById("battery2")
+            .classList.add("bad");
+
+    }else if(battery2 > battery1){
+
+        document.getElementById("battery1")
+            .classList.add("bad");
+
+        document.getElementById("battery2")
+            .classList.add("good");
+
+    }
+
+}
+function compareBattery(){
+
+    const battery1 =
+        parseInt(document.getElementById("battery1").textContent);
+
+    const battery2 =
+        parseInt(document.getElementById("battery2").textContent);
+
+    document.getElementById("battery1").className = "";
+    document.getElementById("battery2").className = "";
+
+    if(battery1 > battery2){
+
+        document.getElementById("battery1")
+            .classList.add("good");
+
+        document.getElementById("battery2")
+            .classList.add("bad");
+
+    }else if(battery2 > battery1){
+
+        document.getElementById("battery1")
+            .classList.add("bad");
+
+        document.getElementById("battery2")
             .classList.add("good");
 
     }
