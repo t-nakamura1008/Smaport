@@ -99,6 +99,16 @@ th{
     text-align:center;
     text-align-last:center;
 }   
+
+.good{
+    color:#10B981;
+    font-weight:bold;
+}
+
+.bad{
+    color:#EF4444;
+    font-weight:bold;
+}
 </style>
 
 </head>
@@ -345,6 +355,38 @@ document.getElementById("monthly2447_2").textContent =
 document.getElementById("recommend2").textContent =
     phone.recommend;
 
+ compareSpecs();
+ function compareRam(){
+
+    const ram1 =
+        parseInt(document.getElementById("ram1").textContent);
+
+    const ram2 =
+        parseInt(document.getElementById("ram2").textContent);
+
+    document.getElementById("ram1").className = "";
+    document.getElementById("ram2").className = "";
+
+    if(ram1 > ram2){
+
+        document.getElementById("ram1")
+            .classList.add("good");
+
+        document.getElementById("ram2")
+            .classList.add("bad");
+
+    }else if(ram2 > ram1){
+
+        document.getElementById("ram1")
+            .classList.add("bad");
+
+        document.getElementById("ram2")
+            .classList.add("good");
+
+    }
+
+}
+  
 }
 
 function loadModels1(){
