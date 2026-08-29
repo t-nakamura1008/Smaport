@@ -1,0 +1,22 @@
+<h1>機種編集</h1>
+
+メーカー
+<input id="maker">
+
+<br><br>
+
+機種名
+<input id="model">
+
+<br><br>
+
+<button onclick="updatePhone()">更新</button>
+
+<script>
+
+const params = new URLSearchParams(location.search);
+const id = params.get("id");
+
+alert(id);
+
+</script>
