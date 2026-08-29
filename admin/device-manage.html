@@ -131,7 +131,7 @@ data.forEach(phone => {
 　 phoneList.innerHTML +=
     phone.maker + " " +
     phone.model +
-    ' <button onclick="editPhone(' + phone.id + ')">編集</button>' +
+    ' <button onclick="location.href=\'device-edit.html?id=' + phone.id + '\'">編集</button>' +
     ' <button onclick="deletePhone(' + phone.id + ')">削除</button><br>';
 
 });
