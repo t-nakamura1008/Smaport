@@ -101,13 +101,15 @@ th{
 }   
 
 .good{
-    color:#10B981;
+    color:#10B981 !important;
     font-weight:bold;
 }
 
 .bad{
-    color:#EF4444;
+    color:#EF4444 !important;
     font-weight:bold;
+}
+
 }
 </style>
 
@@ -355,9 +357,9 @@ document.getElementById("monthly2447_2").textContent =
 document.getElementById("recommend2").textContent =
     phone.recommend;
 
- compareSpecs();
- function compareRam(){
-
+ compareRam(){
+}
+function compareRam(){
     const ram1 =
         parseInt(document.getElementById("ram1").textContent);
 
@@ -385,8 +387,6 @@ document.getElementById("recommend2").textContent =
 
     }
 
-}
-  
 }
 
 function loadModels1(){
