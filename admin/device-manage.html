@@ -111,6 +111,14 @@ header{
     <div class="card">
         <h2>登録済み機種一覧</h2>
 
+<input
+    type="text"
+    id="searchBox"
+    placeholder="機種名で検索"
+    oninput="loadPhones()">
+
+<br><br>
+
         <div id="phoneList">
             読み込み中...
         </div>
@@ -155,9 +163,19 @@ async function loadPhones(){
         return;
     }
 
-    phoneList.innerHTML = "";
+ const keyword =
+    document.getElementById("searchBox").value
+        .toLowerCase();
 
-data.forEach(phone => {
+phoneList.innerHTML = "";
+
+data
+.filter(phone =>
+    phone.model &&
+    phone.model.toLowerCase().includes(keyword)
+)
+.forEach(phone => {
+
 
 phoneList.innerHTML +=
     phone.maker + " " +
