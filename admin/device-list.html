@@ -175,7 +175,7 @@ async function deletePhone(id){
     }
 
     const { error } = await supabase
-        .from("phones")
+        .from("Phones")
         .delete()
         .eq("id", id);
 
