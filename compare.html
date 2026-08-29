@@ -109,8 +109,9 @@ th{
     color:#EF4444 !important;
     font-weight:bold;
 }
+
 .equal{
-    color:#F59E0B;
+    color:#F59E0B !important;
     font-weight:bold;
 }
 
@@ -430,22 +431,6 @@ function compareRom(){
         document.getElementById("rom2")
             .classList.add("good");
 
-    if(rom1 > rom2){
-
-    document.getElementById("rom1")
-        .classList.add("good");
-
-    document.getElementById("rom2")
-        .classList.add("bad");
-
-}else if(rom2 > rom1){
-
-    document.getElementById("rom1")
-        .classList.add("bad");
-
-    document.getElementById("rom2")
-        .classList.add("good");
-
 }else{
 
     document.getElementById("rom1")
@@ -483,22 +468,6 @@ function compareRom(){
 
         document.getElementById("battery2")
             .classList.add("good");
-
-    if(battery1 > battery2){
-
-    document.getElementById("battery1")
-        .classList.add("good");
-
-    document.getElementById("battery2")
-        .classList.add("bad");
-
-}else if(battery2 > battery1){
-
-    document.getElementById("battery1")
-        .classList.add("bad");
-
-    document.getElementById("battery2")
-        .classList.add("good");
 
 }else{
 
