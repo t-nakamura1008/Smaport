@@ -202,59 +202,60 @@ async function loadPhones(){
         return;
     }
 
-const keyword =
-    document.getElementById("searchBox").value
-    .toLowerCase();
+    const keyword =
+        document.getElementById("searchBox").value
+        .toLowerCase();
 
-phoneList.innerHTML = "";
+    phoneList.innerHTML = "";
 
-
-data
-.filter(phone =>
-    (
-        phone.maker &&
-        phone.maker.toLowerCase().includes(keyword)
+    data
+    .filter(phone =>
+        (
+            phone.maker &&
+            phone.maker.toLowerCase().includes(keyword)
+        )
+        ||
+        (
+            phone.model &&
+            phone.model.toLowerCase().includes(keyword)
+        )
     )
-    ||
-    (
-        phone.model &&
-        phone.model.toLowerCase().includes(keyword)
-    )
-)
-.forEach(phone => {
+    .forEach(phone => {
 
+        phoneList.innerHTML += `
+        <div class="device">
 
+            <div class="maker">
+                ${phone.maker}
+            </div>
 
-phoneList.innerHTML += `
-<div class="device">
+            <h3>${phone.model}</h3>
 
-    <div class="maker">
-        ${phone.maker}
-    </div>
+            <div class="button-area">
 
-    <h3>${phone.model}</h3>
+                <button
+                    class="edit-btn"
+                    onclick="location.href='device-edit.html?id=${phone.id}'">
+                    編集
+                </button>
 
-    <div class="button-area">
+                <button
+                    class="delete-btn"
+                    onclick="deletePhone(${phone.id})">
+                    削除
+                </button>
 
-        <button
-            class="edit-btn"
-            onclick="location.href='device-edit.html?id=${phone.id}'">
-            編集
-        </button>
+            </div>
 
-        <button
-            class="delete-btn"
-            onclick="deletePhone(${phone.id})">
-            削除
-        </button>
+        </div>
+        `;
 
-    </div>
+    });
 
-</div>
-`;
+}
 
 window.loadPhones = loadPhones;
-    
+
 loadPhones();
 
 } catch(e){
