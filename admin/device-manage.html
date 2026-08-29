@@ -146,13 +146,27 @@ loadPhones();
 }
 
 window.deletePhone = async function(id){
-    alert(typeof sb);
-    alert(typeof sb.from);
+
     alert("ID=" + id);
 
     if(!confirm("削除しますか？")){
         return;
     }
+
+    const { error } = await sb
+        .from("Phones")
+        .delete()
+        .eq("id", id);
+
+    if(error){
+        alert("エラー：" + error.message);
+        return;
+    }
+
+    alert("削除成功");
+
+    loadPhones();
+
 }
     
 </script>
