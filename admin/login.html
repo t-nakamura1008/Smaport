@@ -146,6 +146,9 @@ window.login = async function(){
         .eq("password", password.value)
         .single();
 
+    alert("error=" + JSON.stringify(error));
+    alert("data=" + JSON.stringify(data));
+
     if(error || !data){
 
         alert("IDまたはパスワードが違います");
@@ -159,6 +162,7 @@ window.login = async function(){
     location.href = "dashboard.html";
 
 }
+
 
 </script>
 
