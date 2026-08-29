@@ -27,6 +27,32 @@ const sb = window.supabase.createClient(
 const params = new URLSearchParams(location.search);
 const id = params.get("id");
 
+async function loadPhone(){
+
+    alert("開始");
+
+    const { data, error } = await sb
+        .from("Phones")
+        .select("*")
+        .eq("id", id)
+        .single();
+
+    alert("取得後");
+
+    if(error){
+        alert(error.message);
+        return;
+    }
+
+    alert(JSON.stringify(data));
+
+    maker.value = data.maker;
+    model.value = data.model;
+
+}
+
+loadPhone();
+    
 window.updatePhone = async function(){
 
     const { error } = await sb
