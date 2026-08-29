@@ -60,6 +60,31 @@ header{
     color:#10B981;
     text-decoration:none;
 }
+
+.phone-card{
+    background:#f8fafc;
+    border:1px solid #e5e7eb;
+    border-radius:12px;
+    padding:15px;
+    margin-bottom:15px;
+}
+
+.phone-maker{
+    color:#6b7280;
+    font-size:14px;
+    margin-bottom:5px;
+}
+
+.phone-model{
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.btn-area{
+    display:flex;
+    gap:10px;
+}    
 </style>
 </head>
 
@@ -101,15 +126,22 @@ async function loadDevices(){
 
     deviceList.innerHTML = "";
 
-    data.forEach(phone => {
+data.forEach(phone => {
 
-        deviceList.innerHTML += `
-            <div class="device">
-                <h3>${phone.model}</h3>
+    deviceList.innerHTML += `
+        <div class="device">
 
-                <p>メーカー：${phone.maker}</p>
+            <div class="maker">
+                ${phone.maker}
+            </div>
 
-                <button class="btn edit">
+            <h3>${phone.model}</h3>
+
+            <div class="button-area">
+
+                <button
+                    class="btn edit"
+                    onclick="location.href='device-edit.html?id=${phone.id}'">
                     編集
                 </button>
 
@@ -118,10 +150,13 @@ async function loadDevices(){
                     onclick="deletePhone(${phone.id})">
                     削除
                 </button>
+
             </div>
-        `;
-    });
-}
+
+        </div>
+    `;
+
+});
 
 async function deletePhone(id){
 
