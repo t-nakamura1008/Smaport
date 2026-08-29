@@ -182,21 +182,20 @@ window.updatePhone = async function(){
     const { error } = await sb
         .from("Phones")
         .update({
-           .update({
-    maker: maker.value,
-    model: model.value,
-    color: color.value,
-    image_url: image_url.value,
-    display_size: display_size.value,
-    ram: ram.value,
-    rom: rom.value,
-    battery: battery.value,
-    camera: camera.value,
-    price: price.value,
-    monthly_1_23: monthly_1_23.value,
-    monthly_24_47: monthly_24_47.value,
-    recommend: recommend.value
-})
+            maker: maker.value,
+            model: model.value,
+            color: color.value,
+            image_url: image_url.value,
+            display_size: display_size.value,
+            ram: ram.value,
+            rom: rom.value,
+            battery: battery.value,
+            camera: camera.value,
+            price: price.value,
+            monthly_1_23: monthly_1_23.value,
+            monthly_24_47: monthly_24_47.value,
+            recommend: recommend.value
+        })
         .eq("id", id);
 
     if(error){
@@ -207,8 +206,8 @@ window.updatePhone = async function(){
     alert("更新成功");
 
     location.href = "device-manage.html";
-
 }
+
 
 </script>
 
