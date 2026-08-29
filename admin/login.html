@@ -141,21 +141,13 @@ window.login = async function(){
         .from("Admins")
         .select("*")
         .eq("login_id", loginId.value)
-        .eq("password", password.value)
-        .single();
+        .eq("password", password.value);
 
-    if(error || !data){
-
-        alert("IDまたはパスワードが違います");
-        return;
-
-    }
-
-    alert("ログイン成功");
-
-    location.href = "dashboard.html";
+    alert("error=" + JSON.stringify(error));
+    alert("data=" + JSON.stringify(data));
 
 }
+
 
 </script>
 
