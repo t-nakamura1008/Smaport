@@ -44,11 +44,6 @@ header{
     margin-right:10px;
 }
 
-.edit{
-    background:#3B82F6;
-    color:white;
-}
-
 .back{
     display:inline-block;
     margin-top:20px;
@@ -132,41 +127,48 @@ async function loadDevices(){
         .from("phones")
         .select("*");
 
+    if(error){
+        alert(error.message);
+        return;
+    }
+
     const deviceList = document.getElementById("deviceList");
 
- deviceList.innerHTML = "";
+    deviceList.innerHTML = "";
 
-data.forEach(phone => {
+    data.forEach(phone => {
 
-    deviceList.innerHTML += `
-    <div class="device">
+        deviceList.innerHTML += `
+        <div class="device">
 
-        <div class="maker">
-            ${phone.maker}
+            <div class="maker">
+                ${phone.maker}
+            </div>
+
+            <h3>${phone.model}</h3>
+
+            <div class="button-area">
+
+                <button
+                    class="btn edit"
+                    onclick="location.href='device-edit.html?id=${phone.id}'">
+                    編集
+                </button>
+
+                <button
+                    class="btn delete"
+                    onclick="deletePhone(${phone.id})">
+                    削除
+                </button>
+
+            </div>
+
         </div>
+        `;
 
-        <h3>${phone.model}</h3>
+    });
 
-        <div class="button-area">
-
-            <button
-                class="btn edit"
-                onclick="location.href='device-edit.html?id=${phone.id}'">
-                編集
-            </button>
-
-            <button
-                class="btn delete"
-                onclick="deletePhone(${phone.id})">
-                削除
-            </button>
-
-        </div>
-
-    </div>
-    `;
-
-});
+}
 
 async function deletePhone(id){
 
