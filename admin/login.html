@@ -137,14 +137,8 @@ const sb = window.supabase.createClient(
 
 window.login = async function(){
 
-    const { data, error } = await sb
-        .from("Admins")
-        .select("*")
-        .eq("login_id", loginId.value)
-        .eq("password", password.value);
-
-    alert("error=" + JSON.stringify(error));
-    alert("data=" + JSON.stringify(data));
+    alert("ID=" + loginId.value);
+    alert("PW=" + password.value);
 
 }
 
