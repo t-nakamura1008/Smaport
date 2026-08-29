@@ -141,13 +141,12 @@ window.login = async function(){
 
     const { data, error } = await sb
         .from("Admins")
-        .select("*")
-        .eq("login_id", loginId.value)
-        .eq("password", password.value)
-        .single();
+        .select("*");
 
-    alert("error=" + JSON.stringify(error));
-    alert("data=" + JSON.stringify(data));
+    alert(JSON.stringify(data));
+
+}
+
 
     if(error || !data){
 
