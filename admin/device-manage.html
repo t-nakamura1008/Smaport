@@ -144,9 +144,6 @@ const sb = window.supabase.createClient(
 
 try {
 
-alert(typeof sb);
-alert(typeof sb.from);
-
 async function loadPhones(){
 
     const { data, error } = await sb
@@ -181,8 +178,6 @@ loadPhones();
 }
 
 window.deletePhone = async function(id){
-
-    alert("ID=" + id);
 
     if(!confirm("削除しますか？")){
         return;
