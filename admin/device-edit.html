@@ -28,19 +28,26 @@ const id = params.get("id");
 
 async function loadPhone(){
 
+    alert("開始");
+
     const { data, error } = await sb
         .from("Phones")
         .select("*")
         .eq("id", id)
-       *.single();
+        .single();
+
+    alert("取得後");
 
     if(error){
-       *alert(error.message);
-        retu*n;
+        alert(error.message);
+        return;
     }
 
+    alert(JSON.stringify(data));
+
     maker.value = data.maker;
-    model.value = data.model;*
+    model.value = data.model;
+
 }
 
 loadPhone();
