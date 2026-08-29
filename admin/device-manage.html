@@ -169,32 +169,6 @@ window.deletePhone = async function(id){
     loadPhones();
 
 }
-
-  window.editPhone = async function(id){
-
-    const newMaker = prompt("メーカーを入力してください");
-
-    if(!newMaker){
-        return;
-    }
-
-    const { error } = await sb
-        .from("Phones")
-        .update({
-            maker: newMaker
-        })
-        .eq("id", id);
-
-    if(error){
-        alert(error.message);
-        return;
-    }
-
-    alert("更新成功");
-
-    loadPhones();
-
-}  
     
 </script>
     
