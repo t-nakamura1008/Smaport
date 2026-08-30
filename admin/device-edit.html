@@ -45,17 +45,18 @@ button:hover{
     background:#0EA5E9;
 }
 
-.back-btn{
-    background:#10B981;
-    color:white;
-    border:none;
-    padding:12px 20px;
-    border-radius:10px;
-    cursor:pointer;
-}
+.back{
+    display:inline-block;
+    background:#F9A8D4;
+    color:white !important;
+    text-decoration:none;
 
-.back-btn:hover{
-    background:#059669;
+    padding:12px 20px;
+    border:none;
+    border-radius:10px;
+
+    font-size:16px;
+    font-weight:bold;
 }
 
  .update-btn{
@@ -89,14 +90,6 @@ button:hover{
 
 </head>
 
-<button class="back-btn"
-        onclick="location.href='device-manage.html'">
-    ← 機種一覧へ戻る
-</button>
-
-
-
-    
 <body>
 
 
@@ -174,6 +167,11 @@ ROM
 <br><br>
 
 <button onclick="updatePhone()">更新</button>
+
+    <button class="back-btn"
+        onclick="location.href='device-manage.html'">
+    ← 機種一覧
+</button>    
 
 
     </div>
