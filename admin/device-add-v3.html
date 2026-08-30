@@ -143,8 +143,10 @@ if(error){
 }
 async function loadCopyData(){
 
-    const params =
-        new URLSearchParams(window.location.search);
+    alert("loadCopyData開始");
+
+const params =
+    new URLSearchParams(window.location.search);
 
     const id = params.get("copy");
 
