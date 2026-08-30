@@ -90,6 +90,11 @@ header{
     background:#EF4444;
     color:white;
 }
+
+.copy{
+background:#8B5CF6;
+color:white;
+}
 </style>
 </head>
 
@@ -148,9 +153,11 @@ async function loadDevices(){
             <h3>${phone.model}</h3>
 
             <div class="button-area">
-　　　　　　　　　<button class="copy-btn">
-    　　　　　　　　　　　　コピー
-　　　　　　　　　　　　　</button>
+　　　　　　　　　<button
+    class="btn copy"
+    onclick="copyPhone(${phone.id})">
+    複製
+</button>
                 <button
                     class="btn edit"
                     onclick="location.href='device-edit.html?id=${phone.id}'">
@@ -191,6 +198,19 @@ async function deletePhone(id){
     }
 }
 
+    function copyPhone(id){
+
+    const phone =
+        phonesData.find(p => p.id == id);
+
+    sessionStorage.setItem(
+        "copyPhone",
+        JSON.stringify(phone)
+    );
+
+    location.href = "device-add.html";
+
+}
 loadDevices();
 
 </script>
