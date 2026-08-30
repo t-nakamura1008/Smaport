@@ -337,6 +337,9 @@ document.getElementById("monthly123_1").textContent = phone.monthly_1_23;
 document.getElementById("monthly2447_1").textContent = phone.monthly_24_47;
 document.getElementById("recommend1").textContent = phone.recommend;
 
+compareRam();
+compareRom();
+compareBattery();    
 }
 
 function showPhone2(){
@@ -498,36 +501,6 @@ function compareRom(){
         .classList.add("equal");
 
   }
-
-}
-function compareBattery(){
-
-    const battery1 =
-        parseInt(document.getElementById("battery1").textContent);
-
-    const battery2 =
-        parseInt(document.getElementById("battery2").textContent);
-
-    document.getElementById("battery1").className = "";
-    document.getElementById("battery2").className = "";
-
-    if(battery1 > battery2){
-
-        document.getElementById("battery1")
-            .classList.add("good");
-
-        document.getElementById("battery2")
-            .classList.add("bad");
-
-    }else if(battery2 > battery1){
-
-        document.getElementById("battery1")
-            .classList.add("bad");
-
-        document.getElementById("battery2")
-            .classList.add("good");
-
-    }
 
 }
 
