@@ -79,11 +79,12 @@ td{
 }
 
 .phone-image{
-    width:250px;
-    height:auto;
-    display:block;
-    margin:0 auto;
+    width:200px;
+    height:200px;
+    object-fit:contain;
+    background:white;
 }
+
 
 table{
     width:100%;
@@ -348,7 +349,7 @@ document.getElementById("color1").textContent =
 phone.color;
 
 document.getElementById("image1").innerHTML =
-    '<img src="' + phone.image_url + '" width="250">';
+    '<img src="' + phone.image_url + '" class="phone-image">';
 
 document.getElementById("display1").textContent=
     phone.display_size;
@@ -380,7 +381,7 @@ function showPhone2(){
 document.getElementById("color2").textContent = phone.color;
     
 document.getElementById("image2").innerHTML =
-    '<img src="' + phone.image_url + '" width="250">';
+    '<img src="' + phone.image_url + '" class="phone-image">';
 
 document.getElementById("display2").textContent =
     phone.display_size;
