@@ -153,25 +153,26 @@ async function loadDevices(){
             <h3>${phone.model}</h3>
 
             <div class="button-area">
-　　　　　　　　　<button
-    class="btn copy"
-    onclick="copyPhone(${phone.id})">
-    複製
-</button>
-                <button
-                    class="btn edit"
-                    onclick="location.href='device-edit.html?id=${phone.id}'">
-                    編集
-                </button>
 
-                <button
-                    class="btn delete"
-                    onclick="deletePhone(${phone.id})">
-                    削除
-                </button>
+    <button
+        class="btn copy"
+        onclick="copyPhone(${phone.id})">
+        複製
+    </button>
 
-            </div>
+    <button
+        class="btn edit"
+        onclick="location.href='device-edit.html?id=${phone.id}'">
+        編集
+    </button>
 
+    <button
+        class="btn delete"
+        onclick="deletePhone(${phone.id})">
+        削除
+    </button>
+
+</div>
         </div>
         `;
 
