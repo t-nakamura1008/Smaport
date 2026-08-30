@@ -159,6 +159,29 @@ h2{
     border-radius:12px;
 }
 
+.Google{
+    background:#D1FAE5;
+}
+
+.Apple{
+    background:#F3F4F6;
+}
+
+.Samsung{
+    background:#DBEAFE;
+}
+
+.FCNT{
+    background:#FED7AA;
+}
+
+.SHARP{
+    background:#FB923C;
+}
+
+.SONY{
+    background:#E5E7EB;
+}    
 </style>
 
 </head>
@@ -245,14 +268,15 @@ async function loadPhones(){
     )
     .forEach(phone => {
 
-        phoneList.innerHTML += `
-        <div class="device">
+       deviceList.innerHTML += `
+<div class="device ${phone.maker}">
 
-            <div class="maker">
-                ${phone.maker}
-            </div>
+    <div class="maker">
+        ${phone.maker}
+    </div>
 
-            <h3>${phone.model}</h3>
+    <h3>${phone.model}</h3>
+
 
             <div class="button-area">
 
