@@ -155,10 +155,12 @@ async function loadDevices(){
 
           <div class="button-area">
 
-    <button class="btn copy">
-        📋複製
-    </button>
-
+    <button
+    class="btn copy"
+    onclick="copyPhone(${phone.id})">
+    📋複製
+</button>
+ 
     <button
         class="btn edit"
         onclick="location.href='device-edit.html?id=${phone.id}'">
@@ -198,18 +200,11 @@ async function deletePhone(id){
     }
 }
 
-   function copyPhone(id){
+function copyPhone(id){
 
     alert(id);
 
 }
-
-    sessionStorage.setItem(
-        "copyPhone",
-        JSON.stringify(phone)
-    );
-
-    location.href = "device-add.html";
 
 }
 loadDevices();
