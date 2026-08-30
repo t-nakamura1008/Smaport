@@ -269,7 +269,7 @@ async function loadPhones(){
   .forEach(phone => {
 
    phoneList.innerHTML += `
-<div class="device">
+<div class="device ${phone.maker}">
 
     <div class="maker">
         ${phone.maker}
