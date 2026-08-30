@@ -115,10 +115,18 @@ th{
     font-weight:bold;
 }
 
-.legend{
+.legend-area{
     display:flex;
-    gap:10px;
-    margin-left:auto;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:10px;
+}
+
+.notice{
+    color:#EF4444;
+    font-size:12px;
+    text-align:right;
+    font-weight:bold;
 }
 
 .back{
@@ -141,14 +149,20 @@ th{
         ← トップへ戻る
     </a>
 
+    <div class="legend-area">
+
     <div class="legend">
         <span class="good">● 優位</span>
         <span class="bad">● 劣位</span>
         <span class="equal">● 同等</span>
     </div>
 
-</div>
+    <div class="notice">
+        ※機種変更時の価格です。<br>
+        ★はオンラインショップ限定です。
+    </div>
 
+</div>
 <div class="selector">
 
 <select id="maker1" onchange="loadModels1()">
