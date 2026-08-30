@@ -114,6 +114,11 @@ th{
     color:#F59E0B !important;
     font-weight:bold;
 }
+.legend{
+    text-align:right;
+    margin-bottom:10px;
+    font-weight:bold;
+}
 
 </style>
 
@@ -129,7 +134,21 @@ th{
 <a href="index.html" class="back">
 ← トップへ戻る
 </a>
+<div class="legend">
 
+    <span class="good">
+        ● 優位
+    </span>
+
+    <span class="bad">
+        ● 劣位
+    </span>
+
+    <span class="equal">
+        ● 同等
+    </span>
+
+</div>
 <div class="selector">
 
 <select id="maker1" onchange="loadModels1()">
@@ -148,21 +167,6 @@ th{
     <option value="">機種②を選択</option>
 </select>
 
- <div class="legend">
-
-    <span class="good">
-        ● 優位
-    </span>
-
-    <span class="bad">
-        ● 劣位
-    </span>
-
-    <span class="equal">
-        ● 同等
-    </span>
-
-</div>
    
 </div>
 
