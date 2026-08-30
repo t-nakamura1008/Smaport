@@ -143,14 +143,10 @@ if(error){
 }
 async function loadCopyData(){
 
-    alert("loadCopyData開始");
-
 const params =
     new URLSearchParams(window.location.search);
 
     const id = params.get("copy");
-
-alert("copy=" + id);
 
 if(!id) return;
 
@@ -172,8 +168,6 @@ if(!id) return;
         .select("*")
         .eq("id", id)
         .single();
-    
-alert(JSON.stringify(data));
 
     if(error) return;
 
