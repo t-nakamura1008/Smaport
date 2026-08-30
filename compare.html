@@ -114,11 +114,23 @@ th{
     color:#F59E0B !important;
     font-weight:bold;
 }
-.legend{
-    text-align:right;
-    font-weight:bold;
-    font-size:14px;
+.top-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
 }
+
+.legend{
+    font-size:16px;
+    font-weight:bold;
+}
+
+.back{
+    font-size:16px;
+    text-decoration:none;
+}
+
 </style>
 
 </head>
@@ -128,26 +140,20 @@ th{
 <h1>Smaport 比較ページ</h1>
 </header>
 
-<div class="container">
+<div class="top-row">
 
-<a href="index.html" class="back">
-← トップへ戻る
-</a>
-<div class="legend">
+    <a href="index.html" class="back">
+        ← トップへ戻る
+    </a>
 
-    <span class="good">
-        ● 優位
-    </span>
-
-    <span class="bad">
-        ● 劣位
-    </span>
-
-    <span class="equal">
-        ● 同等
-    </span>
+    <div class="legend">
+        <span class="good">● 優位</span>
+        <span class="bad">● 劣位</span>
+        <span class="equal">● 同等</span>
+    </div>
 
 </div>
+
 <div class="selector">
 
 <select id="maker1" onchange="loadModels1()">
