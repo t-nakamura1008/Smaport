@@ -141,7 +141,49 @@ if(error){
     console.log(data);
 
 }
+async function loadCopyData(){
 
+    const params =
+        new URLSearchParams(window.location.search);
+
+    const id = params.get("copy");
+
+    if(!id) return;
+
+    const supabaseUrl =
+        "https://butujlsbdxaiuxitfyty.supabase.co";
+
+    const supabaseKey =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1dHVqbHNiZHhhaXV4aXRmeXR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3MjI2OTUsImV4cCI6MjEwMzI5ODY5NX0.yDC6HpV6rQzeG88sVwDlLOPB1dC_I-r5ID1JXoTeCAU";
+
+    const supabase =
+        window.supabase.createClient(
+            supabaseUrl,
+            supabaseKey
+        );
+
+    const { data, error } = await supabase
+        .from("Phones")
+        .select("*")
+        .eq("id", id)
+        .single();
+
+    if(error) return;
+
+    document.getElementById("maker").value = data.maker;
+    document.getElementById("model").value = data.model;
+    document.getElementById("color").value = data.color;
+    document.getElementById("image_url").value = data.image_url;
+    document.getElementById("display_size").value = data.display_size;
+    document.getElementById("ram").value = data.ram;
+    document.getElementById("rom").value = data.rom;
+    document.getElementById("battery").value = data.battery;
+    document.getElementById("camera").value = data.camera;
+    document.getElementById("price").value = data.price;
+    document.getElementById("monthly_1_23").value = data.monthly_1_23;
+    document.getElementById("monthly_24_47").value = data.monthly_24_47;
+    document.getElementById("recommend").value = data.recommend;
+}
 </script>
 
 </body>
