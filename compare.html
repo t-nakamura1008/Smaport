@@ -467,11 +467,19 @@ function compareRom(){
 }
     function compareBattery(){
 
-    const battery1 =
-        parseInt(document.getElementById("battery1").textContent);
+const battery1 =
+    parseInt(
+        document.getElementById("battery1")
+        .textContent
+        .replace(/[^0-9]/g,"")
+    );
 
-    const battery2 =
-        parseInt(document.getElementById("battery2").textContent);
+const battery2 =
+    parseInt(
+        document.getElementById("battery2")
+        .textContent
+        .replace(/[^0-9]/g,"")
+    );
 
     document.getElementById("battery1").className = "";
     document.getElementById("battery2").className = "";
