@@ -170,6 +170,8 @@ if(!id) return;
         .select("*")
         .eq("id", id)
         .single();
+    
+alert(JSON.stringify(data));
 
     if(error) return;
 
