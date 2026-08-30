@@ -71,9 +71,10 @@ header{
 
 .button-area{
     display:flex;
+    justify-content:center;
     gap:10px;
+    flex-wrap:wrap;
 }
-
 .btn{
     border:none;
     padding:10px 15px;
@@ -152,10 +153,10 @@ async function loadDevices(){
 
             <h3>${phone.model}</h3>
 
-           <div class="button-area">
+          <div class="button-area">
 
     <button class="btn copy">
-        複製
+        📋複製
     </button>
 
     <button
