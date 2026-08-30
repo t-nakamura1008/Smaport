@@ -141,6 +141,15 @@ font-size:16px;
     width:100%;
 }
 
+ .copy-btn{
+    background:#8B5CF6;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:10px;
+    cursor:pointer;
+}
+   
 </style>
 
 </head>
@@ -238,21 +247,26 @@ async function loadPhones(){
 
             <div class="button-area">
 
-                <button
-                    class="edit-btn"
-                    onclick="location.href='device-edit.html?id=${phone.id}'">
-                    編集
-                </button>
+    <button
+        class="copy-btn"
+        onclick="copyPhone(${phone.id})">
+        複製
+    </button>
 
-                <button
-                    class="delete-btn"
-                    onclick="deletePhone(${phone.id})">
-                    削除
-                </button>
+    <button
+        class="edit-btn"
+        onclick="location.href='device-edit.html?id=${phone.id}'">
+        編集
+    </button>
 
-            </div>
+    <button
+        class="delete-btn"
+        onclick="deletePhone(${phone.id})">
+        削除
+    </button>
 
-        </div>
+</div>
+
         `;
 
     });
@@ -290,7 +304,13 @@ window.deletePhone = async function(id){
     loadPhones();
 
 }
-    
+   function copyPhone(id){
+
+    location.href =
+        "device-add-v3.html?copy=" + id;
+
+}
+ 
 </script>
     
 </body>
