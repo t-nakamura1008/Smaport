@@ -304,13 +304,14 @@ window.deletePhone = async function(id){
     loadPhones();
 
 }
-   function copyPhone(id){
 
-    alert(
-        "device-add-v3.html?copy=" + id
-    );
+    function copyPhone(id){
+
+    location.href =
+        "device-add-v3.html?copy=" + id;
 
 }
+
 
  
 </script>
