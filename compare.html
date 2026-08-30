@@ -305,11 +305,16 @@ phonesData = data;
 const maker1 = document.getElementById("maker1");
 const maker2 = document.getElementById("maker2");
 
-const makers = [...new Set(
-    data.map(phone => phone.maker)
-)];
+const fixedMakers = [
+    "Apple",
+    "Google",
+    "Samsung",
+    "SONY",
+    "SHARP",
+    "FCNT"
+];
 
-makers.forEach(maker => {
+fixedMakers.forEach(maker => {
 
     const option1 = document.createElement("option");
     option1.value = maker;
@@ -322,7 +327,8 @@ makers.forEach(maker => {
     maker1.appendChild(option1);
     maker2.appendChild(option2);
 
-});    
+});
+    
    
 }
 
