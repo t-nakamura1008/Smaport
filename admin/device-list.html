@@ -129,7 +129,7 @@ const supabase = window.supabase.createClient(
 async function loadDevices(){
 
     const { data, error } = await supabase
-        .from("phones")
+        .from("Phones")
         .select("*");
 
     if(error){
