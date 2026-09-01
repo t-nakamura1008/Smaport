@@ -261,6 +261,12 @@ td:nth-child(2){
 </tr>
 
 <tr>
+    <th>ケータイ補償</th>
+    <td id="hosho1"></td>
+    <td id="hosho2"></td>
+</tr>    
+
+<tr>
     <td>おすすめポイント</td>
     <td id="recommend1">-</td>
     <td id="recommend2">-</td>
@@ -361,6 +367,7 @@ document.getElementById("camera1").textContent = phone.camera;
 document.getElementById("price1").textContent = phone.price;
 document.getElementById("monthly123_1").textContent = phone.monthly_1_23;
 document.getElementById("monthly2447_1").textContent = phone.monthly_24_47;
+document.getElementById("hosho1").textContent =phone.keitai_hosho;    
 document.getElementById("recommend1").textContent = phone.recommend;
 
 compareRam();
@@ -407,6 +414,9 @@ document.getElementById("monthly123_2").textContent =
 document.getElementById("monthly2447_2").textContent =
     phone.monthly_24_47;
 
+  document.getElementById("hosho2").textContent =
+    phone.keitai_hosho;
+    
 document.getElementById("recommend2").textContent =
     phone.recommend;
 
