@@ -579,13 +579,21 @@ function loadModels1(){
 
     phonesData
         .filter(phone => phone.maker === maker)
-       .sort((a,b) =>
-    a.model.localeCompare(
-        b.model,
-        "ja",
-        { numeric: true }
-    )
-)
+       .sort((a, b) => {
+
+    const getSize = (model) => {
+
+        if(model.includes("256GB")) return 256;
+        if(model.includes("512GB")) return 512;
+        if(model.includes("1TB")) return 1024;
+        if(model.includes("2TB")) return 2048;
+
+        return 0;
+    };
+
+    return getSize(a.model) - getSize(b.model);
+
+})
         .forEach(phone => {
 
             const option =
@@ -613,13 +621,21 @@ function loadModels2(){
 
     phonesData
     .filter(phone => phone.maker === maker)
-    .sort((a,b) =>
-    a.model.localeCompare(
-        b.model,
-        "ja",
-        { numeric: true }
-    )
-)
+    .sort((a, b) => {
+
+    const getSize = (model) => {
+
+        if(model.includes("256GB")) return 256;
+        if(model.includes("512GB")) return 512;
+        if(model.includes("1TB")) return 1024;
+        if(model.includes("2TB")) return 2048;
+
+        return 0;
+    };
+
+    return getSize(a.model) - getSize(b.model);
+
+})
     .forEach(phone => {
 
             const option =
