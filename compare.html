@@ -475,13 +475,26 @@ function compareRam(){
    }
 
 }
+function convertRom(value){
+
+    value = value.trim().toUpperCase();
+
+    if(value.includes("TB")){
+        return parseFloat(value) * 1024;
+    }
+
+    return parseInt(value);
+}
+
 function compareRom(){
 
-    const rom1 =
-        parseInt(document.getElementById("rom1").textContent);
+    const rom1 = convertRom(
+        document.getElementById("rom1").textContent
+    );
 
-    const rom2 =
-        parseInt(document.getElementById("rom2").textContent);
+    const rom2 = convertRom(
+        document.getElementById("rom2").textContent
+    );
 
     document.getElementById("rom1").className = "";
     document.getElementById("rom2").className = "";
@@ -502,16 +515,14 @@ function compareRom(){
         document.getElementById("rom2")
             .classList.add("good");
 
-}else{
+    }else{
 
-    document.getElementById("rom1")
-        .classList.add("equal");
+        document.getElementById("rom1")
+            .classList.add("equal");
 
-    document.getElementById("rom2")
-        .classList.add("equal");
-
-  }
-
+        document.getElementById("rom2")
+            .classList.add("equal");
+    }
 }
     function compareBattery(){
 
