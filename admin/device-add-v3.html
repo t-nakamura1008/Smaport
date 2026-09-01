@@ -75,12 +75,12 @@ button:hover{
 <div class="container">
 
 <h1>📱 機種登録</h1>
-
-<input id="release_date" placeholder="発売日">
     
 <input id="maker" placeholder="メーカー">
 
 <input id="model" placeholder="機種名">
+
+<input id="release_date" placeholder="発売日">    
 
 <input id="color" placeholder="カラー">
 
@@ -128,6 +128,7 @@ async function savePhone() {
     const data = {
     maker: document.getElementById("maker").value,
     model: document.getElementById("model").value,
+    release_date:document.getElementById("release_date").value,
     color: document.getElementById("color").value,
     image_url: document.getElementById("image_url").value,
     display_size: document.getElementById("display_size").value,
