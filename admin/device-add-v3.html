@@ -100,6 +100,8 @@ button:hover{
 
 <input id="monthly_24_47" placeholder="24回目～47回目">
 
+<input id="keitai_hosho" placeholder="ケータイ補償">
+    
 <textarea
 id="recommend"
 placeholder="おすすめポイント"
@@ -134,6 +136,7 @@ async function savePhone() {
     price: document.getElementById("price").value,
     monthly_1_23: document.getElementById("monthly_1_23").value,
     monthly_24_47: document.getElementById("monthly_24_47").value,
+    keitai_hosho:document.getElementById("keitai_hosho").value,
     recommend: document.getElementById("recommend").value
 };
 const supabaseUrl = "https://butujlsbdxaiuxitfyty.supabase.co";
@@ -200,6 +203,7 @@ if(!id) return;
     document.getElementById("price").value = data.price;
     document.getElementById("monthly_1_23").value = data.monthly_1_23;
     document.getElementById("monthly_24_47").value = data.monthly_24_47;
+    document.getElementById("keitai_hosho").value =data.keitai_hosho;
     document.getElementById("recommend").value = data.recommend;
 }
  loadCopyData();
