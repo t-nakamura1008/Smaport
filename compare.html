@@ -579,9 +579,13 @@ function loadModels1(){
 
     phonesData
         .filter(phone => phone.maker === maker)
-        .sort((a,b) =>
-            a.model.localeCompare(b.model, "ja")
-        )
+       .sort((a,b) =>
+    a.model.localeCompare(
+        b.model,
+        "ja",
+        { numeric: true }
+    )
+)
         .forEach(phone => {
 
             const option =
@@ -610,8 +614,12 @@ function loadModels2(){
     phonesData
     .filter(phone => phone.maker === maker)
     .sort((a,b) =>
-        a.model.localeCompare(b.model, "ja")
+    a.model.localeCompare(
+        b.model,
+        "ja",
+        { numeric: true }
     )
+)
     .forEach(phone => {
 
             const option =
