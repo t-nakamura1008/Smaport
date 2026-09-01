@@ -117,6 +117,11 @@ button:hover{
 
 <br><br>
 
+発売日
+<input id="release_date" placeholder="発売日">
+
+<br><br>
+        
 カラー
 <input id="color" placeholder="カラー">
 
@@ -222,6 +227,7 @@ async function loadPhone(){
 
 maker.value = data.maker;
 model.value = data.model;
+release_date.value =data.release_date || "";    
 color.value = data.color;
 image_url.value = data.image_url;
 display_size.value = data.display_size;
@@ -247,6 +253,7 @@ window.updatePhone = async function(){
         .update({
             maker: maker.value,
             model: model.value,
+            release_date:release_date.value,
             color: color.value,
             image_url: image_url.value,
             display_size: display_size.value,
