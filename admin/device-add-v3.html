@@ -76,6 +76,8 @@ button:hover{
 
 <h1>📱 機種登録</h1>
 
+<input id="release_date" placeholder="発売日">
+    
 <input id="maker" placeholder="メーカー">
 
 <input id="model" placeholder="機種名">
@@ -193,6 +195,7 @@ if(!id) return;
 
     document.getElementById("maker").value = data.maker;
     document.getElementById("model").value = data.model;
+    document.getElementById("release_date").value =data.release_date;
     document.getElementById("color").value = data.color;
     document.getElementById("image_url").value = data.image_url;
     document.getElementById("display_size").value = data.display_size;
