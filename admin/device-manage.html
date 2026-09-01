@@ -257,7 +257,7 @@ try {
 
 async function loadPhones(){
 
-    const { data, error } = await supabase
+    const { data, error } = await sb
     .from("Phones")
     .select("*")
     .order("id", { ascending: false });
