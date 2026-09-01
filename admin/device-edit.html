@@ -167,6 +167,11 @@ ROM
 
 <br><br>
 
+ ケータイ補償
+<input id="keitai_hosho" placeholder="ケータイ補償">
+
+<br><br>       
+
 おすすめポイント
 <textarea
     id="recommend"
@@ -227,6 +232,7 @@ camera.value = data.camera;
 price.value = data.price;
 monthly_1_23.value = data.monthly_1_23;
 monthly_24_47.value = data.monthly_24_47;
+keitai_hosho.value = data.keitai_hosho || "";    
 recommend.value = data.recommend;
 
 
@@ -251,6 +257,7 @@ window.updatePhone = async function(){
             price: price.value,
             monthly_1_23: monthly_1_23.value,
             monthly_24_47: monthly_24_47.value,
+            keitai_hosho: keitai_hosho.value,
             recommend: recommend.value
         })
         .eq("id", id);
