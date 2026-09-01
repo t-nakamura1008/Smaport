@@ -209,6 +209,12 @@ td:nth-child(2){
 </tr>
 
 <tr>
+    <td>発売日</td>
+    <td id="release1"></td>
+    <td id="release2"></td>
+</tr>
+    
+<tr>
     <td>カラー</td>
     <td id="color1">-</td>
     <td id="color2">-</td>
@@ -245,7 +251,7 @@ td:nth-child(2){
 </tr>
 
 <tr>
-    <td>画素数</td>
+    <td>カメラ</td>
     <td id="camera1">-</td>
     <td id="camera2">-</td>
 </tr>
@@ -359,6 +365,9 @@ function showPhone1(){
 
     if(!phone) return;
 
+document.getElementById("release1").textContent =
+    phone.release_date;
+    
 document.getElementById("color1").textContent =
 phone.color;
 
@@ -393,6 +402,8 @@ function showPhone2(){
 
     if(!phone) return;
 
+document.getElementById("release2").textContent =phone.release_date;
+    
 document.getElementById("color2").textContent = phone.color;
     
 document.getElementById("image2").innerHTML =
