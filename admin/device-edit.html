@@ -263,6 +263,10 @@ if(originalPhone.rom !== rom.value){
     );
 }
 
+alert(
+    "元ROM=" + originalPhone.rom +
+    "\n新ROM=" + rom.value
+);
     const { error } = await sb
         .from("Phones")
         .update({
