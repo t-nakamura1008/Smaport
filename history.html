@@ -444,6 +444,38 @@ if(actionFilters.length > 0){
 
 }
 
+     const filterRam =
+    document.getElementById("filterRam").checked;
+
+const filterRom =
+    document.getElementById("filterRom").checked;
+
+const filterPrice =
+    document.getElementById("filterPrice").checked;
+
+const filterBattery =
+    document.getElementById("filterBattery").checked;
+
+    const detailFilters = [];
+
+if(filterRam) detailFilters.push("RAM");
+if(filterRom) detailFilters.push("ROM");
+if(filterPrice) detailFilters.push("価格");
+if(filterBattery) detailFilters.push("バッテリー");
+
+if(detailFilters.length > 0){
+
+    filteredData = filteredData.filter(item =>
+
+        item.detail &&
+        detailFilters.some(keyword =>
+            item.detail.includes(keyword)
+        )
+
+    );
+
+}
+    
     filteredData.forEach(item => {
 
         const date =
