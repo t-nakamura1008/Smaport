@@ -70,22 +70,90 @@ header{
     font-size:14px;
     line-height:1.5;
 }
+
+.delete-selected-btn{
+    background:#F97316;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+    margin-right:10px;
+}
+
+.delete-selected-btn:hover{
+    background:#EA580C;
+}
+
+.delete-all-btn{
+    background:#EF4444;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.delete-all-btn:hover{
+    background:#DC2626;
+}    
+
+ .delete-selected-btn{
+    background:#F97316;
+    color:white;
+    border:none;
+    padding:16px 28px;
+    border-radius:14px;
+    cursor:pointer;
+    font-weight:bold;
+    font-size:16px;
+    margin-right:10px;
+}
+
+.delete-selected-btn:hover{
+    background:#EA580C;
+}
+
+.delete-all-btn{
+    background:#EF4444;
+    color:white;
+    border:none;
+    padding:16px 28px;
+    border-radius:14px;
+    cursor:pointer;
+    font-weight:bold;
+    font-size:16px;
+}
+
+.delete-all-btn:hover{
+    background:#DC2626;
+}   
     
 </style>
 </head>
 <body>
-
-<button onclick="deleteSelectedHistory()">
-✅ 選択削除
-</button>
-
-<button onclick="deleteAllHistory()">
-🗑️ 全履歴削除
-</button>
-    
+  
 <header>
     <h1>📜 操作履歴</h1>
 </header>
+
+  <button
+class="delete-selected-btn"
+onclick="deleteSelectedHistory()">
+
+✅ 選択削除
+
+</button>
+
+<button
+class="delete-all-btn"
+onclick="deleteAllHistory()">
+
+🗑️ 全履歴削除
+
+</button> 
 
 <div class="container">
 
@@ -187,6 +255,32 @@ ${item.detail ? `
 }
 
 loadHistory();
+
+ loadHistory();
+
+async function deleteAllHistory(){
+
+    if(!confirm(
+        "本当に全履歴を削除しますか？\nこの操作は元に戻せません。"
+    )){
+        return;
+    }
+
+    const { error } = await sb
+        .from("History")
+        .delete()
+        .neq("id", 0);
+
+    if(error){
+        alert(error.message);
+        return;
+    }
+
+    alert("全履歴を削除しました");
+
+    loadHistory();
+}
+``   
 
 </script>
 
