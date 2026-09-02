@@ -355,32 +355,40 @@ window.deletePhone = async function(id){
         return;
     }
 
+    // 機種情報取得
+    const { data: phone, error: phoneError } = await sb
+        .from("Phones")
+        .select("model")
+        .eq("id", id)
+        .single();
+
+    if(phoneError){
+        alert(phoneError.message);
+        return;
+    }
+
     const { error } = await sb
-    .from("Phones")
-    .update({
-        deleted: true
-    })
-    .eq("id", id);
+        .from("Phones")
+        .update({
+            deleted: true
+        })
+        .eq("id", id);
 
     if(error){
-    alert("エラー：" + error.message);
-    return;
-}
+        alert("エラー：" + error.message);
+        return;
+    }
 
-const historyResult = await sb
-    .from("History")
-    .insert([{
-        action: "削除",
-        model: id.toString()
-    }]);
+    await sb
+        .from("History")
+        .insert([{
+            action: "削除",
+            model: phone.model
+        }]);
 
-alert(JSON.stringify(historyResult));
+    alert("削除成功");
 
-
-alert("削除成功");
-
-loadPhones();
-
+    loadPhones();
 }
 
     function copyPhone(id){
