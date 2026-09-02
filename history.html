@@ -64,6 +64,13 @@ header{
     background:#059669;
 }
 
+.detail{
+    margin-top:10px;
+    color:#6B7280;
+    font-size:14px;
+    line-height:1.5;
+}
+    
 </style>
 </head>
 <body>
@@ -152,6 +159,16 @@ async function loadHistory(){
             <div class="model">
                 ${item.model}
             </div>
+<div class="model">
+    ${item.model}
+</div>
+
+${item.detail ? `
+<div class="detail">
+    ${item.detail}
+</div>
+` : ""}
+
 
         </div>
 
