@@ -203,6 +203,21 @@ header{
 .search-btn:hover{
     background:#0EA5E9;
 }    
+
+.date-clear-btn{
+    background:#9CA3AF;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+    margin-left:10px;
+}
+
+.date-clear-btn:hover{
+    background:#6B7280;
+}
     
 </style>
 </head>
@@ -329,6 +344,14 @@ class="search-btn"
 onclick="loadHistory()">
 
 📅 日付検索
+
+</button>
+
+<button
+class="date-clear-btn"
+onclick="clearDateFilter()">
+
+🧹 日付クリア
 
 </button>
 
@@ -639,6 +662,14 @@ function resetFilter(){
 
     loadHistory();
 }
+
+function clearDateFilter(){
+
+    document.getElementById("startDate").value = "";
+    document.getElementById("endDate").value = "";
+
+    loadHistory();
+}    
     
 </script>
 
