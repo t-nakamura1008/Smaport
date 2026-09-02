@@ -175,7 +175,7 @@ h2{
 }
 
 #searchBox{
-    width:160px;
+    width:140px;
     padding:8px;
     font-size:14px;
 }
@@ -192,6 +192,12 @@ h2{
     
 .sort-btn:hover{
     background:#1F2937;
+}
+
+ .search-area{
+    display:flex;
+    align-items:center;
+    gap:10px;
 }
    
 </style>
@@ -229,15 +235,13 @@ h2{
 
 <br><br>
 
+<div class="search-area">
+
 <input
     type="text"
     id="searchBox"
     placeholder="🔍 検索"
     oninput="loadPhones()">
-
-<br><br>
-
-      <br><br>
 
 <button
 class="sort-btn"
@@ -247,7 +251,10 @@ onclick="toggleSortOrder()">
 
 </button>
 
-<br><br>
+</div>
+
+<br>
+
   
         <div id="phoneList">
             読み込み中...
