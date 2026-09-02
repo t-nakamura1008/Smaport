@@ -189,6 +189,20 @@ header{
 
     box-shadow:0 3px 10px rgba(0,0,0,.08);
 }
+
+.search-btn{
+    background:#38BDF8;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.search-btn:hover{
+    background:#0EA5E9;
+}    
     
 </style>
 </head>
@@ -509,6 +523,37 @@ function toggleDateFilter(){
         area.style.display = "none";
 
     }
+}
+
+function toggleFilter(){
+
+    const area =
+        document.getElementById("filterArea");
+
+    if(area.style.display === "none"){
+
+        area.style.display = "block";
+
+    }else{
+
+        area.style.display = "none";
+
+    }
+}    
+
+function resetFilter(){
+
+    document.getElementById("filterRegister").checked = false;
+    document.getElementById("filterEdit").checked = false;
+    document.getElementById("filterDelete").checked = false;
+    document.getElementById("filterRestore").checked = false;
+
+    document.getElementById("filterRam").checked = false;
+    document.getElementById("filterRom").checked = false;
+    document.getElementById("filterPrice").checked = false;
+    document.getElementById("filterBattery").checked = false;
+
+    loadHistory();
 }
     
 </script>
