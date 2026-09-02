@@ -220,7 +220,7 @@ header{
 }
 
 .sort-btn{
-    background:#60A5FA;
+    background:#374151;
     color:white;
     border:none;
     padding:16px 28px;
@@ -232,8 +232,9 @@ header{
 }
 
 .sort-btn:hover{
-    background:#3B82F6;
+    background:#1F2937;
 }
+
     
 </style>
 </head>
@@ -375,21 +376,12 @@ onclick="clearDateFilter()">
     
 <button
 class="sort-btn"
-onclick="setSortOrder('new')">
+onclick="toggleSortOrder()">
 
 ⬇️ 新しい順
 
 </button>
-
-<button
-class="sort-btn"
-onclick="setSortOrder('old')">
-
-⬆️ 古い順
-
-</button>
     
-
 </div>  
 
 <div class="container">
@@ -428,12 +420,30 @@ window.supabase.createClient(
 
  let sortOrder = "new";
 
- function setSortOrder(order){
+ function toggleSortOrder(){
 
-    sortOrder = order;
+    const btn =
+        document.querySelector(".sort-btn");
+
+    if(sortOrder === "new"){
+
+        sortOrder = "old";
+
+        btn.textContent =
+            "⬆️ 古い順";
+
+    }else{
+
+        sortOrder = "new";
+
+        btn.textContent =
+            "⬇️ 新しい順";
+
+    }
 
     loadHistory();
 }
+
    
 
 async function loadHistory(){
