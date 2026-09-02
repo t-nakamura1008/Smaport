@@ -367,6 +367,13 @@ window.deletePhone = async function(id){
     return;
 }
 
+await sb
+    .from("History")
+    .insert([{
+        action: "削除",
+        model: id.toString()
+    }]);
+
 alert("削除成功");
 
 loadPhones();
