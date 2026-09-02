@@ -136,6 +136,15 @@ header{
 .delete-all-btn:hover{
     background:#DC2626;
 }   
+
+.filter-box{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    margin:20px auto;
+    max-width:900px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
     
 </style>
 </head>
@@ -159,7 +168,88 @@ onclick="deleteAllHistory()">
 
 🗑️ 全履歴削除
 
-</button> 
+</button>
+
+<div class="filter-box">
+
+<h3>🔽 絞り込み</h3>
+
+<p><strong>操作種類</strong></p>
+
+<label>
+    <input type="checkbox" id="filterRegister">
+    登録
+</label>
+
+<label>
+    <input type="checkbox" id="filterEdit">
+    編集
+</label>
+
+<label>
+    <input type="checkbox" id="filterDelete">
+    削除
+</label>
+
+<label>
+    <input type="checkbox" id="filterRestore">
+    復元
+</label>
+
+<br><br>
+
+<p><strong>変更内容</strong></p>
+
+<label>
+    <input type="checkbox" id="filterRam">
+    RAM
+</label>
+
+<label>
+    <input type="checkbox" id="filterRom">
+    ROM
+</label>
+
+<label>
+    <input type="checkbox" id="filterPrice">
+    価格
+</label>
+
+<label>
+    <input type="checkbox" id="filterBattery">
+    バッテリー
+</label>
+
+<br><br>
+
+<button onclick="loadHistory()">
+🔍 絞り込み実行
+</button>
+
+<button onclick="resetFilter()">
+↺ リセット
+</button>
+
+<br><br>
+
+<h3>📅 日付絞り込み</h3>
+
+開始日
+
+<input type="date" id="startDate">
+
+終了日
+
+<input type="date" id="endDate">
+
+<button onclick="loadHistory()">
+📅 日付検索
+</button>
+
+</div>
+
+<div class="container">
+
 
 <div class="container">
 
