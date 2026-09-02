@@ -545,6 +545,11 @@ ${item.detail ? `
 document.querySelector(".filter-toggle-btn")
     .textContent = "🔽 絞り込み";
 
+document.getElementById("dateFilterArea").style.display = "none";
+
+document.querySelector(".date-toggle-btn")
+    .textContent = "📅 日付絞り込み";
+
 }
 
 loadHistory();
