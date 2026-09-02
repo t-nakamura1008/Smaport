@@ -253,23 +253,18 @@ loadPhone();
 
 window.updatePhone = async function(){
 
-   const result = await sb
-    .from("History")
-    .insert([{
-        action: "編集",
-        model: modelName,
-        detail: details.join(" / ")
-    }])
-    .select();
+    const modelName = model.value;
 
-alert(JSON.stringify(result));
+    let details = [];
+
+    details.push("テスト");
 
     const { error } = await sb
         .from("Phones")
         .update({
             maker: maker.value,
             model: model.value,
-            release_date:release_date.value,
+            release_date: release_date.value,
             color: color.value,
             image_url: image_url.value,
             display_size: display_size.value,
@@ -290,15 +285,13 @@ alert(JSON.stringify(result));
         return;
     }
 
-alert(details.join(" / "));
-    
     await sb
-    .from("History")
-    .insert([{
-        action: "編集",
-        model: modelName,
-        detail: details.join(" / ")
-    }]);
+        .from("History")
+        .insert([{
+            action: "編集",
+            model: modelName,
+            detail: details.join(" / ")
+        }]);
 
     alert("更新成功");
 
