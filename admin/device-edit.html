@@ -255,13 +255,15 @@ window.updatePhone = async function(){
 
     const modelName = model.value;
 
-    let details = [];
+  let details = [];
 
-if(originalPhone.rom !== rom.value){
-    details.push(
-        `ROM ${originalPhone.rom} → ${rom.value}`
-    );
-}
+details.push("テスト");
+
+// if(originalPhone.rom !== rom.value){
+//     details.push(
+//         `ROM ${originalPhone.rom} → ${rom.value}`
+//     );
+// }
 
 
     const { error } = await sb
@@ -290,6 +292,8 @@ if(originalPhone.rom !== rom.value){
         return;
     }
 
+alert(details.join(" / "));
+    
     await sb
     .from("History")
     .insert([{
