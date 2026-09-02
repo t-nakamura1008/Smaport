@@ -161,4 +161,21 @@ async function restorePhone(id){
         .eq("id", id);
 
     if(error){
-        alert(error.message
+        alert(error.message);
+        return;
+    }
+
+    alert("復元しました");
+
+    loadTrash();
+
+}
+
+loadTrash();
+
+
+</script>
+
+</body>
+
+</html>
