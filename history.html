@@ -282,8 +282,12 @@ style="display:none;">
 
 <input type="date" id="endDate">
 
-<button onclick="loadHistory()">
-📅 日付検索
+<button
+class="date-toggle-btn"
+onclick="toggleDateFilter()">
+
+📅 日付絞り込み
+
 </button>
 
 </div>
@@ -330,10 +334,32 @@ async function loadHistory(){
     const historyList =
         document.getElementById("historyList");
 
-    const { data, error } = await sb
-        .from("History")
-        .select("*")
-        .order("created_at", { ascending:false });
+   const startDate =
+    document.getElementById("startDate").value;
+
+const endDate =
+    document.getElementById("endDate").value;
+
+let query = sb
+    .from("History")
+    .select("*")
+    .order("created_at", { ascending:false });
+
+if(startDate){
+    query = query.gte(
+        "created_at",
+        startDate + "T00:00:00"
+    );
+}
+
+if(endDate){
+    query = query.lte(
+        "created_at",
+        endDate + "T23:59:59"
+    );
+}
+
+const { data, error } = await query;
 
     if(error){
         alert(error.message);
@@ -397,8 +423,6 @@ ${item.detail ? `
 }
 
 loadHistory();
-
- loadHistory();
 
 async function deleteAllHistory(){
 
