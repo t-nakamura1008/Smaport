@@ -119,6 +119,17 @@ onclick="logoutAuthority()">
 </div>
 
 </div>
+<script>
 
+function logoutAuthority(){
+
+    sessionStorage.removeItem("authorityLogin");
+
+    location.href = "authority-login.html";
+
+}
+
+</script>
+    
 </body>
 </html>
