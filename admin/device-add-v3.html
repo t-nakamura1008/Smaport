@@ -158,6 +158,14 @@ const { error } = await supabase
 if(error){
     alert("登録失敗: " + error.message);
 }else{
+
+    await supabase
+        .from("History")
+        .insert([{
+            action: "登録",
+            model: data.model
+        }]);
+
     alert("登録成功！");
 }
     
