@@ -153,12 +153,17 @@ async function loadTrash(){
 
 async function restorePhone(id){
 
+    if(!confirm("この機種を復元しますか？")){
+        return;
+    }
+
     const { error } = await sb
         .from("Phones")
         .update({
             deleted:false
         })
         .eq("id", id);
+
 
     if(error){
         alert(error.message);
