@@ -180,6 +180,20 @@ h2{
     font-size:14px;
 }
 
+ .sort-btn{
+    background:#374151;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+    
+.sort-btn:hover{
+    background:#1F2937;
+}
+   
 </style>
 
 </head>
@@ -223,6 +237,18 @@ h2{
 
 <br><br>
 
+      <br><br>
+
+<button
+class="sort-btn"
+onclick="toggleSortOrder()">
+
+⬇️ 新しい順
+
+</button>
+
+<br><br>
+  
         <div id="phoneList">
             読み込み中...
         </div>
@@ -254,6 +280,8 @@ const sb = window.supabase.createClient(
 
  );   
 
+ let sortOrder = "new";   
+
 try {
 
 async function loadPhones(){
@@ -262,7 +290,12 @@ async function loadPhones(){
     .from("Phones")
     .select("*")
     .eq("deleted", false)
-    .order("id", { ascending: false });
+    .order(
+    "id",
+    {
+        ascending: sortOrder === "old"
+    }
+);
 
     if(error){
         alert(error.message);
@@ -399,7 +432,27 @@ window.deletePhone = async function(id){
 
 }
 
+function toggleSortOrder(){
 
+    const btn =
+        document.querySelector(".sort-btn");
+
+    if(sortOrder === "new"){
+
+        sortOrder = "old";
+
+        btn.textContent = "⬆️ 古い順";
+
+    }else{
+
+        sortOrder = "new";
+
+        btn.textContent = "⬇️ 新しい順";
+
+    }
+
+    loadPhones();
+}
  
 </script>
     
