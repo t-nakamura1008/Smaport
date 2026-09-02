@@ -145,6 +145,37 @@ header{
     max-width:900px;
     box-shadow:0 3px 10px rgba(0,0,0,.08);
 }
+
+.filter-toggle-btn{
+    background:#C4B5FD;
+    color:white;
+    border:none;
+    padding:16px 28px;
+    border-radius:14px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+    margin:10px;
+}
+
+.filter-toggle-btn:hover{
+    background:#A78BFA;
+}
+
+.date-toggle-btn{
+    background:#6EE7B7;
+    color:white;
+    border:none;
+    padding:16px 28px;
+    border-radius:14px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.date-toggle-btn:hover{
+    background:#34D399;
+}    
     
 </style>
 </head>
@@ -170,9 +201,18 @@ onclick="deleteAllHistory()">
 
 </button>
 
-<div class="filter-box">
+<button
+class="filter-toggle-btn"
+onclick="toggleFilter()">
 
-<h3>🔽 絞り込み</h3>
+🔽 絞り込み
+
+</button>
+
+<div
+id="filterArea"
+class="filter-box"
+style="display:none;">
 
 <p><strong>操作種類</strong></p>
 
@@ -417,6 +457,22 @@ async function deleteAllHistory(){
     loadHistory();
 }
 
+function toggleFilter(){
+
+    const area =
+        document.getElementById("filterArea");
+
+    if(area.style.display === "none"){
+
+        area.style.display = "block";
+
+    }else{
+
+        area.style.display = "none";
+
+    }
+}
+    
 </script>
 
 </body>
