@@ -253,18 +253,16 @@ loadPhone();
 
 window.updatePhone = async function(){
 
-    const modelName = model.value;
+   const result = await sb
+    .from("History")
+    .insert([{
+        action: "編集",
+        model: modelName,
+        detail: details.join(" / ")
+    }])
+    .select();
 
-  let details = [];
-
-details.push("テスト");
-
-// if(originalPhone.rom !== rom.value){
-//     details.push(
-//         `ROM ${originalPhone.rom} → ${rom.value}`
-//     );
-// }
-
+alert(JSON.stringify(result));
 
     const { error } = await sb
         .from("Phones")
