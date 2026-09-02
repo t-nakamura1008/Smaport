@@ -212,6 +212,9 @@ const sb = window.supabase.createClient(
 const params = new URLSearchParams(location.search);
 const id = params.get("id");
 
+let originalPhone = null;
+
+
 async function loadPhone(){
 
     const { data, error } = await sb
@@ -224,6 +227,8 @@ async function loadPhone(){
         alert(error.message);
         return;
     }
+
+ originalPhone = data;   
 
 maker.value = data.maker;
 model.value = data.model;
@@ -249,6 +254,15 @@ loadPhone();
 window.updatePhone = async function(){
 
     const modelName = model.value;
+
+    let details = [];
+
+if(originalPhone.rom !== rom.value){
+    details.push(
+        `ROM ${originalPhone.rom} → ${rom.value}`
+    );
+}
+
 
     const { error } = await sb
         .from("Phones")
