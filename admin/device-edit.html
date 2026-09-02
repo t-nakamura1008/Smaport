@@ -248,6 +248,8 @@ loadPhone();
 
 window.updatePhone = async function(){
 
+    const modelName = model.value;
+
     const { error } = await sb
         .from("Phones")
         .update({
@@ -274,11 +276,17 @@ window.updatePhone = async function(){
         return;
     }
 
+    await sb
+        .from("History")
+        .insert([{
+            action: "編集",
+            model: modelName
+        }]);
+
     alert("更新成功");
 
     location.href = "device-manage.html";
 }
-
 
 </script>
 
