@@ -154,9 +154,22 @@ async function loadTrash(){
 async function restorePhone(id){
 
     if(!confirm("この機種を機種一覧へ復元しますか？")){
-    return;
-}
+        return;
+    }
 
+    // 機種名取得
+    const { data: phone, error: phoneError } = await sb
+        .from("Phones")
+        .select("model")
+        .eq("id", id)
+        .single();
+
+    if(phoneError){
+        alert(phoneError.message);
+        return;
+    }
+
+    // 復元
     const { error } = await sb
         .from("Phones")
         .update({
@@ -164,16 +177,22 @@ async function restorePhone(id){
         })
         .eq("id", id);
 
-
     if(error){
         alert(error.message);
         return;
     }
 
+    // 履歴保存
+    await sb
+        .from("History")
+        .insert([{
+            action: "復元",
+            model: phone.model
+        }]);
+
     alert("復元しました");
 
-loadTrash();
-
+    loadTrash();
 }
 
 loadTrash();
