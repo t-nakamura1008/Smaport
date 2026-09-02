@@ -228,7 +228,13 @@ async function loadHistory(){
 
         historyList.innerHTML += `
 
+
         <div class="history-card">
+
+        <input
+type="checkbox"
+class="history-check"
+value="${item.id}"
 
             <div class="date">
                 ${date}
@@ -286,7 +292,40 @@ async function deleteAllHistory(){
 
     loadHistory();
 }
-``   
+
+    async function deleteSelectedHistory(){
+
+    const checked = [
+        ...document.querySelectorAll(
+            ".history-check:checked"
+        )
+    ].map(x => Number(x.value));
+
+    if(checked.length === 0){
+        alert("履歴を選択してください");
+        return;
+    }
+
+    if(!confirm(
+        "選択した履歴を削除しますか？"
+    )){
+        return;
+    }
+
+    const { error } = await sb
+        .from("History")
+        .delete()
+        .in("id", checked);
+
+    if(error){
+        alert(error.message);
+        return;
+    }
+
+    alert("削除しました");
+
+    loadHistory();
+}
 
 </script>
 
