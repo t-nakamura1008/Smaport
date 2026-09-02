@@ -260,6 +260,7 @@ async function loadPhones(){
     const { data, error } = await sb
     .from("Phones")
     .select("*")
+    .eq("deleted", false)
     .order("id", { ascending: false });
 
     if(error){
@@ -355,9 +356,11 @@ window.deletePhone = async function(id){
     }
 
     const { error } = await sb
-        .from("Phones")
-        .delete()
-        .eq("id", id);
+    .from("Phones")
+    .update({
+        deleted: true
+    })
+    .eq("id", id);
 
     if(error){
         alert("エラー：" + error.message);
