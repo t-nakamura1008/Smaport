@@ -76,6 +76,24 @@ header{
 .back-btn:hover{
     background:#34D399;
 }
+
+.admin-btn{
+    background:#8B5CF6;
+    color:white;
+}
+
+.admin-btn:hover{
+    background:#7C3AED;
+}    
+
+.logout-btn{
+    background:#FB923C;
+    color:white;
+}
+
+.logout-btn:hover{
+    background:#EA580C;
+}    
     
 </style>
 </head>
@@ -109,10 +127,18 @@ onclick="location.href='history.html'">
 </button>
 
 <button
-class="menu-btn back-btn"
+class="menu-btn admin-btn"
+onclick="location.href='dashboard.html'">
+
+🏠 管理画面へ
+
+</button>
+    
+<button
+class="menu-btn logout-btn"
 onclick="logoutAuthority()">
 
-← ログアウト
+🚪 ログアウト
 
 </button>
 
