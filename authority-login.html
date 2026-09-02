@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>権限者ログイン</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:"Yu Gothic",sans-serif;
+    background:#D1FAE5;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.login-box{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.1);
+    text-align:center;
+    width:350px;
+}
+
+h1{
+    color:#10B981;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin-top:15px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    box-sizing:border-box;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin-top:20px;
+    background:#10B981;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover{
+    background:#059669;
+}
+
+</style>
+</head>
+<body>
+
+<div class="login-box">
+
+<h1>🔐 権限者ログイン</h1>
+
+<input
+    type="password"
+    id="password"
+    placeholder="パスワード">
+
+<button onclick="login()">
+ログイン
+</button>
+
+</div>
+
+<script>
+
+function login(){
+
+    const password =
+        document.getElementById("password").value;
+
+    if(password === "copachan"){
+
+        location.href = "authority.html";
+
+    }else{
+
+        alert("パスワードが違います");
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
