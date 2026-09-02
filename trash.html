@@ -94,6 +94,22 @@ header{
 .delete-all-btn:hover{
     background:#DC2626;
 }
+
+.sort-btn{
+    background:#374151;
+    color:white;
+    border:none;
+    padding:16px 28px;
+    border-radius:14px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+    margin:10px;
+}
+
+.sort-btn:hover{
+    background:#1F2937;
+}
     
 </style>
 </head>
@@ -119,7 +135,14 @@ onclick="deleteAllTrash()">
 
 </button>
 
-    
+ <button
+class="sort-btn"
+onclick="toggleSortOrder()">
+
+⬇️ 新しい順
+
+</button>
+   
 <div class="container">
 
 <div id="trashList">
@@ -156,13 +179,21 @@ window.supabase.createClient(
     supabaseKey
 );
 
+let sortOrder = "new";
+    
 async function loadTrash(){
 
     const { data, error } = await sb
-        .from("Phones")
-        .select("*")
-        .eq("deleted", true)
-        .order("id", { ascending:false });
+    .from("Phones")
+    .select("*")
+    .eq("deleted", true)
+    .order(
+        "id",
+        {
+            ascending: sortOrder === "old"
+        }
+    );
+
 
     if(error){
         alert(error.message);
@@ -316,6 +347,30 @@ async function deleteAllTrash(){
     loadTrash();
 }
 
+function toggleSortOrder(){
+
+    const btn =
+        document.querySelector(".sort-btn");
+
+    if(sortOrder === "new"){
+
+        sortOrder = "old";
+
+        btn.textContent =
+            "⬆️ 古い順";
+
+    }else{
+
+        sortOrder = "new";
+
+        btn.textContent =
+            "⬇️ 新しい順";
+
+    }
+
+    loadTrash();
+}
+    
 </script>
 
 </body>
