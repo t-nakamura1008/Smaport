@@ -583,13 +583,18 @@ function toggleDateFilter(){
     const area =
         document.getElementById("dateFilterArea");
 
+    const btn =
+        document.querySelector(".date-toggle-btn");
+
     if(area.style.display === "none"){
 
         area.style.display = "block";
+        btn.textContent = "📅 日付絞り込みを閉じる";
 
     }else{
 
         area.style.display = "none";
+        btn.textContent = "📅 日付絞り込み";
 
     }
 }
@@ -599,16 +604,21 @@ function toggleFilter(){
     const area =
         document.getElementById("filterArea");
 
+    const btn =
+        document.querySelector(".filter-toggle-btn");
+
     if(area.style.display === "none"){
 
         area.style.display = "block";
+        btn.textContent = "🔼 絞り込みを閉じる";
 
     }else{
 
         area.style.display = "none";
+        btn.textContent = "🔽 絞り込み";
 
     }
-}    
+}
 
 function resetFilter(){
 
