@@ -153,9 +153,9 @@ async function loadTrash(){
 
 async function restorePhone(id){
 
-    if(!confirm("この機種を復元しますか？")){
-        return;
-    }
+    if(!confirm("この機種を機種一覧へ復元しますか？")){
+    return;
+}
 
     const { error } = await sb
         .from("Phones")
