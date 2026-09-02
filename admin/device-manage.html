@@ -363,13 +363,13 @@ window.deletePhone = async function(id){
     .eq("id", id);
 
     if(error){
-        alert("エラー：" + error.message);
-        return;
-    }
+    alert("エラー：" + error.message);
+    return;
+}
 
-    alert("削除成功");
+alert("削除成功");
 
-    loadPhones();
+loadPhones();
 
 }
 
