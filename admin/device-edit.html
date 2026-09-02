@@ -257,16 +257,89 @@ window.updatePhone = async function(){
 
     let details = [];
 
+if(originalPhone.maker !== maker.value){
+    details.push(
+        `メーカー ${originalPhone.maker} → ${maker.value}`
+    );
+}
+
+if(originalPhone.model !== model.value){
+    details.push(
+        `機種名 ${originalPhone.model} → ${model.value}`
+    );
+}
+
+if(originalPhone.release_date !== release_date.value){
+    details.push(
+        `発売日 ${originalPhone.release_date} → ${release_date.value}`
+    );
+}
+
+if(originalPhone.color !== color.value){
+    details.push(
+        `カラー ${originalPhone.color} → ${color.value}`
+    );
+}
+
+if(originalPhone.display_size !== display_size.value){
+    details.push(
+        `ディスプレイ ${originalPhone.display_size} → ${display_size.value}`
+    );
+}
+
+if(originalPhone.ram !== ram.value){
+    details.push(
+        `RAM ${originalPhone.ram} → ${ram.value}`
+    );
+}
+
 if(originalPhone.rom !== rom.value){
     details.push(
         `ROM ${originalPhone.rom} → ${rom.value}`
     );
 }
 
-alert(
-    "元ROM=" + originalPhone.rom +
-    "\n新ROM=" + rom.value
-);
+if(originalPhone.battery !== battery.value){
+    details.push(
+        `バッテリー ${originalPhone.battery} → ${battery.value}`
+    );
+}
+
+if(originalPhone.camera !== camera.value){
+    details.push(
+        `カメラ ${originalPhone.camera} → ${camera.value}`
+    );
+}
+
+if(originalPhone.price !== price.value){
+    details.push(
+        `一括価格 ${originalPhone.price} → ${price.value}`
+    );
+}
+
+if(originalPhone.monthly_1_23 !== monthly_1_23.value){
+    details.push(
+        `1～23回 ${originalPhone.monthly_1_23} → ${monthly_1_23.value}`
+    );
+}
+
+if(originalPhone.monthly_24_47 !== monthly_24_47.value){
+    details.push(
+        `24～47回 ${originalPhone.monthly_24_47} → ${monthly_24_47.value}`
+    );
+}
+
+if(originalPhone.keitai_hosho !== keitai_hosho.value){
+    details.push(
+        `ケータイ補償 ${originalPhone.keitai_hosho} → ${keitai_hosho.value}`
+    );
+}
+
+if(originalPhone.recommend !== recommend.value){
+    details.push(
+        `おすすめポイント変更`
+    );
+}
     const { error } = await sb
         .from("Phones")
         .update({
