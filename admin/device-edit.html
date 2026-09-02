@@ -257,7 +257,11 @@ window.updatePhone = async function(){
 
     let details = [];
 
-    details.push("テスト");
+if(originalPhone.rom !== rom.value){
+    details.push(
+        `ROM ${originalPhone.rom} → ${rom.value}`
+    );
+}
 
     const { error } = await sb
         .from("Phones")
