@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>履歴一覧</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:"Yu Gothic",sans-serif;
+    background:#f8fafc;
+}
+
+header{
+    background:#2563EB;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+.container{
+    max-width:1000px;
+    margin:30px auto;
+    padding:20px;
+}
+
+.history-card{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:15px;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.date{
+    color:#6b7280;
+    font-size:14px;
+    margin-bottom:8px;
+}
+
+.action{
+    font-weight:bold;
+    color:#2563EB;
+    margin-bottom:5px;
+}
+
+.model{
+    font-size:18px;
+}
+
+.back-btn{
+    background:#10B981;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.back-btn:hover{
+    background:#059669;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+    <h1>📜 操作履歴</h1>
+</header>
+
+<div class="container">
+
+    <div id="historyList">
+        読み込み中...
+    </div>
+
+    <br>
+
+    <button
+        class="back-btn"
+        onclick="location.href='authority.html'">
+
+        ← 権限者画面へ戻る
+
+    </button>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const supabaseUrl =
+"https://butujlsbdxaiuxitfyty.supabase.co";
+
+const supabaseKey =
+"あなたのSupabaseキー";
+
+const sb =
+window.supabase.createClient(
+    supabaseUrl,
+    supabaseKey
+);
+
+async function loadHistory(){
+
+    const { data, error } = await sb
+        .from("History")
+        .select("*")
+        .order("created_at", { ascending:false });
+
+    if(error){
+        alert(error.message);
+        return;
+    }
+
+    historyList.innerHTML = "";
+
+    if(data.length === 0){
+
+        historyList.innerHTML =
+            "<h2>履歴はありません</h2>";
+
+        return;
+    }
+
+    data.forEach(item => {
+
+        const date =
+        new Date(item.created_at)
+        .toLocaleString("ja-JP");
+
+        historyList.innerHTML += `
+
+        <div class="history-card">
+
+            <div class="date">
+                ${date}
+            </div>
+
+            <div class="action">
+                ${item.action}
+            </div>
+
+            <div class="model">
+                ${item.model}
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+loadHistory();
+
+</script>
+
+</body>
