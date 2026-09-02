@@ -176,6 +176,15 @@ header{
 .date-toggle-btn:hover{
     background:#34D399;
 }    
+
+.date-filter-box{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    margin-top:15px;
+    max-width:500px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
     
 </style>
 </head>
@@ -272,7 +281,7 @@ style="display:none;">
 
 <br><br>
 
-</div>  ← filterArea終了
+</div> 
 
 <button
 class="date-toggle-btn"
@@ -284,19 +293,20 @@ onclick="toggleDateFilter()">
 
 <div
 id="dateFilterArea"
+class="date-filter-box"
 style="display:none;">
 
-開始日
-
+<p>開始日</p>
 <input type="date" id="startDate">
 
-終了日
-
+<p>終了日</p>
 <input type="date" id="endDate">
 
-</div>    
+<button onclick="loadHistory()">
+📅 日付検索
+</button>
 
-</div>
+</div>  
 
 <div class="container">
 
