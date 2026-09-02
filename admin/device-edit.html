@@ -291,11 +291,12 @@ if(originalPhone.rom !== rom.value){
     }
 
     await sb
-        .from("History")
-        .insert([{
-            action: "編集",
-            model: modelName
-        }]);
+    .from("History")
+    .insert([{
+        action: "編集",
+        model: modelName,
+        detail: details.join(" / ")
+    }]);
 
     alert("更新成功");
 
