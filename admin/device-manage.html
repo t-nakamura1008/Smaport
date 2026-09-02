@@ -367,12 +367,15 @@ window.deletePhone = async function(id){
     return;
 }
 
-await sb
+const historyResult = await sb
     .from("History")
     .insert([{
         action: "削除",
         model: id.toString()
     }]);
+
+alert(JSON.stringify(historyResult));
+
 
 alert("削除成功");
 
