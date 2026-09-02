@@ -68,9 +68,8 @@ button:hover{
     id="password"
     placeholder="パスワード">
 
-<button onclick="login()">
-ログイン
-</button>
+<input type="password" id="password">
+<button onclick="login()">ログイン</button>
 
 </div>
 
@@ -81,7 +80,12 @@ function login(){
     const password =
         document.getElementById("password").value;
 
-    if(password === "copachan"){
+    if(password === "taichi0221"){
+
+        sessionStorage.setItem(
+            "authorityLogin",
+            "ok"
+        );
 
         location.href = "authority.html";
 
