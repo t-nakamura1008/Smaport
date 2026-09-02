@@ -272,7 +272,17 @@ style="display:none;">
 
 <br><br>
 
-<h3>📅 日付絞り込み</h3>
+<button
+class="date-toggle-btn"
+onclick="toggleDateFilter()">
+
+📅 日付絞り込み
+
+</button>
+
+<div
+id="dateFilterArea"
+style="display:none;">
 
 開始日
 
@@ -282,13 +292,7 @@ style="display:none;">
 
 <input type="date" id="endDate">
 
-<button
-class="date-toggle-btn"
-onclick="toggleDateFilter()">
-
-📅 日付絞り込み
-
-</button>
+</div>    
 
 </div>
 
@@ -481,10 +485,10 @@ async function deleteAllHistory(){
     loadHistory();
 }
 
-function toggleFilter(){
+function toggleDateFilter(){
 
     const area =
-        document.getElementById("filterArea");
+        document.getElementById("dateFilterArea");
 
     if(area.style.display === "none"){
 
