@@ -52,8 +52,31 @@ header{
     background:#FBBF24;
 }
 
+.trash-btn{
+    background:#EF4444;
+}
 
+.trash-btn:hover{
+    background:#DC2626;
+}
 
+.history-btn{
+    background:#F9A8D4;
+}
+
+.history-btn:hover{
+    background:#F472B6;
+}
+
+.back-btn{
+    background:#6EE7B7;
+    color:white;
+}
+
+.back-btn:hover{
+    background:#34D399;
+}
+    
 </style>
 </head>
 <body>
@@ -69,18 +92,19 @@ header{
 <div class="card">
 
 <button
-class="menu-btn"
+class="menu-btn trash-btn"
 onclick="location.href='trash.html'">
 
 🗑️ ゴミ箱
 
 </button>
 
+
 <button
-class="menu-btn"
+class="menu-btn history-btn"
 onclick="location.href='history.html'">
 
-📋 操作履歴
+📋 監査ログ
 
 </button>
 
@@ -88,7 +112,7 @@ onclick="location.href='history.html'">
 class="menu-btn"
 onclick="location.href='dashboard.html'">
 
-← 管理画面へ戻る
+← ログアウト
 
 </button>
 
