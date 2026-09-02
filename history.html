@@ -415,7 +415,36 @@ const { data, error } = await query;
         return;
     }
 
-    data.forEach(item => {
+   const filterRegister =
+    document.getElementById("filterRegister").checked;
+
+const filterEdit =
+    document.getElementById("filterEdit").checked;
+
+const filterDelete =
+    document.getElementById("filterDelete").checked;
+
+const filterRestore =
+    document.getElementById("filterRestore").checked;
+
+    let filteredData = data;
+
+    const actionFilters = [];
+
+if(filterRegister) actionFilters.push("登録");
+if(filterEdit) actionFilters.push("編集");
+if(filterDelete) actionFilters.push("削除");
+if(filterRestore) actionFilters.push("復元");
+
+if(actionFilters.length > 0){
+
+    filteredData = filteredData.filter(item =>
+        actionFilters.includes(item.action)
+    );
+
+}
+
+    filteredData.forEach(item => {
 
         const date =
         new Date(item.created_at)
