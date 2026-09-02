@@ -34,16 +34,14 @@ header{
     box-shadow:0 5px 20px rgba(0,0,0,.08);
 }
 
-.card h2{
-    margin:0 0 10px;
-    color:#8B5CF6;
-}
+
 
 .logout{
     display:inline-block;
     margin-top:20px;
-    color:#8B5CF6;
+    color:#F97316;
     text-decoration:none;
+    font-weight:bold;
 }
 
 .menu-grid{
@@ -54,6 +52,15 @@ header{
 .menu-grid .card{
     flex:1;
 }
+
+ .add-card h2{
+    color:#10B981;
+}
+
+.manage-card h2{
+    color:#38BDF8;
+}
+
     
 </style>
 </head>
@@ -68,15 +75,15 @@ header{
 
     <div class="menu-grid">
 
-        <a href="device-add-v3.html" class="card">
-            <h2>📱 機種の登録</h2>
-            <p>新しい機種を登録する</p>
-        </a>
+        <a href="device-add-v3.html" class="card add-card">
+    <h2>📱 機種の登録</h2>
+    <p>新しい機種を登録する</p>
+</a>
 
-        <a href="device-manage.html" class="card">
-            <h2>✏️ 機種の編集・削除</h2>
-            <p>登録済み機種を管理する</p>
-        </a>
+<a href="device-manage.html" class="card manage-card">
+    <h2>✏️ 機種の編集・削除</h2>
+    <p>登録済み機種を管理する</p>
+</a>
 
     </div>
 
