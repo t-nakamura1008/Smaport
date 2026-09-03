@@ -104,6 +104,47 @@ button:hover{
 
 <input id="monthly_24_47" placeholder="24回目～47回目">
 
+<h3>【MNP】</h3>
+
+<input id="price_mnp" placeholder="MNP 一括価格">
+<br>
+
+<input id="monthly_1_23_mnp" placeholder="MNP 1回目～23回目">
+<br>
+
+<input id="total_23months_mnp" placeholder="MNP 23か月利用時総額">
+<br>
+
+<input id="monthly_24_47_mnp" placeholder="MNP 24回目～47回目">
+<br>
+
+<h3>【新規】</h3>
+
+<input id="price_new" placeholder="新規 一括価格">
+<br>
+
+<input id="monthly_1_23_new" placeholder="新規 1回目～23回目">
+<br>
+
+<input id="total_23months_new" placeholder="新規 23か月利用時総額">
+<br>
+
+<input id="monthly_24_47_new" placeholder="新規 24回目～47回目">
+<br>
+
+<h3>【ポイ活】</h3>
+
+<input id="price_poikatsu" placeholder="ポイ活 一括価格">
+<br>
+
+<input id="monthly_1_23_poikatsu" placeholder="ポイ活 1回目～23回目">
+<br>
+
+<input id="total_23months_poikatsu" placeholder="ポイ活 23か月利用時総額">
+<br>
+
+<input id="monthly_24_47_poikatsu" placeholder="ポイ活 24回目～47回目">    
+
 <input id="keitai_hosho" placeholder="ケータイ補償">
     
 <textarea
@@ -142,6 +183,21 @@ async function savePhone() {
     monthly_1_23: document.getElementById("monthly_1_23").value,
     total_23months:document.getElementById("total23months").value,    
     monthly_24_47: document.getElementById("monthly_24_47").value,
+    price_mnp: document.getElementById("price_mnp").value,
+monthly_1_23_mnp: document.getElementById("monthly_1_23_mnp").value,
+total_23months_mnp: document.getElementById("total_23months_mnp").value,
+monthly_24_47_mnp: document.getElementById("monthly_24_47_mnp").value,
+
+price_new: document.getElementById("price_new").value,
+monthly_1_23_new: document.getElementById("monthly_1_23_new").value,
+total_23months_new: document.getElementById("total_23months_new").value,
+monthly_24_47_new: document.getElementById("monthly_24_47_new").value,
+
+price_poikatsu: document.getElementById("price_poikatsu").value,
+monthly_1_23_poikatsu: document.getElementById("monthly_1_23_poikatsu").value,
+total_23months_poikatsu: document.getElementById("total_23months_poikatsu").value,
+monthly_24_47_poikatsu: document.getElementById("monthly_24_47_poikatsu").value,
+`    
     keitai_hosho:document.getElementById("keitai_hosho").value,
     recommend: document.getElementById("recommend").value
 };
