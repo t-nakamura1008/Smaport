@@ -383,10 +383,16 @@ async function loadPhones(){
     </button>
 
     <button
-        class="edit-btn"
-        onclick="location.href='device-edit.html?id=${phone.id}'">
-        編集
-    </button>
+    class="edit-btn"
+    onclick="
+        localStorage.setItem(
+            'deviceScroll',
+            window.scrollY
+        );
+        location.href='device-edit.html?id=${phone.id}'
+    ">
+    編集
+</button>
 
     <button
         class="delete-btn"
@@ -409,9 +415,25 @@ if(sortOrder === "old"){
     document.querySelector(".sort-btn")
         .textContent = "⬆️ 古い順";
 
-}      
+}
 
 loadPhones();
+
+setTimeout(() => {
+
+    const savedScroll =
+        localStorage.getItem("deviceScroll");
+
+    if(savedScroll){
+
+        window.scrollTo(
+            0,
+            parseInt(savedScroll)
+        );
+
+    }
+
+}, 500);
 
 } catch(e){
 
