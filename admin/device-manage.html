@@ -364,7 +364,7 @@ async function loadPhones(){
 
   .forEach(phone => {
 
-   phoneList.innerHTML += `
+   pphoneList.innerHTML += `
 <div class="device ${phone.maker}">
 
     <div class="maker">
@@ -373,36 +373,36 @@ async function loadPhones(){
 
     <h3>${phone.model}</h3>
 
+    <div class="button-area">
 
-            <div class="button-area">
+        <button
+            class="copy-btn"
+            onclick="copyPhone(${phone.id})">
+            複製
+        </button>
 
-    <button
-        class="copy-btn"
-        onclick="copyPhone(${phone.id})">
-        複製
-    </button>
+        <button
+            class="edit-btn"
+            onclick="
+                localStorage.setItem(
+                    'deviceScroll',
+                    window.scrollY
+                );
+                location.href='device-edit.html?id=${phone.id}'
+            ">
+            編集
+        </button>
 
-    <button
-    class="edit-btn"
-    onclick="
-        localStorage.setItem(
-            'deviceScroll',
-            window.scrollY
-        );
-        location.href='device-edit.html?id=${phone.id}'
-    ">
-    編集
-</button>
+        <button
+            class="delete-btn"
+            onclick="deletePhone(${phone.id})">
+            削除
+        </button>
 
-    <button
-        class="delete-btn"
-        onclick="deletePhone(${phone.id})">
-        削除
-    </button>
+    </div>
 
 </div>
-
-        ;
+`;
 
     });
 
