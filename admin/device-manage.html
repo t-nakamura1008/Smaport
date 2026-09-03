@@ -338,6 +338,11 @@ async function loadPhones(){
     const makerFilter =
     document.getElementById("makerFilter").value;
 
+    localStorage.setItem(
+    "deviceMakerFilter",
+    makerFilter
+);
+
     phoneList.innerHTML = "";
 
     data
@@ -425,6 +430,16 @@ if(savedScroll){
 }
 
 window.loadPhones = loadPhones;
+
+const savedMakerFilter =
+    localStorage.getItem("deviceMakerFilter");
+
+if(savedMakerFilter){
+
+    document.getElementById("makerFilter").value =
+        savedMakerFilter;
+
+}
 
 if(sortOrder === "old"){
 
