@@ -402,9 +402,25 @@ async function loadPhones(){
 
 </div>
 
-        `;
+        ;
 
     });
+
+   const savedScroll =
+    localStorage.getItem("deviceScroll");
+
+if(savedScroll){
+
+    setTimeout(() => {
+
+        window.scrollTo(
+            0,
+            parseInt(savedScroll)
+        );
+
+    }, 100);
+
+}
 
 }
 
@@ -418,22 +434,6 @@ if(sortOrder === "old"){
 }
 
 loadPhones();
-
-setTimeout(() => {
-
-    const savedScroll =
-        localStorage.getItem("deviceScroll");
-
-    if(savedScroll){
-
-        window.scrollTo(
-            0,
-            parseInt(savedScroll)
-        );
-
-    }
-
-}, 500);
 
 } catch(e){
 
@@ -559,7 +559,7 @@ async function showCount(){
 📞 FCNT：${fcnt}件`
     );
 }
-``    
+ 
  
 </script>
     
