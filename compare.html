@@ -172,39 +172,87 @@ td:nth-child(2){
 </div>
 <div class="selector">
 
+<div>
+
 <select id="plan1">
-    <option value="change">機種変更</option>
-    <option value="mnp">MNP</option>
-    <option value="new">新規</option>
-    <option value="poikatsu">ポイ活</option>
-</select>    
+
+    <option value="">
+        手続き①を選択
+    </option>
+
+    <option value="change">
+        機種変更
+    </option>
+
+    <option value="mnp">
+        MNP
+    </option>
+
+    <option value="new">
+        新規
+    </option>
+
+    <option value="poikatsu">
+        ポイ活
+    </option>
+
+</select>
+
+<br><br>
 
 <select id="maker1" onchange="loadModels1()">
     <option value="">メーカー①を選択</option>
 </select>
 
- <select id="plan2">
-    <option value="change">機種変更</option>
-    <option value="mnp">MNP</option>
-    <option value="new">新規</option>
-    <option value="poikatsu">ポイ活</option>
-</select>   
-
-<select id="maker2" onchange="loadModels2()">
-    <option value="">メーカー②を選択</option>
-</select>
+<br><br>
 
 <select id="phone1" onchange="showPhone1()">
     <option value="">機種①を選択</option>
 </select>
 
+</div>
+
+<div>
+
+<select id="plan2">
+
+    <option value="">
+        手続き②を選択
+    </option>
+
+    <option value="change">
+        機種変更
+    </option>
+
+    <option value="mnp">
+        MNP
+    </option>
+
+    <option value="new">
+        新規
+    </option>
+
+    <option value="poikatsu">
+        ポイ活
+    </option>
+
+</select>
+
+<br><br>
+
+<select id="maker2" onchange="loadModels2()">
+    <option value="">メーカー②を選択</option>
+</select>
+
+<br><br>
+
 <select id="phone2" onchange="showPhone2()">
     <option value="">機種②を選択</option>
 </select>
 
-   
 </div>
 
+</div>
 <div class="compare-box">
 
 <table>
