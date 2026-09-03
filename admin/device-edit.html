@@ -176,6 +176,37 @@ ROM
 <input id="monthly_24_47" placeholder="24回目～47回目">
 
 <br><br>
+
+<h3>【MNP】</h3>
+
+<input id="price_mnp" placeholder="MNP 一括価格">
+
+<input id="monthly_1_23_mnp" placeholder="MNP 1回目～23回目">
+
+<input id="total_23months_mnp" placeholder="MNP 23か月利用時総額">
+
+<input id="monthly_24_47_mnp" placeholder="MNP 24回目～47回目">
+
+<h3>【新規】</h3>
+
+<input id="price_new" placeholder="新規 一括価格">
+
+<input id="monthly_1_23_new" placeholder="新規 1回目～23回目">
+
+<input id="total_23months_new" placeholder="新規 23か月利用時総額">
+
+<input id="monthly_24_47_new" placeholder="新規 24回目～47回目">
+
+<h3>【ポイ活】</h3>
+
+<input id="price_poikatsu" placeholder="ポイ活 一括価格">
+
+<input id="monthly_1_23_poikatsu" placeholder="ポイ活 1回目～23回目">
+
+<input id="total_23months_poikatsu" placeholder="ポイ活 23か月利用時総額">
+
+<input id="monthly_24_47_poikatsu" placeholder="ポイ活 24回目～47回目">
+        
         
  ケータイ補償
 <input id="keitai_hosho" placeholder="ケータイ補償">
@@ -249,6 +280,20 @@ price.value = data.price;
 monthly_1_23.value = data.monthly_1_23;
 total23months.value =data.total_23months || "";    
 monthly_24_47.value = data.monthly_24_47;
+price_mnp.value = data.price_mnp || "";
+monthly_1_23_mnp.value = data.monthly_1_23_mnp || "";
+total_23months_mnp.value = data.total_23months_mnp || "";
+monthly_24_47_mnp.value = data.monthly_24_47_mnp || "";
+
+price_new.value = data.price_new || "";
+monthly_1_23_new.value = data.monthly_1_23_new || "";
+total_23months_new.value = data.total_23months_new || "";
+monthly_24_47_new.value = data.monthly_24_47_new || "";
+
+price_poikatsu.value = data.price_poikatsu || "";
+monthly_1_23_poikatsu.value = data.monthly_1_23_poikatsu || "";
+total_23months_poikatsu.value = data.total_23months_poikatsu || "";
+monthly_24_47_poikatsu.value = data.monthly_24_47_poikatsu || "";    
 keitai_hosho.value = data.keitai_hosho || "";    
 recommend.value = data.recommend;
 
@@ -341,6 +386,86 @@ if(originalPhone.monthly_24_47 !== monthly_24_47.value){
     );
 }
 
+// MNP
+
+if(originalPhone.price_mnp !== price_mnp.value){
+    details.push(
+        `MNP一括価格 ${originalPhone.price_mnp} → ${price_mnp.value}`
+    );
+}
+
+if(originalPhone.monthly_1_23_mnp !== monthly_1_23_mnp.value){
+    details.push(
+        `MNP1～23回 ${originalPhone.monthly_1_23_mnp} → ${monthly_1_23_mnp.value}`
+    );
+}
+
+if(originalPhone.total_23months_mnp !== total_23months_mnp.value){
+    details.push(
+        `MNP23か月利用時総額 ${originalPhone.total_23months_mnp} → ${total_23months_mnp.value}`
+    );
+}
+
+if(originalPhone.monthly_24_47_mnp !== monthly_24_47_mnp.value){
+    details.push(
+        `MNP24～47回 ${originalPhone.monthly_24_47_mnp} → ${monthly_24_47_mnp.value}`
+    );
+}
+
+
+// 新規
+
+if(originalPhone.price_new !== price_new.value){
+    details.push(
+        `新規一括価格 ${originalPhone.price_new} → ${price_new.value}`
+    );
+}
+
+if(originalPhone.monthly_1_23_new !== monthly_1_23_new.value){
+    details.push(
+        `新規1～23回 ${originalPhone.monthly_1_23_new} → ${monthly_1_23_new.value}`
+    );
+}
+
+if(originalPhone.total_23months_new !== total_23months_new.value){
+    details.push(
+        `新規23か月利用時総額 ${originalPhone.total_23months_new} → ${total_23months_new.value}`
+    );
+}
+
+if(originalPhone.monthly_24_47_new !== monthly_24_47_new.value){
+    details.push(
+        `新規24～47回 ${originalPhone.monthly_24_47_new} → ${monthly_24_47_new.value}`
+    );
+}
+
+
+// ポイ活
+
+if(originalPhone.price_poikatsu !== price_poikatsu.value){
+    details.push(
+        `ポイ活一括価格 ${originalPhone.price_poikatsu} → ${price_poikatsu.value}`
+    );
+}
+
+if(originalPhone.monthly_1_23_poikatsu !== monthly_1_23_poikatsu.value){
+    details.push(
+        `ポイ活1～23回 ${originalPhone.monthly_1_23_poikatsu} → ${monthly_1_23_poikatsu.value}`
+    );
+}
+
+if(originalPhone.total_23months_poikatsu !== total_23months_poikatsu.value){
+    details.push(
+        `ポイ活23か月利用時総額 ${originalPhone.total_23months_poikatsu} → ${total_23months_poikatsu.value}`
+    );
+}
+
+if(originalPhone.monthly_24_47_poikatsu !== monthly_24_47_poikatsu.value){
+    details.push(
+        `ポイ活24～47回 ${originalPhone.monthly_24_47_poikatsu} → ${monthly_24_47_poikatsu.value}`
+    );
+}    
+
 if(originalPhone.keitai_hosho !== keitai_hosho.value){
     details.push(
         `ケータイ補償 ${originalPhone.keitai_hosho} → ${keitai_hosho.value}`
@@ -369,6 +494,20 @@ if(originalPhone.recommend !== recommend.value){
             monthly_1_23: monthly_1_23.value,
             total_23months:document.getElementById("total23months").value,
             monthly_24_47: monthly_24_47.value,
+            price_mnp: price_mnp.value,
+monthly_1_23_mnp: monthly_1_23_mnp.value,
+total_23months_mnp: total_23months_mnp.value,
+monthly_24_47_mnp: monthly_24_47_mnp.value,
+
+price_new: price_new.value,
+monthly_1_23_new: monthly_1_23_new.value,
+total_23months_new: total_23months_new.value,
+monthly_24_47_new: monthly_24_47_new.value,
+
+price_poikatsu: price_poikatsu.value,
+monthly_1_23_poikatsu: monthly_1_23_poikatsu.value,
+total_23months_poikatsu: total_23months_poikatsu.value,
+monthly_24_47_poikatsu: monthly_24_47_poikatsu.value,
             keitai_hosho: keitai_hosho.value,
             recommend: recommend.value
         })
