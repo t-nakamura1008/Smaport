@@ -199,7 +199,20 @@ h2{
     align-items:center;
     gap:10px;
 }
-   
+
+.count-btn{
+    background:#9CA3AF;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.count-btn:hover{
+    background:#6B7280;
+}    
 </style>
 
 </head>
@@ -252,6 +265,14 @@ onclick="toggleSortOrder()">
 </button>
 
 </div>
+
+ <button
+class="sort-btn"
+onclick="showCount()">
+
+📊 件数確認
+
+</button>       
 
 <br>
 
@@ -460,6 +481,49 @@ function toggleSortOrder(){
 
     loadPhones();
 }
+
+async function showCount(){
+
+    const { data, error } = await sb
+        .from("Phones")
+        .select("maker")
+        .eq("deleted", false);
+
+    if(error){
+        alert(error.message);
+        return;
+    }
+
+    const apple =
+        data.filter(x => x.maker === "Apple").length;
+
+    const google =
+        data.filter(x => x.maker === "Google").length;
+
+    const samsung =
+        data.filter(x => x.maker === "Samsung").length;
+
+    const sony =
+        data.filter(x => x.maker === "SONY").length;
+
+    const sharp =
+        data.filter(x => x.maker === "SHARP").length;
+
+    const fcnt =
+        data.filter(x => x.maker === "FCNT").length;
+
+    alert(
+`📱 全機種：${data.length}件
+
+🍎 Apple：${apple}件
+🤖 Google：${google}件
+📱 Samsung：${samsung}件
+🎵 SONY：${sony}件
+📺 SHARP：${sharp}件
+📞 FCNT：${fcnt}件`
+    );
+}
+``    
  
 </script>
     
