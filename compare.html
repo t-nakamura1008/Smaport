@@ -263,8 +263,8 @@ td:nth-child(2){
 
  <tr>
     <td>23か月利用時総額</td>
-    <td id="return1">-</td>
-    <td id="return2">-</td>
+    <td id="total23_1">-</td>
+    <td id="total23_2">-</td>
 </tr>
     
 <tr>
@@ -382,7 +382,7 @@ document.getElementById("battery1").textContent = phone.battery;
 document.getElementById("camera1").textContent = phone.camera;
 document.getElementById("price1").textContent = phone.price;
 document.getElementById("monthly123_1").textContent = phone.monthly_1_23;
-document.getElementById("return1").textContent =phone.monthly_1_23 * 23 + "円";    
+document.getElementById("total23_1").textContent =phone.total_23months;    
 document.getElementById("monthly2447_1").textContent = phone.monthly_24_47;
 document.getElementById("hosho1").textContent =phone.keitai_hosho;    
 document.getElementById("recommend1").textContent = phone.recommend;
@@ -430,8 +430,8 @@ document.getElementById("price2").textContent =
 document.getElementById("monthly123_2").textContent =
     phone.monthly_1_23;
 
-document.getElementById("return2").textContent =
-    phone.monthly_1_23 * 23 + "円";
+document.getElementById("total23_2").textContent =
+    phone.total_23months;
     
 document.getElementById("monthly2447_2").textContent =
     phone.monthly_24_47;
