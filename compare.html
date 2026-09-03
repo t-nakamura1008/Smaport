@@ -220,7 +220,7 @@ td:nth-child(2){
 
 <br><br>
 
-<select id="phone1" onchange="showPhone1()">
+<select id="plan1" onchange="showPhone1()">
     <option value="">機種①を選択</option>
 </select>
 
@@ -260,7 +260,7 @@ td:nth-child(2){
 
 <br><br>
 
-<select id="phone2" onchange="showPhone2()">
+<select id="plan2" onchange="showPhone2()">
     <option value="">機種②を選択</option>
 </select>
 
@@ -456,10 +456,69 @@ document.getElementById("ram1").textContent = phone.ram;
 document.getElementById("rom1").textContent = phone.rom;
 document.getElementById("battery1").textContent = phone.battery;
 document.getElementById("camera1").textContent = phone.camera;
-document.getElementById("price1").textContent = phone.price;
-document.getElementById("monthly123_1").textContent = phone.monthly_1_23;
-document.getElementById("total23_1").textContent =phone.total_23months;    
-document.getElementById("monthly2447_1").textContent = phone.monthly_24_47;
+const plan =
+    document.getElementById("plan1").value;
+
+if(plan === "mnp"){
+
+    document.getElementById("price1").textContent =
+        phone.price_mnp;
+
+    document.getElementById("monthly123_1").textContent =
+        phone.monthly_1_23_mnp;
+
+    document.getElementById("total23_1").textContent =
+        phone.total_23months_mnp;
+
+    document.getElementById("monthly2447_1").textContent =
+        phone.monthly_24_47_mnp;
+
+}
+else if(plan === "new"){
+
+    document.getElementById("price1").textContent =
+        phone.price_new;
+
+    document.getElementById("monthly123_1").textContent =
+        phone.monthly_1_23_new;
+
+    document.getElementById("total23_1").textContent =
+        phone.total_23months_new;
+
+    document.getElementById("monthly2447_1").textContent =
+        phone.monthly_24_47_new;
+
+}
+else if(plan === "poikatsu"){
+
+    document.getElementById("price1").textContent =
+        phone.price_poikatsu;
+
+    document.getElementById("monthly123_1").textContent =
+        phone.monthly_1_23_poikatsu;
+
+    document.getElementById("total23_1").textContent =
+        phone.total_23months_poikatsu;
+
+    document.getElementById("monthly2447_1").textContent =
+        phone.monthly_24_47_poikatsu;
+
+}
+else{
+
+    document.getElementById("price1").textContent =
+        phone.price;
+
+    document.getElementById("monthly123_1").textContent =
+        phone.monthly_1_23;
+
+    document.getElementById("total23_1").textContent =
+        phone.total_23months;
+
+    document.getElementById("monthly2447_1").textContent =
+        phone.monthly_24_47;
+
+}
 document.getElementById("hosho1").textContent =phone.keitai_hosho;    
 document.getElementById("recommend1").textContent = phone.recommend;
 
@@ -500,17 +559,69 @@ document.getElementById("battery2").textContent =
 document.getElementById("camera2").textContent =
     phone.camera;
 
-document.getElementById("price2").textContent =
-    phone.price;
+const plan =
+    document.getElementById("plan2").value;
 
-document.getElementById("monthly123_2").textContent =
-    phone.monthly_1_23;
+if(plan === "mnp"){
 
-document.getElementById("total23_2").textContent =
-    phone.total_23months;
-    
-document.getElementById("monthly2447_2").textContent =
-    phone.monthly_24_47;
+    document.getElementById("price2").textContent =
+        phone.price_mnp;
+
+    document.getElementById("monthly123_2").textContent =
+        phone.monthly_1_23_mnp;
+
+    document.getElementById("total23_2").textContent =
+        phone.total_23months_mnp;
+
+    document.getElementById("monthly2447_2").textContent =
+        phone.monthly_24_47_mnp;
+
+}
+else if(plan === "new"){
+
+    document.getElementById("price2").textContent =
+        phone.price_new;
+
+    document.getElementById("monthly123_2").textContent =
+        phone.monthly_1_23_new;
+
+    document.getElementById("total23_2").textContent =
+        phone.total_23months_new;
+
+    document.getElementById("monthly2447_2").textContent =
+        phone.monthly_24_47_new;
+
+}
+else if(plan === "poikatsu"){
+
+    document.getElementById("price2").textContent =
+        phone.price_poikatsu;
+
+    document.getElementById("monthly123_2").textContent =
+        phone.monthly_1_23_poikatsu;
+
+    document.getElementById("total23_2").textContent =
+        phone.total_23months_poikatsu;
+
+    document.getElementById("monthly2447_2").textContent =
+        phone.monthly_24_47_poikatsu;
+
+}
+else{
+
+    document.getElementById("price2").textContent =
+        phone.price;
+
+    document.getElementById("monthly123_2").textContent =
+        phone.monthly_1_23;
+
+    document.getElementById("total23_2").textContent =
+        phone.total_23months;
+
+    document.getElementById("monthly2447_2").textContent =
+        phone.monthly_24_47;
+
+}
 
   document.getElementById("hosho2").textContent =
     phone.keitai_hosho;
