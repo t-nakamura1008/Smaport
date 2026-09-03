@@ -308,7 +308,8 @@ const sb = window.supabase.createClient(
 
  );   
 
- let sortOrder = "new";   
+ let sortOrder =
+    localStorage.getItem("deviceSort") || "new";
 
 try {
 
@@ -403,6 +404,13 @@ async function loadPhones(){
 
 window.loadPhones = loadPhones;
 
+if(sortOrder === "old"){
+
+    document.querySelector(".sort-btn")
+        .textContent = "⬆️ 古い順";
+
+}      
+
 loadPhones();
 
 } catch(e){
@@ -479,7 +487,13 @@ function toggleSortOrder(){
 
     }
 
+    localStorage.setItem(
+        "deviceSort",
+        sortOrder
+    );
+
     loadPhones();
+
 }
 
 async function showCount(){
