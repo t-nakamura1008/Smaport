@@ -167,11 +167,16 @@ ROM
 
 <br><br>
 
+23か月利用時総額
+<input id="total23months" placeholder="23か月利用時総額">
+
+<br><br>
+
 24回目～47回目
 <input id="monthly_24_47" placeholder="24回目～47回目">
 
 <br><br>
-
+        
  ケータイ補償
 <input id="keitai_hosho" placeholder="ケータイ補償">
 
@@ -242,6 +247,7 @@ battery.value = data.battery;
 camera.value = data.camera;
 price.value = data.price;
 monthly_1_23.value = data.monthly_1_23;
+total23months.value =data.total_23months || "";    
 monthly_24_47.value = data.monthly_24_47;
 keitai_hosho.value = data.keitai_hosho || "";    
 recommend.value = data.recommend;
@@ -323,6 +329,12 @@ if(originalPhone.monthly_1_23 !== monthly_1_23.value){
     );
 }
 
+ if(originalPhone.total_23months !== total23months.value){
+    details.push(
+        `23か月利用時総額 ${originalPhone.total_23months} → ${total23months.value}`
+    );
+}   
+
 if(originalPhone.monthly_24_47 !== monthly_24_47.value){
     details.push(
         `24～47回 ${originalPhone.monthly_24_47} → ${monthly_24_47.value}`
@@ -355,6 +367,7 @@ if(originalPhone.recommend !== recommend.value){
             camera: camera.value,
             price: price.value,
             monthly_1_23: monthly_1_23.value,
+            total_23months:document.getElementById("total23months").value,
             monthly_24_47: monthly_24_47.value,
             keitai_hosho: keitai_hosho.value,
             recommend: recommend.value
