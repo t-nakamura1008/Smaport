@@ -247,21 +247,33 @@ async function loadLogs(){
 
         <td>
 
-            ${
-                log.status === "検討中"
-                ? `<button
-                    class="contract-btn"
-                    onclick="completeContract(
-                        ${log.id},
-                        '${log.phone1}',
-                        '${log.phone2}'
-                    )">
+           ${
+    log.status === "検討中"
+    ? `
+        <button
+            class="contract-btn"
+            onclick="registerContract(
+                ${log.id},
+                '${log.phone1}'
+            )">
 
-                    成約登録
+            ①成約
 
-                </button>`
-                : "完了"
-            }
+        </button>
+
+        <button
+            class="contract-btn"
+            onclick="registerContract(
+                ${log.id},
+                '${log.phone2}'
+            )">
+
+            ②成約
+
+        </button>
+      `
+    : "完了"
+}
 
         </td>
 
@@ -272,27 +284,11 @@ async function loadLogs(){
 });
 
 }
-
-async function completeContract(
+   
+async function registerContract(
     id,
-    phone1,
-    phone2
+    resultPhone
 ){
-
-    const resultPhone =
-        prompt(
-
-`成約した機種を入力してください
-
-① ${phone1}
-
-② ${phone2}`
-
-        );
-
-    if(!resultPhone){
-        return;
-    }
 
     const { error } =
         await sbClient
@@ -300,7 +296,6 @@ async function completeContract(
         .update({
 
             status:"成約",
-
             result_phone:resultPhone
 
         })
@@ -315,8 +310,6 @@ async function completeContract(
 
     alert("成約登録しました");
 
-    loadLogs();
-
-}    
+   loadLogs();
 
 </script>
