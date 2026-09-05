@@ -300,6 +300,11 @@ const contractCount =
         log => log.status === "成約"
     ).length;
 
+const rate =
+    data.length > 0
+    ? ((contractCount / data.length) * 100).toFixed(1)
+    : 0;
+    
 document.getElementById("countArea")
 .innerHTML = `
 
