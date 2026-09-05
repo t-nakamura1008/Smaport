@@ -375,6 +375,17 @@ td:nth-child(2){
 
 <script>
 
+const nav =
+    performance.getEntriesByType(
+        "navigation"
+    )[0];
+
+if(nav && nav.type === "reload"){
+
+    location.href = "index.html";
+
+}    
+
 const supabaseUrl =
     "https://butujlsbdxaiuxitfyty.supabase.co";
     
