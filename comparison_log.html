@@ -244,6 +244,28 @@ tr:hover{
     background:#D97706;
 
 }
+
+.menu-btn{
+
+    width:100%;
+
+    padding:20px;
+
+    margin-bottom:15px;
+
+    border:none;
+
+    border-radius:15px;
+
+    color:white;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
     
 </style>
 
@@ -254,7 +276,7 @@ tr:hover{
 <div class="container">
 
 <button
-class="back-btn"
+class="menu-btn back-btn"
 onclick="location.href='authority.html'">
 
 ← 管理画面へ戻る
@@ -269,7 +291,13 @@ onclick="toggleCount()">
 
 </button>
 
-<div id="countArea"></div>
+<div
+id="countArea"
+style="display:none;">
+    
+</div>
+
+</div>
 
 <button
 class="menu-btn rank-btn"
@@ -279,7 +307,11 @@ onclick="toggleRanking()">
 
 </button>
 
-<div id="rankingArea"></div>
+<div
+id="rankingArea"
+style="display:none;">
+
+</div
     
     <table>
 
