@@ -167,9 +167,8 @@ td:nth-child(2){
 <div class="top-row">
 
    <a
-    href="#"
-    class="back"
-    onclick="saveComparisonLog(); return false;">
+    href="index.html"
+    class="back">
     ← トップへ戻る
 </a>
 
@@ -431,6 +430,10 @@ fixedMakers.forEach(maker => {
     
    
 }
+    
+sessionStorage.removeItem(
+    "comparisonLogSaved"
+);
 
 loadPhones();
 
@@ -897,22 +900,35 @@ function saveComparisonTemp(){
 
 }    
 
-async function saveComparisonLog(){
+window.addEventListener(
+    "pagehide",
+    saveComparisonLogAuto
+);
+
+async function saveComparisonLogAuto(){
+
+    const saved =
+        sessionStorage.getItem(
+            "comparisonLogSaved"
+        );
+
+    if(saved === "true"){
+        return;
+    }
 
     const comparison =
         JSON.parse(
-            localStorage.getItem("latestComparison")
+            localStorage.getItem(
+                "latestComparison"
+            )
         );
 
     if(!comparison){
-
-        location.href = "index.html";
         return;
-
     }
 
-    const { error } = await sbClient
-        
+    const { error } =
+        await sbClient
         .from("ComparisonLog")
         .insert([{
 
@@ -926,18 +942,14 @@ async function saveComparisonLog(){
 
         }]);
 
-    if(error){
+    if(!error){
 
-        alert(error.message);
-        return;
+        sessionStorage.setItem(
+            "comparisonLogSaved",
+            "true"
+        );
 
     }
-
-    localStorage.removeItem(
-        "latestComparison"
-    );
-
-    location.href = "index.html";
 
 }    
     
