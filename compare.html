@@ -899,6 +899,11 @@ function saveComparisonTemp(){
         })
     );
 
+    localStorage.setItem(
+    "unsavedComparison",
+    "true"
+);
+
 }    
 
 async function saveComparisonLog(){
@@ -939,6 +944,10 @@ async function saveComparisonLog(){
     localStorage.removeItem(
         "latestComparison"
     );
+
+    localStorage.removeItem(
+    "unsavedComparison"
+);
 
 }    
 
