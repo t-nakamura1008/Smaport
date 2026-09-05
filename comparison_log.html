@@ -190,6 +190,34 @@ tr:hover{
     margin-bottom:15px;
 
 }    
+
+#rankingArea{
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    margin-bottom:20px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+    text-align:center;
+
+    font-size:18px;
+
+    line-height:2;
+
+}
+
+#rankingArea h2{
+
+    color:#0EA5E9;
+
+    margin-top:0;
+
+}    
   
 </style>
 
@@ -208,6 +236,8 @@ onclick="location.href='authority.html'">
 </button>
 
 <div id="countArea"></div>
+
+<div id="rankingArea"></div>
 
 <table>
     
@@ -280,6 +310,58 @@ document.getElementById("countArea")
 成約件数：${contractCount}件
 
 `;
+
+ const ranking = {};
+
+data.forEach(log => {
+
+    if(
+        log.status === "成約" &&
+        log.result_phone
+    ){
+
+        ranking[log.result_phone] =
+            (ranking[log.result_phone] || 0) + 1;
+
+    }
+
+});
+
+const rankingHtml =
+    Object.entries(ranking)
+
+    .sort((a,b) => b[1] - a[1])
+
+    .slice(0,5)
+
+    .map((item,index) => {
+
+        const medal =
+            index === 0 ? "🥇" :
+            index === 1 ? "🥈" :
+            index === 2 ? "🥉" :
+            "🏅";
+
+        return `
+            <div>
+                ${medal}
+                ${item[0]}
+                （${item[1]}件）
+            </div>
+        `;
+
+    })
+
+    .join("");
+
+document.getElementById("rankingArea")
+.innerHTML = `
+
+<h2>🏆 成約ランキング TOP5</h2>
+
+${rankingHtml}
+
+`;   
 
 const table =
     document.getElementById("logTable");
