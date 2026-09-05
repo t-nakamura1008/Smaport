@@ -525,8 +525,11 @@ document.getElementById("recommend1").textContent = phone.recommend;
 compareRam();
 compareRom();
 compareBattery();    
-}
+    
+saveComparisonTemp();
 
+}
+  
 function showPhone2(){
 
     const selectedId =
@@ -632,6 +635,8 @@ document.getElementById("recommend2").textContent =
 compareRam();
 compareRom();
 compareBattery();
+
+saveComparisonTemp();    
 }
 
 function compareRam(){
@@ -841,6 +846,52 @@ function loadModels2(){
 alert("エラー：" + e.message);
 
 }
+
+function saveComparisonTemp(){
+
+    const phone1 =
+        document.getElementById("phone1");
+
+    const phone2 =
+        document.getElementById("phone2");
+
+    const plan1 =
+        document.getElementById("plan1");
+
+    const plan2 =
+        document.getElementById("plan2");
+
+    if(
+        !phone1.value ||
+        !phone2.value ||
+        !plan1.value ||
+        !plan2.value
+    ){
+        return;
+    }
+
+    localStorage.setItem(
+        "latestComparison",
+        JSON.stringify({
+            phone1:
+                phone1.options[phone1.selectedIndex]
+                .text,
+
+            plan1:
+                plan1.options[plan1.selectedIndex]
+                .text,
+
+            phone2:
+                phone2.options[phone2.selectedIndex]
+                .text,
+
+            plan2:
+                plan2.options[plan2.selectedIndex]
+                .text
+        })
+    );
+
+}    
     
 </script>
 
