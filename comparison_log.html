@@ -255,13 +255,25 @@ tr:hover{
 
 }
 
+.button-area{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-bottom:20px;
+
+}
+
+.button-area button{
+
+    flex:1;
+
+}
+
 .menu-btn{
 
-    width:100%;
-
-    padding:20px;
-
-    margin-bottom:15px;
+    padding:14px;
 
     border:none;
 
@@ -269,13 +281,13 @@ tr:hover{
 
     color:white;
 
-    font-size:22px;
+    font-size:18px;
 
     font-weight:bold;
 
     cursor:pointer;
 
-}
+}    
     
 </style>
 
@@ -283,7 +295,7 @@ tr:hover{
     <h1>📊 比較ログ</h1>
 </header>
 
-<div class="container">
+<div class="button-area">
 
     <button
     class="menu-btn back-btn"
@@ -301,10 +313,6 @@ tr:hover{
 
     </button>
 
-    <div id="countArea"
-    style="display:none;">
-    </div>
-
     <button
     class="menu-btn rank-btn"
     onclick="toggleRanking()">
@@ -312,14 +320,6 @@ tr:hover{
     🏆 ランキングを見る
 
     </button>
-
-    <div id="rankingArea"
-    style="display:none;">
-    </div>
-
-    <table>
-    
-    </table>
 
 </div>
     
