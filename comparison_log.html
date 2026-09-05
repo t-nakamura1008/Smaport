@@ -253,11 +253,13 @@ tr:hover{
 
 <div class="container">
 
-  <button
+<button
 class="back-btn"
 onclick="location.href='authority.html'">
 
 ← 管理画面へ戻る
+
+</button>
 
 <button
 class="menu-btn count-btn"
@@ -555,5 +557,29 @@ async function registerContract(
     loadLogs();
 
 }  
+
+function toggleCount(){
+
+    const area =
+        document.getElementById("countArea");
+
+    area.style.display =
+        area.style.display === "none"
+        ? "block"
+        : "none";
+
+}
+
+function toggleRanking(){
+
+    const area =
+        document.getElementById("rankingArea");
+
+    area.style.display =
+        area.style.display === "none"
+        ? "block"
+        : "none";
+
+}    
 
 </script>
