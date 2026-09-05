@@ -178,6 +178,18 @@ tr:hover{
     background:#DC2626;
 
 }    
+
+#countArea{
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    color:#0EA5E9;
+
+    margin-bottom:15px;
+
+}    
   
 </style>
 
@@ -194,7 +206,11 @@ onclick="location.href='authority.html'">
 ← 管理画面へ戻る
 
 </button>
-  
+
+<div id="countArea"></div>
+
+<table>
+    
     <table>
 
         <thead>
@@ -244,10 +260,29 @@ async function loadLogs(){
 
     if(error){
 
-        alert(error.message);
-        return;
+    alert(error.message);
+    return;
 
-    }
+}
+
+const contractCount =
+    data.filter(
+        log => log.status === "成約"
+    ).length;
+
+document.getElementById("countArea")
+.innerHTML = `
+
+現在の比較件数：${data.length}件
+
+<br>
+
+成約件数：${contractCount}件
+
+`;
+
+const table =
+    document.getElementById("logTable");
 
     const table =
         document.getElementById("logTable");
