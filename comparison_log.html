@@ -134,6 +134,29 @@ tr:hover{
     background:#7C3AED;
 
 }  
+
+.contract-btn{
+
+    background:#06B6D4;
+    color:white;
+
+    border:none;
+
+    padding:10px 15px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+}
+
+.contract-btn:hover{
+
+    background:#0891B2;
+
+}    
   
 </style>
 
@@ -154,13 +177,14 @@ onclick="location.href='authority.html'">
     <table>
 
         <thead>
-            <tr>
-                <th>比較機種①</th>
-                <th>比較機種②</th>
-                <th>状態</th>
-                <th>成約機種</th>
-            </tr>
-        </thead>
+    <tr>
+        <th>比較機種①</th>
+        <th>比較機種②</th>
+        <th>状態</th>
+        <th>成約機種</th>
+        <th>操作</th>
+    </tr>
+</thead>
 
         <tbody id="logTable">
         </tbody>
@@ -209,24 +233,90 @@ async function loadLogs(){
 
     data.forEach(log => {
 
-        table.innerHTML += `
+    table.innerHTML += `
 
-        <tr>
+    <tr>
 
-            <td>${log.phone1}</td>
+        <td>${log.phone1}</td>
 
-            <td>${log.phone2}</td>
+        <td>${log.phone2}</td>
 
-            <td>${log.status}</td>
+        <td>${log.status}</td>
 
-            <td>${log.result_phone ?? "-"}</td>
+        <td>${log.result_phone ?? "-"}</td>
 
-        </tr>
+        <td>
 
-        `;
+            ${
+                log.status === "検討中"
+                ? `<button
+                    class="contract-btn"
+                    onclick="completeContract(
+                        ${log.id},
+                        '${log.phone1}',
+                        '${log.phone2}'
+                    )">
 
-    });
+                    成約登録
+
+                </button>`
+                : "完了"
+            }
+
+        </td>
+
+    </tr>
+
+    `;
+
+});
 
 }
+
+async function completeContract(
+    id,
+    phone1,
+    phone2
+){
+
+    const resultPhone =
+        prompt(
+
+`成約した機種を入力してください
+
+① ${phone1}
+
+② ${phone2}`
+
+        );
+
+    if(!resultPhone){
+        return;
+    }
+
+    const { error } =
+        await sbClient
+        .from("ComparisonLog")
+        .update({
+
+            status:"成約",
+
+            result_phone:resultPhone
+
+        })
+        .eq("id",id);
+
+    if(error){
+
+        alert(error.message);
+        return;
+
+    }
+
+    alert("成約登録しました");
+
+    loadLogs();
+
+}    
 
 </script>
