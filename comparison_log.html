@@ -181,17 +181,31 @@ tr:hover{
 
 #countArea{
 
+    display:none;
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:15px;
+
+    margin-bottom:20px;
+
+    text-align:center;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
     font-size:22px;
 
     font-weight:bold;
 
     color:#0EA5E9;
 
-    margin-bottom:15px;
-
-}    
+}
 
 #rankingArea{
+
+    display:none;
 
     background:white;
 
@@ -204,10 +218,6 @@ tr:hover{
     box-shadow:0 5px 20px rgba(0,0,0,.08);
 
     text-align:center;
-
-    font-size:18px;
-
-    line-height:2;
 
 }
 
@@ -275,43 +285,43 @@ tr:hover{
 
 <div class="container">
 
-<button
-class="menu-btn back-btn"
-onclick="location.href='authority.html'">
+    <button
+    class="menu-btn back-btn"
+    onclick="location.href='authority.html'">
 
-← 管理画面へ戻る
+    ← 管理画面へ戻る
 
-</button>
+    </button>
 
-<button
-class="menu-btn count-btn"
-onclick="toggleCount()">
+    <button
+    class="menu-btn count-btn"
+    onclick="toggleCount()">
 
-📊 件数を見る
+    📊 件数を見る
 
-</button>
+    </button>
 
-<div
-id="countArea"
-style="display:none;">
+    <div id="countArea"
+    style="display:none;">
+    </div>
+
+    <button
+    class="menu-btn rank-btn"
+    onclick="toggleRanking()">
+
+    🏆 ランキングを見る
+
+    </button>
+
+    <div id="rankingArea"
+    style="display:none;">
+    </div>
+
+    <table>
     
-</div>
+    </table>
 
 </div>
-
-<button
-class="menu-btn rank-btn"
-onclick="toggleRanking()">
-
-🏆 ランキングを見る
-
-</button>
-
-<div
-id="rankingArea"
-style="display:none;">
-
-</div
     
     <table>
 
