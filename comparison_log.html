@@ -218,7 +218,33 @@ tr:hover{
     margin-top:0;
 
 }    
-  
+
+.count-btn{
+
+    background:#9CA3AF;
+    color:white;
+
+}
+
+.count-btn:hover{
+
+    background:#6B7280;
+
+}    
+
+.rank-btn{
+
+    background:#F59E0B;
+    color:white;
+
+}
+
+.rank-btn:hover{
+
+    background:#D97706;
+
+}
+    
 </style>
 
 <header>
@@ -233,13 +259,25 @@ onclick="location.href='authority.html'">
 
 ← 管理画面へ戻る
 
+<button
+class="menu-btn count-btn"
+onclick="toggleCount()">
+
+📊 件数を見る
+
 </button>
 
 <div id="countArea"></div>
 
-<div id="rankingArea"></div>
+<button
+class="menu-btn rank-btn"
+onclick="toggleRanking()">
 
-<table>
+🏆 ランキングを見る
+
+</button>
+
+<div id="rankingArea"></div>
     
     <table>
 
