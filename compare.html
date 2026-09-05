@@ -167,8 +167,9 @@ td:nth-child(2){
 <div class="top-row">
 
    <a
-    href="index.html"
-    class="back">
+    href="#"
+    class="back"
+    onclick="leavePage('index.html'); return false;">
     ← トップへ戻る
 </a>
 
@@ -900,21 +901,7 @@ function saveComparisonTemp(){
 
 }    
 
-window.addEventListener(
-    "pagehide",
-    saveComparisonLogAuto
-);
-
-async function saveComparisonLogAuto(){
-
-    const saved =
-        sessionStorage.getItem(
-            "comparisonLogSaved"
-        );
-
-    if(saved === "true"){
-        return;
-    }
+async function saveComparisonLog(){
 
     const comparison =
         JSON.parse(
@@ -942,16 +929,38 @@ async function saveComparisonLogAuto(){
 
         }]);
 
-    if(!error){
+    if(error){
 
-        sessionStorage.setItem(
-            "comparisonLogSaved",
-            "true"
-        );
+        alert(error.message);
+        return;
 
     }
 
+    localStorage.removeItem(
+        "latestComparison"
+    );
+
 }    
+
+async function leavePage(url){
+
+    const comparison =
+        JSON.parse(
+            localStorage.getItem(
+                "latestComparison"
+            )
+        );
+
+    if(comparison){
+
+        await saveComparisonLog();
+
+    }
+
+    location.href = url;
+
+}    
+
     
 </script>
 
