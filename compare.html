@@ -207,7 +207,9 @@ td:nth-child(2){
         スタッフ入力
     </span>
 
-    <select id="staffDecision">
+    <select
+id="staffDecision"
+onchange="saveComparisonTemp()">
 
         <option value="">
             選択
@@ -938,25 +940,32 @@ function saveComparisonTemp(){
     }
 
     localStorage.setItem(
-        "latestComparison",
-        JSON.stringify({
-            phone1:
-                phone1.options[phone1.selectedIndex]
-                .text,
+    "latestComparison",
+    JSON.stringify({
 
-            plan1:
-                plan1.options[plan1.selectedIndex]
-                .text,
+        phone1:
+            phone1.options[phone1.selectedIndex]
+            .text,
 
-            phone2:
-                phone2.options[phone2.selectedIndex]
-                .text,
+        plan1:
+            plan1.options[plan1.selectedIndex]
+            .text,
 
-            plan2:
-                plan2.options[plan2.selectedIndex]
-                .text
-        })
-    );
+        phone2:
+            phone2.options[phone2.selectedIndex]
+            .text,
+
+        plan2:
+            plan2.options[plan2.selectedIndex]
+            .text,
+
+        staffDecision:
+            document.getElementById(
+                "staffDecision"
+            ).value
+
+    })
+);
 
     localStorage.setItem(
     "unsavedComparison",
