@@ -330,6 +330,7 @@ style="display:none;">
         <th>比較日時</th>
         <th>比較機種①</th>
         <th>比較機種②</th>
+        <th>スタッフ入力</th>
         <th>状態</th>
         <th>成約機種</th>
         <th>操作</th>
@@ -474,6 +475,8 @@ ${new Date(log.created_at)
         <td>${log.phone1}</td>
 
         <td>${log.phone2}</td>
+
+        <td>${log.staff_decision ?? "-"}</td>
 
         <td>${log.status}</td>
 
