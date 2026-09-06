@@ -333,7 +333,6 @@ style="display:none;">
         <th>スタッフ入力</th>
         <th>状態</th>
         <th>成約機種</th>
-        <th>操作</th>
         <th>削除</th>
     </tr>
 </thead>
@@ -482,38 +481,6 @@ ${new Date(log.created_at)
 
         <td>${log.result_phone ?? "-"}</td>
 
-        <td>
-
-           ${
-    log.status === "検討中"
-    ? `
-        <button
-            class="contract-btn"
-            onclick="registerContract(
-                ${log.id},
-                '${log.phone1}'
-            )">
-
-            ①成約
-
-        </button>
-
-        <button
-            class="contract-btn"
-            onclick="registerContract(
-                ${log.id},
-                '${log.phone2}'
-            )">
-
-            ②成約
-
-        </button>
-      `
-    : "完了"
-}
-
-<td>
-
     <button
         class="delete-btn"
         onclick="deleteLog(${log.id})">
@@ -532,34 +499,6 @@ ${new Date(log.created_at)
 
 }
    
-async function registerContract(
-    id,
-    resultPhone
-){
-
-    const { error } =
-        await sbClient
-        .from("ComparisonLog")
-        .update({
-
-            status:"成約",
-            result_phone:resultPhone
-
-        })
-        .eq("id",id);
-
-    if(error){
-
-        alert(error.message);
-        return;
-
-    }
-
-    alert("成約登録しました");
-
-   loadLogs();
-
-  }  
 
   async function deleteLog(id){
 
