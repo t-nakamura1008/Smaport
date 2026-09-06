@@ -155,15 +155,25 @@ td:nth-child(2){
     width:100%;
 }    
 
+.staff-label{
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    color:#374151;
+
+    margin-left:10px;
+
+}
+
 #staffDecision{
 
-    width:120px;
+    width:90px;
 
-    height:32px;
+    height:30px;
 
     font-size:13px;
-
-    margin-left:5px;
 
 }
     
@@ -185,33 +195,39 @@ td:nth-child(2){
     ← トップへ戻る
 </a>
 
-    <div class="legend-area">
+   <div class="legend">
 
-    <div class="legend">
-        <span class="good">● 優位</span>
-        <span class="bad">● 劣位</span>
-        <span class="equal">● 同等</span>
-    </div>
+    <span class="good">● 優位</span>
 
- <select id="staffDecision">
+    <span class="bad">● 劣位</span>
 
-    <option value="">
+    <span class="equal">● 同等</span>
+
+    <span class="staff-label">
         スタッフ入力
-    </option>
+    </span>
 
-    <option value="要検討">
-        要検討
-    </option>
+    <select id="staffDecision">
 
-    <option value="①購入">
-        ①購入
-    </option>
+        <option value="">
+            選択
+        </option>
 
-    <option value="②購入">
-        ②購入
-    </option>
+        <option value="要検討">
+            要検討
+        </option>
 
-</select>
+        <option value="①購入">
+            ①購入
+        </option>
+
+        <option value="②購入">
+            ②購入
+        </option>
+
+    </select>
+
+</div>
         
     <div class="notice">
         ※分割購入の場合頭金がかかります。<br>
