@@ -984,11 +984,20 @@ async function saveComparisonLog(){
         phone2: comparison.phone2,
         plan2: comparison.plan2,
 
-        status: "要検討",
-        
         staff_decision:
-    comparison.staffDecision
+            comparison.staffDecision,
 
+        status:
+            comparison.staffDecision === "要検討"
+                ? "検討中"
+                : "成約",
+
+        result_phone:
+            comparison.staffDecision === "①購入"
+                ? comparison.phone1
+                : comparison.staffDecision === "②購入"
+                ? comparison.phone2
+                : null
 
     }]);
     
