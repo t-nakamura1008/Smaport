@@ -169,11 +169,13 @@ td:nth-child(2){
 
 #staffDecision{
 
-    width:90px;
+    width:110px;
 
-    height:30px;
+    height:32px;
 
     font-size:13px;
+
+    margin-left:8px;
 
 }
     
@@ -203,31 +205,27 @@ td:nth-child(2){
 
     <span class="equal">● 同等</span>
 
-    <span class="staff-label">
-        スタッフ入力
-    </span>
-
-    <select
+   <select
 id="staffDecision"
 onchange="saveComparisonTemp()">
 
-        <option value="">
-            選択
-        </option>
+    <option value="">
+        スタッフ入力
+    </option>
 
-        <option value="要検討">
-            要検討
-        </option>
+    <option value="要検討">
+        要検討
+    </option>
 
-        <option value="①購入">
-            ①購入
-        </option>
+    <option value="①購入">
+        ①購入
+    </option>
 
-        <option value="②購入">
-            ②購入
-        </option>
+    <option value="②購入">
+        ②購入
+    </option>
 
-    </select>
+</select>
 
 </div>
         
@@ -998,7 +996,7 @@ async function saveComparisonLog(){
         phone2: comparison.phone2,
         plan2: comparison.plan2,
 
-        status: "検討中",
+        status: "要検討",
 
         staff_decision:
             comparison.staffDecision
