@@ -193,9 +193,10 @@ td:nth-child(2){
 
     <span class="equal">● 同等</span>
 
-  <select
+ <select
 id="staffDecision"
-onchange="saveComparisonTemp()">
+onchange="saveStaffDecision()">
+ 
 
     <option value="">
         スタッフ入力
@@ -1049,6 +1050,24 @@ console.log(
 
 }    
 
+async function saveStaffDecision(){
+
+    saveComparisonTemp();
+
+    const decision =
+        document.getElementById(
+            "staffDecision"
+        ).value;
+
+    if(!decision){
+        return;
+    }
+
+    await saveComparisonLog();
+
+    location.href = "index.html";
+
+}
     
 </script>
 
