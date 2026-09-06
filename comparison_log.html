@@ -449,7 +449,7 @@ const rankingHtml =
 document.getElementById("rankingArea")
 .innerHTML = `
 
-<h2>🏆 成約ランキング TOP5</h2>
+<h2>🏆 成約ランキング TOP3</h2>
 
 ${rankingHtml}
 
@@ -481,6 +481,7 @@ ${new Date(log.created_at)
 
         <td>${log.result_phone ?? "-"}</td>
 
+    <td>
     <button
         class="delete-btn"
         onclick="deleteLog(${log.id})">
