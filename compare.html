@@ -1034,6 +1034,18 @@ async function leavePage(url){
             )
         );
 
+    const comparison =
+    JSON.parse(
+        localStorage.getItem(
+            "latestComparison"
+        )
+    );
+
+console.log(
+    "staffDecision =",
+    comparison.staffDecision
+);
+
     if(comparison){
 
         await saveComparisonLog();
