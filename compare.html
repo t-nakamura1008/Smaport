@@ -989,19 +989,22 @@ async function saveComparisonLog(){
 
     const { error } =
         await sbClient
-        .from("ComparisonLog")
-        .insert([{
+    .from("ComparisonLog")
+    .insert([{
 
-            phone1: comparison.phone1,
-            plan1: comparison.plan1,
+        phone1: comparison.phone1,
+        plan1: comparison.plan1,
 
-            phone2: comparison.phone2,
-            plan2: comparison.plan2,
+        phone2: comparison.phone2,
+        plan2: comparison.plan2,
 
-            status: "検討中"
+        status: "検討中",
 
-        }]);
+        staff_decision:
+            comparison.staffDecision
 
+    }]);
+    
     if(error){
 
         alert(error.message);
