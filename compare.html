@@ -1044,6 +1044,13 @@ async function saveStaffDecision(){
             "staffDecision"
         ).value;
 
+    if(decision === "要検討"){
+
+        location.href = "index.html";
+        return;
+
+    }
+
     if(
         decision !== "①購入" &&
         decision !== "②購入"
