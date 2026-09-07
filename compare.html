@@ -1044,7 +1044,10 @@ async function saveStaffDecision(){
             "staffDecision"
         ).value;
 
-    if(!decision){
+    if(
+        decision !== "①購入" &&
+        decision !== "②購入"
+    ){
         return;
     }
 
@@ -1053,6 +1056,7 @@ async function saveStaffDecision(){
     location.href = "index.html";
 
 }
+
     
 </script>
 
