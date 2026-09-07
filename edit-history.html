@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>履歴一覧</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:"Yu Gothic",sans-serif;
+    background:#f8fafc;
+}
+
+header{
+    background:#F9A8D4;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+
+.container{
+    max-width:1000px;
+    margin:30px auto;
+    padding:20px;
+}
+
+.history-card{
+    background:#FFF1F7;
+    border:1px solid #FBCFE8;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:15px;
+}
+
+.date{
+    color:#6b7280;
+    font-size:14px;
+    margin-bottom:8px;
+}
+
+.action{
+    font-weight:bold;
+    color:#2563EB;
+    margin-bottom:5px;
+}
+
+.model{
+    font-size:18px;
+}
+
+.back-btn{
+    background:#FACC15;
+    color:white;
+    text-decoration:none;
+
+    padding:12px 20px;
+
+    border-radius:12px;
+
+    font-size:16px;
+    font-weight:bold;
+
+    display:inline-block;
+}
+
+.back-btn:hover{
+    background:#EAB308;
+}
+
+.detail{
+    margin-top:10px;
+    color:#6B7280;
+    font-size:14px;
+    line-height:1.5;
+}
+
+.delete-selected-btn{
+    background:#F97316;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+    margin-right:10px;
+}
+
+.delete-selected-btn:hover{
+    background:#EA580C;
+}
+
+.delete-all-btn{
+    background:#EF4444;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.delete-all-btn:hover{
+    background:#DC2626;
+}    
+
+ .delete-selected-btn{
+    background:#F97316;
+    color:white;
+    border:none;
+    padding:16px 28px;
+    border-radius:14px;
+    cursor:pointer;
+    font-weight:bold;
+    font-size:16px;
+    margin-right:10px;
+}
+
+.delete-selected-btn:hover{
+    background:#EA580C;
+}
+
+.delete-all-btn{
+    background:#EF4444;
+    color:white;
+    border:none;
+    padding:16px 28px;
+    border-radius:14px;
+    cursor:pointer;
+    font-weight:bold;
+    font-size:16px;
+}
+
+.delete-all-btn:hover{
+    background:#DC2626;
+}   
+
+.filter-box{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    margin:20px auto;
+    max-width:900px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+.filter-toggle-btn{
+    background:#C4B5FD;
+    color:white;
+    border:none;
+    padding:16px 28px;
+    border-radius:14px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+    margin:10px;
+}
+
+.filter-toggle-btn:hover{
+    background:#A78BFA;
+}
+
+.date-toggle-btn{
+    background:#6EE7B7;
+    color:white;
+    border:none;
+    padding:16px 28px;
+    border-radius:14px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.date-toggle-btn:hover{
+    background:#34D399;
+}    
+
+.date-filter-box{
+    background:white;
+    padding:20px;
+    padding-left:60px;
+
+    border-radius:15px;
+    margin-top:15px;
+
+    max-width:500px;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+.search-btn{
+    background:#38BDF8;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.search-btn:hover{
+    background:#0EA5E9;
+}    
+
+.date-clear-btn{
+    background:#9CA3AF;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+    margin-left:10px;
+}
+
+.date-clear-btn:hover{
+    background:#6B7280;
+}
+
+.sort-btn{
+    background:#374151;
+    color:white;
+    border:none;
+    padding:16px 28px;
+    border-radius:14px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+    margin:10px;
+}
+
+.sort-btn:hover{
+    background:#1F2937;
+}
+
+    
+</style>
+</head>
+<body>
+  
+<header>
+    <h1>📜 操作履歴</h1>
+</header>
+
+  <button
+class="delete-selected-btn"
+onclick="deleteSelectedHistory()">
+
+✅ 選択削除
+
+</button>
+
+<button
+class="delete-all-btn"
+onclick="deleteAllHistory()">
+
+🗑️ 全履歴削除
+
+</button>
+
+<button
+class="filter-toggle-btn"
+onclick="toggleFilter()">
+
+🔽 絞り込み
+
+</button>
+
+<div
+id="filterArea"
+class="filter-box"
+style="display:none;">
+
+<p><strong>操作種類</strong></p>
+
+<label>
+    <input type="checkbox" id="filterRegister">
+    登録
+</label>
+
+<label>
+    <input type="checkbox" id="filterEdit">
+    編集
+</label>
+
+<label>
+    <input type="checkbox" id="filterDelete">
+    削除
+</label>
+
+<label>
+    <input type="checkbox" id="filterRestore">
+    復元
+</label>
+
+<br><br>
+
+<p><strong>変更内容</strong></p>
+
+<label>
+    <input type="checkbox" id="filterRam">
+    RAM
+</label>
+
+<label>
+    <input type="checkbox" id="filterRom">
+    ROM
+</label>
+
+<label>
+    <input type="checkbox" id="filterPrice">
+    価格
+</label>
+
+<label>
+    <input type="checkbox" id="filterBattery">
+    バッテリー
+</label>
+
+<br><br>
+
+<button
+class="search-btn"
+onclick="loadHistory()">
+
+🔍 絞り込み実行
+
+</button>
+
+<button onclick="resetFilter()">
+↺ リセット
+</button>
+
+<br><br>
+
+</div> 
+
+<button
+class="date-toggle-btn"
+onclick="toggleDateFilter()">
+
+📅 日付絞り込み
+
+</button>
+
+<div
+id="dateFilterArea"
+class="date-filter-box"
+style="display:none;">
+
+<p>開始日</p>
+<input type="date" id="startDate">
+
+<p>終了日</p>
+<input type="date" id="endDate">
+
+<button
+class="search-btn"
+onclick="loadHistory()">
+
+📅 日付検索
+
+</button>
+
+<button
+class="date-clear-btn"
+onclick="clearDateFilter()">
+
+🧹 日付クリア
+
+</button>
+
+</div> 
+    
+<button
+class="sort-btn"
+onclick="toggleSortOrder()">
+
+⬇️ 新しい順
+
+</button>
+    
+</div>  
+
+<div class="container">
+
+    <div id="historyList">
+        読み込み中...
+    </div>
+
+    <br>
+
+    <button
+        class="back-btn"
+        onclick="location.href='authority.html'">
+
+        ← 権限者画面へ戻る
+
+    </button>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const supabaseUrl =
+"https://butujlsbdxaiuxitfyty.supabase.co";
+
+const supabaseKey =
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1dHVqbHNiZHhhaXV4aXRmeXR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3MjI2OTUsImV4cCI6MjEwMzI5ODY5NX0.yDC6HpV6rQzeG88sVwDlLOPB1dC_I-r5ID1JXoTeCAU";
+
+const sb =
+window.supabase.createClient(
+    supabaseUrl,
+    supabaseKey
+);
+
+ let sortOrder = "new";
+
+ function toggleSortOrder(){
+
+    const btn =
+        document.querySelector(".sort-btn");
+
+    if(sortOrder === "new"){
+
+        sortOrder = "old";
+
+        btn.textContent =
+            "⬆️ 古い順";
+
+    }else{
+
+        sortOrder = "new";
+
+        btn.textContent =
+            "⬇️ 新しい順";
+
+    }
+
+    loadHistory();
+}
+
+   
+
+async function loadHistory(){
+
+    const historyList =
+        document.getElementById("historyList");
+
+   const startDate =
+    document.getElementById("startDate").value;
+
+const endDate =
+    document.getElementById("endDate").value;
+
+let query = sb
+    .from("History")
+    .select("*")
+    .order(
+        "created_at",
+        {
+            ascending:
+                sortOrder === "old"
+        }
+    );
+
+if(startDate){
+    query = query.gte(
+        "created_at",
+        startDate + "T00:00:00"
+    );
+}
+
+if(endDate){
+    query = query.lte(
+        "created_at",
+        endDate + "T23:59:59"
+    );
+}
+
+const { data, error } = await query;
+
+if(error){
+    alert(error.message);
+    return;
+}
+
+historyList.innerHTML = "";
+
+let filteredData =
+    data.filter(
+        item => item.action === "編集"
+    );
+
+    if(data.length === 0){
+
+        historyList.innerHTML =
+            "<h2>履歴はありません</h2>";
+
+        return;
+    }
+
+     const filterRam =
+    document.getElementById("filterRam").checked;
+
+const filterRom =
+    document.getElementById("filterRom").checked;
+
+const filterPrice =
+    document.getElementById("filterPrice").checked;
+
+const filterBattery =
+    document.getElementById("filterBattery").checked;
+
+    const detailFilters = [];
+
+if(filterRam) detailFilters.push("RAM");
+if(filterRom) detailFilters.push("ROM");
+if(filterPrice) detailFilters.push("価格");
+if(filterBattery) detailFilters.push("バッテリー");
+
+if(detailFilters.length > 0){
+
+    filteredData = filteredData.filter(item =>
+
+        item.detail &&
+        detailFilters.some(keyword =>
+            item.detail.includes(keyword)
+        )
+
+    );
+
+}
+    
+    filteredData.forEach(item => {
+
+        const date =
+        new Date(item.created_at)
+        .toLocaleString("ja-JP");
+
+        historyList.innerHTML += `
+
+
+        <div class="history-card">
+
+ <input
+type="checkbox"
+class="history-check"
+value="${item.id}">
+
+<div class="date">
+    ${date}
+</div>
+
+            <div class="action">
+                ${item.action}
+            </div>
+
+            <div class="model">
+                ${item.model}
+            </div>
+
+${item.detail ? `
+<div class="detail">
+    ${item.detail}
+</div>
+` : ""}
+
+
+        </div>
+
+        `;
+
+    });
+
+    document.getElementById("filterArea").style.display = "none";
+
+document.querySelector(".filter-toggle-btn")
+    .textContent = "🔽 絞り込み";
+
+document.getElementById("dateFilterArea").style.display = "none";
+
+document.querySelector(".date-toggle-btn")
+    .textContent = "📅 日付絞り込み";
+
+}
+
+loadHistory();
+
+async function deleteAllHistory(){
+
+    if(!confirm(
+        "本当に全履歴を削除しますか？\nこの操作は元に戻せません。"
+    )){
+        return;
+    }
+
+    const { error } = await sb
+        .from("History")
+        .delete()
+        .neq("id", 0);
+
+    if(error){
+        alert(error.message);
+        return;
+    }
+
+    alert("全履歴を削除しました");
+
+    loadHistory();
+}
+
+    async function deleteSelectedHistory(){
+
+    const checked = [
+        ...document.querySelectorAll(
+            ".history-check:checked"
+        )
+    ].map(x => Number(x.value));
+
+    if(checked.length === 0){
+        alert("履歴を選択してください");
+        return;
+    }
+
+    if(!confirm(
+        "選択した履歴を削除しますか？"
+    )){
+        return;
+    }
+
+    const { error } = await sb
+        .from("History")
+        .delete()
+        .in("id", checked);
+
+    if(error){
+        alert(error.message);
+        return;
+    }
+
+    alert("削除しました");
+
+    loadHistory();
+}
+
+function toggleDateFilter(){
+
+    const area =
+        document.getElementById("dateFilterArea");
+
+    const btn =
+        document.querySelector(".date-toggle-btn");
+
+    if(area.style.display === "none"){
+
+        area.style.display = "block";
+        btn.textContent = "📅 日付絞り込みを閉じる";
+
+    }else{
+
+        area.style.display = "none";
+        btn.textContent = "📅 日付絞り込み";
+
+    }
+}
+
+function toggleFilter(){
+
+    const area =
+        document.getElementById("filterArea");
+
+    const btn =
+        document.querySelector(".filter-toggle-btn");
+
+    if(area.style.display === "none"){
+
+        area.style.display = "block";
+        btn.textContent = "🔼 絞り込みを閉じる";
+
+    }else{
+
+        area.style.display = "none";
+        btn.textContent = "🔽 絞り込み";
+
+    }
+}
+
+function resetFilter(){
+
+    document.getElementById("filterRegister").checked = false;
+    document.getElementById("filterEdit").checked = false;
+    document.getElementById("filterDelete").checked = false;
+    document.getElementById("filterRestore").checked = false;
+
+    document.getElementById("filterRam").checked = false;
+    document.getElementById("filterRom").checked = false;
+    document.getElementById("filterPrice").checked = false;
+    document.getElementById("filterBattery").checked = false;
+
+    loadHistory();
+}
+
+function clearDateFilter(){
+
+    document.getElementById("startDate").value = "";
+    document.getElementById("endDate").value = "";
+
+    loadHistory();
+}    
+    
+</script>
+
+</body>
