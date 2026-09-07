@@ -398,18 +398,18 @@ let query =
     .select("*");
 
 if(selectedStore !== "all"){
-*    query =
+    query =
         query.eq(
-    *       "store_name",
-            s*lectedStore
+            "store_name",
+            selectedStore
         );
 
 }
 
-const {*data, error } =
-    await query.or*er(
+const { data, error } =
+    await query.order(
         "created_at",
-        * ascending:false }
+        { ascending:false }
     );
     
     if(error){
