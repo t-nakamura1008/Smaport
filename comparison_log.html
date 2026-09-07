@@ -1,3 +1,5 @@
+<title>比較ログ</title>
+
 <style>
 
 body{
@@ -313,6 +315,26 @@ tr:hover{
 
     </button>
 
+    <div style="margin:20px 0;">
+
+<select id="storeFilter"
+        onchange="loadLogs()">
+
+<option value="all">全店</option>
+
+<option value="イオンモール高の原">イオンモール高の原</option>
+<option value="葛城南">葛城南</option>
+<option value="北野白梅町">北野白梅町</option>
+<option value="西大寺">西大寺</option>
+<option value="桜井">桜井</option>
+<option value="天理">天理</option>
+<option value="桃谷">桃谷</option>
+<option value="大和高田">大和高田</option>
+
+</select>
+
+</div>
+
 </div>
 
 <div id="countArea"
@@ -328,6 +350,7 @@ style="display:none;">
         <thead>
     <tr>
         <th>比較日時</th>
+        <th>店舗</th>
         <th>比較機種①</th>
         <th>比較機種②</th>
         <th>スタッフ入力</th>
@@ -365,12 +388,30 @@ loadLogs();
 
 async function loadLogs(){
 
-    const { data, error } =
-        await sbClient
-        .from("ComparisonLog")
-        .select("*")
-        .order("created_at",{ascending:false});
+    const selectedStore =
+document.getElementById("storeFilter")?.value
+|| "all";
 
+let query =
+    sbClient
+    .from("ComparisonLog")
+    .select("*");
+
+if(selectedStore !== "all"){
+*    query =
+        query.eq(
+    *       "store_name",
+            s*lectedStore
+        );
+
+}
+
+const {*data, error } =
+    await query.or*er(
+        "created_at",
+        * ascending:false }
+    );
+    
     if(error){
 
     alert(error.message);
@@ -405,11 +446,25 @@ document.getElementById("countArea")
 
  const ranking = {};
 
+const threeMonthsAgo = new Date();
+
+threeMonthsAgo.setMonth(
+    threeMonthsAgo.getMonth() - 2
+);
+
 data.forEach(log => {
 
+    const logDate =
+        new Date(log.created_at);
+
     if(
+
+        logDate >= threeMonthsAgo &&
+
         log.status === "成約" &&
+
         log.result_phone
+
     ){
 
         ranking[log.result_phone] =
@@ -424,7 +479,7 @@ const rankingHtml =
 
     .sort((a,b) => b[1] - a[1])
 
-    .slice(0,5)
+    .slice(0,3)
 
     .map((item,index) => {
 
@@ -446,15 +501,40 @@ const rankingHtml =
 
     .join("");
 
+    const startMonth =
+threeMonthsAgo.toLocaleDateString(
+    "ja-JP",
+    {
+        year:"numeric",
+        month:"2-digit"
+    }
+);
+
+const endMonth =
+new Date().toLocaleDateString(
+    "ja-JP",
+    {
+        year:"numeric",
+        month:"2-digit"
+    }
+);
+
 document.getElementById("rankingArea")
 .innerHTML = `
 
-<h2>🏆 成約ランキング TOP3</h2>
+<h2>
+🏆 直近3か月 成約ランキング TOP3
+</h2>
+
+<div style="margin-bottom:15px;">
+対象期間：
+${startMonth} ～ ${endMonth}
+</div>
 
 ${rankingHtml}
 
 `;   
-
+  
 const table =
     document.getElementById("logTable");
 
@@ -470,6 +550,8 @@ const table =
 ${new Date(log.created_at)
     .toLocaleString("ja-JP")}
 </td>
+
+　　　　<td>${log.store_name ?? "-"}</td>
 
         <td>${log.phone1}</td>
 
