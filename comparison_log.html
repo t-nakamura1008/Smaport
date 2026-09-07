@@ -281,7 +281,40 @@ tr:hover{
 
     cursor:pointer;
 
+}   
+
+#storeFilter{
+
+    width:220px;
+
+    height:52px;
+
+    font-size:18px;
+
+    border:2px solid #38BDF8;
+
+    border-radius:12px;
+
+    padding:0 12px;
+
+    background:white;
+
 }    
+
+.button-area{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    flex-wrap:nowrap;
+
+    margin-bottom:20px;
+
+}
+``    
     
 </style>
 
@@ -294,12 +327,8 @@ tr:hover{
     <button
     class="menu-btn back-btn"
     onclick="location.href='authority.html'">
-
     ← 管理画面へ戻る
-
     </button>
-
-    <div class="filter-area">
 
     <button
     class="menu-btn count-btn"
@@ -313,15 +342,21 @@ tr:hover{
     🏆 ランキングを見る
     </button>
 
-    <select id="storeFilter"
-            onchange="loadLogs()">
+   <select id="storeFilter"
+        onchange="loadLogs()">
 
-        <option value="all">全店</option>
-        <option value="桜井">桜井</option>
-        <option value="天理">天理</option>
-        ...
+    <option value="all">全店</option>
 
-    </select>
+    <option value="イオンモール高の原">イオンモール高の原</option>
+    <option value="葛城南">葛城南</option>
+    <option value="北野白梅町">北野白梅町</option>
+    <option value="西大寺">西大寺</option>
+    <option value="桜井">桜井</option>
+    <option value="天理">天理</option>
+    <option value="桃谷">桃谷</option>
+    <option value="大和高田">大和高田</option>
+
+</select>
 
 </div>
 
