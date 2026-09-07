@@ -92,17 +92,19 @@ button{
 スマホ比較 × 接客支援ツール
 </p>    
 
-<p>🏪 店舗を選択してください</p>
+<select id="store" required>
+    <option value="" selected disabled>
+        店舗を選択してください
+    </option>
 
-<select id="store">
-<option>イオンモール高の原</option>
-<option>葛城南</option>
-<option>北野白梅町</option>
-<option>西大寺</option>
-<option>桜井</option>
-<option>天理</option>
-<option>桃谷</option>
-<option>大和高田</option>
+    <option>イオンモール高の原</option>
+    <option>葛城南</option>
+    <option>北野白梅町</option>
+    <option>西大寺</option>
+    <option>桜井</option>
+    <option>天理</option>
+    <option>桃谷</option>
+    <option>大和高田</option>
 </select>
 
 <button onclick="login()">ログイン</button>
