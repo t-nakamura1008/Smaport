@@ -285,55 +285,6 @@ function logout(){
 
 }
 
-checkUnsavedComparison();
-
-async function checkUnsavedComparison(){
-
-    const unsaved =
-        localStorage.getItem(
-            "unsavedComparison"
-        );
-
-    if(unsaved !== "true"){
-        return;
-    }
-
-    const comparison =
-        JSON.parse(
-            localStorage.getItem(
-                "latestComparison"
-            )
-        );
-
-    if(!comparison){
-        return;
-    }
-
-    const { error } =
-        await sbClient
-        .from("ComparisonLog")
-        .insert([{
-
-            phone1: comparison.phone1,
-            plan1: comparison.plan1,
-
-            phone2: comparison.phone2,
-            plan2: comparison.plan2,
-
-            status:"検討中"
-
-        }]);
-
-    if(!error){
-
-        localStorage.removeItem(
-            "unsavedComparison"
-        );
-
-    }
-
-}
-
 </script>
 
 </body>
