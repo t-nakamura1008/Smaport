@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>機種比較ツール</title>
+
+<style>
+body{
+    font-family:sans-serif;
+    background:#fff8f0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 0 15px rgba(0,0,0,0.1);
+    width:350px;
+    text-align:center;
+    border-top:8px solid #c62828;
+}
+
+h1{
+    color:#6d4c41;
+}
+
+select,button{
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+    border-radius:8px;
+}
+
+button{
+    background:#c62828;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📱 機種比較ツール</h1>
+
+<p>🏪 店舗を選択してください</p>
+
+<select id="store">
+<option>イオンモール高の原</option>
+<option>葛城南</option>
+<option>北野白梅町</option>
+<option>西大寺</option>
+<option>桜井</option>
+<option>天理</option>
+<option>桃谷</option>
+<option>大和高田</option>
+</select>
+
+<button onclick="login()">ログイン</button>
+
+</div>
+
+<script>
+function login(){
+    const store=document.getElementById("store").value;
+    localStorage.setItem("store",store);
+    location.href="index.html";
+}
+</script>
+
+</body>
+</html>
