@@ -983,6 +983,9 @@ async function saveComparisonLog(){
     .from("ComparisonLog")
     .insert([{
 
+        store_name:
+localStorage.getItem("store"),
+
         phone1: comparison.phone1,
         plan1: comparison.plan1,
 
