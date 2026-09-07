@@ -299,41 +299,29 @@ tr:hover{
 
     </button>
 
+    <div class="filter-area">
+
     <button
     class="menu-btn count-btn"
     onclick="toggleCount()">
-
     📊 件数を見る
-
     </button>
 
     <button
     class="menu-btn rank-btn"
     onclick="toggleRanking()">
-
     🏆 ランキングを見る
-
     </button>
 
-    <div style="margin:20px 0;">
+    <select id="storeFilter"
+            onchange="loadLogs()">
 
-<select id="storeFilter"
-        onchange="loadLogs()">
+        <option value="all">全店</option>
+        <option value="桜井">桜井</option>
+        <option value="天理">天理</option>
+        ...
 
-<option value="all">全店</option>
-
-<option value="イオンモール高の原">イオンモール高の原</option>
-<option value="葛城南">葛城南</option>
-<option value="北野白梅町">北野白梅町</option>
-<option value="西大寺">西大寺</option>
-<option value="桜井">桜井</option>
-<option value="天理">天理</option>
-<option value="桃谷">桃谷</option>
-<option value="大和高田">大和高田</option>
-
-</select>
-
-</div>
+    </select>
 
 </div>
 
