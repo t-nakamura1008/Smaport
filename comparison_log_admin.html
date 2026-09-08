@@ -1,0 +1,660 @@
+<title>比較ログ</title>
+
+<style>
+
+body{
+    font-family:Yu Gothic,sans-serif;
+    background:#EFF6FF;
+    margin:0;
+}
+
+header{
+    background:#38BDF8;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:30px;
+}
+
+h1{
+    margin:0;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+th{
+    background:#38BDF8;
+    color:white;
+    padding:15px;
+    font-size:18px;
+}
+
+td{
+    padding:15px;
+    text-align:center;
+    border-bottom:1px solid #E5E7EB;
+}
+
+tr:hover{
+    background:#F0F9FF;
+}
+
+.back-btn{
+
+    background:#38BDF8;
+    color:white;
+
+    border:none;
+
+    padding:12px 20px;
+
+    border-radius:12px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-bottom:20px;
+}
+
+.back-btn:hover{
+
+    background:#0EA5E9;
+
+}
+
+.contract-btn{
+
+    background:#06B6D4;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 15px;
+
+    border-radius:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+
+.contract-btn:hover{
+
+    background:#0891B2;
+
+}
+
+.complete{
+
+    color:#10B981;
+    font-weight:bold;
+
+}
+
+.pending{
+
+    color:#F59E0B;
+    font-weight:bold;
+
+}
+
+.back-btn{
+
+    background:#8B5CF6;
+    color:white;
+
+    border:none;
+
+    padding:12px 20px;
+
+    border-radius:12px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-bottom:20px;
+}
+
+.back-btn:hover{
+
+    background:#7C3AED;
+
+}  
+
+.contract-btn{
+
+    background:#06B6D4;
+    color:white;
+
+    border:none;
+
+    padding:10px 15px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+}
+
+.contract-btn:hover{
+
+    background:#0891B2;
+
+}    
+
+.delete-btn{
+
+    background:#EF4444;
+    color:white;
+
+    border:none;
+
+    padding:8px 12px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+}
+
+.delete-btn:hover{
+
+    background:#DC2626;
+
+}    
+
+#countArea{
+
+    display:none;
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:15px;
+
+    margin-bottom:20px;
+
+    text-align:center;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    color:#0EA5E9;
+
+}
+
+#rankingArea{
+
+    display:none;
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    margin-bottom:20px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+    text-align:center;
+
+}
+
+#rankingArea h2{
+
+    color:#0EA5E9;
+
+    margin-top:0;
+
+}    
+
+.count-btn{
+
+    background:#9CA3AF;
+    color:white;
+
+}
+
+.count-btn:hover{
+
+    background:#6B7280;
+
+}    
+
+.rank-btn{
+
+    background:#F59E0B;
+    color:white;
+
+}
+
+.rank-btn:hover{
+
+    background:#D97706;
+
+}
+
+.button-area button{
+
+    flex:none;
+
+    width:280px;
+
+}
+
+.menu-btn{
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:15px;
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}   
+
+#storeFilter{
+
+    height:50px;
+
+    min-width:220px;
+
+    font-size:18px;
+
+    border:2px solid #38BDF8;
+
+    border-radius:12px;
+
+    padding:0 15px;
+
+    background:white;
+
+    box-sizing:border-box;
+
+}
+
+.button-area{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    flex-wrap:nowrap;
+
+    margin-bottom:20px;
+
+}
+``    
+    
+</style>
+
+<header>
+    <h1>📊 比較ログ</h1>
+</header>
+
+<div class="button-area">
+
+    <button
+    class="menu-btn back-btn"
+    onclick="location.href='dashboard.html'">
+    ← 管理画面へ戻る
+    </button>
+
+    <button
+    class="menu-btn count-btn"
+    onclick="toggleCount()">
+    📊 件数を見る
+    </button>
+
+    <button
+    class="menu-btn rank-btn"
+    onclick="toggleRanking()">
+    🏆 ランキングを見る
+    </button>
+
+   <select id="storeFilter"
+        onchange="loadLogs()">
+
+    <option value="all">全店</option>
+
+    <option value="イオンモール高の原">イオンモール高の原</option>
+    <option value="葛城南">葛城南</option>
+    <option value="北野白梅町">北野白梅町</option>
+    <option value="西大寺">西大寺</option>
+    <option value="桜井">桜井</option>
+    <option value="天理">天理</option>
+    <option value="桃谷">桃谷</option>
+    <option value="大和高田">大和高田</option>
+
+</select>
+
+</div>
+
+<div id="countArea"
+style="display:none;">
+</div>
+
+<div id="rankingArea"
+style="display:none;">
+</div>
+
+<table>
+
+        <thead>
+    <tr>
+        <th>比較日時</th>
+        <th>店舗</th>
+        <th>比較機種①</th>
+        <th>比較機種②</th>
+        <th>スタッフ入力</th>
+        <th>状態</th>
+        <th>成約機種</th>
+        <th>削除</th>
+    </tr>
+</thead>
+
+        <tbody id="logTable">
+        </tbody>
+
+    </table>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const supabaseUrl =
+"https://butujlsbdxaiuxitfyty.supabase.co";
+  
+const supabaseKey =
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1dHVqbHNiZHhhaXV4aXRmeXR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3MjI2OTUsImV4cCI6MjEwMzI5ODY5NX0.yDC6HpV6rQzeG88sVwDlLOPB1dC_I-r5ID1JXoTeCAU";
+
+const sbClient =
+window.supabase.createClient(
+    supabaseUrl,
+    supabaseKey
+);
+
+loadLogs();
+
+async function loadLogs(){
+
+    const selectedStore =
+document.getElementById("storeFilter")?.value
+|| "all";
+
+let query =
+    sbClient
+    .from("ComparisonLog")
+    .select("*");
+
+if(selectedStore !== "all"){
+    query =
+        query.eq(
+            "store_name",
+            selectedStore
+        );
+
+}
+
+const { data, error } =
+    await query.order(
+        "created_at",
+        { ascending:false }
+    );
+    
+    if(error){
+
+    alert(error.message);
+    return;
+
+}
+
+const contractCount =
+    data.filter(
+        log => log.status === "成約"
+    ).length;
+
+const rate =
+    data.length > 0
+    ? ((contractCount / data.length) * 100).toFixed(1)
+    : 0;
+    
+document.getElementById("countArea")
+.innerHTML = `
+
+現在の比較件数：${data.length}件
+
+<br>
+
+成約件数：${contractCount}件
+
+<br>
+
+成約率：${rate}%
+
+`;
+
+ const ranking = {};
+
+const threeMonthsAgo = new Date();
+
+threeMonthsAgo.setMonth(
+    threeMonthsAgo.getMonth() - 2
+);
+
+data.forEach(log => {
+
+    const logDate =
+        new Date(log.created_at);
+
+    if(
+
+        logDate >= threeMonthsAgo &&
+
+        log.status === "成約" &&
+
+        log.result_phone
+
+    ){
+
+        ranking[log.result_phone] =
+            (ranking[log.result_phone] || 0) + 1;
+
+    }
+
+});
+
+const rankingHtml =
+    Object.entries(ranking)
+
+    .sort((a,b) => b[1] - a[1])
+
+    .slice(0,3)
+
+    .map((item,index) => {
+
+        const medal =
+            index === 0 ? "🥇" :
+            index === 1 ? "🥈" :
+            index === 2 ? "🥉" :
+            "🏅";
+
+        return `
+            <div>
+                ${medal}
+                ${item[0]}
+                （${item[1]}件）
+            </div>
+        `;
+
+    })
+
+    .join("");
+
+    const startMonth =
+threeMonthsAgo.toLocaleDateString(
+    "ja-JP",
+    {
+        year:"numeric",
+        month:"2-digit"
+    }
+);
+
+const endMonth =
+new Date().toLocaleDateString(
+    "ja-JP",
+    {
+        year:"numeric",
+        month:"2-digit"
+    }
+);
+
+document.getElementById("rankingArea")
+.innerHTML = `
+
+<h2>
+🏆 直近3か月 成約ランキング TOP3
+</h2>
+
+<div style="margin-bottom:15px;">
+対象期間：
+${startMonth} ～ ${endMonth}
+</div>
+
+${rankingHtml}
+
+`;   
+  
+const table =
+    document.getElementById("logTable");
+
+    table.innerHTML = "";
+
+    data.forEach(log => {
+
+    table.innerHTML += `
+
+    <tr>
+
+　　　　<td>
+${new Date(log.created_at)
+    .toLocaleString("ja-JP")}
+</td>
+
+　　　　<td>${log.store_name ?? "-"}</td>
+
+        <td>${log.phone1}</td>
+
+        <td>${log.phone2}</td>
+
+        <td>${log.staff_decision ?? "-"}</td>
+
+        <td>${log.status}</td>
+
+        <td>${log.result_phone ?? "-"}</td>
+
+    <td>
+    <button
+        class="delete-btn"
+        onclick="deleteLog(${log.id})">
+
+        🗑削除
+
+    </button>
+
+</td>
+
+    </tr>
+
+    `;
+
+});
+
+}
+   
+
+  async function deleteLog(id){
+
+    if(
+        !confirm("このログを削除しますか？")
+    ){
+        return;
+    }
+
+    const { error } =
+        await sbClient
+        .from("ComparisonLog")
+        .delete()
+        .eq("id",id);
+
+    if(error){
+
+        alert(error.message);
+        return;
+
+    }
+
+    loadLogs();
+
+}  
+
+function toggleCount(){
+
+    const area =
+        document.getElementById("countArea");
+
+    area.style.display =
+        area.style.display === "none"
+        ? "block"
+        : "none";
+
+}
+
+function toggleRanking(){
+
+    const area =
+        document.getElementById("rankingArea");
+
+    area.style.display =
+        area.style.display === "none"
+        ? "block"
+        : "none";
+
+}    
+
+</script>
