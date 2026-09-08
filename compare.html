@@ -995,13 +995,8 @@ localStorage.getItem("store"),
         staff_decision:
             comparison.staffDecision,
 
-        status:
-    (
-        comparison.staffDecision === "①購入" ||
-        comparison.staffDecision === "②購入"
-    )
-    ? "成約",
-
+    status: "成約",
+        
 result_phone:
     comparison.staffDecision === "①購入"
         ? comparison.phone1
