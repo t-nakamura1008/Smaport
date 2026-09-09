@@ -438,9 +438,13 @@ async function loadPhones(){
 
     }
 
-    console.log(data);
+window.phones = data;
 
-}
+console.log(data);
+
+ console.log(data[0]);   
+
+}   
 
 loadPhones();
 
