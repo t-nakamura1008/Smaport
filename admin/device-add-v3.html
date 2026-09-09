@@ -168,6 +168,16 @@ rows="4"></textarea>
 
 async function savePhone() {
 
+    const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const count =
+    Number(
+        params.get("count")
+    ) || 1;
+
     const data = {
     maker: document.getElementById("maker").value,
     model: document.getElementById("model").value,
@@ -210,21 +220,31 @@ const supabase = window.supabase.createClient(
     supabaseKey
 );
 
+const copies = [];
+
+for(let i = 0; i < count; i++){
+
+    copies.push({
+        ...data
+    });
+
+}
+
 const { error } = await supabase
     .from("Phones")
-    .insert([data]);
+    .insert(copies);
 
 if(error){
     alert("登録失敗: " + error.message);
 }else{
 
     await supabase
-        .from("History")
-        .insert([{
-            action: "登録",
-            model: data.model
-        }]);
-
+    .from("History")
+    .insert([{
+        action: `複製(${count}台)`,
+        model: data.model
+    }]);
+    
     alert("登録成功！");
 }
     
