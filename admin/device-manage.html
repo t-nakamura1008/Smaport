@@ -266,6 +266,10 @@ h2{
 
     margin-bottom:10px;
 
+}
+
+.タブレット{
+    background:#C7D2FE;
 }    
     
 </style>
@@ -298,6 +302,8 @@ h2{
     <option value="SHARP">SHARP</option>
 
     <option value="FCNT">FCNT</option>
+
+    <option value="タブレット">タブレット</option>
 
 </select>
 
@@ -669,7 +675,10 @@ async function showCount(){
     const fcnt =
         data.filter(x => x.maker === "FCNT").length;
 
-    alert(
+    const tablet =
+    data.filter(x => x.maker === "タブレット").length;
+
+   alert(
 `📱 全機種：${data.length}件
 
 🍎 Apple：${apple}件
@@ -677,8 +686,9 @@ async function showCount(){
 📱 Samsung：${samsung}件
 🎵 SONY：${sony}件
 📺 SHARP：${sharp}件
-📞 FCNT：${fcnt}件`
-    );
+📞 FCNT：${fcnt}件
+💻 タブレット：${tablet}件`
+);
 }
 
 
