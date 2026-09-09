@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>複数編集</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:"Yu Gothic",sans-serif;
+    background:#111827;
+    color:white;
+}
+
+header{
+    background:#F97316;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+.container{
+    max-width:1600px;
+    margin:30px auto;
+    padding:20px;
+}
+
+.card{
+    background:#1F2937;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.3);
+}
+
+h1{
+    margin:0;
+}
+
+.info{
+
+    font-size:18px;
+
+    margin-bottom:20px;
+
+    color:#FDBA74;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    background:#1F2937;
+
+    overflow:hidden;
+
+}
+
+th{
+
+    background:#F97316;
+
+    color:white;
+
+    padding:15px;
+
+}
+
+td{
+
+    padding:10px;
+
+    border-bottom:1px solid #374151;
+
+}
+
+td:first-child{
+
+    font-weight:bold;
+
+    width:180px;
+
+    background:#111827;
+
+}
+
+input,
+textarea{
+
+    width:100%;
+
+    box-sizing:border-box;
+
+    padding:10px;
+
+    background:#111827;
+
+    border:1px solid #374151;
+
+    color:white;
+
+    border-radius:8px;
+
+}
+
+textarea{
+
+    resize:vertical;
+
+}
+
+.button-area{
+
+    margin-top:25px;
+
+    display:flex;
+
+    gap:15px;
+
+}
+
+.save-btn{
+
+    background:#F97316;
+
+    color:white;
+
+    border:none;
+
+    padding:14px 24px;
+
+    border-radius:12px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+
+.save-btn:hover{
+
+    background:#EA580C;
+
+}
+
+.back-btn{
+
+    background:#FACC15;
+
+    color:#111827;
+
+    border:none;
+
+    padding:14px 24px;
+
+    border-radius:12px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+
+.back-btn:hover{
+
+    background:#EAB308;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>📝 複数機種編集</h1>
+
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<div
+class="info"
+id="selectedCount">
+
+読み込み中...
+
+</div>
+
+<table>
+
+<tr>
+
+<th>項目</th>
+
+<th>機種①</th>
+
+<th>機種②</th>
+
+<th>機種③</th>
+
+<th>機種④</th>
+
+</tr>
+
+<tr>
+
+<td>機種名</td>
+
+<td><input></td>
+<td><input></td>
+<td><input></td>
+<td><input></td>
+
+</tr>
+
+<tr>
+
+<td>発売日</td>
+
+<td><input></td>
+<td><input></td>
+<td><input></td>
+<td><input></td>
+
+</tr>
+
+<tr>
+
+<td>カラー</td>
+
+<td><input></td>
+<td><input></td>
+<td><input></td>
+<td><input></td>
+
+</tr>
+
+<tr>
+
+<td>ディスプレイ</td>
+
+<td><input></td>
+<td><input></td>
+<td><input></td>
+<td><input></td>
+
+</tr>
+
+<tr>
+
+<td>RAM</td>
+
+<td><input></td>
+<td><input></td>
+<td><input></td>
+<td><input></td>
+
+</tr>
+
+<tr>
+
+<td>ROM</td>
+
+<td><input></td>
+<td><input></td>
+<td><input></td>
+<td><input></td>
+
+</tr>
+
+<tr>
+
+<td>バッテリー</td>
+
+<td><input></td>
+<td><input></td>
+<td><input></td>
+<td><input></td>
+
+</tr>
+
+<tr>
+
+<td>カメラ</td>
+
+<td><input></td>
+<td><input></td>
+<td><input></td>
+<td><input></td>
+
+</tr>
+
+<tr>
+
+<td>一括価格</td>
+
+<td><input></td>
+<td><input></td>
+<td><input></td>
+<td><input></td>
+
+</tr>
+
+<tr>
+
+<td>MNP価格</td>
+
+<td><input></td>
+<td><input></td>
+<td><input></td>
+<td><input></td>
+
+</tr>
+
+<tr>
+
+<td>新規価格</td>
+
+<td><input></td>
+<td><input></td>
+<td><input></td>
+<td><input></td>
+
+</tr>
+
+<tr>
+
+<td>ポイ活価格</td>
+
+<td><input></td>
+<td><input></td>
+<td><input></td>
+<td><input></td>
+
+</tr>
+
+<tr>
+
+<td>ケータイ補償</td>
+
+<td><input></td>
+<td><input></td>
+<td><input></td>
+<td><input></td>
+
+</tr>
+
+<tr>
+
+<td>おすすめ</td>
+
+<td><textarea rows="4"></textarea></td>
+<td><textarea rows="4"></textarea></td>
+<td><textarea rows="4"></textarea></td>
+<td><textarea rows="4"></textarea></td>
+
+</tr>
+
+</table>
+
+<div class="button-area">
+
+<button
+class="save-btn">
+
+💾 一括保存
+
+</button>
+
+<button
+class="back-btn"
+onclick="location.href='device-manage.html'">
+
+← 一覧へ戻る
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>  
+
+<script>
+
+const ids =
+JSON.parse(
+    localStorage.getItem(
+        "multiEditIds"
+    )
+);
+
+document.getElementById(
+    "selectedCount"
+).innerHTML =
+
+`選択中：${ids.length}機種`;
+
+const supabaseUrl =
+"https://butujlsbdxaiuxitfyty.supabase.co";
+
+const supabaseKey =
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1dHVqbHNiZHhhaXV4aXRmeXR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3MjI2OTUsImV4cCI6MjEwMzI5ODY5NX0.yDC6HpV6rQzeG88sVwDlLOPB1dC_I-r5ID1JXoTeCAU";
+
+const sb =
+window.supabase.createClient(
+    supabaseUrl,
+    supabaseKey
+);
+
+async function loadPhones(){
+
+    const { data, error } =
+        await sb
+        .from("Phones")
+        .select("*")
+        .in("id", ids);
+
+    if(error){
+
+        alert(error.message);
+        return;
+
+    }
+
+    console.log(data);
+
+}
+
+loadPhones();
+
+</script>
+
+</body>
+</html>  
