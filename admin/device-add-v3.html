@@ -238,10 +238,14 @@ if(error){
     alert("登録失敗: " + error.message);
 }else{
 
-    await supabase
+  await supabase
     .from("History")
     .insert([{
-        action: `複製(${count}台)`,
+        action:
+            count > 1
+            ? `複製(${count}台)`
+            : "登録",
+
         model: data.model
     }]);
     
