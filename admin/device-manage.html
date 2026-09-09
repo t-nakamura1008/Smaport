@@ -236,6 +236,37 @@ h2{
     font-weight:bold;
 
 }
+
+.multi-btn{
+
+    background:#F97316;
+    color:white;
+
+    border:none;
+
+    padding:10px 15px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+}
+
+.multi-btn:hover{
+
+    background:#EA580C;
+
+}
+
+.multi-check{
+
+    transform:scale(1.5);
+
+    margin-bottom:10px;
+
+}    
     
 </style>
 
@@ -303,6 +334,10 @@ onclick="location.href='/Smaport/edit-history.html'">
 🌸 編集履歴
 
 </button>
+
+<button class="multi-btn" onclick="multiEdit()">
+📝 複数編集
+</button>    
 
 </div>      
 
@@ -403,6 +438,12 @@ async function loadPhones(){
 
    phoneList.innerHTML += `
 <div class="device ${phone.maker}">
+
+    <input
+        type="checkbox"
+        class="multi-check"
+        value="${phone.id}">
+
 
     <div class="maker">
         ${phone.maker}
@@ -606,7 +647,55 @@ async function showCount(){
 📞 FCNT：${fcnt}件`
     );
 }
- 
+
+
+function multiEdit(){
+
+    const ids =
+
+        Array.from(
+            document.querySelectorAll(
+                ".multi-check:checked"
+            )
+        )
+
+        .map(x => Number(x.value));
+
+    if(ids.length < 2){
+
+        alert(
+            "2〜4台選択してください"
+        );
+
+        return;
+
+    }
+
+    if(ids.length > 4){
+
+        alert(
+            "4台まで選択できます"
+        );
+
+        return;
+
+    }
+
+    localStorage.setItem(
+        "multiEditIds",
+        JSON.stringify(ids)
+    );
+
+    location.href =
+        "multi-edit.html";
+
+}    
+
+function multiEdit(){
+
+    alert("複数編集ボタン成功");
+
+}    
  
 </script>
     
