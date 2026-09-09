@@ -587,13 +587,30 @@ window.deletePhone = async function(id){
         return;
     }
 
+    const num = Number(count);
+
+    if(
+        isNaN(num) ||
+        num < 1 ||
+        num > 4
+    ){
+
+        alert(
+            "1～4を入力してください"
+        );
+
+        return;
+
+    }
+
     location.href =
         "device-add-v3.html?copy=" +
         id +
         "&count=" +
-        count;
+        num;
 
 }
+    
 function toggleSortOrder(){
 
     const btn =
