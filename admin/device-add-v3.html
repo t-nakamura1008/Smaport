@@ -238,6 +238,11 @@ const params =
 
     const id = params.get("copy");
 
+ const count =
+    Number(
+        params.get("count")
+    ) || 1;   
+
 if(!id) return;
 
 
