@@ -577,11 +577,23 @@ window.deletePhone = async function(id){
 
     function copyPhone(id){
 
+    const count =
+        prompt(
+            "何台複製しますか？（1～4）",
+            "1"
+        );
+
+    if(count === null){
+        return;
+    }
+
     location.href =
-        "device-add-v3.html?copy=" + id;
+        "device-add-v3.html?copy=" +
+        id +
+        "&count=" +
+        count;
 
 }
-
 function toggleSortOrder(){
 
     const btn =
