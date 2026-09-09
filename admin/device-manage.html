@@ -693,9 +693,18 @@ function multiEdit(){
 
 function multiEdit(){
 
-    alert("複数編集ボタン成功");
+    const ids =
+        Array.from(
+            document.querySelectorAll(
+                ".multi-check:checked"
+            )
+        );
 
-}    
+    alert(
+        "選択数：" + ids.length
+    );
+
+}
  
 </script>
     
