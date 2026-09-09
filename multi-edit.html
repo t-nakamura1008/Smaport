@@ -438,7 +438,8 @@ id="selectedCount">
 <div class="button-area">
 
 <button
-class="save-btn">
+class="save-btn"
+onclick="saveAll()">
 
 💾 一括保存
 
@@ -801,6 +802,192 @@ document.getElementById("monthlyPoi2447_4").value =
 }   
 
 loadPhones();
+
+async function saveAll(){
+
+    const updates = [];
+
+    for(let i = 0; i < ids.length; i++){
+
+        updates.push(
+
+            sb
+            .from("Phones")
+            .update({
+
+                model:
+                    document.getElementById(
+                        `model${i+1}`
+                    ).value,
+
+                release_date:
+                    document.getElementById(
+                        `release${i+1}`
+                    ).value,
+
+                color:
+                    document.getElementById(
+                        `color${i+1}`
+                    ).value,
+
+                image_url:
+                    document.getElementById(
+                        `image${i+1}`
+                    ).value,
+
+                display_size:
+                    document.getElementById(
+                        `display${i+1}`
+                    ).value,
+
+                ram:
+                    document.getElementById(
+                        `ram${i+1}`
+                    ).value,
+
+                rom:
+                    document.getElementById(
+                        `rom${i+1}`
+                    ).value,
+
+                battery:
+                    document.getElementById(
+                        `battery${i+1}`
+                    ).value,
+
+                camera:
+                    document.getElementById(
+                        `camera${i+1}`
+                    ).value,
+
+                price:
+                    document.getElementById(
+                        `price${i+1}`
+                    ).value,
+
+                monthly_1_23:
+                    document.getElementById(
+                        `monthly123_${i+1}`
+                    ).value,
+
+                total_23months:
+                    document.getElementById(
+                        `total23_${i+1}`
+                    ).value,
+
+                monthly_24_47:
+                    document.getElementById(
+                        `monthly2447_${i+1}`
+                    ).value,
+
+                price_mnp:
+                    document.getElementById(
+                        `priceMnp${i+1}`
+                    ).value,
+
+                monthly_1_23_mnp:
+                    document.getElementById(
+                        `monthlyMnp123_${i+1}`
+                    ).value,
+
+                total_23months_mnp:
+                    document.getElementById(
+                        `totalMnp23_${i+1}`
+                    ).value,
+
+                monthly_24_47_mnp:
+                    document.getElementById(
+                        `monthlyMnp2447_${i+1}`
+                    ).value,
+
+                price_new:
+                    document.getElementById(
+                        `priceNew${i+1}`
+                    ).value,
+
+                monthly_1_23_new:
+                    document.getElementById(
+                        `monthlyNew123_${i+1}`
+                    ).value,
+
+                total_23months_new:
+                    document.getElementById(
+                        `totalNew23_${i+1}`
+                    ).value,
+
+                monthly_24_47_new:
+                    document.getElementById(
+                        `monthlyNew2447_${i+1}`
+                    ).value,
+
+                price_poikatsu:
+                    document.getElementById(
+                        `pricePoi${i+1}`
+                    ).value,
+
+                monthly_1_23_poikatsu:
+                    document.getElementById(
+                        `monthlyPoi123_${i+1}`
+                    ).value,
+
+                total_23months_poikatsu:
+                    document.getElementById(
+                        `totalPoi23_${i+1}`
+                    ).value,
+
+                monthly_24_47_poikatsu:
+                    document.getElementById(
+                        `monthlyPoi2447_${i+1}`
+                    ).value,
+
+                keitai_hosho:
+                    document.getElementById(
+                        `hosho${i+1}`
+                    ).value,
+
+                recommend:
+                    document.getElementById(
+                        `recommend${i+1}`
+                    ).value
+
+            })
+            .eq(
+                "id",
+                ids[i]
+            )
+
+        );
+
+    }
+
+    const results =
+        await Promise.all(updates);
+
+    const error =
+        results.find(
+            x => x.error
+        );
+
+    if(error){
+
+        alert(
+            "保存失敗：" +
+            error.error.message
+        );
+
+        return;
+
+    }
+
+    alert(
+        "保存完了！"
+    );
+
+    location.href =
+        "/admin/device-manage.html";
+
+}    
+            
 
 </script>
 
