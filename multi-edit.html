@@ -232,10 +232,10 @@ id="selectedCount">
 
 <td>発売日</td>
 
-<td><input></td>
-<td><input></td>
-<td><input></td>
-<td><input></td>
+<td><input id="release1"></td>
+<td><input id="release2"></td>
+<td><input id="release3"></td>
+<td><input id="release4"></td>
 
 </tr>
 
@@ -457,6 +457,19 @@ document.getElementById("model3").value =
 
 document.getElementById("model4").value =
     data[3]?.model || "";   
+
+document.getElementById("release1").value =
+    data[0]?.release_date || "";
+
+document.getElementById("release2").value =
+    data[1]?.release_date || "";
+
+document.getElementById("release3").value =
+    data[2]?.release_date || "";
+
+document.getElementById("release4").value =
+    data[3]?.release_date || "";
+``    
 
 }   
 
