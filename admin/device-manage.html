@@ -698,11 +698,36 @@ function multiEdit(){
             document.querySelectorAll(
                 ".multi-check:checked"
             )
+        )
+        .map(x => Number(x.value));
+
+    if(ids.length < 2){
+
+        alert(
+            "2台以上選択してください"
         );
 
-    alert(
-        "選択数：" + ids.length
+        return;
+
+    }
+
+    if(ids.length > 4){
+
+        alert(
+            "4台まで選択できます"
+        );
+
+        return;
+
+    }
+
+    localStorage.setItem(
+        "multiEditIds",
+        JSON.stringify(ids)
     );
+
+    location.href =
+        "multi-edit.html";
 
 }
  
