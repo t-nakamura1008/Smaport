@@ -217,12 +217,14 @@ id="selectedCount">
 
 <tr>
 
+<tr>
+
 <td>機種名</td>
 
-<td><input></td>
-<td><input></td>
-<td><input></td>
-<td><input></td>
+<td><input id="model1"></td>
+<td><input id="model2"></td>
+<td><input id="model3"></td>
+<td><input id="model4"></td>
 
 </tr>
 
@@ -443,6 +445,18 @@ window.phones = data;
 console.log(data);
 
  console.log(data[0]);   
+
+ document.getElementById("model1").value =
+    data[0]?.model || "";
+
+document.getElementById("model2").value =
+    data[1]?.model || "";
+
+document.getElementById("model3").value =
+    data[2]?.model || "";
+
+document.getElementById("model4").value =
+    data[3]?.model || "";   
 
 }   
 
