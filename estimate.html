@@ -101,26 +101,38 @@ h1{
 }
 
 .title-card{
-  background:linear-gradient(135deg,#2563eb,#60a5fa);
+  background:linear-gradient(
+    135deg,
+    #d6001c,
+    #ff4d4f
+  );
+
   color:white;
-  padding:25px;
+
+  padding:35px;
+
   border-radius:20px;
+
   margin-bottom:25px;
 
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-
   text-align:center;
+
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
 }
 
 .title-card h1{
-  color:#d6001c;
+  color:white;
   margin:0;
   font-size:38px;
 }
 
+.compare-grid h3{
+  background:#f3f4f6;
+  padding:10px;
+  border-radius:8px;
+  text-align:center;
+  margin-bottom:15px;
+}  
 
 </style>
 
@@ -335,183 +347,479 @@ h1{
 
   <h2>🎬 映像・エンタメ</h2>
 
-  <label><input type="checkbox"> Leminoプレミアム（1,540円）</label>
+  <div class="compare-grid">
 
-  <label><input type="checkbox"> dアニメストア（660円）</label>
+    <!-- 現在加入 -->
+    <div>
 
-  <label><input type="checkbox"> NBA docomo（2,728円）</label>
+      <h3>📱 現在加入</h3>
 
-  <label><input type="checkbox"> DAZN（4,200円）</label>
+     <label>
+  <input type="checkbox" id="currentLemino">
+  Leminoプレミアム（1,540円）
+</label>
 
-  <label><input type="checkbox"> YouTube Premium（1,280円）</label>
+<label>
+  <input type="checkbox" id="currentDAnime">
+  dアニメストア（660円）
+</label>
 
-  <label><input type="checkbox"> Amazon Prime（600円）</label>
+<label>
+  <input type="checkbox" id="currentNBA">
+  NBA docomo（2,728円）
+</label>
 
-  <label><input type="checkbox"> Spotify Premium（1,080円）</label>
+<label>
+  <input type="checkbox" id="currentDAZN">
+  DAZN（4,200円）
+</label>
 
-  <label><input type="checkbox"> ジャンプ＋定期購読（980円）</label>
+<label>
+  <input type="checkbox" id="currentYoutube">
+  YouTube Premium（1,280円）
+</label>
 
-  <hr>
+<label>
+  <input type="checkbox" id="currentAmazonPrime">
+  Amazon Prime（600円）
+</label>
 
-  <label>Disney+</label>
-  <select>
-    <option>なし</option>
-    <option>スタンダード（1,250円）</option>
-    <option>プレミアム（1,670円）</option>
-  </select>
+<label>
+  <input type="checkbox" id="currentSpotify">
+  Spotify Premium（1,080円）
+</label>
 
-  <label>Netflix</label>
+<label>
+  <input type="checkbox" id="currentJump">
+  ジャンプ＋定期購読（980円）
+</label>
 
-<select>
+      <hr>
 
-<option>なし</option>
-
-<option>広告付きスタンダード（890円）</option>
-
-<option>スタンダード（1,590円）</option>
-
-<option>プレミアム（2,290円）</option>
-
+     <label>Disney+</label>
+<select id="currentDisney">
+  <option>なし</option>
+  <option>スタンダード（1,250円）</option>
+  <option>プレミアム（1,670円）</option>
 </select>
 
-<label>
-<input type="checkbox">
-dフォト（594円）
-</label>
- 
-<label>
-<input type="checkbox">
-dヘルスケア（440円）
+<label>Netflix</label>
+<select id="currentNetflix">
+  <option>なし</option>
+  <option>広告付きスタンダード（890円）</option>
+  <option>スタンダード（1,590円）</option>
+  <option>プレミアム（2,290円）</option>
+      </select>
+
+     <label>
+  <input type="checkbox" id="currentDPhoto">
+  dフォト（594円）
 </label>
 
 <label>
-<input type="checkbox">
-dマガジン（580円）
+  <input type="checkbox" id="currentDHealthcare">
+  dヘルスケア（440円）
 </label>
 
 <label>
-<input type="checkbox">
-dヒッツ（690円）
-</label>    
- 
+  <input type="checkbox" id="currentDMagazine">
+  dマガジン（580円）
+</label>
+
+<label>
+  <input type="checkbox" id="currentDHits">
+  dヒッツ（690円）
+</label>
+
+    </div>
+
+    <!-- 提案後 -->
+    <div>
+
+      <h3>✨ 提案後</h3>
+
+      <label>
+  <input type="checkbox" id="newLemino">
+  Leminoプレミアム（1,540円）
+</label>
+
+<label>
+  <input type="checkbox" id="newDAnime">
+  dアニメストア（660円）
+</label>
+
+<label>
+  <input type="checkbox" id="newNBA">
+  NBA docomo（2,728円）
+</label>
+
+<label>
+  <input type="checkbox" id="newDAZN">
+  DAZN（4,200円）
+</label>
+
+<label>
+  <input type="checkbox" id="newYoutube">
+  YouTube Premium（1,280円）
+</label>
+
+<label>
+  <input type="checkbox" id="newAmazonPrime">
+  Amazon Prime（600円）
+</label>
+
+<label>
+  <input type="checkbox" id="newSpotify">
+  Spotify Premium（1,080円）
+</label>
+
+<label>
+  <input type="checkbox" id="newJump">
+  ジャンプ＋定期購読（980円）
+</label>
+
+      <hr>
+
+      <label>Disney+</label>
+<select id="newDisney">
+  <option>なし</option>
+  <option>スタンダード（1,250円）</option>
+  <option>プレミアム（1,670円）</option>
+</select>
+
+<label>Netflix</label>
+<select id="newNetflix">
+  <option>なし</option>
+  <option>広告付きスタンダード（890円）</option>
+  <option>スタンダード（1,590円）</option>
+  <option>プレミアム（2,290円）</option>
+</select>
+
+     <label>
+  <input type="checkbox" id="newDPhoto">
+  dフォト（594円）
+</label>
+
+<label>
+  <input type="checkbox" id="newDHealthcare">
+  dヘルスケア（440円）
+</label>
+
+<label>
+  <input type="checkbox" id="newDMagazine">
+  dマガジン（580円）
+</label>
+
+<label>
+  <input type="checkbox" id="newDHits">
+  dヒッツ（690円）
+</label>
+
+    </div>
+
+  </div>
+
 </section>
-
+  
 <section class="card">
 
-<h2>📞 通話・連絡サービス</h2>
+  <h2>📞 通話・連絡サービス</h2>
 
-<label id="voicemailOption">
-  <input type="checkbox">
+  <div class="compare-grid">
+
+    <!-- 現在加入 -->
+    <div>
+
+      <h3>📱 現在加入</h3>
+
+      <label>
+  <input type="checkbox" id="currentVoicemail">
   留守番電話（330円）
 </label>
 
-<label id="callWaitingOption">
-  <input type="checkbox">
+<label>
+  <input type="checkbox" id="currentCallWaiting">
   キャッチホン（220円）
 </label>
 
-<label id="mailOption">
-  <input type="checkbox">
+<label>
+  <input type="checkbox" id="currentMail">
   メール持ち運び（330円）
 </label>
 
 <label>
-  <input type="checkbox">
+  <input type="checkbox" id="currentOneNumber">
   ワンナンバーサービス（550円）
 </label>
 
 <label>
-  <input type="checkbox">
+  <input type="checkbox" id="currentImadoco">
   イマドコサーチ（330円）
 </label>
 
-</section>  
+    </div>
+
+    <!-- 提案後 -->
+    <div>
+
+      <h3>✨ 提案後</h3>
+
+     <label>
+  <input type="checkbox" id="newVoicemail">
+  留守番電話（330円）
+</label>
+
+<label>
+  <input type="checkbox" id="newCallWaiting">
+  キャッチホン（220円）
+</label>
+
+<label>
+  <input type="checkbox" id="newMail">
+  メール持ち運び（330円）
+</label>
+
+<label>
+  <input type="checkbox" id="newOneNumber">
+  ワンナンバーサービス（550円）
+</label>
+
+<label>
+  <input type="checkbox" id="newImadoco">
+  イマドコサーチ（330円）
+</label>
+
+    </div>
+
+  </div>
+
+</section>
+
 
   <!-- 補償・セキュリティ -->
 <section class="card">
 
   <h2>🛡️ 補償・セキュリティ</h2>
 
-  <label>
-  <input type="checkbox" id="phoneWarranty">
+  <div class="compare-grid">
+
+    <!-- 現在加入 -->
+    <div>
+
+      <h3>📱 現在加入</h3>
+
+     <label>
+  <input type="checkbox" id="currentPhoneWarranty">
   ケータイ補償
 </label>
 
 <label>
-  <input type="checkbox" id="remoteSupport">
+  <input type="checkbox" id="currentRemoteSupport">
   あんしん遠隔サポート（660円）
 </label>
 
 <label>
-  <input type="checkbox" id="anshinSecurity">
+  <input type="checkbox" id="currentAnshinSecurity">
   あんしんセキュリティ（220円）
 </label>
 
-  <label>上位セキュリティ</label>
+      <label>上位セキュリティ</label>
 
-  <select>
-    <option>なし</option>
-    <option>スタンダード（550円）</option>
-    <option>スタンダード詐欺対策（999円）</option>
-    <option>トータル詐欺対策プラス（1,815円）</option>
-  </select>
+<select id="currentSecurityPlan">
+  <option>なし</option>
+  <option>スタンダード（550円）</option>
+  <option>スタンダード詐欺対策（999円）</option>
+  <option>トータル詐欺対策プラス（1,815円）</option>
+</select>
+
+    </div>
+
+    <!-- 提案後 -->
+    <div>
+
+      <h3>✨ 提案後</h3>
+
+      <label>
+  <input type="checkbox" id="newPhoneWarranty">
+  ケータイ補償
+</label>
+
+<label>
+  <input type="checkbox" id="newRemoteSupport">
+  あんしん遠隔サポート（660円）
+</label>
+
+<label>
+  <input type="checkbox" id="newAnshinSecurity">
+  あんしんセキュリティ（220円）
+</label>
+
+     <label>上位セキュリティ</label>
+
+<select id="newSecurityPlan">
+  <option>なし</option>
+  <option>スタンダード（550円）</option>
+  <option>スタンダード詐欺対策（999円）</option>
+  <option>トータル詐欺対策プラス（1,815円）</option>
+</select>
+
+    </div>
+
+  </div>
 
 </section>
+
 
 <!-- バックアップ・クラウド -->
 <section class="card">
 
   <h2>☁️ バックアップ・クラウド</h2>
 
-<label>Google One</label>
+  <div class="compare-grid">
 
-<select>
+    <!-- 現在加入 -->
+    <div>
+
+      <h3>📱 現在加入</h3>
+
+      <label>Google One</label>
+
+      <select id="currentGoogleOne">
+        <option>なし</option>
+        <option>100GB（290円）</option>
+        <option>200GB（440円）</option>
+        <option>AI Plus 1TB（1,450円）</option>
+      </select>
+
+      <label>Apple One</label>
+
+<select id="currentAppleOne">
   <option>なし</option>
-  <option>100GB（290円）</option>
-  <option>200GB（440円）</option>
-  <option>AI Plus 1TB（1,450円）</option>
+  <option>個人（1,200円 / 50GB）</option>
+  <option>ファミリー（1,980円 / 200GB）</option>
 </select>
 
-<label>
-  <input type="checkbox" id="cloud50">
-  クラウド容量50GB（440円）
-</label>
+      <label>
+        <input type="checkbox" id="currentCloud50">
+        クラウド容量50GB（440円）
+      </label>
 
-<label>
-  <input type="checkbox" id="dValuePass">
-  dバリューパス（550円）
-</label>
+      <label>
+        <input type="checkbox" id="currentDValuePass">
+        dバリューパス（550円）
+      </label>
 
-<label>
-  <input type="checkbox" id="myDaiz">
-  my daiz（110円）
-</label>
+      <label>
+        <input type="checkbox" id="currentMyDaiz">
+        my daiz（110円）
+      </label>
+
+    </div>
+
+    <!-- 提案後 -->
+    <div>
+
+      <h3>✨ 提案後</h3>
+
+      <label>Google One</label>
+
+      <select id="newGoogleOne">
+        <option>なし</option>
+        <option>100GB（290円）</option>
+        <option>200GB（440円）</option>
+        <option>AI Plus 1TB（1,450円）</option>
+      </select>
+
+      <label>Apple One</label>
+
+<select id="newAppleOne">
+  <option>なし</option>
+  <option>個人（1,200円 / 50GB）</option>
+  <option>ファミリー（1,980円 / 200GB）</option>
+</select>
+
+      <label>
+        <input type="checkbox" id="newCloud50">
+        クラウド容量50GB（440円）
+      </label>
+
+      <label>
+        <input type="checkbox" id="newDValuePass">
+        dバリューパス（550円）
+      </label>
+
+      <label>
+        <input type="checkbox" id="newMyDaiz">
+        my daiz（110円）
+      </label>
+
+    </div>
+
+  </div>
 
 </section>
+
 
 <!-- 独自サービス -->
 <section class="card">
 
   <h2>💎 独自サービス</h2>
 
-  <label>ケータイサポート</label>
+  <div class="compare-grid">
 
-  <select>
-    <option>なし</option>
-    <option>M（770円）</option>
-    <option>L（990円）</option>
-    <option>Plus（1,210円）</option>
-  </select>
+    <!-- 現在加入 -->
+    <div>
 
-  <label>
-    <input type="checkbox">
-    HOZON（330円）
-  </label>
+      <h3>📱 現在加入</h3>
 
-  <label>
-    <input type="checkbox">
-    ADCleaner（550円）
-  </label>
+      <label>ケータイサポート</label>
+
+      <select id="currentKeitaiSupport">
+        <option>なし</option>
+        <option>M（770円）</option>
+        <option>L（990円）</option>
+        <option>Plus（1,210円）</option>
+      </select>
+
+      <label>
+        <input type="checkbox" id="currentHOZON">
+        HOZON（330円）
+      </label>
+
+      <label>
+        <input type="checkbox" id="currentADCleaner">
+        ADCleaner（550円）
+      </label>
+
+    </div>
+
+    <!-- 提案後 -->
+    <div>
+
+      <h3>✨ 提案後</h3>
+
+      <label>ケータイサポート</label>
+
+      <select id="newKeitaiSupport">
+        <option>なし</option>
+        <option>M（770円）</option>
+        <option>L（990円）</option>
+        <option>Plus（1,210円）</option>
+      </select>
+
+      <label>
+        <input type="checkbox" id="newHOZON">
+        HOZON（330円）
+      </label>
+
+      <label>
+        <input type="checkbox" id="newADCleaner">
+        ADCleaner（550円）
+      </label>
+
+    </div>
+
+  </div>
 
 </section>  
 
