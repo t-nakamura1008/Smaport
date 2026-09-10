@@ -104,8 +104,14 @@ h1{
   background:linear-gradient(135deg,#2563eb,#60a5fa);
   color:white;
   padding:25px;
-  border-radius:16px;
+  border-radius:20px;
   margin-bottom:25px;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
   text-align:center;
 }
 
@@ -116,15 +122,17 @@ h1{
 
 .title-card p{
   margin-top:10px;
-  font-size:14px;
-}  
+  font-size:15px;
+  opacity:0.95;
+  text-align:center;
+} 
 
 </style>
 
 <div class="estimate-container">
 
   <h1>📱 Smaport みつもりさん ✨</h1>
-<p>料金・ポイント・お支払額をわかりやすくチェック！</p>
+<p>料金・ポイント・お支払額をかんたん比較！📱✨</p>
 
   <!-- 基本情報 -->
   <section class="card">
@@ -253,7 +261,6 @@ h1{
   <option>なし</option>
   <option>あり</option>
 </select>
-      <select id="currentCallOption"></select>
 
     </section>
 
@@ -318,7 +325,6 @@ h1{
   <option>なし</option>
   <option>あり</option>
 </select>
-      <select id="newCallOption"></select>
 
     </section>
 
