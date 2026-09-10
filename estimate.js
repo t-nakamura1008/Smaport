@@ -1,0 +1,283 @@
+<style>
+.compare-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.card{
+  background:#fff;
+  padding:20px;
+  border-radius:12px;
+  margin-bottom:20px;
+}
+
+.result-card{
+  background:#f8fbff;
+}
+
+.new-option{
+  color:#16a34a;
+  font-weight:bold;
+}
+
+.changed-option{
+  color:#d97706;
+}
+
+.removed-option{
+  color:#dc2626;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+}
+
+input,
+select{
+  width:100%;
+  padding:10px;
+  border:1px solid #ddd;
+  border-radius:8px;
+  margin-top:5px;
+}
+
+.result-item{
+  display:flex;
+  justify-content:space-between;
+  padding:12px 0;
+  border-bottom:1px solid #eee;
+}
+
+.result-item strong{
+  color:#0066ff;
+  font-size:20px;
+}
+
+</style>
+
+<div class="estimate-container">
+
+  <h1>見積シミュレーター</h1>
+
+  <!-- 基本情報 -->
+  <section class="card">
+    <h2>基本情報</h2>
+
+    <div class="grid">
+      <label>利用年数
+        <select>
+          <option>10年未満</option>
+          <option>10年以上</option>
+          <option>20年以上</option>
+        </select>
+      </label>
+
+      <label>毎月の通信量（GB）
+        <input type="number" placeholder="20">
+      </label>
+
+      <label>dカード種別
+        <select>
+          <option>なし</option>
+          <option>dカード</option>
+          <option>dカード GOLD</option>
+          <option>PLATINUM ～10万</option>
+          <option>PLATINUM 10万～20万</option>
+          <option>PLATINUM 20万～</option>
+        </select>
+      </label>
+
+      <label>定期クレジット
+        <select>
+          <option>なし</option>
+          <option>あり</option>
+        </select>
+      </label>
+
+      <label>ポイ活還元額
+        <select>
+          <option>0</option>
+          <option>1000</option>
+          <option>2000</option>
+          <option>3000</option>
+          <option>4000</option>
+          <option>5000</option>
+        </select>
+      </label>
+    </div>
+  </section>
+
+  <!-- 現在契約・変更後契約 -->
+  <div class="compare-grid">
+
+    <section class="card">
+      <h2>現在契約</h2>
+
+      <label>プラン</label>
+      <select id="currentPlan"></select>
+
+      <label>通話オプション</label>
+      <select id="currentCallOption"></select>
+
+    </section>
+
+    <section class="card">
+      <h2>変更後契約</h2>
+
+      <label>プラン</label>
+      <select id="newPlan"></select>
+
+      <label>通話オプション</label>
+      <select id="newCallOption"></select>
+
+    </section>
+
+  </div>
+
+  <!-- 映像 -->
+  <section class="card">
+    <h2>映像・エンタメ</h2>
+
+    <label><input type="checkbox"> Leminoプレミアム（1,540円）</label>
+    <label><input type="checkbox"> dアニメストア（660円）</label>
+    <label><input type="checkbox"> NBA docomo（2,728円）</label>
+    <label><input type="checkbox"> DAZN（4,200円）</label>
+    <label><input type="checkbox"> YouTube Premium（1,280円）</label>
+    <label><input type="checkbox"> Amazon Prime（600円）</label>
+
+  </section>
+
+  <!-- 分割① -->
+  <section class="card">
+    <h2>分割①（本体）</h2>
+
+    <input type="text" placeholder="機種名">
+
+    <select>
+      <option>一括</option>
+      <option>カエドキ</option>
+      <option>12回</option>
+      <option>24回</option>
+      <option>36回</option>
+    </select>
+
+    <input type="number" placeholder="一括価格">
+
+    <input type="number" placeholder="頭金">
+
+    <input type="number" placeholder="割引額">
+
+  </section>
+
+  <!-- 分割② -->
+  <section class="card">
+    <h2>分割②</h2>
+
+    <input type="text" placeholder="商品名">
+
+    <input type="number" placeholder="金額">
+
+    <select>
+      <option>12回</option>
+      <option>24回</option>
+      <option>36回</option>
+    </select>
+
+  </section>
+
+  <!-- 分割③ -->
+  <section class="card">
+    <h2>分割③</h2>
+
+    <input type="text" placeholder="商品名">
+
+    <input type="number" placeholder="金額">
+
+    <select>
+      <option>12回</option>
+      <option>24回</option>
+      <option>36回</option>
+    </select>
+
+  </section>
+
+  <!-- 手数料 -->
+  <section class="card">
+    <h2>手数料</h2>
+
+    <label><input type="checkbox"> フィルム貼り付け（1,100円）</label>
+    <label><input type="checkbox"> データ移行（2,200円）</label>
+    <label><input type="checkbox"> irumo・mini・ahamoデータ移行（3,300円）</label>
+    <label><input type="checkbox"> アプリ移行（3,300円）</label>
+    <label><input type="checkbox"> 機種変更（4,980円）</label>
+    <label><input type="checkbox"> 4G→5G（4,980円）</label>
+
+  </section>
+
+  <!-- 本日購入品 -->
+  <section class="card">
+    <h2>本日購入品</h2>
+
+    <div class="purchase-row">
+      <input type="text" placeholder="商品名">
+      <input type="number" placeholder="金額">
+    </div>
+
+    <div class="purchase-row">
+      <input type="text" placeholder="商品名">
+      <input type="number" placeholder="金額">
+    </div>
+
+    <div class="purchase-row">
+      <input type="text" placeholder="商品名">
+      <input type="number" placeholder="金額">
+    </div>
+
+    <div class="purchase-row">
+      <input type="text" placeholder="商品名">
+      <input type="number" placeholder="金額">
+    </div>
+
+    <div class="purchase-row">
+      <input type="text" placeholder="商品名">
+      <input type="number" placeholder="金額">
+    </div>
+
+  </section>
+
+  <!-- 結果 -->
+  <section class="card result-card">
+
+    <h2>結果</h2>
+
+    <div class="result-item">
+      <span>毎月の合計金額</span>
+      <strong id="monthlyTotal">0円</strong>
+    </div>
+
+    <div class="result-item">
+      <span>貰えるポイント</span>
+      <strong id="pointTotal">0pt</strong>
+    </div>
+
+    <div class="result-item">
+      <span>初期手数料（1回のみ）</span>
+      <strong id="feeTotal">0円</strong>
+    </div>
+
+    <div class="result-item">
+      <span>頭金・アクセサリー（本日支払い）</span>
+      <strong id="todayTotal">0円</strong>
+    </div>
+
+    <div class="result-item">
+      <span>今までとの差額</span>
+      <strong id="difference">0円</strong>
+    </div>
+
+  </section>
+
+</div>
