@@ -1,4 +1,4 @@
-<title>見積君</title>
+<title>Smaport みつもりさん</title>
 
 <style>
 .compare-grid{
@@ -58,11 +58,73 @@ select{
   font-size:20px;
 }
 
+body{
+  background:#f5f7fb;
+  font-family:'Segoe UI',sans-serif;
+  margin:0;
+}
+
+.estimate-container{
+  max-width:1400px;
+  margin:auto;
+  padding:20px;
+}  
+
+h1{
+  font-size:32px;
+  color:#2563eb;
+  margin-bottom:5px;
+}
+
+h1::after{
+  content:"✨";
+  margin-left:10px;
+}
+
+.subtitle{
+  color:#666;
+  margin-bottom:20px;
+}
+  
+h1{
+  text-align:center;
+  font-size:36px;
+  color:#2563eb;
+  margin-bottom:8px;
+}
+
+.subtitle{
+  text-align:center;
+  color:#666;
+  margin-bottom:30px;
+  font-size:14px;
+} 
+
+.title-card{
+  background:linear-gradient(135deg,#2563eb,#60a5fa);
+  color:white;
+  padding:25px;
+  border-radius:16px;
+  margin-bottom:25px;
+  text-align:center;
+}
+
+.title-card h1{
+  color:white;
+  margin:0;
+}
+
+.title-card p{
+  margin-top:10px;
+  font-size:14px;
+}  
+
 </style>
 
 <div class="estimate-container">
 
-  <h1>見積シミュレーター</h1>
+  <h1>📱 Smaport みつもりさん ✨</h1>
+<p>料金・ポイント・お支払額をわかりやすくチェック！</p>
 
   <!-- 基本情報 -->
   <section class="card">
@@ -116,23 +178,146 @@ select{
   <div class="compare-grid">
 
     <section class="card">
-      <h2>現在契約</h2>
+     <h2>📱現在契約</h2>
 
       <label>プラン</label>
-      <select id="currentPlan"></select>
+     <select id="currentPlan">
+
+  <option>ドコモMAX</option>
+  <option>ドコモポイ活MAX</option>
+  <option>ドコモポイ活20</option>
+
+  <option>ドコモ mini 4GB</option>
+  <option>ドコモ mini 10GB</option>
+
+  <option>ahamo</option>
+
+  <option>はじめてスマホプラン</option>
+
+  <option>eximo</option>
+  <option>eximoポイ活</option>
+
+  <option>irumo 0.5GB</option>
+  <option>irumo 3GB</option>
+  <option>irumo 6GB</option>
+  <option>irumo 9GB</option>
+
+  <option>5Gギガライト</option>
+
+  <option>ギガホ</option>
+  <option>5Gギガホ</option>
+  <option>5Gギガホプレミア</option>
+
+</select>
 
       <label>通話オプション</label>
+<select>
+  <option>通話した分だけ</option>
+  <option>5分通話 770円</option>
+  <option>5分通話 880円</option>
+  <option>かけ放題 1,870円</option>
+  <option>かけ放題 1,980円</option>
+</select>
+
+<label>dカード種別</label>
+<select>
+  <option>なし</option>
+  <option>dカード</option>
+  <option>dカード GOLD</option>
+  <option>PLATINUM ～10万</option>
+  <option>PLATINUM 10万～20万</option>
+  <option>PLATINUM 20万～</option>
+</select>
+
+<label>定期クレジット</label>
+<select>
+  <option>なし</option>
+  <option>あり</option>
+</select>
+
+<label>ファミリー回線数</label>
+<select>
+  <option>回線なし</option>
+  <option>2回線</option>
+  <option>3回線以上</option>
+</select>
+
+<label>ドコモ光</label>
+<select>
+  <option>なし</option>
+  <option>あり</option>
+</select>
+
+<label>ドコモでんき</label>
+<select>
+  <option>なし</option>
+  <option>あり</option>
+</select>
       <select id="currentCallOption"></select>
 
     </section>
 
     <section class="card">
-      <h2>変更後契約</h2>
+     <h2>✨ご提案プラン</h2>
 
-      <label>プラン</label>
-      <select id="newPlan"></select>
+     <label>プラン</label>
+
+<select id="newPlan">
+  <option>ドコモMAX</option>
+  <option>ドコモポイ活MAX</option>
+  <option>ドコモポイ活20</option>
+
+  <option>ドコモ mini 4GB</option>
+  <option>ドコモ mini 10GB</option>
+
+  <option>ahamo</option>
+
+  <option>はじめてスマホプラン</option>
+</select>
 
       <label>通話オプション</label>
+<select>
+  <option>通話した分だけ</option>
+  <option>5分通話 770円</option>
+  <option>5分通話 880円</option>
+  <option>かけ放題 1,870円</option>
+  <option>かけ放題 1,980円</option>
+</select>
+
+<label>dカード種別</label>
+<select>
+  <option>なし</option>
+  <option>dカード</option>
+  <option>dカード GOLD</option>
+  <option>PLATINUM ～10万</option>
+  <option>PLATINUM 10万～20万</option>
+  <option>PLATINUM 20万～</option>
+</select>
+
+<label>定期クレジット</label>
+<select>
+  <option>なし</option>
+  <option>あり</option>
+</select>
+
+<label>ファミリー回線数</label>
+<select>
+  <option>回線なし</option>
+  <option>2回線</option>
+  <option>3回線以上</option>
+</select>
+
+<label>ドコモ光</label>
+<select>
+  <option>なし</option>
+  <option>あり</option>
+</select>
+
+<label>ドコモでんき</label>
+<select>
+  <option>なし</option>
+  <option>あり</option>
+</select>
       <select id="newCallOption"></select>
 
     </section>
@@ -141,145 +326,379 @@ select{
 
   <!-- 映像 -->
   <section class="card">
-    <h2>映像・エンタメ</h2>
 
-    <label><input type="checkbox"> Leminoプレミアム（1,540円）</label>
-    <label><input type="checkbox"> dアニメストア（660円）</label>
-    <label><input type="checkbox"> NBA docomo（2,728円）</label>
-    <label><input type="checkbox"> DAZN（4,200円）</label>
-    <label><input type="checkbox"> YouTube Premium（1,280円）</label>
-    <label><input type="checkbox"> Amazon Prime（600円）</label>
+  <h2>🎬 映像・エンタメ</h2>
 
-  </section>
+  <label><input type="checkbox"> Leminoプレミアム（1,540円）</label>
+
+  <label><input type="checkbox"> dアニメストア（660円）</label>
+
+  <label><input type="checkbox"> NBA docomo（2,728円）</label>
+
+  <label><input type="checkbox"> DAZN（4,200円）</label>
+
+  <label><input type="checkbox"> YouTube Premium（1,280円）</label>
+
+  <label><input type="checkbox"> Amazon Prime（600円）</label>
+
+  <label><input type="checkbox"> Spotify Premium（1,080円）</label>
+
+  <label><input type="checkbox"> ジャンプ＋定期購読（980円）</label>
+
+  <hr>
+
+  <label>Disney+</label>
+  <select>
+    <option>なし</option>
+    <option>スタンダード（1,250円）</option>
+    <option>プレミアム（1,670円）</option>
+  </select>
+
+  <label>Netflix</label>
+
+<select>
+
+<option>なし</option>
+
+<option>広告付きスタンダード（890円）</option>
+
+<option>スタンダード（1,590円）</option>
+
+<option>プレミアム（2,290円）</option>
+
+</select>
+
+<label>
+<input type="checkbox">
+dフォト（594円）
+</label>
+ 
+<label>
+<input type="checkbox">
+dヘルスケア（440円）
+</label>
+
+<label>
+<input type="checkbox">
+dマガジン（580円）
+</label>
+
+<label>
+<input type="checkbox">
+dヒッツ（690円）
+</label>    
+ 
+</section>
+
+<section class="card">
+
+<h2>📞 通話・連絡サービス</h2>
+
+<label id="voicemailOption">
+  <input type="checkbox">
+  留守番電話（330円）
+</label>
+
+<label id="callWaitingOption">
+  <input type="checkbox">
+  キャッチホン（220円）
+</label>
+
+<label id="mailOption">
+  <input type="checkbox">
+  メール持ち運び（330円）
+</label>
+
+<label>
+  <input type="checkbox">
+  ワンナンバーサービス（550円）
+</label>
+
+<label>
+  <input type="checkbox">
+  イマドコサーチ（330円）
+</label>
+
+</section>  
+
+  <!-- 補償・セキュリティ -->
+<section class="card">
+
+  <h2>🛡️ 補償・セキュリティ</h2>
+
+  <label>
+  <input type="checkbox" id="phoneWarranty">
+  ケータイ補償
+</label>
+
+<label>
+  <input type="checkbox" id="remoteSupport">
+  あんしん遠隔サポート（660円）
+</label>
+
+<label>
+  <input type="checkbox" id="anshinSecurity">
+  あんしんセキュリティ（220円）
+</label>
+
+  <label>上位セキュリティ</label>
+
+  <select>
+    <option>なし</option>
+    <option>スタンダード（550円）</option>
+    <option>スタンダード詐欺対策（999円）</option>
+    <option>トータル詐欺対策プラス（1,815円）</option>
+  </select>
+
+</section>
+
+<!-- バックアップ・クラウド -->
+<section class="card">
+
+  <h2>☁️ バックアップ・クラウド</h2>
+
+<label>Google One</label>
+
+<select>
+  <option>なし</option>
+  <option>100GB（290円）</option>
+  <option>200GB（440円）</option>
+  <option>AI Plus 1TB（1,450円）</option>
+</select>
+
+<label>
+  <input type="checkbox" id="cloud50">
+  クラウド容量50GB（440円）
+</label>
+
+<label>
+  <input type="checkbox" id="dValuePass">
+  dバリューパス（550円）
+</label>
+
+<label>
+  <input type="checkbox" id="myDaiz">
+  my daiz（110円）
+</label>
+
+</section>
+
+<!-- 独自サービス -->
+<section class="card">
+
+  <h2>💎 独自サービス</h2>
+
+  <label>ケータイサポート</label>
+
+  <select>
+    <option>なし</option>
+    <option>M（770円）</option>
+    <option>L（990円）</option>
+    <option>Plus（1,210円）</option>
+  </select>
+
+  <label>
+    <input type="checkbox">
+    HOZON（330円）
+  </label>
+
+  <label>
+    <input type="checkbox">
+    ADCleaner（550円）
+  </label>
+
+</section>  
 
   <!-- 分割① -->
-  <section class="card">
-    <h2>分割①（本体）</h2>
+<section class="card">
 
-    <input type="text" placeholder="機種名">
+  <h2>📱 分割①（本体）</h2>
 
-    <select>
-      <option>一括</option>
-      <option>カエドキ</option>
-      <option>12回</option>
-      <option>24回</option>
-      <option>36回</option>
-    </select>
+  <label>機種名</label>
+  <input type="text" placeholder="iPhone 17 Pro">
 
-    <input type="number" placeholder="一括価格">
+  <label>購入方法</label>
+  <select>
+    <option>一括</option>
+    <option>カエドキ</option>
+    <option>12回</option>
+    <option>24回</option>
+    <option>36回</option>
+  </select>
 
-    <input type="number" placeholder="頭金">
+  <label>一括価格</label>
+  <input type="number" placeholder="218790">
 
-    <input type="number" placeholder="割引額">
+  <label>頭金</label>
+  <input type="number" placeholder="22000">
 
-  </section>
+  <label>割引額</label>
+  <input type="number" placeholder="0">
 
-  <!-- 分割② -->
-  <section class="card">
-    <h2>分割②</h2>
+</section>
 
-    <input type="text" placeholder="商品名">
+ <!-- 分割② -->
+<section class="card">
 
-    <input type="number" placeholder="金額">
+  <h2>📦 分割②</h2>
 
-    <select>
-      <option>12回</option>
-      <option>24回</option>
-      <option>36回</option>
-    </select>
+  <label>商品名</label>
+  <input type="text" placeholder="Apple Watch">
 
-  </section>
+  <label>金額</label>
+  <input type="number" placeholder="59800">
 
-  <!-- 分割③ -->
-  <section class="card">
-    <h2>分割③</h2>
+  <label>回数</label>
+  <select>
+    <option>12回</option>
+    <option>24回</option>
+    <option>36回</option>
+  </select>
 
-    <input type="text" placeholder="商品名">
+</section>
 
-    <input type="number" placeholder="金額">
+<!-- 分割③ -->
+<section class="card">
 
-    <select>
-      <option>12回</option>
-      <option>24回</option>
-      <option>36回</option>
-    </select>
+  <h2>📦 分割③</h2>
 
-  </section>
+  <label>商品名</label>
+  <input type="text" placeholder="PhotoCube">
+
+  <label>金額</label>
+  <input type="number" placeholder="23976">
+
+  <label>回数</label>
+  <select>
+    <option>12回</option>
+    <option>24回</option>
+    <option>36回</option>
+  </select>
+
+</section>
+
 
   <!-- 手数料 -->
-  <section class="card">
-    <h2>手数料</h2>
+<section class="card">
 
-    <label><input type="checkbox"> フィルム貼り付け（1,100円）</label>
-    <label><input type="checkbox"> データ移行（2,200円）</label>
-    <label><input type="checkbox"> irumo・mini・ahamoデータ移行（3,300円）</label>
-    <label><input type="checkbox"> アプリ移行（3,300円）</label>
-    <label><input type="checkbox"> 機種変更（4,980円）</label>
-    <label><input type="checkbox"> 4G→5G（4,980円）</label>
+  <h2>🧾 手数料</h2>
 
-  </section>
+  <label><input type="checkbox"> フィルム貼り付け（1,100円）</label>
 
-  <!-- 本日購入品 -->
-  <section class="card">
-    <h2>本日購入品</h2>
+  <label><input type="checkbox"> データ移行（2,200円）</label>
 
-    <div class="purchase-row">
-      <input type="text" placeholder="商品名">
-      <input type="number" placeholder="金額">
-    </div>
+  <label><input type="checkbox"> irumo・mini・ahamoデータ移行（3,300円）</label>
 
-    <div class="purchase-row">
-      <input type="text" placeholder="商品名">
-      <input type="number" placeholder="金額">
-    </div>
+  <label><input type="checkbox"> アプリ移行（30分）（3,300円）</label>
 
-    <div class="purchase-row">
-      <input type="text" placeholder="商品名">
-      <input type="number" placeholder="金額">
-    </div>
+  <label><input type="checkbox"> 機種変更（4,980円）</label>
 
-    <div class="purchase-row">
-      <input type="text" placeholder="商品名">
-      <input type="number" placeholder="金額">
-    </div>
+  <label><input type="checkbox"> 4G→5G（4,980円）</label>
 
-    <div class="purchase-row">
-      <input type="text" placeholder="商品名">
-      <input type="number" placeholder="金額">
-    </div>
+</section>
 
-  </section>
+ <!-- 本日購入品 -->
+<section class="card">
 
-  <!-- 結果 -->
-  <section class="card result-card">
+  <h2>🛍️ 本日購入品</h2>
 
-    <h2>結果</h2>
+  <div class="purchase-row">
+    <input type="text" placeholder="商品名">
+    <input type="number" placeholder="金額">
+  </div>
+
+  <div class="purchase-row">
+    <input type="text" placeholder="商品名">
+    <input type="number" placeholder="金額">
+  </div>
+
+  <div class="purchase-row">
+    <input type="text" placeholder="商品名">
+    <input type="number" placeholder="金額">
+  </div>
+
+  <div class="purchase-row">
+    <input type="text" placeholder="商品名">
+    <input type="number" placeholder="金額">
+  </div>
+
+  <div class="purchase-row">
+    <input type="text" placeholder="商品名">
+    <input type="number" placeholder="金額">
+  </div>
+
+</section>
+
+<!-- 結果 -->
+<section class="card result-card">
+
+  <h2>⭐ 結果</h2>
+
+  <div class="result-item">
+    <span>毎月の合計金額</span>
+    <strong id="monthlyTotal">0円</strong>
+  </div>
+
+  <div class="result-item">
+    <span>貰えるポイント</span>
+    <strong id="pointTotal">0pt</strong>
+  </div>
+
+  <div class="result-item">
+    <span>あんしんパック割引</span>
+    <strong id="anshinPackDiscount">0円</strong>
+  </div>
+
+  <div class="result-item">
+    <span>セキュリティセット割引</span>
+    <strong id="securityDiscount">0円</strong>
+  </div>
+
+  <div class="result-item">
+    <span>dバリューパスパック割引</span>
+    <strong id="valuePassDiscount">0円</strong>
+  </div>
+
+  <div class="result-item">
+    <span>初期手数料（1回のみ）</span>
+    <strong id="feeTotal">0円</strong>
+  </div>
+
+  <div class="result-item">
+    <span>頭金・アクセサリー（本日支払い）</span>
+    <strong id="todayTotal">0円</strong>
+  </div>
+
+  <div class="result-item">
+    <span>今までとの差額</span>
+    <strong id="difference">0円</strong>
+  </div>
+
+</section>
+
+<section class="card">
+
+  <h2>📈 支払推移</h2>
+
+  <div id="paymentTimeline">
 
     <div class="result-item">
-      <span>毎月の合計金額</span>
-      <strong id="monthlyTotal">0円</strong>
+      <span>1～23回</span>
+      <strong>0円</strong>
     </div>
 
     <div class="result-item">
-      <span>貰えるポイント</span>
-      <strong id="pointTotal">0pt</strong>
+      <span>24～47回</span>
+      <strong>0円</strong>
     </div>
 
     <div class="result-item">
-      <span>初期手数料（1回のみ）</span>
-      <strong id="feeTotal">0円</strong>
+      <span>48回～</span>
+      <strong>0円</strong>
     </div>
 
-    <div class="result-item">
-      <span>頭金・アクセサリー（本日支払い）</span>
-      <strong id="todayTotal">0円</strong>
-    </div>
+  </div>
 
-    <div class="result-item">
-      <span>今までとの差額</span>
-      <strong id="difference">0円</strong>
-    </div>
-
-  </section>
-
+</section>  
+  
 </div>
