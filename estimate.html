@@ -140,11 +140,14 @@ input[type="checkbox"]{
 }
 
 label{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  margin-bottom:10px;
-} 
+  display:block;
+  margin-bottom:6px;
+}
+
+input[type="checkbox"]{
+  width:auto;
+  margin-right:8px;
+}  
 
 button{
   display:block;
@@ -362,6 +365,9 @@ button:hover{
 
       <label>通話オプション</label>
 <select id="newCallPlan">
+  <option value="" selected disabled>
+  選択してください
+</option>
   <option value="0">通話した分だけ</option>
   <option value="770">5分通話 770円</option>
   <option value="880">5分通話 880円</option>
@@ -455,11 +461,15 @@ button:hover{
   ジャンプ＋定期購読（980円）
 </label>
 
-     <select id="currentDisney">
+     <label>Disney+</label>
+
+<select id="currentDisney">
   <option value="0">なし</option>
   <option value="1250">スタンダード（1,250円）</option>
   <option value="1670">プレミアム（1,670円）</option>
 </select>
+
+<label>Netflix</label>
 
 <select id="currentNetflix">
   <option value="0">なし</option>
@@ -1147,6 +1157,8 @@ if (difference > 0) {
 
 }
 
+}
+  
 </script>
 
 </body>
