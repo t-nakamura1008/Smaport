@@ -667,7 +667,11 @@ button:hover{
       <h3>📱 現在加入</h3>
 
  <label>
-  <input type="checkbox" id="currentAnshinPack">
+ <input
+  type="checkbox"
+  id="currentAnshinPack"
+  onchange="toggleAnshinPack('current')"
+>
   あんしんパック
 </label>
       
@@ -716,7 +720,11 @@ button:hover{
       <h3>✨ 提案後</h3>
 
       <label>
-  <input type="checkbox" id="newAnshinPack">
+ <input
+  type="checkbox"
+  id="newAnshinPack"
+  onchange="toggleAnshinPack('new')"
+>
   あんしんパック
 </label>
       
@@ -1241,6 +1249,22 @@ if(
 ){
   newTotal -= 110;
 }
+
+if(document.getElementById("currentRemoteSupport").checked){
+  currentTotal += 660;
+}
+
+if(document.getElementById("currentAnshinSecurity").checked){
+  currentTotal += 220;
+}
+
+if(document.getElementById("newRemoteSupport").checked){
+  newTotal += 660;
+}
+
+if(document.getElementById("newAnshinSecurity").checked){
+  newTotal += 220;
+}  
   
 // 現在契約 クラウド系
 
