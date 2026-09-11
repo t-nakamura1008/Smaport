@@ -1220,19 +1220,11 @@ if(document.getElementById("newAnshinPack").checked){
   newTotal -= 418;
 }  
 
-if(
-  document.getElementById("currentDValuePass").checked &&
-  document.getElementById("currentCloud50").checked &&
-  document.getElementById("currentMyDaiz").checked
-){
+if(document.getElementById("currentDValuePack").checked){
   currentTotal -= 418;
 }
 
-if(
-  document.getElementById("newDValuePass").checked &&
-  document.getElementById("newCloud50").checked &&
-  document.getElementById("newMyDaiz").checked
-){
+if(document.getElementById("newDValuePack").checked){
   newTotal -= 418;
 }
 
@@ -1640,7 +1632,7 @@ function toggleWarrantyInput(type){
 
 }
 
- function toggleAnshinPack(type){
+function toggleAnshinPack(type){
 
   const checked =
     document.getElementById(type + "AnshinPack").checked;
@@ -1656,7 +1648,11 @@ function toggleWarrantyInput(type){
   document.getElementById(
     type + "AnshinSecurity"
   ).checked = checked;
-} 
+
+  // ←追加
+  toggleWarrantyInput(type);
+
+}
   
 </script>
 
