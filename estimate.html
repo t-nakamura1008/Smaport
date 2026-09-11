@@ -666,6 +666,11 @@ button:hover{
 
       <h3>📱 現在加入</h3>
 
+ <label>
+  <input type="checkbox" id="currentAnshinPack">
+  あんしんパック
+</label>
+      
     <label>
   <input
     type="checkbox"
@@ -674,7 +679,6 @@ button:hover{
   >
   ケータイ補償
 </label>
-
 <div
   id="currentWarrantyArea"
   style="display:none;"
@@ -711,6 +715,11 @@ button:hover{
 
       <h3>✨ 提案後</h3>
 
+      <label>
+  <input type="checkbox" id="newAnshinPack">
+  あんしんパック
+</label>
+      
       <label>
   <input
     type="checkbox"
@@ -787,6 +796,11 @@ button:hover{
 </select>
 
       <label>
+  <input type="checkbox" id="currentDValuePack">
+  dバリューパスパック
+</label>
+      
+      <label>
         <input type="checkbox" id="currentCloud50">
         クラウド容量50GB（440円）
       </label>
@@ -824,6 +838,11 @@ button:hover{
   <option value="1200">個人（1,200円）</option>
   <option value="1980">ファミリー（1,980円）</option>
 </select>
+
+      <label>
+  <input type="checkbox" id="newDValuePack">
+  dバリューパスパック
+</label>
 
       <label>
         <input type="checkbox" id="newCloud50">
@@ -1141,6 +1160,136 @@ newTotal +=
 newTotal +=
   Number(document.getElementById("newNetflix").value);
 
+// 現在契約 通話・連絡サービス
+
+if(document.getElementById("currentVoicemail").checked){
+  currentTotal += 330;
+}
+
+if(document.getElementById("currentCallWaiting").checked){
+  currentTotal += 220;
+}
+
+if(document.getElementById("currentMail").checked){
+  currentTotal += 330;
+}
+
+if(document.getElementById("currentOneNumber").checked){
+  currentTotal += 550;
+}
+
+if(document.getElementById("currentImadoco").checked){
+  currentTotal += 330;
+}
+
+// 提案後 通話・連絡サービス
+
+if(document.getElementById("newVoicemail").checked){
+  newTotal += 330;
+}
+
+if(document.getElementById("newCallWaiting").checked){
+  newTotal += 220;
+}
+
+if(document.getElementById("newMail").checked){
+  newTotal += 330;
+}
+
+if(document.getElementById("newOneNumber").checked){
+  newTotal += 550;
+}
+
+if(document.getElementById("newImadoco").checked){
+  newTotal += 330;
+}
+
+if(document.getElementById("currentAnshinPack").checked){
+  currentTotal -= 418;
+}
+
+if(document.getElementById("newAnshinPack").checked){
+  newTotal -= 418;
+}  
+
+if(
+  document.getElementById("currentDValuePass").checked &&
+  document.getElementById("currentCloud50").checked &&
+  document.getElementById("currentMyDaiz").checked
+){
+  currentTotal -= 418;
+}
+
+if(
+  document.getElementById("newDValuePass").checked &&
+  document.getElementById("newCloud50").checked &&
+  document.getElementById("newMyDaiz").checked
+){
+  newTotal -= 418;
+}
+
+if(
+  document.getElementById("currentAnshinSecurity").checked &&
+  Number(document.getElementById("currentSecurityPlan").value) > 0
+){
+  currentTotal -= 110;
+}
+
+if(
+  document.getElementById("newAnshinSecurity").checked &&
+  Number(document.getElementById("newSecurityPlan").value) > 0
+){
+  newTotal -= 110;
+}
+  
+// 現在契約 クラウド系
+
+if(document.getElementById("currentCloud50").checked){
+  currentTotal += 440;
+}
+
+if(document.getElementById("currentDValuePass").checked){
+  currentTotal += 550;
+}
+
+if(document.getElementById("currentMyDaiz").checked){
+  currentTotal += 110;
+}
+
+// 提案後 クラウド系
+
+if(document.getElementById("newCloud50").checked){
+  newTotal += 440;
+}
+
+if(document.getElementById("newDValuePass").checked){
+  newTotal += 550;
+}
+
+if(document.getElementById("newMyDaiz").checked){
+  newTotal += 110;
+}
+
+// 現在契約 独自サービス
+
+if(document.getElementById("currentHOZON").checked){
+  currentTotal += 330;
+}
+
+if(document.getElementById("currentADCleaner").checked){
+  currentTotal += 550;
+}
+
+// 提案後 独自サービス
+
+if(document.getElementById("newHOZON").checked){
+  newTotal += 330;
+}
+
+if(document.getElementById("newADCleaner").checked){
+  newTotal += 550;
+}  
+  
  const currentFreeServices = [];
 
 if(document.getElementById("currentDAZN").checked){
@@ -1466,6 +1615,24 @@ function toggleWarrantyInput(type){
   }
 
 }
+
+ function toggleAnshinPack(type){
+
+  const checked =
+    document.getElementById(type + "AnshinPack").checked;
+
+  document.getElementById(
+    type + "PhoneWarranty"
+  ).checked = checked;
+
+  document.getElementById(
+    type + "RemoteSupport"
+  ).checked = checked;
+
+  document.getElementById(
+    type + "AnshinSecurity"
+  ).checked = checked;
+} 
   
 </script>
 
