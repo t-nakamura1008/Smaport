@@ -144,6 +144,30 @@ label{
   align-items:center;
   gap:8px;
   margin-bottom:10px;
+} 
+
+button{
+  display:block;
+  margin:20px auto;
+
+  background:#d6001c;
+  color:white;
+
+  border:none;
+  border-radius:12px;
+
+  padding:15px 40px;
+
+  font-size:18px;
+  font-weight:bold;
+
+  cursor:pointer;
+
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+
+button:hover{
+  background:#b80018;
 }  
 
 </style>
@@ -213,32 +237,33 @@ label{
      <h2>📱現在契約</h2>
 
       <label>プラン</label>
-     <select id="currentPlan">
+    <select id="currentPlan">
 
-  <option>ドコモMAX</option>
-  <option>ドコモポイ活MAX</option>
-  <option>ドコモポイ活20</option>
+  <option value="8448">ドコモMAX</option>
+  <option value="11448">ドコモポイ活MAX</option>
+  <option value="7898">ドコモポイ活20</option>
 
-  <option>ドコモ mini 4GB</option>
-  <option>ドコモ mini 10GB</option>
+  <option value="2750">ドコモ mini 4GB</option>
+  <option value="3850">ドコモ mini 10GB</option>
 
-  <option>ahamo</option>
+  <option value="2970">ahamo 30GB</option>
+  <option value="4950">ahamo 100GB</option>
 
-  <option>はじめてスマホプラン</option>
+  <option value="1815">はじめてスマホプラン</option>
 
-  <option>eximo</option>
-  <option>eximoポイ活</option>
+  <option value="7315">eximo</option>
+  <option value="10456">eximoポイ活</option>
 
-  <option>irumo 0.5GB</option>
-  <option>irumo 3GB</option>
-  <option>irumo 6GB</option>
-  <option>irumo 9GB</option>
+  <option value="550">irumo 0.5GB</option>
+  <option value="2167">irumo 3GB</option>
+  <option value="2827">irumo 6GB</option>
+  <option value="3377">irumo 9GB</option>
 
-  <option>5Gギガライト</option>
+  <option value="6765">5Gギガライト</option>
 
-  <option>ギガホ</option>
-  <option>5Gギガホ</option>
-  <option>5Gギガホプレミア</option>
+  <option value="7315">ギガホ</option>
+  <option value="7315">5Gギガホ</option>
+  <option value="8448">5Gギガホプレミア</option>
 
 </select>
 
@@ -294,16 +319,19 @@ label{
      <label>プラン</label>
 
 <select id="newPlan">
-  <option>ドコモMAX</option>
-  <option>ドコモポイ活MAX</option>
-  <option>ドコモポイ活20</option>
 
-  <option>ドコモ mini 4GB</option>
-  <option>ドコモ mini 10GB</option>
+  <option value="8448">ドコモMAX</option>
+  <option value="11448">ドコモポイ活MAX</option>
+  <option value="7898">ドコモポイ活20</option>
 
-  <option>ahamo</option>
+  <option value="2750">ドコモ mini 4GB</option>
+  <option value="3850">ドコモ mini 10GB</option>
 
-  <option>はじめてスマホプラン</option>
+  <option value="2970">ahamo 30GB</option>
+  <option value="4950">ahamo 100GB</option>
+
+  <option value="1815">はじめてスマホプラン</option>
+
 </select>
 
       <label>通話オプション</label>
@@ -964,7 +992,7 @@ label{
 </section>
 
 <button onclick="calculateEstimate()">
-  📱 見積計算
+  ✨ 見積作成
 </button>  
 
 <!-- 結果 -->
@@ -1018,21 +1046,36 @@ label{
 
 function calculateEstimate() {
 
-  let currentTotal = 8000;
-  let newTotal = 10000;
+  const currentTotal =
+    Number(
+      document.getElementById("currentPlan").value
+    );
 
-  document.getElementById("currentMonthlyTotal").textContent =
+  const newTotal =
+    Number(
+      document.getElementById("newPlan").value
+    );
+
+  document.getElementById(
+    "currentMonthlyTotal"
+  ).textContent =
     currentTotal.toLocaleString() + "円";
 
-  document.getElementById("newMonthlyTotal").textContent =
+  document.getElementById(
+    "newMonthlyTotal"
+  ).textContent =
     newTotal.toLocaleString() + "円";
 
-  const difference = newTotal - currentTotal;
+  const difference =
+    newTotal - currentTotal;
 
-  document.getElementById("difference").textContent =
+  document.getElementById(
+    "difference"
+  ).textContent =
     (difference >= 0 ? "+" : "") +
     difference.toLocaleString() +
     "円";
+
 }
 
 </script>
