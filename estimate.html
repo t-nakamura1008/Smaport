@@ -266,7 +266,8 @@ button:hover{
      <h2>📱現在契約</h2>
 
       <label>プラン</label>
-    <select id="currentPlan">
+    <select id="currentPlan"
+        onchange="updateCallOptions('currentPlan','currentCallPlan')">
    <option value="" selected disabled>
   選択してください
 </option>
@@ -303,12 +304,6 @@ button:hover{
   <option value="" selected disabled>
   選択してください
 </option>
-  <option value="0">通話した分だけ</option>
-  <option value="770">5分通話 770円</option>
-  <option value="880">5分通話 880円</option>
-  <option value="1870">かけ放題 1,870円</option>
-  <option value="1980">かけ放題 1,980円</option>
-</select>
 
 <label>ファミリー回線数</label>
 <select>
@@ -345,7 +340,8 @@ button:hover{
 
      <label>プラン</label>
 
-<select id="newPlan">
+<select id="newPlan"
+        onchange="updateCallOptions('newPlan','newCallPlan')">
   <option value="" selected disabled>
   選択してください
 </option>
@@ -364,18 +360,11 @@ button:hover{
 </select>
 
       <label>通話オプション</label>
+
 <select id="newCallPlan">
   <option value="" selected disabled>
-  選択してください
-</option>
-  <option value="0">通話した分だけ</option>
-  <option value="770">5分通話 770円</option>
-  <option value="880">5分通話 880円</option>
-  <option value="1870">かけ放題 1,870円</option>
-  <option value="1980">かけ放題 1,980円</option>
-</select>
-
-
+    プランを選択してください
+  </option>
 
 <label>ファミリー回線数</label>
 <select>
@@ -1157,7 +1146,62 @@ if (difference > 0) {
 
 }
 
-}
+function updateCallOptions(planId, callId) {
+
+  const plan =
+    document.getElementById(planId).value;
+
+  const callSelect =
+    document.getElementById(callId);
+
+  callSelect.innerHTML = "";
+
+  // ahamo・はじめてスマホ
+
+  if (
+    plan === "2970" ||
+    plan === "4950" ||
+    plan === "1815"
+  ) {
+
+    callSelect.innerHTML = `
+      <option value="0">5分通話込み</option>
+      <option value="1100">かけ放題 1,100円</option>
+    `;
+
+    return;
+  }
+
+  // mini・irumo
+
+  if (
+    plan === "2750" ||
+    plan === "3850" ||
+    plan === "550" ||
+    plan === "2167" ||
+    plan === "2827" ||
+    plan === "3377"
+  ) {
+
+    callSelect.innerHTML = `
+      <option value="0">通話した分だけ</option>
+      <option value="880">5分通話 880円</option>
+      <option value="1980">かけ放題 1,980円</option>
+    `;
+
+    return;
+  }
+
+  // MAX系など
+
+  callSelect.innerHTML = `
+    <option value="0">通話した分だけ</option>
+    <option value="770">5分通話 770円</option>
+    <option value="880">5分通話 880円</option>
+    <option value="1870">かけ放題 1,870円</option>
+    <option value="1980">かけ放題 1,980円</option>
+  `;
+}  
   
 </script>
 
