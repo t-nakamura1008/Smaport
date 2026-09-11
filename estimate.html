@@ -168,6 +168,32 @@ button{
 
 button:hover{
   background:#b80018;
+}
+
+.summary-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-bottom:20px;
+}
+
+.summary-box{
+  background:#f8f9fa;
+  border-radius:12px;
+  padding:15px;
+  text-align:center;
+}
+
+.summary-box span{
+  display:block;
+  font-size:14px;
+  margin-bottom:8px;
+}
+
+.summary-box strong{
+  display:block;
+  font-size:24px;
+  color:#d6001c;
 }  
 
 </style>
@@ -238,7 +264,9 @@ button:hover{
 
       <label>プラン</label>
     <select id="currentPlan">
-
+   <option value="" selected disabled>
+  選択してください
+</option>
   <option value="8448">ドコモMAX</option>
   <option value="11448">ドコモポイ活MAX</option>
   <option value="7898">ドコモポイ活20</option>
@@ -269,6 +297,9 @@ button:hover{
 
       <label>通話オプション</label>
 <select id="currentCallPlan">
+  <option value="" selected disabled>
+  選択してください
+</option>
   <option value="0">通話した分だけ</option>
   <option value="770">5分通話 770円</option>
   <option value="880">5分通話 880円</option>
@@ -276,24 +307,11 @@ button:hover{
   <option value="1980">かけ放題 1,980円</option>
 </select>
 
-<label>dカード種別</label>
-<select>
-  <option>なし</option>
-  <option>dカード</option>
-  <option>dカード GOLD</option>
-  <option>PLATINUM ～10万</option>
-  <option>PLATINUM 10万～20万</option>
-  <option>PLATINUM 20万～</option>
-</select>
-
-<label>定期クレジット</label>
-<select>
-  <option>なし</option>
-  <option>あり</option>
-</select>
-
 <label>ファミリー回線数</label>
 <select>
+  <option value="" selected disabled>
+  選択してください
+</option>
   <option>回線なし</option>
   <option>2回線</option>
   <option>3回線以上</option>
@@ -301,12 +319,18 @@ button:hover{
 
 <label>ドコモ光</label>
 <select>
+  <option value="" selected disabled>
+  選択してください
+</option>
   <option>なし</option>
   <option>あり</option>
 </select>
 
 <label>ドコモでんき</label>
 <select>
+  <option value="" selected disabled>
+  選択してください
+</option>
   <option>なし</option>
   <option>あり</option>
 </select>
@@ -343,24 +367,13 @@ button:hover{
   <option value="1980">かけ放題 1,980円</option>
 </select>
 
-<label>dカード種別</label>
-<select>
-  <option>なし</option>
-  <option>dカード</option>
-  <option>dカード GOLD</option>
-  <option>PLATINUM ～10万</option>
-  <option>PLATINUM 10万～20万</option>
-  <option>PLATINUM 20万～</option>
-</select>
 
-<label>定期クレジット</label>
-<select>
-  <option>なし</option>
-  <option>あり</option>
-</select>
 
 <label>ファミリー回線数</label>
 <select>
+  <option value="" selected disabled>
+  選択してください
+</option>
   <option>回線なし</option>
   <option>2回線</option>
   <option>3回線以上</option>
@@ -368,12 +381,18 @@ button:hover{
 
 <label>ドコモ光</label>
 <select>
+  <option value="" selected disabled>
+  選択してください
+</option>
   <option>なし</option>
   <option>あり</option>
 </select>
 
 <label>ドコモでんき</label>
 <select>
+  <option value="" selected disabled>
+  選択してください
+</option>
   <option>なし</option>
   <option>あり</option>
 </select>
