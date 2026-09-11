@@ -1114,12 +1114,42 @@ newTotal +=
 newTotal +=
   Number(document.getElementById("newNetflix").value);
 
-  if(document.getElementById("currentLemino").checked){
-  currentTotal += 1540;
+ const currentFreeServices = [];
+
+if(document.getElementById("currentDAZN").checked){
+  currentFreeServices.push(4200);
+}
+
+if(document.getElementById("currentNBA").checked){
+  currentFreeServices.push(2728);
+}
+
+if(document.getElementById("currentLemino").checked){
+  currentFreeServices.push(1540);
 }
 
 if(document.getElementById("currentDAnime").checked){
-  currentTotal += 660;
+  currentFreeServices.push(660);
+}
+
+const isCurrentMaxPlan =
+  document.getElementById("currentPlan").value === "8448" ||
+  document.getElementById("currentPlan").value === "11448";  
+
+  if(isCurrentMaxPlan){
+
+  currentFreeServices.sort((a,b) => b-a);
+
+  currentFreeServices.slice(2).forEach(price => {
+    currentTotal += price;
+  });
+
+}else{
+
+  currentFreeServices.forEach(price => {
+    currentTotal += price;
+  });
+
 }
 
 if(document.getElementById("currentDPhoto").checked){
@@ -1136,14 +1166,6 @@ if(document.getElementById("currentDMagazine").checked){
 
 if(document.getElementById("currentDHits").checked){
   currentTotal += 690;
-}
-
-if(document.getElementById("currentNBA").checked){
-  currentTotal += 2728;
-}
-
-if(document.getElementById("currentDAZN").checked){
-  currentTotal += 4200;
 }
 
 if(document.getElementById("currentYoutube").checked){
@@ -1164,14 +1186,44 @@ if(document.getElementById("currentJump").checked){
 
 // 提案後サービス
 
+const freeServices = [];
+
+if(document.getElementById("newDAZN").checked){
+  freeServices.push(4200);
+}
+
+if(document.getElementById("newNBA").checked){
+  freeServices.push(2728);
+}
+
 if(document.getElementById("newLemino").checked){
-  newTotal += 1540;
+  freeServices.push(1540);
 }
 
 if(document.getElementById("newDAnime").checked){
-  newTotal += 660;
+  freeServices.push(660);
 }
 
+const isMaxPlan =
+  document.getElementById("newPlan").value === "8448" ||
+  document.getElementById("newPlan").value === "11448";
+
+if(isMaxPlan){
+
+  freeServices.sort((a,b) => b-a);
+
+  freeServices.slice(2).forEach(price => {
+    newTotal += price;
+  });
+
+}else{
+
+  freeServices.forEach(price => {
+    newTotal += price;
+  });
+
+}
+  
 if(document.getElementById("newDPhoto").checked){
   newTotal += 594;
 }
@@ -1186,14 +1238,6 @@ if(document.getElementById("newDMagazine").checked){
 
 if(document.getElementById("newDHits").checked){
   newTotal += 690;
-}
-
-if(document.getElementById("newNBA").checked){
-  newTotal += 2728;
-}
-
-if(document.getElementById("newDAZN").checked){
-  newTotal += 4200;
 }
 
 if(document.getElementById("newYoutube").checked){
