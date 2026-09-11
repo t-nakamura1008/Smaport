@@ -698,10 +698,10 @@ button:hover{
       <label>上位セキュリティ</label>
 
 <select id="currentSecurityPlan">
-  <option>なし</option>
-  <option>スタンダード（550円）</option>
-  <option>スタンダード詐欺対策（999円）</option>
-  <option>トータル詐欺対策プラス（1,815円）</option>
+  <option value="0">なし</option>
+  <option value="550">スタンダード（550円）</option>
+  <option value="999">スタンダード詐欺対策（999円）</option>
+  <option value="1815">トータル詐欺対策プラス（1,815円）</option>
 </select>
 
     </div>
@@ -744,10 +744,10 @@ button:hover{
      <label>上位セキュリティ</label>
 
 <select id="newSecurityPlan">
-  <option>なし</option>
-  <option>スタンダード（550円）</option>
-  <option>スタンダード詐欺対策（999円）</option>
-  <option>トータル詐欺対策プラス（1,815円）</option>
+  <option value="0">なし</option>
+  <option value="550">スタンダード（550円）</option>
+  <option value="999">スタンダード詐欺対策（999円）</option>
+  <option value="1815">トータル詐欺対策プラス（1,815円）</option>
 </select>
 
     </div>
@@ -772,18 +772,18 @@ button:hover{
       <label>Google One</label>
 
       <select id="currentGoogleOne">
-        <option>なし</option>
-        <option>100GB（290円）</option>
-        <option>200GB（440円）</option>
-        <option>AI Plus 1TB（1,450円）</option>
-      </select>
+  <option value="0">なし</option>
+  <option value="290">100GB（290円）</option>
+  <option value="440">200GB（440円）</option>
+  <option value="1450">AI Plus 1TB（1,450円）</option>
+</select>
 
       <label>Apple One</label>
 
 <select id="currentAppleOne">
-  <option>なし</option>
-  <option>個人（1,200円 / 50GB）</option>
-  <option>ファミリー（1,980円 / 200GB）</option>
+  <option value="0">なし</option>
+  <option value="1200">個人（1,200円）</option>
+  <option value="1980">ファミリー（1,980円）</option>
 </select>
 
       <label>
@@ -811,18 +811,18 @@ button:hover{
       <label>Google One</label>
 
       <select id="newGoogleOne">
-        <option>なし</option>
-        <option>100GB（290円）</option>
-        <option>200GB（440円）</option>
-        <option>AI Plus 1TB（1,450円）</option>
-      </select>
+  <option value="0">なし</option>
+  <option value="290">100GB（290円）</option>
+  <option value="440">200GB（440円）</option>
+  <option value="1450">AI Plus 1TB（1,450円）</option>
+</select>
 
       <label>Apple One</label>
 
 <select id="newAppleOne">
-  <option>なし</option>
-  <option>個人（1,200円 / 50GB）</option>
-  <option>ファミリー（1,980円 / 200GB）</option>
+  <option value="0">なし</option>
+  <option value="1200">個人（1,200円）</option>
+  <option value="1980">ファミリー（1,980円）</option>
 </select>
 
       <label>
@@ -862,11 +862,11 @@ button:hover{
       <label>ケータイサポート</label>
 
       <select id="currentKeitaiSupport">
-        <option>なし</option>
-        <option>M（770円）</option>
-        <option>L（990円）</option>
-        <option>Plus（1,210円）</option>
-      </select>
+  <option value="0">なし</option>
+  <option value="770">M（770円）</option>
+  <option value="990">L（990円）</option>
+  <option value="1210">Plus（1,210円）</option>
+</select>
 
       <label>
         <input type="checkbox" id="currentHOZON">
@@ -888,11 +888,11 @@ button:hover{
       <label>ケータイサポート</label>
 
       <select id="newKeitaiSupport">
-        <option>なし</option>
-        <option>M（770円）</option>
-        <option>L（990円）</option>
-        <option>Plus（1,210円）</option>
-      </select>
+  <option value="0">なし</option>
+  <option value="770">M（770円）</option>
+  <option value="990">L（990円）</option>
+  <option value="1210">Plus（1,210円）</option>
+</select>
 
       <label>
         <input type="checkbox" id="newHOZON">
@@ -1210,6 +1210,30 @@ if(document.getElementById("currentSpotify").checked){
 if(document.getElementById("currentJump").checked){
   currentTotal += 980;
 }
+
+currentTotal +=
+  Number(document.getElementById("currentGoogleOne").value);
+
+currentTotal +=
+  Number(document.getElementById("currentAppleOne").value);
+
+currentTotal +=
+  Number(document.getElementById("currentSecurityPlan").value);
+
+currentTotal +=
+  Number(document.getElementById("currentKeitaiSupport").value);
+
+newTotal +=
+  Number(document.getElementById("newGoogleOne").value);
+
+newTotal +=
+  Number(document.getElementById("newAppleOne").value);
+
+newTotal +=
+  Number(document.getElementById("newSecurityPlan").value);
+
+newTotal +=
+  Number(document.getElementById("newKeitaiSupport").value);  
 
 // 提案後サービス
 
