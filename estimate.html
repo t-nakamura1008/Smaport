@@ -193,8 +193,8 @@ button:hover{
 .summary-box strong{
   display:block;
   font-size:24px;
-  color:#d6001c;
-}  
+  color:#000;
+}
 
 </style>
 
@@ -343,7 +343,9 @@ button:hover{
      <label>プラン</label>
 
 <select id="newPlan">
-
+  <option value="" selected disabled>
+  選択してください
+</option>
   <option value="8448">ドコモMAX</option>
   <option value="11448">ドコモポイ活MAX</option>
   <option value="7898">ドコモポイ活20</option>
@@ -453,20 +455,18 @@ button:hover{
   ジャンプ＋定期購読（980円）
 </label>
 
-     <label>Disney+</label>
-<select id="currentDisney">
-  <option>なし</option>
-  <option>スタンダード（1,250円）</option>
-  <option>プレミアム（1,670円）</option>
+     <select id="currentDisney">
+  <option value="0">なし</option>
+  <option value="1250">スタンダード（1,250円）</option>
+  <option value="1670">プレミアム（1,670円）</option>
 </select>
 
-<label>Netflix</label>
 <select id="currentNetflix">
-  <option>なし</option>
-  <option>広告付きスタンダード（890円）</option>
-  <option>スタンダード（1,590円）</option>
-  <option>プレミアム（2,290円）</option>
-      </select>
+  <option value="0">なし</option>
+  <option value="890">広告付きスタンダード（890円）</option>
+  <option value="1590">スタンダード（1,590円）</option>
+  <option value="2290">プレミアム（2,290円）</option>
+</select>
 
      <label>
   <input type="checkbox" id="currentDPhoto">
@@ -536,18 +536,20 @@ button:hover{
 </label>
 
       <label>Disney+</label>
+
 <select id="newDisney">
-  <option>なし</option>
-  <option>スタンダード（1,250円）</option>
-  <option>プレミアム（1,670円）</option>
+  <option value="0">なし</option>
+  <option value="1250">スタンダード（1,250円）</option>
+  <option value="1670">プレミアム（1,670円）</option>
 </select>
 
 <label>Netflix</label>
+
 <select id="newNetflix">
-  <option>なし</option>
-  <option>広告付きスタンダード（890円）</option>
-  <option>スタンダード（1,590円）</option>
-  <option>プレミアム（2,290円）</option>
+  <option value="0">なし</option>
+  <option value="890">広告付きスタンダード（890円）</option>
+  <option value="1590">スタンダード（1,590円）</option>
+  <option value="2290">プレミアム（2,290円）</option>
 </select>
 
      <label>
@@ -1089,6 +1091,28 @@ function calculateEstimate() {
       document.getElementById("newCallPlan").value
     );
 
+  currentTotal +=
+  Number(
+    document.getElementById("currentPhoneWarrantyFee").value || 0
+  );
+
+newTotal +=
+  Number(
+    document.getElementById("newPhoneWarrantyFee").value || 0
+  );
+
+  currentTotal +=
+  Number(document.getElementById("currentDisney").value);
+
+currentTotal +=
+  Number(document.getElementById("currentNetflix").value);
+
+newTotal +=
+  Number(document.getElementById("newDisney").value);
+
+newTotal +=
+  Number(document.getElementById("newNetflix").value);
+
   document.getElementById(
     "currentMonthlyTotal"
   ).textContent =
@@ -1099,15 +1123,27 @@ function calculateEstimate() {
   ).textContent =
     newTotal.toLocaleString() + "円";
 
-  const difference =
-    newTotal - currentTotal;
+  const difference = newTotal - currentTotal;
 
-  document.getElementById(
-    "difference"
-  ).textContent =
-    (difference >= 0 ? "+" : "") +
-    difference.toLocaleString() +
-    "円";
+const diffElement =
+  document.getElementById("difference");
+
+diffElement.textContent =
+  (difference >= 0 ? "+" : "") +
+  difference.toLocaleString() +
+  "円";
+
+if (difference > 0) {
+
+  diffElement.style.color = "#2563eb"; // 青
+
+} else if (difference < 0) {
+
+  diffElement.style.color = "#dc2626"; // 赤
+
+} else {
+
+  diffElement.style.color = "#000"; // 黒
 
 }
 
