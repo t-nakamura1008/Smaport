@@ -1174,6 +1174,22 @@ if (
   )
 ) {
 
+  // ahamo・はじめてスマホは例外
+
+  if (
+    plan === "2970" ||
+    plan === "4950" ||
+    plan === "1815"
+  ) {
+
+    callSelect.innerHTML = `
+      <option value="0">5分通話込み</option>
+      <option value="1100">かけ放題 1,100円</option>
+    `;
+
+    return;
+  }
+
   callSelect.innerHTML = `
     <option value="0">通話した分だけ</option>
     <option value="880">5分通話 880円</option>
