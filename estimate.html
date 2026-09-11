@@ -677,10 +677,13 @@ button:hover{
       
     <label>
   <input
-    type="checkbox"
-    id="currentPhoneWarranty"
-    onchange="toggleWarrantyInput('current')"
-  >
+  type="checkbox"
+  id="currentPhoneWarranty"
+  onchange="
+    toggleWarrantyInput('current');
+    syncAnshinPack('current');
+  "
+>
   ケータイ補償
 </label>
 <div
@@ -694,12 +697,20 @@ button:hover{
   >
 </div>
 <label>
-  <input type="checkbox" id="currentRemoteSupport">
+  <input
+  type="checkbox"
+  id="currentRemoteSupport"
+  onchange="syncAnshinPack('current')"
+>
   あんしん遠隔サポート（660円）
 </label>
 
 <label>
-  <input type="checkbox" id="currentAnshinSecurity">
+  <input
+  type="checkbox"
+  id="currentAnshinSecurity"
+  onchange="syncAnshinPack('current')"
+>
   あんしんセキュリティ（220円）
 </label>
 
@@ -717,22 +728,25 @@ button:hover{
     <!-- 提案後 -->
     <div>
 
-      <h3>✨ 提案後</h3>
+     <h3>✨ 提案後</h3>
 
-      <label>
- <input
-  type="checkbox"
-  id="newAnshinPack"
-  onchange="toggleAnshinPack('new')"
->
+<label>
+  <input
+    type="checkbox"
+    id="newAnshinPack"
+    onchange="toggleAnshinPack('new')"
+  >
   あんしんパック
 </label>
-      
-      <label>
+
+<label>
   <input
     type="checkbox"
     id="newPhoneWarranty"
-    onchange="toggleWarrantyInput('new')"
+    onchange="
+      toggleWarrantyInput('new');
+      syncAnshinPack('new');
+    "
   >
   ケータイ補償
 </label>
@@ -749,15 +763,24 @@ button:hover{
 </div>
 
 <label>
-  <input type="checkbox" id="newRemoteSupport">
+  <input
+    type="checkbox"
+    id="newRemoteSupport"
+    onchange="syncAnshinPack('new')"
+  >
   あんしん遠隔サポート（660円）
 </label>
 
 <label>
-  <input type="checkbox" id="newAnshinSecurity">
+  <input
+    type="checkbox"
+    id="newAnshinSecurity"
+    onchange="syncAnshinPack('new')"
+  >
   あんしんセキュリティ（220円）
 </label>
 
+    
      <label>上位セキュリティ</label>
 
 <select id="newSecurityPlan">
@@ -809,21 +832,34 @@ button:hover{
   id="currentDValuePack"
   onchange="toggleDValuePack('current')"
 >
-  dバリューパスパック
+dバリューパスパック
 </label>
       
       <label>
-        <input type="checkbox" id="currentCloud50">
+        <input
+  type="checkbox"
+  id="currentCloud50"
+  onchange="syncDValuePack('current')"
+>
         クラウド容量50GB（440円）
       </label>
 
       <label>
-        <input type="checkbox" id="currentDValuePass">
-        dバリューパス（550円）
+       <input
+  type="checkbox"
+  id="currentDValuePass"
+  onchange="syncDValuePack('current')"
+>
+dバリューパス（550円）
+    
       </label>
 
       <label>
-        <input type="checkbox" id="currentMyDaiz">
+        <input
+  type="checkbox"
+  id="currentMyDaiz"
+  onchange="syncDValuePack('current')"
+>
         my daiz（110円）
       </label>
 
@@ -861,17 +897,29 @@ button:hover{
 </label>
 
       <label>
-        <input type="checkbox" id="newCloud50">
+        <input
+  type="checkbox"
+  id="newCloud50"
+  onchange="syncDValuePack('new')"
+>
         クラウド容量50GB（440円）
       </label>
 
       <label>
-        <input type="checkbox" id="newDValuePass">
+        <input
+  type="checkbox"
+  id="newDValuePass"
+  onchange="syncDValuePack('new')"
+>
         dバリューパス（550円）
       </label>
 
       <label>
-        <input type="checkbox" id="newMyDaiz">
+        <input
+  type="checkbox"
+  id="newMyDaiz"
+  onchange="syncDValuePack('new')"
+>
         my daiz（110円）
       </label>
 
@@ -1682,6 +1730,42 @@ function toggleDValuePack(type){
   ).checked = checked;
 
 }  
+
+function syncAnshinPack(type){
+
+  const warranty =
+    document.getElementById(type + "PhoneWarranty").checked;
+
+  const remote =
+    document.getElementById(type + "RemoteSupport").checked;
+
+  const security =
+    document.getElementById(type + "AnshinSecurity").checked;
+
+  document.getElementById(
+    type + "AnshinPack"
+  ).checked =
+    warranty && remote && security;
+
+}  
+
+function syncDValuePack(type){
+
+  const dValue =
+    document.getElementById(type + "DValuePass").checked;
+
+  const cloud =
+    document.getElementById(type + "Cloud50").checked;
+
+  const myDaiz =
+    document.getElementById(type + "MyDaiz").checked;
+
+  document.getElementById(
+    type + "DValuePack"
+  ).checked =
+    dValue && cloud && myDaiz;
+
+}
   
 </script>
 
