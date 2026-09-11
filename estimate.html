@@ -667,16 +667,24 @@ button:hover{
       <h3>📱 現在加入</h3>
 
     <label>
-  <input type="checkbox" id="currentPhoneWarranty">
+  <input
+    type="checkbox"
+    id="currentPhoneWarranty"
+    onchange="toggleWarrantyInput('current')"
+  >
   ケータイ補償
 </label>
 
-<input
-  type="number"
-  id="currentPhoneWarrantyFee"
-  placeholder="補償料金"
-/>
-
+<div
+  id="currentWarrantyArea"
+  style="display:none;"
+>
+  <input
+    type="number"
+    id="currentPhoneWarrantyFee"
+    placeholder="補償料金"
+  >
+</div>
 <label>
   <input type="checkbox" id="currentRemoteSupport">
   あんしん遠隔サポート（660円）
@@ -704,15 +712,24 @@ button:hover{
       <h3>✨ 提案後</h3>
 
       <label>
-  <input type="checkbox" id="newPhoneWarranty">
+  <input
+    type="checkbox"
+    id="newPhoneWarranty"
+    onchange="toggleWarrantyInput('new')"
+  >
   ケータイ補償
 </label>
 
-<input
-  type="number"
-  id="newPhoneWarrantyFee"
-  placeholder="補償料金"
-/>
+<div
+  id="newWarrantyArea"
+  style="display:none;"
+>
+  <input
+    type="number"
+    id="newPhoneWarrantyFee"
+    placeholder="補償料金"
+  >
+</div>
 
 <label>
   <input type="checkbox" id="newRemoteSupport">
@@ -1092,15 +1109,25 @@ function calculateEstimate() {
       document.getElementById("newCallPlan").value
     );
 
-  currentTotal +=
-  Number(
-    document.getElementById("currentPhoneWarrantyFee").value || 0
+  if(document.getElementById("currentPhoneWarranty").checked){
+
+  currentTotal += Number(
+    document.getElementById(
+      "currentPhoneWarrantyFee"
+    ).value || 0
   );
 
-newTotal +=
-  Number(
-    document.getElementById("newPhoneWarrantyFee").value || 0
+}
+
+if(document.getElementById("newPhoneWarranty").checked){
+
+  newTotal += Number(
+    document.getElementById(
+      "newPhoneWarrantyFee"
+    ).value || 0
   );
+
+}
 
   currentTotal +=
   Number(document.getElementById("currentDisney").value);
@@ -1387,6 +1414,34 @@ if (
     <option value="1980">かけ放題 1,980円</option>
   `;
 }  
+
+function toggleWarrantyInput(type){
+
+  const checkbox =
+    document.getElementById(
+      type + "PhoneWarranty"
+    );
+
+  const area =
+    document.getElementById(
+      type + "WarrantyArea"
+    );
+
+  if(checkbox.checked){
+
+    area.style.display = "block";
+
+  }else{
+
+    area.style.display = "none";
+
+    document.getElementById(
+      type + "PhoneWarrantyFee"
+    ).value = "";
+
+  }
+
+}
   
 </script>
 
