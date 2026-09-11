@@ -268,12 +268,12 @@ button:hover{
 </select>
 
       <label>通話オプション</label>
-<select>
-  <option>通話した分だけ</option>
-  <option>5分通話 770円</option>
-  <option>5分通話 880円</option>
-  <option>かけ放題 1,870円</option>
-  <option>かけ放題 1,980円</option>
+<select id="currentCallPlan">
+  <option value="0">通話した分だけ</option>
+  <option value="770">5分通話 770円</option>
+  <option value="880">5分通話 880円</option>
+  <option value="1870">かけ放題 1,870円</option>
+  <option value="1980">かけ放題 1,980円</option>
 </select>
 
 <label>dカード種別</label>
@@ -335,12 +335,12 @@ button:hover{
 </select>
 
       <label>通話オプション</label>
-<select>
-  <option>通話した分だけ</option>
-  <option>5分通話 770円</option>
-  <option>5分通話 880円</option>
-  <option>かけ放題 1,870円</option>
-  <option>かけ放題 1,980円</option>
+<select id="newCallPlan">
+  <option value="0">通話した分だけ</option>
+  <option value="770">5分通話 770円</option>
+  <option value="880">5分通話 880円</option>
+  <option value="1870">かけ放題 1,870円</option>
+  <option value="1980">かけ放題 1,980円</option>
 </select>
 
 <label>dカード種別</label>
@@ -1046,14 +1046,24 @@ button:hover{
 
 function calculateEstimate() {
 
-  const currentTotal =
+  let currentTotal =
     Number(
       document.getElementById("currentPlan").value
     );
 
-  const newTotal =
+  let newTotal =
     Number(
       document.getElementById("newPlan").value
+    );
+
+  currentTotal +=
+    Number(
+      document.getElementById("currentCallPlan").value
+    );
+
+  newTotal +=
+    Number(
+      document.getElementById("newCallPlan").value
     );
 
   document.getElementById(
