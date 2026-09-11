@@ -1160,6 +1160,29 @@ function updateCallOptions(planId, callId) {
 
   callSelect.innerHTML = "";
 
+  const currentCallPlan =
+  document.getElementById("currentCallPlan").value;
+
+// 現在契約が880円または1980円なら
+// 提案後も880円・1980円のみ
+
+if (
+  callId === "newCallPlan" &&
+  (
+    currentCallPlan === "880" ||
+    currentCallPlan === "1980"
+  )
+) {
+
+  callSelect.innerHTML = `
+    <option value="0">通話した分だけ</option>
+    <option value="880">5分通話 880円</option>
+    <option value="1980">かけ放題 1,980円</option>
+  `;
+
+  return;
+}
+
   // ahamo・はじめてスマホ
 
   if (
