@@ -804,7 +804,11 @@ button:hover{
 </select>
 
       <label>
-  <input type="checkbox" id="currentDValuePack">
+  <input
+  type="checkbox"
+  id="currentDValuePack"
+  onchange="toggleDValuePack('current')"
+>
   dバリューパスパック
 </label>
       
@@ -848,7 +852,11 @@ button:hover{
 </select>
 
       <label>
-  <input type="checkbox" id="newDValuePack">
+  <input
+  type="checkbox"
+  id="newDValuePack"
+  onchange="toggleDValuePack('new')"
+>
   dバリューパスパック
 </label>
 
@@ -1653,6 +1661,27 @@ function toggleAnshinPack(type){
   toggleWarrantyInput(type);
 
 }
+
+function toggleDValuePack(type){
+
+  const checked =
+    document.getElementById(
+      type + "DValuePack"
+    ).checked;
+
+  document.getElementById(
+    type + "DValuePass"
+  ).checked = checked;
+
+  document.getElementById(
+    type + "Cloud50"
+  ).checked = checked;
+
+  document.getElementById(
+    type + "MyDaiz"
+  ).checked = checked;
+
+}  
   
 </script>
 
