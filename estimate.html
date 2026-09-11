@@ -963,6 +963,10 @@ label{
 
 </section>
 
+<button onclick="calculateEstimate()">
+  📱 見積計算
+</button>  
+
 <!-- 結果 -->
 <section class="card result-card">
 
@@ -989,21 +993,6 @@ label{
   </div>
 
   <div class="result-item">
-    <span>あんしんパック割引</span>
-    <strong id="anshinPackDiscount">0円</strong>
-  </div>
-
-  <div class="result-item">
-    <span>セキュリティセット割引</span>
-    <strong id="securityDiscount">0円</strong>
-  </div>
-
-  <div class="result-item">
-    <span>dバリューパスパック割引</span>
-    <strong id="valuePassDiscount">0円</strong>
-  </div>
-
-  <div class="result-item">
     <span>初期手数料（1回のみ）</span>
     <strong id="feeTotal">0円</strong>
   </div>
@@ -1024,3 +1013,29 @@ label{
 </section>
   
 </div>
+
+<script>
+
+function calculateEstimate() {
+
+  let currentTotal = 8000;
+  let newTotal = 10000;
+
+  document.getElementById("currentMonthlyTotal").textContent =
+    currentTotal.toLocaleString() + "円";
+
+  document.getElementById("newMonthlyTotal").textContent =
+    newTotal.toLocaleString() + "円";
+
+  const difference = newTotal - currentTotal;
+
+  document.getElementById("difference").textContent =
+    (difference >= 0 ? "+" : "") +
+    difference.toLocaleString() +
+    "円";
+}
+
+</script>
+
+</body>
+</html>
