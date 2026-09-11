@@ -616,10 +616,16 @@ label{
 
       <h3>📱 現在加入</h3>
 
-     <label>
+    <label>
   <input type="checkbox" id="currentPhoneWarranty">
   ケータイ補償
 </label>
+
+<input
+  type="number"
+  id="currentPhoneWarrantyFee"
+  placeholder="補償料金"
+/>
 
 <label>
   <input type="checkbox" id="currentRemoteSupport">
@@ -651,6 +657,12 @@ label{
   <input type="checkbox" id="newPhoneWarranty">
   ケータイ補償
 </label>
+
+<input
+  type="number"
+  id="newPhoneWarrantyFee"
+  placeholder="補償料金"
+/>
 
 <label>
   <input type="checkbox" id="newRemoteSupport">
@@ -837,7 +849,7 @@ label{
   <h2>📱 分割①（本体）</h2>
 
   <label>機種名</label>
-  <input type="text" placeholder="iPhone 17 Pro">
+  <input type="text" placeholder="商品名">
 
   <label>購入方法</label>
   <select>
@@ -849,10 +861,10 @@ label{
   </select>
 
   <label>一括価格</label>
-  <input type="number" placeholder="218790">
+  <input type="number" placeholder="金額">
 
   <label>頭金</label>
-  <input type="number" placeholder="22000">
+  <input type="number" placeholder="金額">
 
   <label>割引額</label>
   <input type="number" placeholder="0">
@@ -865,10 +877,10 @@ label{
   <h2>📦 分割②</h2>
 
   <label>商品名</label>
-  <input type="text" placeholder="Apple Watch">
+  <input type="text" placeholder="商品名">
 
   <label>金額</label>
-  <input type="number" placeholder="59800">
+  <input type="number" placeholder="金額">
 
   <label>回数</label>
   <select>
@@ -885,10 +897,10 @@ label{
   <h2>📦 分割③</h2>
 
   <label>商品名</label>
-  <input type="text" placeholder="PhotoCube">
+  <input type="text" placeholder="商品名">
 
   <label>金額</label>
-  <input type="number" placeholder="23976">
+  <input type="number" placeholder="金額">
 
   <label>回数</label>
   <select>
@@ -957,9 +969,19 @@ label{
   <h2>⭐ 結果</h2>
 
   <div class="result-item">
-    <span>毎月の合計金額</span>
-    <strong id="monthlyTotal">0円</strong>
-  </div>
+  <span>現在月額</span>
+  <strong id="currentMonthlyTotal">0円</strong>
+</div>
+
+<div class="result-item">
+  <span>提案後月額</span>
+  <strong id="newMonthlyTotal">0円</strong>
+</div>
+
+  <div class="result-item">
+    <span>今と比べて</span>
+    <strong id="difference">0円</strong>
+  </div> 
 
   <div class="result-item">
     <span>貰えるポイント</span>
@@ -991,36 +1013,14 @@ label{
     <strong id="todayTotal">0円</strong>
   </div>
 
-  <div class="result-item">
-    <span>今までとの差額</span>
-    <strong id="difference">0円</strong>
-  </div>
-
 </section>
 
 <section class="card">
 
   <h2>📈 支払推移</h2>
 
-  <div id="paymentTimeline">
+  <div id="paymentTimeline"></div>
 
-    <div class="result-item">
-      <span>1～23回</span>
-      <strong>0円</strong>
-    </div>
-
-    <div class="result-item">
-      <span>24～47回</span>
-      <strong>0円</strong>
-    </div>
-
-    <div class="result-item">
-      <span>48回～</span>
-      <strong>0円</strong>
-    </div>
-
-  </div>
-
-</section>  
+</section>
   
 </div>
