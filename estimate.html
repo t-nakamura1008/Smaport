@@ -1781,7 +1781,13 @@ if (callId === "newCallPlan") {
   }
 
   // 現在770円
-  if (currentCallPlan === "770") {
+  if (
+  currentCallPlan === "770" &&
+  plan !== "2970" &&
+  plan !== "4950" &&
+  plan !== "1815"
+) {
+
 
     callSelect.innerHTML = `
       <option value="0">通話した分だけ</option>
@@ -1794,7 +1800,13 @@ if (callId === "newCallPlan") {
   }
 
   // 現在1870円
-  if (currentCallPlan === "1870") {
+  if (
+  currentCallPlan === "1870" &&
+  plan !== "2970" &&
+  plan !== "4950" &&
+  plan !== "1815"
+) {
+
 
     callSelect.innerHTML = `
       <option value="0">通話した分だけ</option>
