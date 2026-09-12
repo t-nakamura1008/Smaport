@@ -1075,9 +1075,9 @@ dバリューパス（550円）
 
   <label><input type="checkbox"> アプリ移行（30分）（3,300円）</label>
 
-  <label><input type="checkbox"> 機種変更（4,980円）</label>
+  <label><input type="checkbox"> 機種変更（4,950円）</label>
 
-  <label><input type="checkbox"> 4G→5Gプラン変更のみ（4,980円）</label>
+  <label><input type="checkbox"> 4G→5Gプラン変更のみ（4,950円）</label>
 
 </section>
 
@@ -1463,6 +1463,12 @@ if(document.getElementById("currentJump").checked){
   currentTotal += 980;
 }
 
+// ユニバーサルサービス料・電話リレーサービス料（3円）
+currentTotal += 3;
+newTotal += 3; 
+currentTotal += SERVICE_FEE;
+newTotal += SERVICE_FEE;
+
 currentTotal +=
   Number(document.getElementById("currentGoogleOne").value);
 
@@ -1559,6 +1565,12 @@ if(document.getElementById("newJump").checked){
   newTotal += 980;
 }
 
+// ユニバーサルサービス料・電話リレーサービス料（3円）
+currentTotal += 3;
+newTotal += 3;
+currentTotal += SERVICE_FEE;
+newTotal += SERVICE_FEE;
+  
   document.getElementById(
     "currentMonthlyTotal"
   ).textContent =
@@ -1596,6 +1608,31 @@ if (difference > 0) {
 }  
 
 function updateCallOptions(planId, callId) {
+
+  const prefix =
+  callId === "currentCallPlan"
+    ? "current"
+    : "new";
+
+  const isMailPlan =
+  plan === "2970" ||  // ahamo 30GB
+  plan === "4950" ||  // ahamo 100GB
+  plan === "2750" ||  // mini 4GB
+  plan === "3850" ||  // mini 10GB
+  plan === "550"  ||  // irumo 0.5GB
+  plan === "2167" ||  // irumo 3GB
+  plan === "2827" ||  // irumo 6GB
+  plan === "3377";    // irumo 9GB
+
+document.getElementById(
+  prefix + "Mail"
+).disabled = !isMailPlan;
+
+if(!isMailPlan){
+  document.getElementById(
+    prefix + "Mail"
+  ).checked = false;
+}
 
   const plan =
     document.getElementById(planId).value;
