@@ -314,12 +314,8 @@ button:hover{
 </select>
 
 <label>ドコモ光</label>
-<select>
-  <option value="" selected disabled>
-  選択してください
-</option>
-  <option>なし</option>
-  <option>あり</option>
+<select id="currentHikari">
+  <option value="0">なし</option>
 </select>
 
 <label>ドコモでんき</label>
@@ -373,12 +369,8 @@ button:hover{
 </select>
 
 <label>ドコモ光</label>
-<select>
-  <option value="" selected disabled>
-  選択してください
-</option>
-  <option>なし</option>
-  <option>あり</option>
+<select id="newHikari">
+  <option value="0">なし</option>
 </select>
 
 <label>ドコモでんき</label>
@@ -1177,22 +1169,31 @@ function calculateEstimate() {
     );
 
   currentTotal +=
-    Number(
-      document.getElementById("currentCallPlan").value
-    );
+  Number(
+    document.getElementById("currentCallPlan").value
+  );
 
-  newTotal +=
-    Number(
-      document.getElementById("newCallPlan").value
-    );
+newTotal +=
+  Number(
+    document.getElementById("newCallPlan").value
+  );
 
-  // ファミリー割引
+// ファミリー割引
 currentTotal -= Number(
   document.getElementById("currentFamily").value
 );
 
 newTotal -= Number(
   document.getElementById("newFamily").value
+);
+
+// ドコモ光セット割
+currentTotal -= Number(
+  document.getElementById("currentHikari").value
+);
+
+newTotal -= Number(
+  document.getElementById("newHikari").value
 );
 
   if(document.getElementById("currentPhoneWarranty").checked){
@@ -1694,6 +1695,65 @@ familySelect.innerHTML = `
 <option value="1100">3回線以上</option>
 
 `;
+
+}
+
+const hikariId =
+  callId === "currentCallPlan"
+    ? "currentHikari"
+    : "newHikari";
+
+const hikariSelect =
+  document.getElementById(hikariId);
+
+// ahamo
+if (
+  plan === "2970" ||
+  plan === "4950"
+) {
+
+  hikariSelect.innerHTML = `
+    <option value="0">対象外</option>
+  `;
+
+}
+
+// mini・MAX・ポイ活MAX・ポイ活20
+else if (
+  plan === "2750" ||
+  plan === "3850" ||
+  plan === "8448" ||
+  plan === "11448" ||
+  plan === "7898"
+) {
+
+  hikariSelect.innerHTML = `
+    <option value="0">なし</option>
+    <option value="1210">あり</option>
+  `;
+
+}
+
+// ギガライト
+else if (
+  plan === "6765"
+) {
+
+  hikariSelect.innerHTML = `
+    <option value="0">なし</option>
+    <option value="0">1GB未満</option>
+    <option value="1100">3GB以上</option>
+  `;
+
+}
+
+// irumo・eximo・ギガホ系
+else {
+
+  hikariSelect.innerHTML = `
+    <option value="0">なし</option>
+    <option value="1100">あり</option>
+  `;
 
 }
 
