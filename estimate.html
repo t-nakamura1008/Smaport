@@ -1190,13 +1190,42 @@ newTotal -= Number(
   document.getElementById("newHikari").value
 );
 
+// ドコモでんき割
 currentTotal -= Number(
   document.getElementById("currentDenki").value
 );
 
 newTotal -= Number(
   document.getElementById("newDenki").value
-);  
+);
+
+// 長期利用割
+const usageYears =
+  document.getElementById("usageYears").value;
+
+let loyaltyDiscount = 0;
+
+if (usageYears === "10年以上") {
+  loyaltyDiscount = 110;
+}
+
+if (usageYears === "20年以上") {
+  loyaltyDiscount = 220;
+}
+
+if (
+  document.getElementById("currentPlan").value === "8448" ||
+  document.getElementById("currentPlan").value === "11448"
+) {
+  currentTotal -= loyaltyDiscount;
+}
+
+if (
+  document.getElementById("newPlan").value === "8448" ||
+  document.getElementById("newPlan").value === "11448"
+) {
+  newTotal -= loyaltyDiscount;
+} 
 
   if(document.getElementById("currentPhoneWarranty").checked){
 
@@ -1798,36 +1827,6 @@ else {
     <option value="0">対象外</option>
   `;
 
-} 
-
- // 長期利用割
-const usageYears =
-  document.getElementById("usageYears").value;
-
-let loyaltyDiscount = 0;
-
-if (usageYears === "10年以上") {
-  loyaltyDiscount = 110;
-}
-
-if (usageYears === "20年以上") {
-  loyaltyDiscount = 220;
-}
-
-// 現在契約
-if (
-  document.getElementById("currentPlan").value === "8448" ||
-  document.getElementById("currentPlan").value === "11448"
-) {
-  currentTotal -= loyaltyDiscount;
-}
-
-// 提案後
-if (
-  document.getElementById("newPlan").value === "8448" ||
-  document.getElementById("newPlan").value === "11448"
-) {
-  newTotal -= loyaltyDiscount;
 } 
 
   // 提案後プランの通話オプション引継ぎ判定
