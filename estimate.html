@@ -272,7 +272,7 @@ button:hover{
   選択してください
 </option>
   <option value="8448">ドコモMAX</option>
-  <option value="11448">ドコモポイ活MAX</option>
+  <option value="11748">ドコモポイ活MAX</option>
   <option value="7898">ドコモポイ活20</option>
 
   <option value="2750">ドコモ mini 4GB</option>
@@ -284,7 +284,7 @@ button:hover{
   <option value="1815">はじめてスマホプラン</option>
 
   <option value="7315">eximo</option>
-  <option value="10456">eximoポイ活</option>
+  <option value="10615">eximoポイ活</option>
 
   <option value="550">irumo 0.5GB</option>
   <option value="2167">irumo 3GB</option>
@@ -293,9 +293,9 @@ button:hover{
 
   <option value="6765">5Gギガライト</option>
 
-  <option value="7315">ギガホ</option>
-  <option value="7315">5Gギガホ</option>
-  <option value="8448">5Gギガホプレミア</option>
+  <option value="7865">ギガホ</option>
+  <option value="8415">5Gギガホ</option>
+  <option value="7315">5Gギガホプレミア</option>
 
 </select>
 
@@ -1215,14 +1215,14 @@ if (usageYears === "20年以上") {
 
 if (
   document.getElementById("currentPlan").value === "8448" ||
-  document.getElementById("currentPlan").value === "11448"
+  document.getElementById("currentPlan").value === "11748"
 ) {
   currentTotal -= loyaltyDiscount;
 }
 
 if (
   document.getElementById("newPlan").value === "8448" ||
-  document.getElementById("newPlan").value === "11448"
+  document.getElementById("newPlan").value === "11748"
 ) {
   newTotal -= loyaltyDiscount;
 } 
@@ -1448,7 +1448,7 @@ if(document.getElementById("currentDAnime").checked){
 
 const isCurrentMaxPlan =
   document.getElementById("currentPlan").value === "8448" ||
-  document.getElementById("currentPlan").value === "11448";  
+  document.getElementById("currentPlan").value === "11748";  
 
   if(isCurrentMaxPlan){
 
@@ -1548,7 +1548,7 @@ if(document.getElementById("newDAnime").checked){
 
 const isMaxPlan =
   document.getElementById("newPlan").value === "8448" ||
-  document.getElementById("newPlan").value === "11448";
+  document.getElementById("newPlan").value === "11748";
 
 if(isMaxPlan){
 
@@ -1706,7 +1706,7 @@ if (
 // ドコモMAX・ポイ活MAX・ポイ活20
 else if (
   plan === "8448" ||
-  plan === "11448" ||
+  plan === "11748" ||
   plan === "7898"
 ) {
 
@@ -1762,7 +1762,7 @@ else if (
   plan === "2750" ||
   plan === "3850" ||
   plan === "8448" ||
-  plan === "11448" ||
+  plan === "11748" ||
   plan === "7898"
 ) {
 
@@ -1807,8 +1807,7 @@ const denkiSelect =
 // ドコモでんき対象プラン
 if (
   plan === "8448" ||
-  plan === "11448" ||
-  plan === "7898" ||
+  plan === "11748" ||
   plan === "2750" ||
   plan === "3850"
 ) {
