@@ -1616,6 +1616,9 @@ function updateCallOptions(planId, callId) {
   const currentCallPlan =
     document.getElementById("currentCallPlan").value;
 
+  const currentPlan =
+  document.getElementById("currentPlan").value;
+
   const prefix =
     callId === "currentCallPlan"
       ? "current"
@@ -1818,21 +1821,27 @@ if (callId === "newCallPlan") {
     return;
   }
 
-  // 現在880円・1980円・1100円
-  if (
-    currentCallPlan === "880" ||
-    currentCallPlan === "1980" ||
-    currentCallPlan === "1100"
-  ) {
+ // ahamo・はじめてスマホ・mini・irumoからの変更
+if (
+  currentPlan === "2970" ||
+  currentPlan === "4950" ||
+  currentPlan === "1815" ||
+  currentPlan === "2750" ||
+  currentPlan === "3850" ||
+  currentPlan === "550" ||
+  currentPlan === "2167" ||
+  currentPlan === "2827" ||
+  currentPlan === "3377"
+) {
 
-    callSelect.innerHTML = `
-      <option value="0">通話した分だけ</option>
-      <option value="880">5分通話 880円</option>
-      <option value="1980">かけ放題 1,980円</option>
-    `;
+  callSelect.innerHTML = `
+    <option value="0">通話した分だけ</option>
+    <option value="880">5分通話 880円</option>
+    <option value="1980">かけ放題 1,980円</option>
+  `;
 
-    return;
-  }
+  return;
+ }
 }
 
   // ahamo
