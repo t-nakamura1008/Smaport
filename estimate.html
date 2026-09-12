@@ -1649,17 +1649,18 @@ function updateCallOptions(planId, callId) {
 const familySelect =
   document.getElementById(familyId);
 
-// ahamo・mini・irumo
+// ahamo・はじめてスマホ・mini・irumo
 if (
   plan === "2970" ||
   plan === "4950" ||
+  plan === "1815" ||
   plan === "2750" ||
   plan === "3850" ||
   plan === "550" ||
   plan === "2167" ||
   plan === "2827" ||
   plan === "3377"
-) {
+)
 
   familySelect.innerHTML = `
     <option value="0">対象外</option>
@@ -1706,10 +1707,11 @@ const hikariId =
 const hikariSelect =
   document.getElementById(hikariId);
 
-// ahamo
+// ahamo・はじめてスマホ
 if (
   plan === "2970" ||
-  plan === "4950"
+  plan === "4950" ||
+  plan === "1815"
 ) {
 
   hikariSelect.innerHTML = `
