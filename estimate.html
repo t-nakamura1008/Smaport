@@ -1263,23 +1263,6 @@ else if (
 
 }
 
-// 現在契約
-if (
-  document.getElementById("currentPlan").value === "8448" ||
-  document.getElementById("currentPlan").value === "11748" ||
-  document.getElementById("currentPlan").value === "7898" ||
-  document.getElementById("currentPlan").value === "2750" ||
-  document.getElementById("currentPlan").value === "3850"
-) {
-
-  currentTotal -= specialDiscount;
-
-} else {
-
-  currentTotal -= normalDiscount;
-
-}
-
 const currentPlanValue =
   document.getElementById("currentPlan").value;
 
@@ -1302,10 +1285,13 @@ else if (
   currentPlanValue === "2827" || // irumo6GB
   currentPlanValue === "3377" || // irumo9GB
   currentPlanValue === "6765" || // ギガライト
-  currentPlanValue === "1815" // はじめてスマホ
+  currentPlanValue === "1815" || // はじめてスマホ
+  currentPlanValue === "7865" || // ギガホ
+  currentPlanValue === "8415" || // 5Gギガホ
+  currentPlanValue === "7315"    // 5Gギガホプレミア
 ) {
   currentTotal -= normalDiscount;
-}  
+}
 
 if(document.getElementById("newPhoneWarranty").checked){
 
