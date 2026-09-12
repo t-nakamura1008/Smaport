@@ -1280,21 +1280,31 @@ if (
 
 }
 
-// 提案後
+const currentPlanValue =
+  document.getElementById("currentPlan").value;
+
+// 特別割引
 if (
-  document.getElementById("newPlan").value === "8448" ||
-  document.getElementById("newPlan").value === "11748" ||
-  document.getElementById("newPlan").value === "7898" ||
-  document.getElementById("newPlan").value === "2750" ||
-  document.getElementById("newPlan").value === "3850"
+  currentPlanValue === "8448" ||
+  currentPlanValue === "11748" ||
+  currentPlanValue === "7898" ||
+  currentPlanValue === "2750" ||
+  currentPlanValue === "3850"
 ) {
+  currentTotal -= specialDiscount;
+}
 
-  newTotal -= specialDiscount;
-
-} else {
-
-  newTotal -= normalDiscount;
-
+// 通常割引
+else if (
+  currentPlanValue === "7315" || // eximo
+  currentPlanValue === "10615" || // eximoポイ活
+  currentPlanValue === "2167" || // irumo3GB
+  currentPlanValue === "2827" || // irumo6GB
+  currentPlanValue === "3377" || // irumo9GB
+  currentPlanValue === "6765" || // ギガライト
+  currentPlanValue === "1815" // はじめてスマホ
+) {
+  currentTotal -= normalDiscount;
 }  
 
 if(document.getElementById("newPhoneWarranty").checked){
