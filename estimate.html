@@ -319,12 +319,9 @@ button:hover{
 </select>
 
 <label>ドコモでんき</label>
-<select>
-  <option value="" selected disabled>
-  選択してください
-</option>
-  <option>なし</option>
-  <option>あり</option>
+<select id="currentDenki">
+  <option value="0">なし</option>
+  <option value="110">あり</option>
 </select>
 
     </section>
@@ -374,12 +371,9 @@ button:hover{
 </select>
 
 <label>ドコモでんき</label>
-<select>
-  <option value="" selected disabled>
-  選択してください
-</option>
-  <option>なし</option>
-  <option>あり</option>
+<select id="newDenki">
+  <option value="0">なし</option>
+  <option value="110">あり</option>
 </select>
 
     </section>
@@ -1196,6 +1190,14 @@ newTotal -= Number(
   document.getElementById("newHikari").value
 );
 
+currentTotal -= Number(
+  document.getElementById("currentDenki").value
+);
+
+newTotal -= Number(
+  document.getElementById("newDenki").value
+);  
+
   if(document.getElementById("currentPhoneWarranty").checked){
 
   currentTotal += Number(
@@ -1764,6 +1766,39 @@ else {
   `;
 
 }
+
+ const denkiId =
+  callId === "currentCallPlan"
+    ? "currentDenki"
+    : "newDenki";
+
+const denkiSelect =
+  document.getElementById(denkiId);
+
+// ドコモでんき対象プラン
+if (
+  plan === "8448" ||
+  plan === "11448" ||
+  plan === "7898" ||
+  plan === "2750" ||
+  plan === "3850"
+) {
+
+  denkiSelect.innerHTML = `
+    <option value="0">なし</option>
+    <option value="110">あり</option>
+  `;
+
+}
+
+// それ以外
+else {
+
+  denkiSelect.innerHTML = `
+    <option value="0">対象外</option>
+  `;
+
+} 
 
   // 提案後プランの通話オプション引継ぎ判定
 if (callId === "newCallPlan") {
