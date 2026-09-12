@@ -1608,20 +1608,6 @@ function updateCallOptions(planId, callId) {
   const currentCallPlan =
     document.getElementById("currentCallPlan").value;
 
-  const prefix =
-    callId === "currentCallPlan"
-      ? "current"
-      : "new";
-
-  // 基本は選択可能に戻す
-  document.getElementById(
-    prefix + "Voicemail"
-  ).disabled = false;
-
-  document.getElementById(
-    prefix + "CallWaiting"
-  ).disabled = false;
-
   // 現在契約が880円または1980円なら
   if (
     callId === "newCallPlan" &&
@@ -1632,34 +1618,18 @@ function updateCallOptions(planId, callId) {
   ) {
 
     // ahamoは例外
-    if (
-      plan === "2970" ||
-      plan === "4950"
-    ) {
+if (
+  plan === "2970" ||
+  plan === "4950"
+) {
 
-      document.getElementById(
-        prefix + "Voicemail"
-      ).checked = false;
+  callSelect.innerHTML = `
+    <option value="0">5分通話込み</option>
+    <option value="1100">かけ放題 1,100円</option>
+  `;
 
-      document.getElementById(
-        prefix + "CallWaiting"
-      ).checked = false;
-
-      document.getElementById(
-        prefix + "Voicemail"
-      ).disabled = true;
-
-      document.getElementById(
-        prefix + "CallWaiting"
-      ).disabled = true;
-
-      callSelect.innerHTML = `
-        <option value="0">5分通話込み</option>
-        <option value="1100">かけ放題 1,100円</option>
-      `;
-
-      return;
-    }
+  return;
+}
 
     callSelect.innerHTML = `
       <option value="0">通話した分だけ</option>
@@ -1675,22 +1645,6 @@ function updateCallOptions(planId, callId) {
     plan === "2970" ||
     plan === "4950"
   ) {
-
-    document.getElementById(
-      prefix + "Voicemail"
-    ).checked = false;
-
-    document.getElementById(
-      prefix + "CallWaiting"
-    ).checked = false;
-
-    document.getElementById(
-      prefix + "Voicemail"
-    ).disabled = true;
-
-    document.getElementById(
-      prefix + "CallWaiting"
-    ).disabled = true;
 
     callSelect.innerHTML = `
       <option value="0">5分通話込み</option>
