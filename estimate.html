@@ -217,7 +217,7 @@ button:hover{
 
     <div class="grid">
       <label>利用年数
-        <select>
+        <select id="usageYears">
           <option>10年未満</option>
           <option>10年以上</option>
           <option>20年以上</option>
@@ -1140,7 +1140,7 @@ dバリューパス（550円）
 
 <section class="card">
 
-  <h2>📈 支払推移</h2>
+  <h2>📈分割込み料金</h2>
 
   <div id="paymentTimeline"></div>
 
@@ -1798,6 +1798,36 @@ else {
     <option value="0">対象外</option>
   `;
 
+} 
+
+ // 長期利用割
+const usageYears =
+  document.getElementById("usageYears").value;
+
+let loyaltyDiscount = 0;
+
+if (usageYears === "10年以上") {
+  loyaltyDiscount = 110;
+}
+
+if (usageYears === "20年以上") {
+  loyaltyDiscount = 220;
+}
+
+// 現在契約
+if (
+  document.getElementById("currentPlan").value === "8448" ||
+  document.getElementById("currentPlan").value === "11448"
+) {
+  currentTotal -= loyaltyDiscount;
+}
+
+// 提案後
+if (
+  document.getElementById("newPlan").value === "8448" ||
+  document.getElementById("newPlan").value === "11448"
+) {
+  newTotal -= loyaltyDiscount;
 } 
 
   // 提案後プランの通話オプション引継ぎ判定
