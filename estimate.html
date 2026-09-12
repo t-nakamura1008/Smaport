@@ -229,14 +229,14 @@ button:hover{
       </label>
 
       <label>dカード種別
-        <select>
-          <option>なし</option>
-          <option>dカード</option>
-          <option>dカード GOLD</option>
-          <option>PLATINUM ～10万</option>
-          <option>PLATINUM 10万～20万</option>
-          <option>PLATINUM 20万～</option>
-        </select>
+       <select id="dcardType">
+  <option>なし</option>
+  <option>dカード</option>
+  <option>dカード GOLD</option>
+  <option>PLATINUM ～10万</option>
+  <option>PLATINUM 10万～20万</option>
+  <option>PLATINUM 20万～</option>
+</select>
       </label>
 
       <label>定期クレジット
@@ -1236,6 +1236,66 @@ if (
   );
 
 }
+
+// dカードお支払割
+
+const dcardType =
+  document.getElementById("dcardType").value;
+
+let specialDiscount = 0;
+let normalDiscount = 0;
+
+if (dcardType === "dカード") {
+
+  specialDiscount = 220;
+  normalDiscount = 187;
+
+}
+else if (
+  dcardType === "dカード GOLD" ||
+  dcardType === "PLATINUM ～10万" ||
+  dcardType === "PLATINUM 10万～20万" ||
+  dcardType === "PLATINUM 20万～"
+) {
+
+  specialDiscount = 550;
+  normalDiscount = 187;
+
+}
+
+// 現在契約
+if (
+  document.getElementById("currentPlan").value === "8448" ||
+  document.getElementById("currentPlan").value === "11748" ||
+  document.getElementById("currentPlan").value === "7898" ||
+  document.getElementById("currentPlan").value === "2750" ||
+  document.getElementById("currentPlan").value === "3850"
+) {
+
+  currentTotal -= specialDiscount;
+
+} else {
+
+  currentTotal -= normalDiscount;
+
+}
+
+// 提案後
+if (
+  document.getElementById("newPlan").value === "8448" ||
+  document.getElementById("newPlan").value === "11748" ||
+  document.getElementById("newPlan").value === "7898" ||
+  document.getElementById("newPlan").value === "2750" ||
+  document.getElementById("newPlan").value === "3850"
+) {
+
+  newTotal -= specialDiscount;
+
+} else {
+
+  newTotal -= normalDiscount;
+
+}  
 
 if(document.getElementById("newPhoneWarranty").checked){
 
