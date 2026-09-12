@@ -1762,28 +1762,56 @@ else {
 
 }
 
-  // 現在契約が880円または1980円なら
+  // 提案後プランの通話オプション引継ぎ判定
+if (callId === "newCallPlan") {
+
+  // ahamo・はじめてスマホは引継ぎなし
   if (
-    callId === "newCallPlan" &&
-    (
-      currentCallPlan === "880" ||
-      currentCallPlan === "1980"
-    )
+    plan === "2970" ||
+    plan === "4950" ||
+    plan === "1815"
   ) {
 
-    // ahamoは例外
-if (
-  plan === "2970" ||
-  plan === "4950"
-) {
+    callSelect.innerHTML = `
+      <option value="0">5分通話込み</option>
+      <option value="1100">かけ放題 1,100円</option>
+    `;
 
-  callSelect.innerHTML = `
-    <option value="0">5分通話込み</option>
-    <option value="1100">かけ放題 1,100円</option>
-  `;
+    return;
+  }
 
-  return;
-}
+  // 現在770円
+  if (currentCallPlan === "770") {
+
+    callSelect.innerHTML = `
+      <option value="0">通話した分だけ</option>
+      <option value="770">5分通話 770円</option>
+      <option value="880">5分通話 880円</option>
+      <option value="1980">かけ放題 1,980円</option>
+    `;
+
+    return;
+  }
+
+  // 現在1870円
+  if (currentCallPlan === "1870") {
+
+    callSelect.innerHTML = `
+      <option value="0">通話した分だけ</option>
+      <option value="880">5分通話 880円</option>
+      <option value="1870">かけ放題 1,870円</option>
+      <option value="1980">かけ放題 1,980円</option>
+    `;
+
+    return;
+  }
+
+  // 現在880円・1980円・1100円
+  if (
+    currentCallPlan === "880" ||
+    currentCallPlan === "1980" ||
+    currentCallPlan === "1100"
+  ) {
 
     callSelect.innerHTML = `
       <option value="0">通話した分だけ</option>
@@ -1793,6 +1821,7 @@ if (
 
     return;
   }
+}
 
   // ahamo
   if (
