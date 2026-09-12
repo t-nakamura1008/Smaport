@@ -1293,6 +1293,28 @@ else if (
   currentTotal -= normalDiscount;
 }
 
+const newPlanValue =
+  document.getElementById("newPlan").value;
+
+if (
+  newPlanValue === "8448" ||
+  newPlanValue === "11748" ||
+  newPlanValue === "7898" ||
+  newPlanValue === "2750" ||
+  newPlanValue === "3850"
+) {
+
+  newTotal -= specialDiscount;
+
+}
+else if (
+  newPlanValue === "1815"
+) {
+
+  newTotal -= normalDiscount;
+
+}  
+
 if(document.getElementById("newPhoneWarranty").checked){
 
   newTotal += Number(
