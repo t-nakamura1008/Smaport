@@ -1658,6 +1658,36 @@ if (
     <option value="1870">かけ放題 1,870円</option>
     <option value="1980">かけ放題 1,980円</option>
   `;
+} 
+
+if(
+  document.getElementById("currentCallPlan").value === "880" ||
+  document.getElementById("currentCallPlan").value === "1980"
+){
+
+  if(document.getElementById("currentVoicemail").checked){
+    currentTotal -= 330;
+  }
+
+  if(document.getElementById("currentCallWaiting").checked){
+    currentTotal -= 220;
+  }
+
+}
+
+if(
+  document.getElementById("newCallPlan").value === "880" ||
+  document.getElementById("newCallPlan").value === "1980"
+){
+
+  if(document.getElementById("newVoicemail").checked){
+    newTotal -= 330;
+  }
+
+  if(document.getElementById("newCallWaiting").checked){
+    newTotal -= 220;
+  }
+
 }  
 
 function toggleWarrantyInput(type){
