@@ -307,13 +307,10 @@ button:hover{
 </select>  
 
 <label>ファミリー回線数</label>
-<select>
-  <option value="" selected disabled>
-  選択してください
-</option>
-  <option>回線なし</option>
-  <option>2回線</option>
-  <option>3回線以上</option>
+<select id="currentFamily">
+  <option value="0" selected>
+    回線なし
+  </option>
 </select>
 
 <label>ドコモ光</label>
@@ -369,13 +366,10 @@ button:hover{
   </select>
 
 <label>ファミリー回線数</label>
-<select>
-  <option value="" selected disabled>
-  選択してください
-</option>
-  <option>回線なし</option>
-  <option>2回線</option>
-  <option>3回線以上</option>
+<select id="newFamily">
+  <option value="0" selected>
+    回線なし
+  </option>
 </select>
 
 <label>ドコモ光</label>
@@ -1192,6 +1186,15 @@ function calculateEstimate() {
       document.getElementById("newCallPlan").value
     );
 
+  // ファミリー割引
+currentTotal -= Number(
+  document.getElementById("currentFamily").value
+);
+
+newTotal -= Number(
+  document.getElementById("newFamily").value
+);
+
   if(document.getElementById("currentPhoneWarranty").checked){
 
   currentTotal += Number(
@@ -1636,6 +1639,63 @@ function updateCallOptions(planId, callId) {
       prefix + "Mail"
     ).checked = false;
   }
+
+  const familyId =
+  callId === "currentCallPlan"
+    ? "currentFamily"
+    : "newFamily";
+
+const familySelect =
+  document.getElementById(familyId);
+
+// ahamo・mini・irumo
+if (
+  plan === "2970" ||
+  plan === "4950" ||
+  plan === "2750" ||
+  plan === "3850" ||
+  plan === "550" ||
+  plan === "2167" ||
+  plan === "2827" ||
+  plan === "3377"
+) {
+
+  familySelect.innerHTML = `
+    <option value="0">対象外</option>
+  `;
+
+}
+
+// ドコモMAX・ポイ活MAX・ポイ活20
+else if (
+  plan === "8448" ||
+  plan === "11448" ||
+  plan === "7898"
+) {
+
+  familySelect.innerHTML = `
+    <option value="0">回線なし</option>
+    <option value="550">2回線</option>
+    <option value="1210">3回線以上</option>
+  `;
+
+}
+
+// eximo・eximoポイ活・ギガホ系
+
+else {
+
+familySelect.innerHTML = `
+
+<option value="0">回線なし</option>
+
+<option value="550">2回線</option>
+
+<option value="1100">3回線以上</option>
+
+`;
+
+}
 
   // 現在契約が880円または1980円なら
   if (
