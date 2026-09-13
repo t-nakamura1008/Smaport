@@ -973,6 +973,55 @@ dバリューパス（550円）
 
 </section>  
 
+  <section class="card">
+     🧾 その他月額
+   <div class="compare-grid"> 
+
+   <div>
+  <h3>📱 現在加入</h3>
+
+<label>
+  <input
+    type="checkbox"
+    id="currentOtherSub"
+    onchange="
+      document.getElementById('currentOtherSubFee').disabled=!this.checked
+    "
+  >
+  その他・サブスク
+</label>
+
+<input
+  type="number"
+  id="currentOtherSubFee"
+  placeholder="金額"
+  disabled
+>
+ </div> 
+
+ <div>    
+<h3>✨ 提案後</h3>
+
+<label>
+  <input
+    type="checkbox"
+    id="newOtherSub"
+    onchange="
+      document.getElementById('newOtherSubFee').disabled=!this.checked
+    "
+  >
+  その他・サブスク
+</label>
+
+<input
+  type="number"
+  id="newOtherSubFee"
+  placeholder="金額"
+  disabled
+>
+
+</div>
+
   <!-- 分割① -->
 <section class="card">
 
@@ -1505,6 +1554,23 @@ if(document.getElementById("newHOZON").checked){
 if(document.getElementById("newADCleaner").checked){
   newTotal += 550;
 }  
+
+// その他サブスク
+
+if(document.getElementById("currentOtherSub").checked){
+  currentTotal += Number(
+    document.getElementById("currentOtherSubFee").value || 0
+  );
+}
+
+if(document.getElementById("newOtherSub").checked){
+  newTotal += Number(
+    document.getElementById("newOtherSubFee").value || 0
+  );
+}
+  
+
+  
   
  const currentFreeServices = [];
 
