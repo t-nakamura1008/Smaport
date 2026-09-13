@@ -216,46 +216,48 @@ button:hover{
     <h2>基本情報</h2>
 
     <div class="grid">
-      <label>利用年数
-        <select id="usageYears">
-          <option>10年未満</option>
-          <option>10年以上</option>
-          <option>20年以上</option>
-        </select>
-      </label>
+     <label>利用年数
+  <select id="usageYears">
+    <option>10年未満</option>
+    <option>10年以上</option>
+    <option>20年以上</option>
+  </select>
+</label>
 
-      <label>毎月の通信量（GB）
-        <input type="number" placeholder="20">
-      </label>
+<label>毎月の通信量（GB）
+  <input type="number" id="monthlyGB" placeholder="20">
+</label>
 
-      <label>dカード種別
-       <select id="dcardType">
-  <option>なし</option>
-  <option>dカード</option>
-  <option>dカード GOLD</option>
-  <option>PLATINUM ～10万</option>
-  <option>PLATINUM 10万～20万</option>
-  <option>PLATINUM 20万～</option>
-</select>
-      </label>
+<label>dカード種別
+  <select id="dcardType">
+    <option>なし</option>
+    <option>dカード</option>
+    <option>dカード GOLD</option>
+    <option>PLATINUM ～10万</option>
+    <option>PLATINUM 10万～20万</option>
+    <option>PLATINUM 20万～</option>
+  </select>
+</label>
 
-      <label>定期クレジット
-        <select>
-          <option>なし</option>
-          <option>あり</option>
-        </select>
-      </label>
+<label>ファミリー回線数
+  <select id="baseFamily">
+    <option value="0">回線なし</option>
+    <option value="550">2回線</option>
+    <option value="1210">3回線以上(MAX系)</option>
+    <option value="1100">3回線以上(その他)</option>
+  </select>
+</label>
 
-      <label>ポイ活還元額
-        <select>
-          <option>0</option>
-          <option>1000</option>
-          <option>2000</option>
-          <option>3000</option>
-          <option>4000</option>
-          <option>5000</option>
-        </select>
-      </label>
+<label>ポイ活還元額
+  <select id="poiBonus">
+    <option value="0">0</option>
+    <option value="1000">1000</option>
+    <option value="2000">2000</option>
+    <option value="3000">3000</option>
+    <option value="4000">4000</option>
+    <option value="5000">5000</option>
+  </select>
+</label>
     </div>
   </section>
 
