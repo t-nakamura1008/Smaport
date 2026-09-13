@@ -1208,6 +1208,65 @@ function calculateEstimate() {
       document.getElementById("newPlan").value
     );
 
+  const monthlyGB =
+  Number(
+    document.getElementById("monthlyGB").value || 0
+  );
+
+  if (
+  document.getElementById("currentPlan").value === "8448"
+) {
+
+  if (monthlyGB < 1) {
+
+    currentTotal =
+      currentTotal - 8448 + 5698;
+
+  } else if (monthlyGB < 3) {
+
+    currentTotal =
+      currentTotal - 8448 + 6798;
+
+  }
+
+}
+
+if (
+  document.getElementById("newPlan").value === "8448"
+) {
+
+  if (monthlyGB < 1) {
+
+    newTotal =
+      newTotal - 8448 + 5698;
+
+  } else if (monthlyGB < 3) {
+
+    newTotal =
+      newTotal - 8448 + 6798;
+
+  }
+
+}
+
+if (
+  document.getElementById("newPlan").value === "8448"
+) {
+
+  if (monthlyGB < 1) {
+
+    newTotal =
+      newTotal - 8448 + 5698;
+
+  } else if (monthlyGB < 3) {
+
+    newTotal =
+      newTotal - 8448 + 6798;
+
+  }
+
+}  
+
   currentTotal +=
   Number(
     document.getElementById("currentCallPlan").value
