@@ -1942,29 +1942,22 @@ if(document.getElementById("newJump").checked){
   newTotal += 980;
 }
 
-function calculateEstimate() {
+currentTotal =
+  applyDiscounts(
+    document.getElementById("currentPlan").value,
+    currentTotal
+  );
 
-  let currentTotal =
-    Number(
-      document.getElementById("currentPlan").value
-    );
+newTotal =
+  applyDiscounts(
+    document.getElementById("newPlan").value,
+    newTotal
+  );
 
-  let newTotal =
-    Number(
-      document.getElementById("newPlan").value
-    );
-
-  const monthlyUsage =
-    document.getElementById("monthlyUsage").value;
-
-  const familyType =
-    document.getElementById("familyType").value;
-
-  const hikariType =
-    document.getElementById("hikariType").value;
-
-  const denkiType =
-    document.getElementById("denkiType").value;  
+document.getElementById(
+  "currentMonthlyTotal"
+).textContent =
+  currentTotal.toLocaleString() + "円";
   
   document.getElementById(
     "currentMonthlyTotal"
