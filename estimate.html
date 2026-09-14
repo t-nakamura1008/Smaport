@@ -300,7 +300,7 @@ button:hover{
 
   <option value="7865">ギガホ</option>
   <option value="8415">5Gギガホ</option>
-  <option value="7315">5Gギガホプレミア</option>
+  <option value="7316">5Gギガホプレミア</option>
 
 </select>
 
@@ -1228,16 +1228,14 @@ function calculateEstimate() {
   document.getElementById("currentPlan").value === "8448"
 ) {
 
-  if (monthlyUsage === "under1") {
-
-    currentTotal =
-      currentTotal - 8448 + 5698;
-
-  } else if (monthlyUsage === "over1") {
-
-    currentTotal =
-      currentTotal - 8448 + 6798;
-
+  if(monthlyUsage === "under1"){
+    currentTotal = 5698;
+  }
+  else if(monthlyUsage === "over1"){
+    currentTotal = 6798;
+  }
+  else{
+    currentTotal = 8448;
   }
 
 }
@@ -1246,19 +1244,77 @@ if (
   document.getElementById("newPlan").value === "8448"
 ) {
 
-  if (monthlyUsage === "under1") {
-
-    newTotal =
-      newTotal - 8448 + 5698;
-
-  } else if (monthlyUsage === "over1") {
-
-    newTotal =
-      newTotal - 8448 + 6798;
-
+  if(monthlyUsage === "under1"){
+    newTotal = 5698;
+  }
+  else if(monthlyUsage === "over1"){
+    newTotal = 6798;
+  }
+  else{
+    newTotal = 8448;
   }
 
 }
+
+if (
+  document.getElementById("currentPlan").value === "7898"
+) {
+
+  if(monthlyUsage === "over20"){
+    currentTotal = 9570;
+  }else{
+    currentTotal = 7898;
+  }
+
+} 
+
+if (
+  document.getElementById("newPlan").value === "7898"
+) {
+
+  if(monthlyUsage === "over20"){
+    newTotal = 9570;
+  }else{
+    newTotal = 7898;
+  }
+
+}
+
+if (
+  document.getElementById("currentPlan").value === "7315"
+) {
+
+  if(monthlyUsage === "under1"){
+    currentTotal = 4565;
+  }
+  else if(monthlyUsage === "over1"){
+    currentTotal = 5665;
+  }
+  else{
+    currentTotal = 7315;
+  }
+
+}
+
+  
+if (
+  document.getElementById("newPlan").value === "7315"
+) {
+
+  if(monthlyUsage === "under1"){
+    newTotal = 4565;
+  }
+  else if(monthlyUsage === "over1"){
+    newTotal = 5665;
+  }
+  else{
+    newTotal = 7315;
+  }
+
+}
+
+  
+  
 
   currentTotal +=
   Number(
@@ -1386,7 +1442,7 @@ else if (
   currentPlanValue === "1815" || // はじめてスマホ
   currentPlanValue === "7865" || // ギガホ
   currentPlanValue === "8415" || // 5Gギガホ
-  currentPlanValue === "7315"    // 5Gギガホプレミア
+  currentPlanValue === "7316"    // 5Gギガホプレミア
 ) {
   currentTotal -= normalDiscount;
 }
