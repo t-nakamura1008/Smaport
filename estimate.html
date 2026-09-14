@@ -1221,12 +1221,12 @@ function calculateEstimate() {
   document.getElementById("currentPlan").value === "8448"
 ) {
 
-  if (monthlyUsage < 1) {
+  if (monthlyGB === "under1") {
 
     currentTotal =
       currentTotal - 8448 + 5698;
 
-  } else if (monthlyUsage < 3) {
+  } else if (monthlyGB === "over1") {
 
     currentTotal =
       currentTotal - 8448 + 6798;
@@ -1239,12 +1239,12 @@ if (
   document.getElementById("newPlan").value === "8448"
 ) {
 
-  if (monthlyUsage < 1) {
+  if (monthlyGB === "under1") {
 
     newTotal =
       newTotal - 8448 + 5698;
 
-  } else if (monthlyUsage < 3) {
+  } else if (monthlyGB === "over1") {
 
     newTotal =
       newTotal - 8448 + 6798;
@@ -1252,24 +1252,6 @@ if (
   }
 
 }
-
-if (
-  document.getElementById("newPlan").value === "8448"
-) {
-
-  if (monthlyUsage < 1) {
-
-    newTotal =
-      newTotal - 8448 + 5698;
-
-  } else if (monthlyUsage < 3) {
-
-    newTotal =
-      newTotal - 8448 + 6798;
-
-  }
-
-}  
 
   currentTotal +=
   Number(
