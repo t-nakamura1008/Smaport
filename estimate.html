@@ -1254,6 +1254,7 @@ if (
   }else{
     currentTotal = 7898;
   }
+  
 
 } 
 
@@ -1419,51 +1420,64 @@ function applyDiscounts(plan, total){
 
   }
 
-  // eximo系・ギガホ系
-  else if(
-    plan === "7315" ||
-    plan === "10615" ||
-    plan === "7316" ||
-    plan === "7865" ||
-    plan === "8415" 
-  ){
+ // eximo系・ギガホ系
+else if(
+  plan === "7315" ||
+  plan === "10615" ||
+  plan === "7316" ||
+  plan === "7865" ||
+  plan === "8415"
+){
 
-    if(familyType === "2"){
+  if(familyType === "2"){
+    total -= 550;
+  }
+
+  if(familyType === "3"){
+    total -= 1100;
+  }
+
+  if(hikariType === "1"){
+    total -= 1100;
+  }
+
+}
+
+// ギガライト
+else if(plan === "6765"){
+
+  if(familyType === "2"){
+    total -= 550;
+  }
+
+  if(familyType === "3"){
+    total -= 1100;
+  }
+
+  if(hikariType === "1"){
+
+    const monthlyUsage =
+      document.getElementById("monthlyUsage").value;
+
+    if(monthlyUsage === "over1"){
       total -= 550;
     }
-
-    if(familyType === "3"){
-      total -= 1100;
-    }
-
-    if(hikariType === "1"){
+    else if(
+      monthlyUsage === "over3" ||
+      monthlyUsage === "over5" ||
+      monthlyUsage === "over20"
+    ){
       total -= 1100;
     }
 
   }
+
+}
 
   return total;
 
 }
 
-if(hikariType === "1"){
-
-  const monthlyUsage =
-    document.getElementById("monthlyUsage").value;
-
-  if(monthlyUsage === "over1"){
-    total -= 550;
-  }
-  else if(
-    monthlyUsage === "over3" ||
-    monthlyUsage === "over5" ||
-    monthlyUsage === "over20"
-  ){
-    total -= 1100;
-  }
-
-}  
-  
 
 // 長期利用割
 const usageYears =
