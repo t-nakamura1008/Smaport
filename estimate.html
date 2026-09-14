@@ -1221,12 +1221,12 @@ function calculateEstimate() {
   document.getElementById("currentPlan").value === "8448"
 ) {
 
-  if (monthlyGB === "under1") {
+  if (monthlyUsage === "under1") {
 
     currentTotal =
       currentTotal - 8448 + 5698;
 
-  } else if (monthlyGB === "over1") {
+  } else if (monthlyUsage === "over1") {
 
     currentTotal =
       currentTotal - 8448 + 6798;
@@ -1239,12 +1239,12 @@ if (
   document.getElementById("newPlan").value === "8448"
 ) {
 
-  if (monthlyGB === "under1") {
+  if (monthlyUsage === "under1") {
 
     newTotal =
       newTotal - 8448 + 5698;
 
-  } else if (monthlyGB === "over1") {
+  } else if (monthlyUsage === "over1") {
 
     newTotal =
       newTotal - 8448 + 6798;
