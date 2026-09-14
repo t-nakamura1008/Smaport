@@ -416,24 +416,42 @@ if(selectedStore !== "all"){
 
 }
 
-let query =
-    sbClient
-    .from("ComparisonLog")
-    .select("*")
-    .neq("staff_decision","要検討");
+async function loadLogs(){
 
-const { data, error } =
-    await query.order(
-        "created_at",
-        { ascending:false }
-    );
+    const selectedStore =
+        document.getElementById("storeFilter")?.value
+        || "all";
 
-if(error){
+    let query =
+        sbClient
+        .from("ComparisonLog")
+        .select("*")
+        .neq("staff_decision","要検討");
 
-    alert(error.message);
-    return;
+    if(selectedStore !== "all"){
 
-}
+        query =
+            query.eq(
+                "store_name",
+                selectedStore
+            );
+
+    }
+
+    const { data, error } =
+        await query.order(
+            "created_at",
+            { ascending:false }
+        );
+
+    if(error){
+
+        alert(error.message);
+        return;
+
+    }
+
+    // 以下続く
 
 const contractCount =
     data.filter(
