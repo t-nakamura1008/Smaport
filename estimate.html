@@ -1212,21 +1212,21 @@ function calculateEstimate() {
       document.getElementById("newPlan").value
     );
 
-  const monthlyGB =
+  const monthlyUsage =
   Number(
-    document.getElementById("monthlyGB").value || 0
+    document.getElementById("monthlyUsage").value || 0
   );
 
   if (
   document.getElementById("currentPlan").value === "8448"
 ) {
 
-  if (monthlyGB < 1) {
+  if (monthlyUsage < 1) {
 
     currentTotal =
       currentTotal - 8448 + 5698;
 
-  } else if (monthlyGB < 3) {
+  } else if (monthlyUsage < 3) {
 
     currentTotal =
       currentTotal - 8448 + 6798;
@@ -1239,12 +1239,12 @@ if (
   document.getElementById("newPlan").value === "8448"
 ) {
 
-  if (monthlyGB < 1) {
+  if (monthlyUsage < 1) {
 
     newTotal =
       newTotal - 8448 + 5698;
 
-  } else if (monthlyGB < 3) {
+  } else if (monthlyUsage < 3) {
 
     newTotal =
       newTotal - 8448 + 6798;
@@ -1257,12 +1257,12 @@ if (
   document.getElementById("newPlan").value === "8448"
 ) {
 
-  if (monthlyGB < 1) {
+  if (monthlyUsage < 1) {
 
     newTotal =
       newTotal - 8448 + 5698;
 
-  } else if (monthlyGB < 3) {
+  } else if (monthlyUsage < 3) {
 
     newTotal =
       newTotal - 8448 + 6798;
