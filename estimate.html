@@ -33,7 +33,7 @@
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  grid-template-columns:repeat(4,1fr);
   gap:15px;
 }
 
@@ -216,7 +216,9 @@ button:hover{
     <h2>基本情報</h2>
 
     <div class="grid">
-     <label>利用年数
+
+<label>
+  利用年数
   <select id="usageYears">
     <option>10年未満</option>
     <option>10年以上</option>
@@ -224,15 +226,18 @@ button:hover{
   </select>
 </label>
 
-<label>毎月の通信量（GB）
- <select id="monthlyUsage">
-  <option value="under1">1GB未満</option>
-  <option value="over1">1GB以上</option>
-  <option value="over3">3GB以上</option>
-  <option value="over5">5GB以上</option>
-</select>
+<label>
+  毎月の通信量（GB）
+  <select id="monthlyUsage">
+    <option value="under1">1GB未満</option>
+    <option value="over1">1GB以上</option>
+    <option value="over3">3GB以上</option>
+    <option value="over5">5GB以上</option>
+  </select>
+</label>
 
-<label>dカード種別
+<label>
+  dカード種別
   <select id="dcardType">
     <option>なし</option>
     <option>dカード</option>
@@ -243,7 +248,8 @@ button:hover{
   </select>
 </label>
 
-<label>ポイ活還元額
+<label>
+  ポイ活還元額
   <select id="poiBonus">
     <option value="0">0</option>
     <option value="1000">1000</option>
@@ -253,7 +259,8 @@ button:hover{
     <option value="5000">5000</option>
   </select>
 </label>
-    </div>
+
+</div>
   </section>
 
   <!-- 現在契約・変更後契約 -->
@@ -1213,9 +1220,9 @@ function calculateEstimate() {
     );
 
   const monthlyUsage =
-  Number(
-    document.getElementById("monthlyUsage").value || 0
-  );
+  document.getElementById("monthlyUsage").value;
+    );
+  
 
   if (
   document.getElementById("currentPlan").value === "8448"
