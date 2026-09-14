@@ -407,11 +407,6 @@ async function loadLogs(){
 document.getElementById("storeFilter")?.value
 || "all";
 
-let query =
-    sbClient
-    .from("ComparisonLog")
-    .select("*");
-
 if(selectedStore !== "all"){
     query =
         query.eq(
