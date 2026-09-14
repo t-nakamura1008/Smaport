@@ -421,11 +421,11 @@ if(selectedStore !== "all"){
 
 }
 
-const { data, error } =
-    await query.order(
-        "created_at",
-        { ascending:false }
-    );
+let query =
+    sbClient
+    .from("ComparisonLog")
+    .select("*")
+    .neq("staff_decision","要検討");
     
     if(error){
 
