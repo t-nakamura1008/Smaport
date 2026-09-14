@@ -401,20 +401,6 @@ window.supabase.createClient(
 
 loadLogs();
 
-async function loadLogs(){
-
-    const selectedStore =
-document.getElementById("storeFilter")?.value
-|| "all";
-
-if(selectedStore !== "all"){
-    query =
-        query.eq(
-            "store_name",
-            selectedStore
-        );
-
-}
 
 async function loadLogs(){
 
@@ -451,7 +437,6 @@ async function loadLogs(){
 
     }
 
-    // 以下続く
 
 const contractCount =
     data.filter(
