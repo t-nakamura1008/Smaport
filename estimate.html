@@ -261,6 +261,31 @@ button:hover{
   </select>
 </label>
 
+<label>
+  ファミリー回線数
+  <select id="familyType">
+    <option value="0">回線なし</option>
+    <option value="2">2回線</option>
+    <option value="3">3回線以上</option>
+  </select>
+</label>
+
+<label>
+  ドコモ光
+  <select id="hikariType">
+    <option value="0">なし</option>
+    <option value="1">あり</option>
+  </select>
+</label>
+
+<label>
+  ドコモでんき
+  <select id="denkiType">
+    <option value="0">なし</option>
+    <option value="1">あり</option>
+  </select>
+</label>      
+
 </div>
   </section>
 
@@ -311,24 +336,6 @@ button:hover{
 </option>
 </select>  
 
-<label>ファミリー回線数</label>
-<select id="currentFamily">
-  <option value="0" selected>
-    回線なし
-  </option>
-</select>
-
-<label>ドコモ光</label>
-<select id="currentHikari">
-  <option value="0">なし</option>
-</select>
-
-<label>ドコモでんき</label>
-<select id="currentDenki">
-  <option value="0">なし</option>
-  <option value="110">あり</option>
-</select>
-
     </section>
 
     <section class="card">
@@ -362,24 +369,6 @@ button:hover{
     プランを選択してください
   </option>
   </select>
-
-<label>ファミリー回線数</label>
-<select id="newFamily">
-  <option value="0" selected>
-    回線なし
-  </option>
-</select>
-
-<label>ドコモ光</label>
-<select id="newHikari">
-  <option value="0">なし</option>
-</select>
-
-<label>ドコモでんき</label>
-<select id="newDenki">
-  <option value="0">なし</option>
-  <option value="110">あり</option>
-</select>
 
     </section>
 
@@ -1394,32 +1383,70 @@ newTotal +=
     document.getElementById("newCallPlan").value
   );
 
-// ファミリー割引
-currentTotal -= Number(
-  document.getElementById("currentFamily").value
-);
+function applyDiscounts(plan, total){
 
-newTotal -= Number(
-  document.getElementById("newFamily").value
-);
+  const familyType =
+    document.getElementById("familyType").value;
 
-// ドコモ光セット割
-currentTotal -= Number(
-  document.getElementById("currentHikari").value
-);
+  const hikariType =
+    document.getElementById("hikariType").value;
 
-newTotal -= Number(
-  document.getElementById("newHikari").value
-);
+  const denkiType =
+    document.getElementById("denkiType").value;
 
-// ドコモでんき割
-currentTotal -= Number(
-  document.getElementById("currentDenki").value
-);
+  // MAX系
+  if(
+    plan === "8448" ||
+    plan === "11748" ||
+    plan === "7898"
+  ){
 
-newTotal -= Number(
-  document.getElementById("newDenki").value
-);
+    if(familyType === "2"){
+      total -= 550;
+    }
+
+    if(familyType === "3"){
+      total -= 1210;
+    }
+
+    if(hikariType === "1"){
+      total -= 1210;
+    }
+
+    if(denkiType === "1"){
+      total -= 110;
+    }
+
+  }
+
+  // eximo系・ギガホ系
+  else if(
+    plan === "7315" ||
+    plan === "10615" ||
+    plan === "7316" ||
+    plan === "7865" ||
+    plan === "8415" ||
+    plan === "6765"
+  ){
+
+    if(familyType === "2"){
+      total -= 550;
+    }
+
+    if(familyType === "3"){
+      total -= 1100;
+    }
+
+    if(hikariType === "1"){
+      total -= 1100;
+    }
+
+  }
+
+  return total;
+
+}
+  
 
 // 長期利用割
 const usageYears =
@@ -1914,6 +1941,30 @@ if(document.getElementById("newSpotify").checked){
 if(document.getElementById("newJump").checked){
   newTotal += 980;
 }
+
+function calculateEstimate() {
+
+  let currentTotal =
+    Number(
+      document.getElementById("currentPlan").value
+    );
+
+  let newTotal =
+    Number(
+      document.getElementById("newPlan").value
+    );
+
+  const monthlyUsage =
+    document.getElementById("monthlyUsage").value;
+
+  const familyType =
+    document.getElementById("familyType").value;
+
+  const hikariType =
+    document.getElementById("hikariType").value;
+
+  const denkiType =
+    document.getElementById("denkiType").value;  
   
   document.getElementById(
     "currentMonthlyTotal"
