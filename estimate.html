@@ -225,8 +225,12 @@ button:hover{
 </label>
 
 <label>毎月の通信量（GB）
-  <input type="number" id="monthlyGB" placeholder="20">
-</label>
+ <select id="monthlyUsage">
+  <option value="under1">1GB未満</option>
+  <option value="over1">1GB以上</option>
+  <option value="over3">3GB以上</option>
+  <option value="over5">5GB以上</option>
+</select>
 
 <label>dカード種別
   <select id="dcardType">
