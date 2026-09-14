@@ -1313,7 +1313,75 @@ if (
 
 }
 
-  
+if (
+  document.getElementById("currentPlan").value === "6765"
+) {
+
+  if(monthlyUsage === "under1"){
+    currentTotal = 3465;
+  }
+  else if(monthlyUsage === "over1"){
+    currentTotal = 4565;
+  }
+  else if(monthlyUsage === "over3"){
+    currentTotal = 5665;
+  }
+  else{
+    currentTotal = 6765;
+  }
+
+}  
+
+if (
+  document.getElementById("newPlan").value === "6765"
+) {
+
+  if(monthlyUsage === "under1"){
+    newTotal = 3465;
+  }
+  else if(monthlyUsage === "over1"){
+    newTotal = 4565;
+  }
+  else if(monthlyUsage === "over3"){
+    newTotal = 5665;
+  }
+  else{
+    newTotal = 6765;
+  }
+
+}  
+
+if (
+  document.getElementById("currentPlan").value === "7316"
+) {
+
+  if(
+    monthlyUsage === "under1" ||
+    monthlyUsage === "over1"
+  ){
+    currentTotal = 5665;
+  }
+  else{
+    currentTotal = 7315;
+  }
+
+}
+
+if (
+  document.getElementById("newPlan").value === "7316"
+) {
+
+  if(
+    monthlyUsage === "under1" ||
+    monthlyUsage === "over1"
+  ){
+    newTotal = 5665;
+  }
+  else{
+    newTotal = 7315;
+  }
+
+}  
   
 
   currentTotal +=
