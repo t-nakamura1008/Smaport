@@ -421,8 +421,14 @@ let query =
     .from("ComparisonLog")
     .select("*")
     .neq("staff_decision","要検討");
-    
-    if(error){
+
+const { data, error } =
+    await query.order(
+        "created_at",
+        { ascending:false }
+    );
+
+if(error){
 
     alert(error.message);
     return;
