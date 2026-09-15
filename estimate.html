@@ -2488,6 +2488,34 @@ newPointTotal =
   newPoiPoint +
   newFamilyPoint; 
 
+ let installmentFee = 0; 
+
+if(paymentType === "23"){
+
+  installmentFee =
+    Number(
+      document.getElementById("kaedokiFirst").value || 0
+    );
+
+}  
+
+else if(
+  paymentType === "12" ||
+  paymentType === "24" ||
+  paymentType === "36"
+){
+
+  installmentFee =
+    Math.round(
+      netPrice / Number(paymentType)
+    );
+
+}  
+
+const monthlyTotalWithDevice =
+  newTotal + installmentFee;
+
+  
 
 let feeTotal = 0;
 
@@ -2516,6 +2544,12 @@ if(document.getElementById("planChange").checked){
 }
 
 document.getElementById(
+  "deviceInstallment"
+).textContent =
+  installmentFee.toLocaleString()
+  + "円";
+  
+document.getElementById(
   "feeTotal"
 ).textContent =
   feeTotal.toLocaleString() + "円";  
@@ -2531,9 +2565,10 @@ document.getElementById(
     currentTotal.toLocaleString() + "円";
 
   document.getElementById(
-    "newMonthlyTotal"
-  ).textContent =
-    newTotal.toLocaleString() + "円";
+  "newMonthlyTotal"
+).textContent =
+  monthlyTotalWithDevice.toLocaleString()
+  + "円";
 
   document.getElementById(
   "currentPointTotal"
