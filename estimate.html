@@ -2240,7 +2240,6 @@ if(pointUpPlans.includes(currentPlan)){
   currentBasePoint *= pointMultiplier;
 }
 
-currentBasePoint = currentBasePoint;
 currentPoiPoint = currentPoiBonus;
 
   if(
@@ -2433,15 +2432,16 @@ else{
   newPointTotal = newBasePoint;
 }
 
+
 currentPointTotal =
-  currentBasePointResult +
+  currentBasePoint +
   currentPoiPoint +
   currentFamilyPoint;
 
 newPointTotal =
-  newBasePointResult +
+  newBasePoint +
   newPoiPoint +
-  newFamilyPoint;  
+  newFamilyPoint; 
 
 document.getElementById(
   "currentMonthlyTotal"
