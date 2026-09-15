@@ -2259,14 +2259,14 @@ else if(
   irumoMiniPlans.includes(currentPlan)
 ){
 
-  currentPointTotal =
-    Math.floor(currentTaxExcluded / 1000) * 5;
+  currentBasePoint =
+  Math.floor(currentTaxExcluded / 1000) * 5;
 
 }
 else{
 
-  let currentBasePoint =
-    Math.floor(currentTaxExcluded / 1000) * 10;
+  currentBasePoint =
+  Math.floor(currentTaxExcluded / 1000) * 10;
 
   let pointMultiplier = 1;
 
@@ -2387,12 +2387,12 @@ newPointTotal = newBasePoint;
 else if(
   irumoMiniPlans.includes(newPlan)
 ){
-  newPointTotal =
-    Math.floor(newTaxExcluded / 1000) * 5;
+  newBasePoint =
+  Math.floor(newTaxExcluded / 1000) * 5;
 }
 else{
 
-  let newBasePoint =
+  newBasePoint =
     Math.floor(newTaxExcluded / 1000) * 10;
 
   let pointMultiplier = 1;
