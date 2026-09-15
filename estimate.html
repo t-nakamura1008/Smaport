@@ -2057,6 +2057,16 @@ if(document.getElementById("newADCleaner").checked){
 
 // その他サブスク
 
+if(document.getElementById("currentPaperBill").checked){
+  currentTotal += 252;
+  currentPointBase += 252;
+}
+
+if(document.getElementById("newPaperBill").checked){
+  newTotal += 252;
+  newPointBase += 252;
+}  
+
 if(document.getElementById("currentOtherSub").checked){
   currentTotal += Number(
     document.getElementById("currentOtherSubFee").value || 0
