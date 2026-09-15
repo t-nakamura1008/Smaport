@@ -2216,20 +2216,21 @@ else if(dcardType === "PLATINUM 20万～"){
   pointMultiplier = 20;
 }
 
- const excludedPlans = [
-  "2970", // ahamo30
-  "4950", // ahamo110
-  "2750", // mini4
-  "3850", // mini10
-  "550",  // irumo0.5
-  "2167", // irumo3
-  "2827", // irumo6
-  "3377"  // irumo9
+ const pointUpPlans = [
+  "8448",  // ドコモMAX
+  "11748", // ポイ活MAX
+  "7898",  // ポイ活20
+  "7315",  // eximo
+  "10615", // eximoポイ活
+  "6765",  // ギガライト
+  "7865",  // ギガホ
+  "8415",  // 5Gギガホ
+  "7316"   // 5Gギガホプレミア
 ];
 
-if(!excludedPlans.includes(currentPlan)){
+if(pointUpPlans.includes(currentPlan)){
   currentBasePoint *= pointMultiplier;
-}  
+}
 
 currentPointTotal = currentBasePoint;  
 
@@ -2255,11 +2256,27 @@ else if(
 }
 else{
 
-  currentPointTotal =
+  let currentBasePoint =
     Math.floor(currentTaxExcluded / 1000) * 10;
 
-}
-  
+  let pointMultiplier = 1;
+
+  if(dcardType === "dカード GOLD"){
+    pointMultiplier = 10;
+  }
+  else if(dcardType === "dカード GOLD U"){
+    pointMultiplier = 5;
+  }
+  else if(dcardType === "PLATINUM ～10万"){
+    pointMultiplier = 10;
+  }
+  else if(dcardType === "PLATINUM 10万～20万"){
+    pointMultiplier = 15;
+  }
+  else if(dcardType === "PLATINUM 20万～"){
+    pointMultiplier = 20;
+  }
+
 
 // 提案後
 const newTaxExcluded =
@@ -2290,6 +2307,43 @@ if(
     ) / 1000
   ) * 10;
 
+  let pointMultiplier = 1;
+
+if(dcardType === "dカード GOLD"){
+  pointMultiplier = 10;
+}
+else if(dcardType === "dカード GOLD U"){
+  pointMultiplier = 5;
+}
+else if(dcardType === "PLATINUM ～10万"){
+  pointMultiplier = 10;
+}
+else if(dcardType === "PLATINUM 10万～20万"){
+  pointMultiplier = 15;
+}
+else if(dcardType === "PLATINUM 20万～"){
+  pointMultiplier = 20;
+}
+
+const pointUpPlans = [
+  "8448",  // ドコモMAX
+  "11748", // ポイ活MAX
+  "7898",  // ポイ活20
+  "7315",  // eximo
+  "10615", // eximoポイ活
+  "6765",  // ギガライト
+  "7865",  // ギガホ
+  "8415",  // 5Gギガホ
+  "7316"   // 5Gギガホプレミア
+];
+
+if(pointUpPlans.includes(newPlan)){
+  newBasePoint *= pointMultiplier;
+}
+
+newPointTotal = newBasePoint;  
+
+
   if(
   Number(document.getElementById("poikatsuFamily").value) >= 2 &&
   (
@@ -2309,9 +2363,46 @@ else if(
     Math.floor(newTaxExcluded / 1000) * 5;
 }
 else{
-  newPointTotal =
+
+  let newBasePoint =
     Math.floor(newTaxExcluded / 1000) * 10;
-} 
+
+  let pointMultiplier = 1;
+
+  if(dcardType === "dカード GOLD"){
+    pointMultiplier = 10;
+  }
+  else if(dcardType === "dカード GOLD U"){
+    pointMultiplier = 5;
+  }
+  else if(dcardType === "PLATINUM ～10万"){
+    pointMultiplier = 10;
+  }
+  else if(dcardType === "PLATINUM 10万～20万"){
+    pointMultiplier = 15;
+  }
+  else if(dcardType === "PLATINUM 20万～"){
+    pointMultiplier = 20;
+  }
+
+  const pointUpPlans = [
+    "8448",
+    "11748",
+    "7898",
+    "7315",
+    "10615",
+    "6765",
+    "7865",
+    "8415",
+    "7316"
+  ];
+
+  if(pointUpPlans.includes(newPlan)){
+    newBasePoint *= pointMultiplier;
+  }
+
+  newPointTotal = newBasePoint;
+}
 
 
 document.getElementById(
