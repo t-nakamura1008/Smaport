@@ -1259,7 +1259,19 @@ dバリューパス（550円）
 
   <h2>📈分割込み料金</h2>
 
-  <div id="paymentTimeline"></div>
+  <div class="result-item">
+    <span>現在のお支払い</span>
+    <strong id="currentWithDevice">
+      0円
+    </strong>
+  </div>
+
+  <div class="result-item">
+    <span>提案後のお支払い</span>
+    <strong id="newWithDevice">
+      0円
+    </strong>
+  </div>
 
 </section>
   
@@ -2541,8 +2553,24 @@ else if(
 
 }  
 
+
+const currentMonthlyWithDevice =
+  currentTotal + installmentFee;
+
 const monthlyTotalWithDevice =
   newTotal + installmentFee;
+  
+document.getElementById(
+  "currentWithDevice"
+).textContent =
+  currentMonthlyWithDevice.toLocaleString()
+  + "円";
+
+document.getElementById(
+  "newWithDevice"
+).textContent =
+  monthlyTotalWithDevice.toLocaleString()
+  + "円";
 
   
 
