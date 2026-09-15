@@ -2159,11 +2159,11 @@ if(
   }
 
   currentPointTotal =
+  Math.floor(
     Math.floor(
-      Math.floor(
-        (currentPlan - currentPoiBonus) / 1.1
-      ) / 1000
-    ) * 10;
+      (currentPointBase - currentPoiBonus) / 1.1
+    ) / 1000
+  ) * 10;
 
 }
   
@@ -2206,11 +2206,11 @@ if(
   }
 
   newPointTotal =
+  Math.floor(
     Math.floor(
-      Math.floor(
-        (newPlan - newPoiBonus) / 1.1
-      ) / 1000
-    ) * 10;
+      (newPointBase - newPoiBonus) / 1.1
+    ) / 1000
+  ) * 10;
 
 }
 
