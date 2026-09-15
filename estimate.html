@@ -2148,30 +2148,24 @@ const familyCount =
 
 let poikatsuFamilyPoint = 0;
 
-if(familyCount >= 2){
-
-  if(dcardType === "dカード"){
-    poikatsuFamilyPoint =
-      (familyCount - 1) * 50;
-  }
-
-  else if(
-    dcardType === "dカード GOLD" ||
-    dcardType === "dカード GOLD U"
-  ){
-    poikatsuFamilyPoint =
-      (familyCount - 1) * 100;
-  }
-
-  else if(
-    dcardType === "PLATINUM ～10万" ||
-    dcardType === "PLATINUM 10万～20万" ||
-    dcardType === "PLATINUM 20万～"
-  ){
-    poikatsuFamilyPoint =
-      (familyCount - 1) * 300;
-  }
-
+if(dcardType === "dカード"){
+  poikatsuFamilyPoint =
+    familyCount * 50;
+}
+else if(
+  dcardType === "dカード GOLD" ||
+  dcardType === "dカード GOLD U"
+){
+  poikatsuFamilyPoint =
+    familyCount * 100;
+}
+else if(
+  dcardType === "PLATINUM ～10万" ||
+  dcardType === "PLATINUM 10万～20万" ||
+  dcardType === "PLATINUM 20万～"
+){
+  poikatsuFamilyPoint =
+    familyCount * 300;
 }
 
 const currentPlan =
