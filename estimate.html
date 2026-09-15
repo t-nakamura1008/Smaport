@@ -1316,9 +1316,9 @@ dバリューパス（550円）
   </div>
 
   <div class="result-item">
-    <span>頭金・アクセサリー（本日支払い）</span>
-    <strong id="todayTotal">0円</strong>
-  </div>
+  <span>本日お支払い額</span>
+  <strong id="todayTotal">0円</strong>
+</div>
 
 </section>
 
@@ -2709,6 +2709,14 @@ let todayTotal = 0;
 todayTotal += downPayment;
 todayTotal += device2DownPayment;
 todayTotal += device3DownPayment;
+
+if(paymentType === "0"){
+  todayTotal +=
+    price - discount;
+}
+else{
+  todayTotal += downPayment;
+}  
 
 todayTotal += Number(
   document.getElementById("purchase1Price").value || 0
