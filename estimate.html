@@ -1047,22 +1047,53 @@ dバリューパス（550円）
   <input type="text" placeholder="商品名">
 
   <label>購入方法</label>
-  <select>
-    <option>一括</option>
-    <option>カエドキ</option>
-    <option>12回</option>
-    <option>24回</option>
-    <option>36回</option>
-  </select>
+ <select
+ id="devicePaymentType"
+ onchange="toggleKaedoki()"
+>
+  <option value="0">一括</option>
+  <option value="23">カエドキ</option>
+  <option value="12">12回</option>
+  <option value="24">24回</option>
+  <option value="36">36回</option>
+</select>
 
   <label>一括価格</label>
-  <input type="number" placeholder="金額">
+ <input
+  type="number"
+  id="devicePrice"
+  placeholder="金額"
+>
 
   <label>頭金</label>
-  <input type="number" placeholder="金額">
+ <input
+  type="number"
+  id="downPayment"
+  placeholder="金額"
+>
 
   <label>割引額</label>
-  <input type="number" placeholder="0">
+  <input
+  type="number"
+  id="deviceDiscount"
+  placeholder="0"
+>
+
+<div id="kaedokiArea" style="display:none;">
+  <label>1～23回目月額</label>
+  <input
+    type="number"
+    id="kaedokiFirst"
+    placeholder="例 2500"
+  >
+
+  <label>24～47回目月額</label>
+  <input
+    type="number"
+    id="kaedokiSecond"
+    placeholder="例 4500"
+  >
+</div>  
 
 </section>
 
@@ -1207,7 +1238,11 @@ dバリューパス（550円）
 
 </div>
 
- 
+<div class="result-item">
+  <span>本体分割額</span>
+  <strong id="deviceInstallment">0円</strong>
+</div>
+  
   <div class="result-item">
     <span>初期手数料（1回のみ）</span>
     <strong id="feeTotal">0円</strong>
@@ -2838,6 +2873,18 @@ function syncDValuePack(type){
     dValue && cloud && myDaiz;
 
 }
+
+function toggleKaedoki(){
+
+  const paymentType =
+    document.getElementById("devicePaymentType").value;
+
+  document.getElementById("kaedokiArea").style.display =
+    paymentType === "23"
+      ? "block"
+      : "none";
+
+}  
   
 </script>
 
