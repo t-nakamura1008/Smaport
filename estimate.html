@@ -1258,6 +1258,9 @@ let newFamilyPoint = 0;
 let currentPointBase = 0;
 let newPointBase = 0;
 
+let currentPoiBonus = 0;
+let newPoiBonus = 0;  
+
   const monthlyUsage =
   document.getElementById("monthlyUsage").value;
   
@@ -2375,7 +2378,7 @@ if(pointUpPlans.includes(newPlan)){
   newBasePoint *= pointMultiplier;
 }
 
-newPoiPoint = 0;
+newPoiPoint = newPoiBonus;
 
 
   if(
@@ -2436,8 +2439,7 @@ else{
     newBasePoint *= pointMultiplier;
   }
 
-  newBasePoint = newBasePoint;
-newPoiPoint = newPoiBonus;
+  newPoiPoint = 0;
 }
 
 
@@ -2450,6 +2452,7 @@ newPointTotal =
   newBasePoint +
   newPoiPoint +
   newFamilyPoint; 
+
 
 let feeTotal = 0;
 
@@ -2475,7 +2478,12 @@ if(document.getElementById("deviceChange").checked){
 
 if(document.getElementById("planChange").checked){
   feeTotal += 4950;
-}  
+}
+
+document.getElementById(
+  "feeTotal"
+).textContent =
+  feeTotal.toLocaleString() + "円";  
 
 document.getElementById(
   "currentMonthlyTotal"
