@@ -683,7 +683,7 @@ button:hover{
   <input
     type="number"
     id="currentPhoneWarrantyFee"
-    placeholder="補償料金"
+    placeholder="補償料金（税込）"
   >
 </div>
 <label>
@@ -748,7 +748,7 @@ button:hover{
   <input
     type="number"
     id="newPhoneWarrantyFee"
-    placeholder="補償料金"
+    placeholder="補償料金（税込）"
   >
 </div>
 
@@ -1550,11 +1550,15 @@ if (
 
   if(document.getElementById("currentPhoneWarranty").checked){
 
-  currentTotal += Number(
-    document.getElementById(
-      "currentPhoneWarrantyFee"
-    ).value || 0
-  );
+  const warrantyFee =
+    Number(
+      document.getElementById(
+        "currentPhoneWarrantyFee"
+      ).value || 0
+    );
+
+  currentTotal += warrantyFee;
+  currentPointBase += warrantyFee;
 
 }
 
@@ -1638,11 +1642,15 @@ else if (
 
 if(document.getElementById("newPhoneWarranty").checked){
 
-  newTotal += Number(
-    document.getElementById(
-      "newPhoneWarrantyFee"
-    ).value || 0
-  );
+  const warrantyFee =
+    Number(
+      document.getElementById(
+        "newPhoneWarrantyFee"
+      ).value || 0
+    );
+
+  newTotal += warrantyFee;
+  newPointBase += warrantyFee;
 
 }
 
@@ -1971,26 +1979,49 @@ if(document.getElementById("currentJump").checked){
 currentTotal += 3;
 newTotal += 3; 
 
-currentTotal +=
+const currentGoogleOneFee =
   Number(document.getElementById("currentGoogleOne").value);
 
-currentTotal +=
+currentTotal += currentGoogleOneFee;
+currentPointBase += currentGoogleOneFee;
+
+  const currentAppleOneFee =
   Number(document.getElementById("currentAppleOne").value);
 
-currentTotal +=
-  Number(document.getElementById("currentSecurityPlan").value);
+currentTotal += currentAppleOneFee;
+currentPointBase += currentAppleOneFee;
+
+const currentSecurityFee =
+  Number(
+    document.getElementById("currentSecurityPlan").value
+  );
+
+currentTotal += currentSecurityFee;
+currentPointBase += currentSecurityFee;
+
+const newSecurityFee =
+  Number(
+    document.getElementById("newSecurityPlan").value
+  );
+
+newTotal += newSecurityFee;
+newPointBase += newSecurityFee;
 
 currentTotal +=
   Number(document.getElementById("currentKeitaiSupport").value);
 
-newTotal +=
+const newGoogleOneFee =
   Number(document.getElementById("newGoogleOne").value);
 
-newTotal +=
+newTotal += newGoogleOneFee;
+newPointBase += newGoogleOneFee;
+
+const newAppleOneFee =
   Number(document.getElementById("newAppleOne").value);
 
-newTotal +=
-  Number(document.getElementById("newSecurityPlan").value);
+newTotal += newAppleOneFee;
+newPointBase +=newAppleOneFee;
+
 
 newTotal +=
   Number(document.getElementById("newKeitaiSupport").value);  
