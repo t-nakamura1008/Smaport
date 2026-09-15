@@ -2120,9 +2120,7 @@ newTotal =
     newTotal
   );
 
-  // mini・irumo ポイント計算
-
-const miniIrumoPlans = [
+  const irumoMiniPlans = [
   "2750", // mini4GB
   "3850", // mini10GB
   "550",  // irumo0.5GB
@@ -2132,26 +2130,37 @@ const miniIrumoPlans = [
 ];
 
 // 現在契約
-if(miniIrumoPlans.includes(
-  document.getElementById("currentPlan").value
-)){
-  const currentTaxExcluded =
+const currentTaxExcluded =
   Math.floor(currentPointBase / 1.1);
 
-
+if(
+  irumoMiniPlans.includes(
+    document.getElementById("currentPlan").value
+  )
+){
   currentPointTotal =
     Math.floor(currentTaxExcluded / 1000) * 5;
 }
+else{
+  currentPointTotal =
+    Math.floor(currentTaxExcluded / 1000) * 10;
+}
 
 // 提案後
-if(miniIrumoPlans.includes(
-  document.getElementById("newPlan").value
-)){
-  const newTaxExcluded =
+const newTaxExcluded =
   Math.floor(newPointBase / 1.1);
 
+if(
+  irumoMiniPlans.includes(
+    document.getElementById("newPlan").value
+  )
+){
   newPointTotal =
     Math.floor(newTaxExcluded / 1000) * 5;
+}
+else{
+  newPointTotal =
+    Math.floor(newTaxExcluded / 1000) * 10;
 }
 
 document.getElementById(
