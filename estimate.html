@@ -2706,17 +2706,19 @@ document.getElementById(
 
 let todayTotal = 0;
 
-todayTotal += downPayment;
-todayTotal += device2DownPayment;
-todayTotal += device3DownPayment;
-
 if(paymentType === "0"){
+
   todayTotal +=
     price - discount;
-}
-else{
+
+}else{
+
   todayTotal += downPayment;
-}  
+
+}
+
+todayTotal += device2DownPayment;
+todayTotal += device3DownPayment;
 
 todayTotal += Number(
   document.getElementById("purchase1Price").value || 0
