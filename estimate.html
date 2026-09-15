@@ -286,7 +286,21 @@ button:hover{
   </select>
 </label>  
 
-<div></div>   
+<label>
+  ポイ活ファミリー特典（代表回線のみ）
+  <select id="poikatsuFamily">
+    <option value="0">なし</option>
+    <option value="2">2回線</option>
+    <option value="3">3回線</option>
+    <option value="4">4回線</option>
+    <option value="5">5回線</option>
+    <option value="6">6回線</option>
+    <option value="7">7回線</option>
+    <option value="8">8回線</option>
+    <option value="9">9回線</option>
+    <option value="10">10回線</option>
+  </select>
+</label> 
 
 </div>
   </section>
@@ -1168,13 +1182,24 @@ dバリューパス（550円）
     <strong id="difference">0円</strong>
   </div>
 
+ <div class="result-item">
+  <span>現在のポイント</span>
+  <strong id="currentPointTotal">0pt</strong>
 </div>
 
-  <div class="result-item">
-    <span>貰えるポイント</span>
-    <strong id="pointTotal">0pt</strong>
-  </div>
+<div class="result-item">
+  <span>提案後ポイント</span>
+  <strong id="newPointTotal">0pt</strong>
+</div>
 
+<div class="result-item">
+  <span>ポイント差額</span>
+  <strong id="pointDifference">0pt</strong>
+</div>   
+
+</div>
+
+ 
   <div class="result-item">
     <span>初期手数料（1回のみ）</span>
     <strong id="feeTotal">0円</strong>
@@ -1210,6 +1235,9 @@ function calculateEstimate() {
     Number(
       document.getElementById("newPlan").value
     );
+
+  let currentPointTotal = 0;
+let newPointTotal = 0;
 
   const monthlyUsage =
   document.getElementById("monthlyUsage").value;
@@ -2001,6 +2029,21 @@ document.getElementById(
     "newMonthlyTotal"
   ).textContent =
     newTotal.toLocaleString() + "円";
+
+  document.getElementById(
+  "currentPointTotal"
+).textContent =
+  currentPointTotal.toLocaleString() + "pt";
+
+document.getElementById(
+  "newPointTotal"
+).textContent =
+  newPointTotal.toLocaleString() + "pt";
+
+document.getElementById(
+  "pointDifference"
+).textContent =
+  (newPointTotal - currentPointTotal).toLocaleString() + "pt";
 
   const difference = newTotal - currentTotal;
 
