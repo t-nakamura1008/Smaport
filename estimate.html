@@ -1112,17 +1112,23 @@ dバリューパス（550円）
 
   <h2>🧾 手数料</h2>
 
-  <label><input type="checkbox"> フィルム貼り付け（1,100円）</label>
+  <label><input type="checkbox" id="filmService">
+     フィルム貼り付け（1,100円）</label>
 
-  <label><input type="checkbox"> データ移行（2,200円）</label>
+  <label><input type="checkbox" id="dataTransfer">
+         データ移行（2,200円）</label>
 
-  <label><input type="checkbox"> irumo・mini・ahamoデータ移行（3,300円）</label>
+  <label><input type="checkbox" id="irumoTransfer">
+    irumo・mini・ahamoデータ移行（3,300円）</label>
 
-  <label><input type="checkbox"> アプリ移行（30分）（3,300円）</label>
+  <label><input type="checkbox" id="appTransfer">
+      アプリ移行（30分）（3,300円）</label>
 
-  <label><input type="checkbox"> 機種変更（4,950円）</label>
+  <label><input type="checkbox" id="deviceChange">
+          機種変更（4,950円）</label>
 
-  <label><input type="checkbox"> 4G→5Gプラン変更のみ（4,950円）</label>
+  <label><input type="checkbox" id="planChange">
+       4G→5Gプラン変更のみ（4,950円）</label>
 
 </section>
 
@@ -2445,6 +2451,32 @@ newPointTotal =
   newBasePoint +
   newPoiPoint +
   newFamilyPoint; 
+
+let feeTotal = 0;
+
+if(document.getElementById("filmService").checked){
+  feeTotal += 1100;
+}
+
+if(document.getElementById("dataTransfer").checked){
+  feeTotal += 2200;
+}
+
+if(document.getElementById("irumoTransfer").checked){
+  feeTotal += 3300;
+}
+
+if(document.getElementById("appTransfer").checked){
+  feeTotal += 3300;
+}
+
+if(document.getElementById("deviceChange").checked){
+  feeTotal += 4950;
+}
+
+if(document.getElementById("planChange").checked){
+  feeTotal += 4950;
+}  
 
 document.getElementById(
   "currentMonthlyTotal"
