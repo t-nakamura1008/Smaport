@@ -243,6 +243,7 @@ button:hover{
     <option>なし</option>
     <option>dカード</option>
     <option>dカード GOLD</option>
+    <option>dカード GOLD U</option>
     <option>PLATINUM ～10万</option>
     <option>PLATINUM 10万～20万</option>
     <option>PLATINUM 20万～</option>
@@ -1579,6 +1580,7 @@ if (dcardType === "dカード") {
 }
 else if (
   dcardType === "dカード GOLD" ||
+  dcardType === "dカード GOLD U" ||
   dcardType === "PLATINUM ～10万" ||
   dcardType === "PLATINUM 10万～20万" ||
   dcardType === "PLATINUM 20万～"
@@ -2139,6 +2141,27 @@ const selectedBonus =
     document.getElementById("poiBonus").value
   );
 
+const dcardType =
+  document.getElementById("dcardType").value;
+
+let poikatsuFamilyPoint = 0;
+
+if(dcardType === "dカード"){
+  poikatsuFamilyPoint = 50;
+}
+else if(
+  dcardType === "dカード GOLD" ||
+  dcardType === "dカード GOLD U"
+){
+  poikatsuFamilyPoint = 100;
+}
+else if(
+  dcardType === "PLATINUM ～10万" ||
+  dcardType === "PLATINUM 10万～20万" ||
+  dcardType === "PLATINUM 20万～"
+){
+  poikatsuFamilyPoint = 300;
+}
 
 const currentPlan =
   document.getElementById("currentPlan").value;
@@ -2164,6 +2187,16 @@ if(
       (currentPointBase - currentPoiBonus) / 1.1
     ) / 1000
   ) * 10;
+
+  if(
+  Number(document.getElementById("poikatsuFamily").value) >= 2 &&
+  (
+    currentPlan === "11748" ||
+    currentPlan === "10615"
+  )
+){
+  currentPointTotal += poikatsuFamilyPoint;
+}
 
 }
   
@@ -2211,6 +2244,16 @@ if(
       (newPointBase - newPoiBonus) / 1.1
     ) / 1000
   ) * 10;
+
+  if(
+  Number(document.getElementById("poikatsuFamily").value) >= 2 &&
+  (
+    newPlan === "11748" ||
+    newPlan === "10615"
+  )
+){
+  newPointTotal += poikatsuFamilyPoint;
+}
 
 }
 
