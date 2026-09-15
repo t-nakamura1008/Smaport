@@ -1216,29 +1216,49 @@ dバリューパス（550円）
   <h2>🛍️ 本日購入品</h2>
 
   <div class="purchase-row">
-    <input type="text" placeholder="商品名">
-    <input type="number" placeholder="金額">
-  </div>
+  <input type="text" placeholder="商品名">
+  <input
+    type="number"
+    id="purchase1Price"
+    placeholder="金額"
+  >
+</div>
 
-  <div class="purchase-row">
-    <input type="text" placeholder="商品名">
-    <input type="number" placeholder="金額">
-  </div>
+<div class="purchase-row">
+  <input type="text" placeholder="商品名">
+  <input
+    type="number"
+    id="purchase2Price"
+    placeholder="金額"
+  >
+</div>
 
-  <div class="purchase-row">
-    <input type="text" placeholder="商品名">
-    <input type="number" placeholder="金額">
-  </div>
+<div class="purchase-row">
+  <input type="text" placeholder="商品名">
+  <input
+    type="number"
+    id="purchase3Price"
+    placeholder="金額"
+  >
+</div>
 
-  <div class="purchase-row">
-    <input type="text" placeholder="商品名">
-    <input type="number" placeholder="金額">
-  </div>
+<div class="purchase-row">
+  <input type="text" placeholder="商品名">
+  <input
+    type="number"
+    id="purchase4Price"
+    placeholder="金額"
+  >
+</div>
 
-  <div class="purchase-row">
-    <input type="text" placeholder="商品名">
-    <input type="number" placeholder="金額">
-  </div>
+<div class="purchase-row">
+  <input type="text" placeholder="商品名">
+  <input
+    type="number"
+    id="purchase5Price"
+    placeholder="金額"
+  >
+</div>
 
 </section>
 
@@ -2684,7 +2704,23 @@ document.getElementById(
   monthlyTotalWithDevice.toLocaleString()
   + "円";
 
-  
+let todayTotal = 0;
+
+todayTotal += downPayment;
+todayTotal += device2DownPayment;
+todayTotal += device3DownPayment;
+
+todayTotal += Number(
+  document.getElementById("purchase1Price").value || 0
+);
+
+todayTotal += Number(
+  document.getElementById("purchase2Price").value || 0
+);
+
+todayTotal += Number(
+  document.getElementById("purchase3Price").value || 0
+);
 
 let feeTotal = 0;
 
@@ -2722,6 +2758,11 @@ document.getElementById(
   "feeTotal"
 ).textContent =
   feeTotal.toLocaleString() + "円";  
+
+ document.getElementById(
+  "todayTotal"
+).textContent =
+  todayTotal.toLocaleString() + "円"; 
 
 document.getElementById(
   "currentMonthlyTotal"
