@@ -1006,6 +1006,14 @@ dバリューパス（550円）
 <label>
   <input
     type="checkbox"
+    id="currentPaperBill"
+  >
+  請求書送付（252円）
+</label>  
+     
+<label>
+  <input
+    type="checkbox"
     id="currentOtherSub"
     onchange="
       document.getElementById('currentOtherSubFee').disabled=!this.checked
@@ -1013,26 +1021,28 @@ dバリューパス（550円）
   >
   その他・サブスク
 </label>
-
-<label>
-  <input
-    type="checkbox"
-    id="currentPaperBill"
-  >
-  請求書送付（252円）
-</label>     
-
+    
 <input
   type="number"
   id="currentOtherSubFee"
   placeholder="金額"
   disabled
 >
+
+     
  </div> 
 
  <div>    
 <h3>✨ 提案後</h3>
 
+ <label>
+  <input
+    type="checkbox"
+    id="newPaperBill"
+  >
+  請求書送付（252円）
+</label>
+   
 <label>
   <input
     type="checkbox"
@@ -1042,16 +1052,7 @@ dバリューパス（550円）
     "
   >
   その他・サブスク
-</label>
-
- <label>
-  <input
-    type="checkbox"
-    id="newPaperBill"
-  >
-  請求書送付（252円）
-</label>
-  
+</label>  
 
 <input
   type="number"
