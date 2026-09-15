@@ -2277,6 +2277,25 @@ else{
     pointMultiplier = 20;
   }
 
+  const pointUpPlans = [
+    "8448",
+    "11748",
+    "7898",
+    "7315",
+    "10615",
+    "6765",
+    "7865",
+    "8415",
+    "7316"
+  ];
+
+  if(pointUpPlans.includes(currentPlan)){
+    currentBasePoint *= pointMultiplier;
+  }
+
+  currentPointTotal = currentBasePoint;
+}
+
 
 // 提案後
 const newTaxExcluded =
