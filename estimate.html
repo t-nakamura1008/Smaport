@@ -1409,15 +1409,21 @@ if (
 currentPointBase += currentTotal;
 newPointBase += newTotal;  
 
-  currentTotal +=
+  const currentCallFee =
   Number(
     document.getElementById("currentCallPlan").value
   );
 
-newTotal +=
+currentTotal += currentCallFee;
+currentPointBase += currentCallFee;
+
+const newCallFee =
   Number(
     document.getElementById("newCallPlan").value
   );
+
+newTotal += newCallFee;
+newPointBase += newCallFee;
 
 function applyDiscounts(plan, total){
 
@@ -1640,17 +1646,41 @@ if(document.getElementById("newPhoneWarranty").checked){
 
 }
 
-  currentTotal +=
+ const currentDisneyFee =
   Number(document.getElementById("currentDisney").value);
 
-currentTotal +=
+currentTotal += currentDisneyFee;
+currentPointBase += currentDisneyFee;
+
+const currentNetflixFee =
   Number(document.getElementById("currentNetflix").value);
 
-newTotal +=
+currentTotal += currentNetflixFee;
+currentPointBase += currentNetflixFee;
+
+const currentDisneyFee =
+  Number(document.getElementById("currentDisney").value);
+
+currentTotal += currentDisneyFee;
+currentPointBase += currentDisneyFee;
+
+const currentNetflixFee =
+  Number(document.getElementById("currentNetflix").value);
+
+currentTotal += currentNetflixFee;
+currentPointBase += currentNetflixFee;
+
+const newDisneyFee =
   Number(document.getElementById("newDisney").value);
 
-newTotal +=
+newTotal += newDisneyFee;
+newPointBase += newDisneyFee;
+
+const newNetflixFee =
   Number(document.getElementById("newNetflix").value);
+
+newTotal += newNetflixFee;
+newPointBase += newNetflixFee;
 
 // 現在契約 通話・連絡サービス
 
