@@ -1241,6 +1241,14 @@ function calculateEstimate() {
   let currentPointTotal = 0;
 let newPointTotal = 0;
 
+let currentBasePoint = 0;
+let currentPoiPoint = 0;
+let currentFamilyPoint = 0;
+
+let newBasePoint = 0;
+let newPoiPoint = 0;
+let newFamilyPoint = 0;  
+
 let currentPointBase = 0;
 let newPointBase = 0;
 
@@ -2232,7 +2240,8 @@ if(pointUpPlans.includes(currentPlan)){
   currentBasePoint *= pointMultiplier;
 }
 
-currentPointTotal = currentBasePoint;  
+currentBasePoint = currentBasePoint;
+currentPoiPoint = currentPoiBonus;
 
   if(
   Number(document.getElementById("poikatsuFamily").value) >= 2 &&
@@ -2241,7 +2250,8 @@ currentPointTotal = currentBasePoint;
     currentPlan === "10615"
   )
 ){
-  currentPointTotal += poikatsuFamilyPoint;
+  currentFamilyPoint =
+  poikatsuFamilyPoint;
 }
 
 }
@@ -2423,6 +2433,15 @@ else{
   newPointTotal = newBasePoint;
 }
 
+currentPointTotal =
+  currentBasePointResult +
+  currentPoiPoint +
+  currentFamilyPoint;
+
+newPointTotal =
+  newBasePointResult +
+  newPoiPoint +
+  newFamilyPoint;  
 
 document.getElementById(
   "currentMonthlyTotal"
