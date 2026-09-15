@@ -2148,10 +2148,13 @@ if(
 
   currentPointTotal =
     Math.floor(
-      (currentPointBase - poiBonus) / 1000
+      Math.floor(
+        (Number(currentPlan) - poiBonus) / 1.1
+      ) / 1000
     ) * 10;
 
 }
+
 else if(
   irumoMiniPlans.includes(currentPlan)
 ){
@@ -2177,10 +2180,13 @@ if(
 
   newPointTotal =
     Math.floor(
-      (newPointBase - poiBonus) / 1000
+      Math.floor(
+        (Number(newPlan) - poiBonus) / 1.1
+      ) / 1000
     ) * 10;
 
 }
+
 else if(
   irumoMiniPlans.includes(newPlan)
 ){
