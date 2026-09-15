@@ -2191,12 +2191,47 @@ if(
     currentPoiBonus = 2500;
   }
 
-  currentPointTotal =
+  let currentBasePoint =
   Math.floor(
     Math.floor(
       (currentPointBase - currentPoiBonus) / 1.1
     ) / 1000
   ) * 10;
+
+  let pointMultiplier = 1;
+
+if(dcardType === "dカード GOLD"){
+  pointMultiplier = 10;
+}
+else if(dcardType === "dカード GOLD U"){
+  pointMultiplier = 5;
+}
+else if(dcardType === "PLATINUM ～10万"){
+  pointMultiplier = 10;
+}
+else if(dcardType === "PLATINUM 10万～20万"){
+  pointMultiplier = 15;
+}
+else if(dcardType === "PLATINUM 20万～"){
+  pointMultiplier = 20;
+}
+
+ const excludedPlans = [
+  "2970", // ahamo30
+  "4950", // ahamo110
+  "2750", // mini4
+  "3850", // mini10
+  "550",  // irumo0.5
+  "2167", // irumo3
+  "2827", // irumo6
+  "3377"  // irumo9
+];
+
+if(!excludedPlans.includes(currentPlan)){
+  currentBasePoint *= pointMultiplier;
+}  
+
+currentPointTotal = currentBasePoint;  
 
   if(
   Number(document.getElementById("poikatsuFamily").value) >= 2 &&
@@ -2248,7 +2283,7 @@ if(
     newPoiBonus = 2500;
   }
 
-  newPointTotal =
+  let newBasePoint = 
   Math.floor(
     Math.floor(
       (newPointBase - newPoiBonus) / 1.1
