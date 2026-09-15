@@ -2486,9 +2486,38 @@ currentPointTotal =
 newPointTotal =
   newBasePoint +
   newPoiPoint +
-  newFamilyPoint; 
+  newFamilyPoint;
 
- let installmentFee = 0; 
+const paymentType =
+  document.getElementById(
+    "devicePaymentType"
+  ).value;
+
+const price =
+  Number(
+    document.getElementById(
+      "devicePrice"
+    ).value || 0
+  );
+
+const discount =
+  Number(
+    document.getElementById(
+      "deviceDiscount"
+    ).value || 0
+  );
+
+const downPayment =
+  Number(
+    document.getElementById(
+      "downPayment"
+    ).value || 0
+  );
+
+const netPrice =
+  price - discount - downPayment;
+
+let installmentFee = 0;
 
 if(paymentType === "23"){
 
