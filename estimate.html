@@ -200,9 +200,14 @@ button:hover{
 }
 
 .payment-row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  width:100%;
+}
+
+.payment-row .summary-box{
+  width:35%;
 }
   
 </style>
@@ -1265,7 +1270,7 @@ dバリューパス（550円）
 
   <h2>📈分割込み料金</h2>
 
-  <div class="summary-row">
+  <div class="payment-row">
 
     <div class="summary-box">
       <span>現在プランのお支払い</span>
