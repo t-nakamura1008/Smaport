@@ -252,12 +252,13 @@ button:hover{
 <label>
   ポイ活還元額
   <select id="poiBonus">
-    <option value="0">0</option>
-    <option value="1000">1000</option>
-    <option value="2000">2000</option>
-    <option value="3000">3000</option>
-    <option value="4000">4000</option>
-    <option value="5000">5000</option>
+   <option value="0">0</option>
+<option value="1000">1000</option>
+<option value="2000">2000</option>
+<option value="2500">2500</option>
+<option value="3000">3000</option>
+<option value="4000">4000</option>
+<option value="5000">5000</option>
   </select>
 </label>
       
@@ -2133,25 +2134,51 @@ newTotal =
 const currentTaxExcluded =
   Math.floor(currentPointBase / 1.1);
 
-const poiBonus =
+const selectedBonus =
   Number(
     document.getElementById("poiBonus").value
   );
+
 
 const currentPlan =
   document.getElementById("currentPlan").value;
 
 if(
   currentPlan === "11748" ||
-  currentPlan === "10615"
+  currentPlan === "10615" ||
+  currentPlan === "7898"
 ){
+
+  let currentPoiBonus = selectedBonus;
+
+  if(
+    currentPlan === "7898" &&
+    currentPoiBonus > 2500
+  ){
+    currentPoiBonus = 2500;
+  }
 
   currentPointTotal =
     Math.floor(
       Math.floor(
-        (Number(currentPlan) - poiBonus) / 1.1
+        (Number(currentPlan) - currentPoiBonus) / 1.1
       ) / 1000
     ) * 10;
+
+}
+  
+else if(
+  irumoMiniPlans.includes(currentPlan)
+){
+
+  currentPointTotal =
+    Math.floor(currentTaxExcluded / 1000) * 5;
+
+}
+else{
+
+  currentPointTotal =
+    Math.floor(currentTaxExcluded / 1000) * 10;
 
 }
 
@@ -2175,13 +2202,23 @@ const newTaxExcluded =
 
 if(
   newPlan === "11748" ||
-  newPlan === "10615"
+  newPlan === "10615" ||
+  newPlan === "7898"
 ){
+
+  let newPoiBonus = selectedBonus;
+
+  if(
+    newPlan === "7898" &&
+    newPoiBonus > 2500
+  ){
+    newPoiBonus = 2500;
+  }
 
   newPointTotal =
     Math.floor(
       Math.floor(
-        (Number(newPlan) - poiBonus) / 1.1
+        (Number(newPlan) - newPoiBonus) / 1.1
       ) / 1000
     ) * 10;
 
