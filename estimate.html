@@ -800,7 +800,6 @@ button:hover{
 </section>
 
 
-<!-- バックアップ・クラウド -->
 <section class="card">
 
   <h2>☁️ バックアップ・クラウド</h2>
@@ -813,60 +812,59 @@ button:hover{
       <h3>📱 現在加入</h3>
 
       <label>
-  <input
-  type="checkbox"
-  id="currentDValuePack"
-  onchange="toggleDValuePack('current')"
->
-dバリューパスパック
-</label>
-      
+        <input
+          type="checkbox"
+          id="currentDValuePack"
+          onchange="toggleDValuePack('current')"
+        >
+        dバリューパスパック
+      </label>
+
       <label>
         <input
-  type="checkbox"
-  id="currentCloud50"
-  onchange="syncDValuePack('current')"
->
+          type="checkbox"
+          id="currentCloud50"
+          onchange="syncDValuePack('current')"
+        >
         クラウド容量50GB（440円）
       </label>
 
       <label>
-       <input
-  type="checkbox"
-  id="currentDValuePass"
-  onchange="syncDValuePack('current')"
->
-dバリューパス（550円）
-    
+        <input
+          type="checkbox"
+          id="currentDValuePass"
+          onchange="syncDValuePack('current')"
+        >
+        dバリューパス（550円）
       </label>
 
       <label>
         <input
-  type="checkbox"
-  id="currentMyDaiz"
-  onchange="syncDValuePack('current')"
->
+          type="checkbox"
+          id="currentMyDaiz"
+          onchange="syncDValuePack('current')"
+        >
         my daiz（110円）
       </label>
 
-    </div>
-
-   <label>Google One</label>
+      <label>Google One</label>
 
       <select id="currentGoogleOne">
-  <option value="0">なし</option>
-  <option value="290">100GB（290円）</option>
-  <option value="440">200GB（440円）</option>
-  <option value="1450">AI Plus 1TB（1,450円）</option>
-</select>
+        <option value="0">なし</option>
+        <option value="290">100GB（290円）</option>
+        <option value="440">200GB（440円）</option>
+        <option value="1450">AI Plus 1TB（1,450円）</option>
+      </select>
 
       <label>Apple One</label>
 
-<select id="currentAppleOne">
-  <option value="0">なし</option>
-  <option value="1200">個人（1,200円）</option>
-  <option value="1980">ファミリー（1,980円）</option>
-</select>  
+      <select id="currentAppleOne">
+        <option value="0">なし</option>
+        <option value="1200">個人（1,200円）</option>
+        <option value="1980">ファミリー（1,980円）</option>
+      </select>
+
+    </div>
 
     <!-- 提案後 -->
     <div>
@@ -874,73 +872,71 @@ dバリューパス（550円）
       <h3>✨ 提案後</h3>
 
       <label>
-  <input
-  type="checkbox"
-  id="newDValuePack"
-  onchange="toggleDValuePack('new')"
->
-  dバリューパスパック
-</label>
+        <input
+          type="checkbox"
+          id="newDValuePack"
+          onchange="toggleDValuePack('new')"
+        >
+        dバリューパスパック
+      </label>
 
       <label>
         <input
-  type="checkbox"
-  id="newCloud50"
-  onchange="syncDValuePack('new')"
->
+          type="checkbox"
+          id="newCloud50"
+          onchange="syncDValuePack('new')"
+        >
         クラウド容量50GB（440円）
       </label>
 
       <label>
         <input
-  type="checkbox"
-  id="newDValuePass"
-  onchange="syncDValuePack('new')"
->
+          type="checkbox"
+          id="newDValuePass"
+          onchange="syncDValuePack('new')"
+        >
         dバリューパス（550円）
       </label>
 
       <label>
         <input
-  type="checkbox"
-  id="newMyDaiz"
-  onchange="syncDValuePack('new')"
->
+          type="checkbox"
+          id="newMyDaiz"
+          onchange="syncDValuePack('new')"
+        >
         my daiz（110円）
       </label>
+
+      <label>Google One</label>
+
+      <select id="newGoogleOne">
+        <option value="0">なし</option>
+        <option value="290">100GB（290円）</option>
+        <option value="440">200GB（440円）</option>
+        <option value="1450">AI Plus 1TB（1,450円）</option>
+      </select>
+
+      <label>Apple One</label>
+
+      <select id="newAppleOne">
+        <option value="0">なし</option>
+        <option value="1200">個人（1,200円）</option>
+        <option value="1980">ファミリー（1,980円）</option>
+      </select>
 
     </div>
 
   </div>
 
- <label>Google One</label>
-
-      <select id="newGoogleOne">
-  <option value="0">なし</option>
-  <option value="290">100GB（290円）</option>
-  <option value="440">200GB（440円）</option>
-  <option value="1450">AI Plus 1TB（1,450円）</option>
-</select>
-
-      <label>Apple One</label>
-
-<select id="newAppleOne">
-  <option value="0">なし</option>
-  <option value="1200">個人（1,200円）</option>
-  <option value="1980">ファミリー（1,980円）</option>
-</select>  
-
 </section>
 
 
-<!-- 独自サービス -->
 <section class="card">
 
   <h2>💎 独自サービス</h2>
 
   <div class="compare-grid">
 
-    <!-- 現在加入 -->
     <div>
 
       <h3>📱 現在加入</h3>
@@ -955,18 +951,17 @@ dバリューパス（550円）
         ADCleaner（550円）
       </label>
 
-    <label>ケータイサポート</label>
+      <label>ケータイサポート</label>
 
       <select id="currentKeitaiSupport">
-  <option value="0">なし</option>
-  <option value="770">M（770円）</option>
-  <option value="990">L（990円）</option>
-  <option value="1210">Plus（1,210円）</option>
-</select>   
+        <option value="0">なし</option>
+        <option value="770">M（770円）</option>
+        <option value="990">L（990円）</option>
+        <option value="1210">Plus（1,210円）</option>
+      </select>
 
     </div>
 
-    <!-- 提案後 -->
     <div>
 
       <h3>✨ 提案後</h3>
@@ -981,20 +976,20 @@ dバリューパス（550円）
         ADCleaner（550円）
       </label>
 
-    </div>
-
-   <label>ケータイサポート</label>
+      <label>ケータイサポート</label>
 
       <select id="newKeitaiSupport">
-  <option value="0">なし</option>
-  <option value="770">M（770円）</option>
-  <option value="990">L（990円）</option>
-  <option value="1210">Plus（1,210円）</option>
-</select>  
+        <option value="0">なし</option>
+        <option value="770">M（770円）</option>
+        <option value="990">L（990円）</option>
+        <option value="1210">Plus（1,210円）</option>
+      </select>
+
+    </div>
 
   </div>
 
-</section>  
+</section>
 
   <section class="card">
      🧾 その他月額
