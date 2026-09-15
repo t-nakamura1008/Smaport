@@ -1111,40 +1111,68 @@ dバリューパス（550円）
  <!-- 分割② -->
 <section class="card">
 
-  <h2>📦 分割②</h2>
+<label>商品名</label>
+<input type="text" placeholder="商品名">
 
-  <label>商品名</label>
-  <input type="text" placeholder="商品名">
+<label>金額</label>
+<input
+  type="number"
+  id="device2Price"
+  placeholder="金額"
+>
 
-  <label>金額</label>
-  <input type="number" placeholder="金額">
+<label>頭金</label>
+<input
+  type="number"
+  id="device2DownPayment"
+  placeholder="金額"
+>
 
-  <label>回数</label>
-  <select>
-    <option>12回</option>
-    <option>24回</option>
-    <option>36回</option>
-  </select>
+<label>割引額</label>
+<input
+  type="number"
+  id="device2Discount"
+  placeholder="0"
+>
 
-</section>
+<label>回数</label>
+<select id="device2PaymentType">
+  <option value="12">12回</option>
+  <option value="24">24回</option>
+  <option value="36">36回</option>
+</select>
 
 <!-- 分割③ -->
-<section class="card">
+<label>商品名</label>
+<input type="text" placeholder="商品名">
 
-  <h2>📦 分割③</h2>
+<label>金額</label>
+<input
+  type="number"
+  id="device2Price"
+  placeholder="金額"
+>
 
-  <label>商品名</label>
-  <input type="text" placeholder="商品名">
+<label>頭金</label>
+<input
+  type="number"
+  id="device2DownPayment"
+  placeholder="金額"
+>
 
-  <label>金額</label>
-  <input type="number" placeholder="金額">
+<label>割引額</label>
+<input
+  type="number"
+  id="device2Discount"
+  placeholder="0"
+>
 
-  <label>回数</label>
-  <select>
-    <option>12回</option>
-    <option>24回</option>
-    <option>36回</option>
-  </select>
+<label>回数</label>
+<select id="device2PaymentType">
+  <option value="12">12回</option>
+  <option value="24">24回</option>
+  <option value="36">36回</option>
+</select>
 
 </section>
 
@@ -2564,6 +2592,71 @@ else if(
 
 }  
 
+const device2Price =
+  Number(
+    document.getElementById("device2Price").value || 0
+  );
+
+const device2DownPayment =
+  Number(
+    document.getElementById("device2DownPayment").value || 0
+  );
+
+const device2Discount =
+  Number(
+    document.getElementById("device2Discount").value || 0
+  );
+
+const device2Months =
+  Number(
+    document.getElementById("device2PaymentType").value || 0
+  );
+
+if(device2Price > 0 && device2Months > 0){
+
+  installmentFee +=
+    Math.round(
+      (
+        device2Price -
+        device2DownPayment -
+        device2Discount
+      ) / device2Months
+    );
+
+}  
+
+const device3Price =
+  Number(
+    document.getElementById("device3Price").value || 0
+  );
+
+const device3DownPayment =
+  Number(
+    document.getElementById("device3DownPayment").value || 0
+  );
+
+const device3Discount =
+  Number(
+    document.getElementById("device3Discount").value || 0
+  );
+
+const device3Months =
+  Number(
+    document.getElementById("device3PaymentType").value || 0
+  );
+
+if(device3Price > 0 && device3Months > 0){
+
+  installmentFee +=
+    Math.round(
+      (
+        device3Price -
+        device3DownPayment -
+        device3Discount
+      ) / device3Months
+    );
+
+}  
 
 const currentMonthlyWithDevice =
   currentTotal + installmentFee;
