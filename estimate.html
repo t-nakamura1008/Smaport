@@ -1603,6 +1603,7 @@ if (
   currentPlanValue === "3850"
 ) {
   currentTotal -= specialDiscount;
+  currentPointBase -= specialDiscount;
 }
 
 // 通常割引
@@ -1619,6 +1620,7 @@ else if (
   currentPlanValue === "7316"    // 5Gギガホプレミア
 ) {
   currentTotal -= normalDiscount;
+  currentPointBase -= normalDiscount;
 }
 
 const newPlanValue =
@@ -1633,6 +1635,8 @@ if (
 ) {
 
   newTotal -= specialDiscount;
+newPointBase -= specialDiscount;
+
 
 }
 else if (
@@ -1640,6 +1644,7 @@ else if (
 ) {
 
   newTotal -= normalDiscount;
+newPointBase -= normalDiscount;
 
 }  
 
