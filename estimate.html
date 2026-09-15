@@ -2133,10 +2133,27 @@ newTotal =
 const currentTaxExcluded =
   Math.floor(currentPointBase / 1.1);
 
+const poiBonus =
+  Number(
+    document.getElementById("poiBonus").value
+  );
+
+const currentPlan =
+  document.getElementById("currentPlan").value;
+
 if(
-  irumoMiniPlans.includes(
-    document.getElementById("currentPlan").value
-  )
+  currentPlan === "11748" ||
+  currentPlan === "10615"
+){
+
+  currentPointTotal =
+    Math.floor(
+      (currentPointBase - poiBonus) / 1000
+    ) * 10;
+
+}
+else if(
+  irumoMiniPlans.includes(currentPlan)
 ){
   currentPointTotal =
     Math.floor(currentTaxExcluded / 1000) * 5;
@@ -2144,16 +2161,33 @@ if(
 else{
   currentPointTotal =
     Math.floor(currentTaxExcluded / 1000) * 10;
-}
+}  
 
 // 提案後
 const newTaxExcluded =
   Math.floor(newPointBase / 1.1);
 
+const poiBonus =
+  Number(
+    document.getElementById("poiBonus").value
+  );
+
+ const newPlan =
+  document.getElementById("newPlan").value;
+
 if(
-  irumoMiniPlans.includes(
-    document.getElementById("newPlan").value
-  )
+  newPlan === "11748" ||
+  newPlan === "10615"
+){
+
+  newPointTotal =
+    Math.floor(
+      (newPointBase - poiBonus) / 1000
+    ) * 10;
+
+}
+else if(
+  irumoMiniPlans.includes(newPlan)
 ){
   newPointTotal =
     Math.floor(newTaxExcluded / 1000) * 5;
@@ -2161,7 +2195,8 @@ if(
 else{
   newPointTotal =
     Math.floor(newTaxExcluded / 1000) * 10;
-}
+} 
+
 
 document.getElementById(
   "currentMonthlyTotal"
@@ -2188,10 +2223,24 @@ document.getElementById(
 ).textContent =
   newPointTotal.toLocaleString() + "pt";
 
-document.getElementById(
-  "pointDifference"
-).textContent =
-  (newPointTotal - currentPointTotal).toLocaleString() + "pt";
+const pointDiff =
+  newPointTotal - currentPointTotal;
+
+const pointDiffElement =
+  document.getElementById("pointDifference");
+
+pointDiffElement.textContent =
+  (pointDiff >= 0 ? "+" : "") +
+  pointDiff.toLocaleString() +
+  "pt";
+
+if(pointDiff > 0){
+  pointDiffElement.style.color = "#16a34a";
+}else if(pointDiff < 0){
+  pointDiffElement.style.color = "#dc2626";
+}else{
+  pointDiffElement.style.color = "#000";
+}
 
   const difference = newTotal - currentTotal;
 
