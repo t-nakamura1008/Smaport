@@ -1239,6 +1239,9 @@ function calculateEstimate() {
   let currentPointTotal = 0;
 let newPointTotal = 0;
 
+let currentPointBase = 0;
+let newPointBase = 0;
+
   const monthlyUsage =
   document.getElementById("monthlyUsage").value;
   
@@ -1651,22 +1654,27 @@ newTotal +=
 
 if(document.getElementById("currentVoicemail").checked){
   currentTotal += 330;
+  currentPointBase += 330;
 }
 
 if(document.getElementById("currentCallWaiting").checked){
   currentTotal += 220;
+  currentPointBase += 220;
 }
 
 if(document.getElementById("currentMail").checked){
   currentTotal += 330;
+  currentPointBase += 330;
 }
 
 if(document.getElementById("currentOneNumber").checked){
   currentTotal += 550;
+  currentPointBase += 550;
 }
 
 if(document.getElementById("currentImadoco").checked){
   currentTotal += 330;
+  currentPointBase += 330;
 }
 
 if(
@@ -1676,10 +1684,12 @@ if(
 
   if(document.getElementById("currentVoicemail").checked){
     currentTotal -= 330;
+    currentPointBase -= 330;
   }
 
   if(document.getElementById("currentCallWaiting").checked){
     currentTotal -= 220;
+    currentPointBase -= 220;
   }
 
 }
@@ -1689,22 +1699,27 @@ if(
 
 if(document.getElementById("newVoicemail").checked){
   newTotal += 330;
+  newPointBase += 330;
 }
 
 if(document.getElementById("newCallWaiting").checked){
   newTotal += 220;
+  newPointBase += 220;
 }
 
 if(document.getElementById("newMail").checked){
   newTotal += 330;
+  newPointBase += 330;
 }
 
 if(document.getElementById("newOneNumber").checked){
   newTotal += 550;
+  newPointBase += 550;
 }
 
 if(document.getElementById("newImadoco").checked){
   newTotal += 330;
+  newPointBase += 330;
 }
 
 if(
@@ -1714,28 +1729,34 @@ if(
 
   if(document.getElementById("newVoicemail").checked){
     newTotal -= 330;
+    newPointBase -= 330;
   }
 
   if(document.getElementById("newCallWaiting").checked){
     newTotal -= 220;
+    newPointBase -= 220;
   }
 
 }  
 
 if(document.getElementById("currentAnshinPack").checked){
   currentTotal -= 418;
+  currentPointBase -= 418;
 }
 
 if(document.getElementById("newAnshinPack").checked){
   newTotal -= 418;
+  newPointBase -= 418;
 }  
 
 if(document.getElementById("currentDValuePack").checked){
   currentTotal -= 418;
+  currentPointBase -= 418;
 }
 
 if(document.getElementById("newDValuePack").checked){
   newTotal -= 418;
+  newPointBase -= 418;
 }
 
 if(
@@ -1743,6 +1764,7 @@ if(
   Number(document.getElementById("currentSecurityPlan").value) > 0
 ){
   currentTotal -= 110;
+  currentPointBase -= 110;
 }
 
 if(
@@ -1750,50 +1772,61 @@ if(
   Number(document.getElementById("newSecurityPlan").value) > 0
 ){
   newTotal -= 110;
+  newPointBase -= 110;
 }
 
 if(document.getElementById("currentRemoteSupport").checked){
   currentTotal += 660;
+  currentPointBase += 660;
 }
 
 if(document.getElementById("currentAnshinSecurity").checked){
   currentTotal += 220;
+  currentPointBase += 220;
 }
 
 if(document.getElementById("newRemoteSupport").checked){
   newTotal += 660;
+  newPointBase += 660;
 }
 
 if(document.getElementById("newAnshinSecurity").checked){
   newTotal += 220;
+  newPointBase += 220;
 }  
   
 // 現在契約 クラウド系
 
 if(document.getElementById("currentCloud50").checked){
   currentTotal += 440;
+  currentPointBase += 440;
 }
 
 if(document.getElementById("currentDValuePass").checked){
   currentTotal += 550;
+  currentPointBase += 550;
 }
 
 if(document.getElementById("currentMyDaiz").checked){
   currentTotal += 110;
+  currentPointBase += 110;
 }
 
 // 提案後 クラウド系
 
 if(document.getElementById("newCloud50").checked){
   newTotal += 440;
+  newPointBase += 440;
 }
 
 if(document.getElementById("newDValuePass").checked){
   newTotal += 550;
+  newPointBase += 550;
 }
 
 if(document.getElementById("newMyDaiz").checked){
   newTotal += 110;
+  newPointBase += 110;
 }
 
 // 現在契約 独自サービス
@@ -1855,52 +1888,62 @@ const isCurrentMaxPlan =
   document.getElementById("currentPlan").value === "8448" ||
   document.getElementById("currentPlan").value === "11748";  
 
-  if(isCurrentMaxPlan){
+if(isCurrentMaxPlan){
 
   currentFreeServices.sort((a,b) => b-a);
 
   currentFreeServices.slice(2).forEach(price => {
     currentTotal += price;
+    currentPointBase += price;
   });
 
 }else{
 
   currentFreeServices.forEach(price => {
     currentTotal += price;
+    currentPointBase += price;
   });
 
 }
 
 if(document.getElementById("currentDPhoto").checked){
   currentTotal += 594;
+  currentPointBase += 594;
 }
 
 if(document.getElementById("currentDHealthcare").checked){
   currentTotal += 440;
+  currentPointBase += 440;
 }
 
 if(document.getElementById("currentDMagazine").checked){
   currentTotal += 580;
+  currentPointBase += 580;
 }
 
 if(document.getElementById("currentDHits").checked){
   currentTotal += 690;
+  currentPointBase += 690;
 }
 
 if(document.getElementById("currentYoutube").checked){
   currentTotal += 1280;
+  currentPointBase += 1280;
 }
 
 if(document.getElementById("currentAmazonPrime").checked){
   currentTotal += 600;
+  currentPointBase += 600;
 }
 
 if(document.getElementById("currentSpotify").checked){
   currentTotal += 1080;
+  currentPointBase += 1080;
 }
 
 if(document.getElementById("currentJump").checked){
   currentTotal += 980;
+  currentPointBase += 980;
 }
 
 // ユニバーサルサービス料・電話リレーサービス料（3円）
@@ -1961,46 +2004,56 @@ if(isMaxPlan){
 
   freeServices.slice(2).forEach(price => {
     newTotal += price;
+    newPointBase += price;
   });
 
 }else{
 
   freeServices.forEach(price => {
     newTotal += price;
+    newPointBase += price;
   });
 
 }
   
 if(document.getElementById("newDPhoto").checked){
   newTotal += 594;
+ newPointBase += 594;
 }
 
 if(document.getElementById("newDHealthcare").checked){
   newTotal += 440;
+  newPointBase += 440;
 }
 
 if(document.getElementById("newDMagazine").checked){
   newTotal += 580;
+  newPointBase += 580;
 }
 
 if(document.getElementById("newDHits").checked){
   newTotal += 690;
+  newPointBase += 690;
 }
 
 if(document.getElementById("newYoutube").checked){
   newTotal += 1280;
+  newPointBase += 1280;
 }
 
 if(document.getElementById("newAmazonPrime").checked){
   newTotal += 600;
+  newPointBase += 600;
 }
 
 if(document.getElementById("newSpotify").checked){
   newTotal += 1080;
+  newPointBase += 1080;
 }
 
 if(document.getElementById("newJump").checked){
   newTotal += 980;
+  newPointBase += 980;
 }
 
 currentTotal =
@@ -2014,6 +2067,40 @@ newTotal =
     document.getElementById("newPlan").value,
     newTotal
   );
+
+  // mini・irumo ポイント計算
+
+const miniIrumoPlans = [
+  "2750", // mini4GB
+  "3850", // mini10GB
+  "550",  // irumo0.5GB
+  "2167", // irumo3GB
+  "2827", // irumo6GB
+  "3377"  // irumo9GB
+];
+
+// 現在契約
+if(miniIrumoPlans.includes(
+  document.getElementById("currentPlan").value
+)){
+  const currentTaxExcluded =
+  Math.floor(currentPointBase / 1.1);
+
+
+  currentPointTotal =
+    Math.floor(currentTaxExcluded / 1000) * 5;
+}
+
+// 提案後
+if(miniIrumoPlans.includes(
+  document.getElementById("newPlan").value
+)){
+  const newTaxExcluded =
+  Math.floor(newPointBase / 1.1);
+
+  newPointTotal =
+    Math.floor(newTaxExcluded / 1000) * 5;
+}
 
 document.getElementById(
   "currentMonthlyTotal"
