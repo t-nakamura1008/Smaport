@@ -593,14 +593,40 @@ button:hover{
 
       <h3>📱 現在加入</h3>
 
-      <label>
-  <input type="checkbox" id="currentVoicemail">
+     <label>
+  <input
+    type="checkbox"
+    id="currentOptionPack"
+    onchange="toggleOptionPack('current')"
+  >
+  オプションパック（220円割引）
+</label>
+
+<label>
+  <input
+    type="checkbox"
+    id="currentVoicemail"
+    onchange="syncOptionPack('current'); calculateEstimate();"
+  >
   留守番電話（330円）
 </label>
 
 <label>
-  <input type="checkbox" id="currentCallWaiting">
+  <input
+    type="checkbox"
+    id="currentCallWaiting"
+    onchange="syncOptionPack('current'); calculateEstimate();"
+  >
   キャッチホン（220円）
+</label>
+
+<label>
+  <input
+    type="checkbox"
+    id="currentMelodyCall"
+    onchange="syncOptionPack('current'); calculateEstimate();"
+  >
+  メロディコール（110円）
 </label>
 
 <label>
@@ -625,14 +651,40 @@ button:hover{
 
       <h3>✨ 提案後</h3>
 
-     <label>
-  <input type="checkbox" id="newVoicemail">
+    <label>
+  <input
+    type="checkbox"
+    id="newOptionPack"
+    onchange="toggleOptionPack('new')"
+  >
+  オプションパック（220円割引）
+</label>
+
+<label>
+  <input
+    type="checkbox"
+    id="newVoicemail"
+    onchange="syncOptionPack('new'); calculateEstimate();"
+  >
   留守番電話（330円）
 </label>
 
 <label>
-  <input type="checkbox" id="newCallWaiting">
+  <input
+    type="checkbox"
+    id="newCallWaiting"
+    onchange="syncOptionPack('new'); calculateEstimate();"
+  >
   キャッチホン（220円）
+</label>
+
+<label>
+  <input
+    type="checkbox"
+    id="newMelodyCall"
+    onchange="syncOptionPack('new'); calculateEstimate();"
+  >
+  メロディコール（110円）
 </label>
 
 <label>
@@ -1849,6 +1901,11 @@ if(document.getElementById("currentCallWaiting").checked){
   currentPointBase += 220;
 }
 
+if(document.getElementById("currentMelodyCall").checked){
+  currentTotal += 110;
+  currentPointBase += 110;
+}  
+
 if(document.getElementById("currentMail").checked){
   currentTotal += 330;
   currentPointBase += 330;
@@ -1893,6 +1950,11 @@ if(document.getElementById("newCallWaiting").checked){
   newTotal += 220;
   newPointBase += 220;
 }
+
+if(document.getElementById("newMelodyCall").checked){
+  newTotal += 110;
+  newPointBase += 110;
+}  
 
 if(document.getElementById("newMail").checked){
   newTotal += 330;
@@ -3157,6 +3219,53 @@ function syncDValuePack(type){
     dValue && cloud && myDaiz;
 
 }
+
+function syncOptionPack(type){
+
+  const voicemail =
+    document.getElementById(
+      type + "Voicemail"
+    ).checked;
+
+  const waiting =
+    document.getElementById(
+      type + "CallWaiting"
+    ).checked;
+
+  const melody =
+    document.getElementById(
+      type + "MelodyCall"
+    ).checked;
+
+  document.getElementById(
+    type + "OptionPack"
+  ).checked =
+    voicemail &&
+    waiting &&
+    melody;
+} 
+
+function toggleOptionPack(type){
+
+  const checked =
+    document.getElementById(
+      type + "OptionPack"
+    ).checked;
+
+  document.getElementById(
+    type + "Voicemail"
+  ).checked = checked;
+
+  document.getElementById(
+    type + "CallWaiting"
+  ).checked = checked;
+
+  document.getElementById(
+    type + "MelodyCall"
+  ).checked = checked;
+
+  calculateEstimate();
+}  
 
 function toggleKaedoki(){
 
