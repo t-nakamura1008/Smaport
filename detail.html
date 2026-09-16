@@ -211,6 +211,11 @@ body{
   align-items:center;
   gap:20px;
   margin-top:30px;
+}
+
+.detail-discount{
+  color:#dc2626;
+  font-weight:bold;
 }  
   
 </style>
@@ -610,6 +615,17 @@ if(data.currentMelodyCall){
   `;
 }  
 
+if(
+  data.currentVoicemail &&
+  data.currentCallWaiting &&
+  data.currentMelodyCall
+){
+  currentOptionHtml += createDiscountRow(
+    "オプションパック割",
+    220
+  );
+}  
+
 if(data.currentMail){
   currentOptionHtml += `
     <div class="detail-row">
@@ -685,6 +701,27 @@ if(data.currentAnshinSecurity){
   `;
 }
 
+
+if(
+  data.currentPhoneWarranty &&
+  data.currentRemoteSupport &&
+  data.currentAnshinSecurity
+){
+  currentSecurityHtml += createDiscountRow(
+    "あんしんパック割",
+    418
+  );
+}
+  
+if(data.currentAnshinSecurity &&
+  Number(data.currentSecurityPlan) > 0
+){
+  currentSecurityHtml += createDiscountRow(
+    "セキュリティ重複割",
+    110
+  );
+}  
+
 document.getElementById(
   "currentSecurityArea"
 ).innerHTML = currentSecurityHtml;
@@ -723,6 +760,17 @@ if(data.currentMyDaiz){
     </div>
   `;
 }
+
+if(
+  data.currentCloud50 &&
+  data.currentDValuePass &&
+  data.currentMyDaiz
+){
+  currentCloudHtml += createDiscountRow(
+    "dバリューパスパック割",
+    418
+  );
+}  
 
 document.getElementById(
   "currentCloudArea"
@@ -901,6 +949,18 @@ newOptionHtml += createOptionRow(
   "メロディコール",
   110
 );
+
+if(
+  data.newVoicemail &&
+  data.newCallWaiting &&
+  data.newMelodyCall
+){
+  newOptionHtml += createDiscountRow(
+    "オプションパック割",
+    220
+  );
+}
+``  
   
 
 newOptionHtml += createOptionRow(
@@ -973,6 +1033,27 @@ newSecurityHtml += createOptionRow(
   220
 );
 
+if(
+  data.newPhoneWarranty &&
+  data.newRemoteSupport &&
+  data.newAnshinSecurity
+){
+  newSecurityHtml += createDiscountRow(
+    "あんしんパック割",
+    418
+  );
+}  
+
+if(
+  data.newAnshinSecurity &&
+  Number(data.newSecurityPlan) > 0
+){
+  newSecurityHtml += createDiscountRow(
+    "セキュリティ重複割",
+    110
+  );
+}  
+
 document.getElementById(
   "newSecurityArea"
 ).innerHTML = newSecurityHtml;
@@ -1005,6 +1086,17 @@ newCloudHtml += createOptionRow(
   "my daiz",
   110
 );
+
+if(
+  data.newCloud50 &&
+  data.newDValuePass &&
+  data.newMyDaiz
+){
+  newCloudHtml += createDiscountRow(
+    "dバリューパスパック割",
+    418
+  );
+}  
 
 document.getElementById(
   "newCloudArea"
@@ -1099,6 +1191,18 @@ function createPriceRow(
       <span>
         ${Number(newValue).toLocaleString()}円
       </span>
+    </div>
+  `;
+}
+
+function createDiscountRow(
+  name,
+  price
+){
+  return `
+    <div class="detail-row detail-discount">
+      <span>${name}</span>
+      <span>-${price}円</span>
     </div>
   `;
 }  
