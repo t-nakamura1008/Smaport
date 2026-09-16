@@ -397,8 +397,8 @@ document.getElementById("currentPlanArea").innerHTML = `
 
 document.getElementById("currentCallArea").innerHTML = `
 <div class="detail-row">
-  <span>5分通話</span>
-  <span>770円</span>
+  <span>${data.currentCallName}</span>
+  <span>${Number(data.currentCallPrice).toLocaleString()}円</span>
 </div>
 `;
 
@@ -431,6 +431,13 @@ document.getElementById("newPlanArea").innerHTML = `
   <span>${Number(data.newPlanPrice).toLocaleString()}円</span>
 </div>
 `;
+
+document.getElementById("newCallArea").innerHTML = `
+<div class="detail-row">
+  <span>${data.newCallName}</span>
+  <span>${Number(data.newCallPrice).toLocaleString()}円</span>
+</div>
+`;  
 
 document.getElementById(
   "currentPointResult"
