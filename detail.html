@@ -157,107 +157,95 @@ body{
 
 <body>
 
-<div class="container">
+<div class="detail-grid">
 
-  <div class="title-card">
-    <h1>📋 契約内容詳細</h1>
-    <p>ご提案内容の確認画面</p>
+  <!-- 現在契約 -->
+  <div class="detail-column">
+
+    <h3>📱 現在契約</h3>
+
+    <div class="section-title">
+      プラン
+    </div>
+    <div id="currentPlanArea"></div>
+
+    <div class="section-title">
+      通話
+    </div>
+    <div id="currentCallArea"></div>
+
+    <div class="section-title">
+      オプション
+    </div>
+    <div id="currentOptionArea"></div>
+
+    <div class="section-title">
+      独自サービス
+    </div>
+    <div id="currentServiceArea"></div>
+
   </div>
-
-  <div class="card">
-
-    <div class="detail-grid">
-
-      <!-- 現在契約 -->
-<div class="detail-column">
-
-  <h3>📱 現在契約</h3>
-
-  <div class="section-title">
-    プラン
-  </div>
-  <div id="currentPlanArea"></div>
-
-  <div class="section-title">
-    通話
-  </div>
-  <div id="currentCallArea"></div>
-
-  <div class="section-title">
-    オプション
-  </div>
-  <div id="currentOptionArea"></div>
-
-  <div class="section-title">
-    独自サービス
-  </div>
-  <div id="currentServiceArea"></div>
-
-</div>
-
 
   <!-- 提案プラン -->
-<div class="detail-column">
+  <div class="detail-column">
 
-  <h3>✨ ご提案プラン</h3>
+    <h3>✨ ご提案プラン</h3>
 
-  <div class="section-title">
-    プラン
+    <div class="section-title">
+      プラン
+    </div>
+    <div id="newPlanArea"></div>
+
+    <div class="section-title">
+      通話
+    </div>
+    <div id="newCallArea"></div>
+
+    <div class="section-title">
+      オプション
+    </div>
+    <div id="newOptionArea"></div>
+
+    <div class="section-title">
+      独自サービス
+    </div>
+    <div id="newServiceArea"></div>
+
   </div>
-  <div id="newPlanArea"></div>
-
-  <div class="section-title">
-    通話
-  </div>
-  <div id="newCallArea"></div>
-
-  <div class="section-title">
-    オプション
-  </div>
-  <div id="newOptionArea"></div>
-
-  <div class="section-title">
-    独自サービス
-  </div>
-  <div id="newServiceArea"></div>
 
 </div>
-
-    </div>
-
-  </div>
-
+  
 <div class="result-compare">
 
-  <div class="result-box">
+  <div class="result-box total-box">
     <span>📱現在合計</span>
     <strong id="currentTotalResult">
-      10,280円
+      0円
     </strong>
   </div>
 
-  <div class="result-box">
+  <div class="result-box total-box">
     <span>✨提案合計</span>
     <strong id="newTotalResult">
-      8,980円
+      0円
     </strong>
   </div>
 
-  <div class="result-box">
+  <div class="result-box point-box">
     <span>📱現在ポイント</span>
     <strong id="currentPointResult">
-      120pt
+      0pt
     </strong>
   </div>
 
-  <div class="result-box">
+  <div class="result-box point-box">
     <span>✨提案ポイント</span>
     <strong id="newPointResult">
-      6,120pt
+      0pt
     </strong>
   </div>
 
-</div>  
+</div>
 
   <div class="card">
 
