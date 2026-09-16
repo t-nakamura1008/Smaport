@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>みつもりさん｜契約内容詳細</title>
+
+<style>
+
+body{
+  margin:0;
+  padding:20px;
+  background:#f5f7fb;
+  font-family:'Segoe UI',sans-serif;
+}
+
+.container{
+  max-width:1400px;
+  margin:auto;
+}
+
+.title-card{
+  background:linear-gradient(
+    135deg,
+    #d6001c,
+    #ff4d4f
+  );
+  color:white;
+  padding:30px;
+  border-radius:20px;
+  text-align:center;
+  margin-bottom:25px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+}
+
+.title-card h1{
+  margin:0;
+  font-size:36px;
+}
+
+.title-card p{
+  margin-top:10px;
+  font-size:15px;
+}
+
+.card{
+  background:white;
+  border-radius:16px;
+  padding:24px;
+  margin-bottom:20px;
+}
+
+.detail-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.detail-column{
+  background:#fafafa;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:20px;
+}
+
+.detail-column h3{
+  text-align:center;
+  margin-top:0;
+  background:#f3f4f6;
+  padding:10px;
+  border-radius:8px;
+}
+
+.section-title{
+  font-size:18px;
+  font-weight:bold;
+  color:#2563eb;
+  margin-top:20px;
+  margin-bottom:10px;
+}
+
+.detail-row{
+  display:flex;
+  justify-content:space-between;
+  padding:8px 0;
+  border-bottom:1px solid #eee;
+}
+
+.detail-added{
+  color:#16a34a;
+  font-weight:bold;
+}
+
+.detail-summary{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.summary-box{
+  background:#f8fafc;
+  padding:15px;
+  border-radius:12px;
+  text-align:center;
+}
+
+.summary-box span{
+  display:block;
+  margin-bottom:8px;
+  font-size:14px;
+}
+
+.summary-box strong{
+  font-size:24px;
+}
+
+.save-btn{
+  display:block;
+  margin:30px auto;
+  background:#2563eb;
+  color:white;
+  border:none;
+  padding:15px 40px;
+  border-radius:12px;
+  font-size:18px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.save-btn:hover{
+  background:#1d4ed8;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="title-card">
+    <h1>📋 契約内容詳細</h1>
+    <p>ご提案内容の確認画面</p>
+  </div>
+
+  <div class="card">
+
+    <div class="detail-grid">
+
+      <!-- 現在契約 -->
+      <div class="detail-column">
+
+        <h3>📱 現在契約</h3>
+
+        <div class="section-title">
+          プラン
+        </div>
+
+        <div id="currentPlanArea">
+        </div>
+
+        <div class="section-title">
+          オプション
+        </div>
+
+        <div id="currentOptionArea">
+        </div>
+
+      </div>
+
+      <!-- 提案プラン -->
+      <div class="detail-column">
+
+        <h3>✨ ご提案プラン</h3>
+
+        <div class="section-title">
+          プラン
+        </div>
+
+        <div id="newPlanArea">
+        </div>
+
+        <div class="section-title">
+          オプション
+        </div>
+
+        <div id="newOptionArea">
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="card">
+
+    <h2>📊 集計結果</h2>
+
+    <div class="detail-summary">
+
+      <div class="summary-box">
+        <span>月額差額</span>
+        <strong id="detailDifference">
+          0円
+        </strong>
+      </div>
+
+      <div class="summary-box">
+        <span>ポイント差額</span>
+        <strong id="detailPointDifference">
+          0pt
+        </strong>
+      </div>
+
+      <div class="summary-box">
+        <span>本日お支払い額</span>
+        <strong id="detailTodayTotal">
+          0円
+        </strong>
+      </div>
+
+    </div>
+
+    <br>
+
+    <div class="detail-row">
+      <span>本体分割額</span>
+      <strong id="detailInstallment">
+        0円
+      </strong>
+    </div>
+
+    <div class="detail-row">
+      <span>初期手数料</span>
+      <strong id="detailFeeTotal">
+        0円
+      </strong>
+    </div>
+
+  </div>
+
+  <button
+    class="save-btn"
+    id="saveEstimateBtn"
+  >
+    💾 保存
+  </button>
+
+</div>
+
+</body>
+</html>
