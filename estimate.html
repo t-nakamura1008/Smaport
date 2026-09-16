@@ -3189,13 +3189,29 @@ function toggleDetailArea(){
 
 function goToDetail() {
 
+  const currentPlanSelect =
+    document.getElementById("currentPlan");
+
+  const newPlanSelect =
+    document.getElementById("newPlan");
+
   const estimateData = {
 
-    currentPlan:
-      document.getElementById("currentPlan").value,
+    currentPlanName:
+      currentPlanSelect.options[
+        currentPlanSelect.selectedIndex
+      ].text,
 
-    newPlan:
-      document.getElementById("newPlan").value
+    currentPlanPrice:
+      currentPlanSelect.value,
+
+    newPlanName:
+      newPlanSelect.options[
+        newPlanSelect.selectedIndex
+      ].text,
+
+    newPlanPrice:
+      newPlanSelect.value
 
   };
 
@@ -3207,6 +3223,7 @@ function goToDetail() {
   window.location.href = "detail.html";
 
 }
+
 
   
   
