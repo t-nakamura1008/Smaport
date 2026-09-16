@@ -3534,7 +3534,25 @@ currentSecurityPlan:
 newSecurityPlan:
   document.getElementById(
     "newSecurityPlan"
-  ).value,    
+  ).value,   
+
+currentSecurityPlanName:
+  document.getElementById(
+    "currentSecurityPlan"
+  ).options[
+    document.getElementById(
+      "currentSecurityPlan"
+    ).selectedIndex
+  ].text,
+
+newSecurityPlanName:
+  document.getElementById(
+    "newSecurityPlan"
+  ).options[
+    document.getElementById(
+      "newSecurityPlan"
+    ).selectedIndex
+  ].text,    
 
 };
 
