@@ -1207,6 +1207,32 @@ function createPriceRow(
   `;
 }
 
+function createPlanRow(
+  currentValue,
+  newValue,
+  name
+){
+  if(Number(newValue) <= 0) return "";
+
+  const isNew =
+    Number(currentValue) <= 0;
+
+  return `
+    <div class="detail-row ${
+      isNew ? "detail-added" : ""
+    }">
+      <span>
+        ${isNew ? "★ " : ""}
+        ${name}
+      </span>
+      <span>
+        ${Number(newValue).toLocaleString()}円
+      </span>
+    </div>
+  `;
+}
+  
+
 function createDiscountRow(
   name,
   price
