@@ -3195,6 +3195,12 @@ function goToDetail() {
   const newPlanSelect =
     document.getElementById("newPlan");
 
+  const currentCallSelect =
+    document.getElementById("currentCall");
+
+  const newCallSelect =
+    document.getElementById("newCall");
+
   const estimateData = {
 
     currentPlanName:
@@ -3211,11 +3217,25 @@ function goToDetail() {
       ].text,
 
     newPlanPrice:
-      newPlanSelect.value
+      newPlanSelect.value,
+
+    currentCallName:
+      currentCallSelect.options[
+        currentCallSelect.selectedIndex
+      ].text,
+
+    currentCallPrice:
+      currentCallSelect.value,
+
+    newCallName:
+      newCallSelect.options[
+        newCallSelect.selectedIndex
+      ].text,
+
+    newCallPrice:
+      newCallSelect.value
 
   };
-
-  console.log(estimateData);
 
   localStorage.setItem(
     "estimateData",
@@ -3225,6 +3245,7 @@ function goToDetail() {
   window.location.href = "detail.html";
 
 }
+
   
 </script>
 
