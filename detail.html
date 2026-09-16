@@ -260,6 +260,13 @@ body{
 
 </div>
 
+    <div id="currentCloudSection">
+  <div class="section-title">
+    ☁️ バックアップ・クラウド
+  </div>
+  <div id="currentCloudArea"></div>
+</div>
+
     <div id="currentServiceSection">
   <div class="section-title">
     独自サービス
@@ -300,6 +307,13 @@ body{
   <div id="newOptionArea"></div>
 
 </div>
+
+  <div id="newCloudSection">
+  <div class="section-title">
+    ☁️ バックアップ・クラウド
+  </div>
+  <div id="newCloudArea"></div>
+</div> 
 
     <div id="newServiceSection">
   <div class="section-title">
@@ -610,6 +624,45 @@ if(currentOptionHtml === ""){
 
 }
 
+let currentCloudHtml = "";
+
+if(data.currentCloud50){
+  currentCloudHtml += `
+    <div class="detail-row">
+      <span>クラウド容量50GB</span>
+      <span>440円</span>
+    </div>
+  `;
+}
+
+if(data.currentDValuePass){
+  currentCloudHtml += `
+    <div class="detail-row">
+      <span>dバリューパス</span>
+      <span>550円</span>
+    </div>
+  `;
+}
+
+if(data.currentMyDaiz){
+  currentCloudHtml += `
+    <div class="detail-row">
+      <span>my daiz</span>
+      <span>110円</span>
+    </div>
+  `;
+}
+
+document.getElementById(
+  "currentCloudArea"
+).innerHTML = currentCloudHtml;
+
+if(currentCloudHtml === ""){
+  document.getElementById(
+    "currentCloudSection"
+  ).style.display = "none";
+}  
+
 
 let currentServiceHtml = "";
 
@@ -803,6 +856,39 @@ if(newOptionHtml === ""){
   ).style.display = "none";
 
 }
+
+let newCloudHtml = "";
+
+newCloudHtml += createOptionRow(
+  data.currentCloud50,
+  data.newCloud50,
+  "クラウド容量50GB",
+  440
+);
+
+newCloudHtml += createOptionRow(
+  data.currentDValuePass,
+  data.newDValuePass,
+  "dバリューパス",
+  550
+);
+
+newCloudHtml += createOptionRow(
+  data.currentMyDaiz,
+  data.newMyDaiz,
+  "my daiz",
+  110
+);
+
+document.getElementById(
+  "newCloudArea"
+).innerHTML = newCloudHtml;
+
+if(newCloudHtml === ""){
+  document.getElementById(
+    "newCloudSection"
+  ).style.display = "none";
+}  
 
 
 let newServiceHtml = "";
