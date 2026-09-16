@@ -1357,25 +1357,11 @@ button:hover{
 
 <button
   id="toggleDetailBtn"
-  onclick="toggleDetailArea()"
+  onclick="goToDetail()"
 >
   📋 内訳詳細を見る
 </button>
 
-<div
-  id="detailArea"
-  style="display:none;"
->
-
-  <section class="card">
-
-    <h2>📋契約内容詳細</h2>
-
-    <p>ここに詳細を表示予定</p>
-
-  </section>
-
-</div>
 
 <script>
 
@@ -3199,7 +3185,30 @@ function toggleDetailArea(){
 
   }
 
-}  
+} 
+
+function goToDetail() {
+
+  const estimateData = {
+
+    currentPlan:
+      document.getElementById("currentPlan").value,
+
+    newPlan:
+      document.getElementById("newPlan").value
+
+  };
+
+  localStorage.setItem(
+    "estimateData",
+    JSON.stringify(estimateData)
+  );
+
+  window.location.href = "detail.html";
+
+}
+
+  
   
 </script>
 
