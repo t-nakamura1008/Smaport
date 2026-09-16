@@ -414,12 +414,29 @@ document.getElementById("currentOptionArea").innerHTML = `
 </div>
 `;
 
-document.getElementById("currentServiceArea").innerHTML = `
-<div class="detail-row">
-  <span>HOZON</span>
-  <span>330円</span>
-</div>
-`;
+let currentServiceHtml = "";
+
+if(data.currentHOZON){
+  currentServiceHtml += `
+    <div class="detail-row">
+      <span>HOZON</span>
+      <span>330円</span>
+    </div>
+  `;
+}
+
+if(data.currentADCleaner){
+  currentServiceHtml += `
+    <div class="detail-row">
+      <span>ADCleaner</span>
+      <span>550円</span>
+    </div>
+  `;
+}
+
+document.getElementById(
+  "currentServiceArea"
+).innerHTML = currentServiceHtml;
 
 document.getElementById(
   "currentTotalResult"
@@ -438,6 +455,32 @@ document.getElementById("newCallArea").innerHTML = `
   <span>${Number(data.newCallPrice).toLocaleString()}円</span>
 </div>
 `;  
+
+let newServiceHtml = "";
+
+if(data.newHOZON){
+  newServiceHtml += `
+    <div class="detail-row">
+      <span>HOZON</span>
+      <span>330円</span>
+    </div>
+  `;
+}
+
+if(data.newADCleaner){
+  newServiceHtml += `
+    <div class="detail-row detail-added">
+      <span>★ ADCleaner</span>
+      <span>550円</span>
+    </div>
+  `;
+}
+
+document.getElementById(
+  "newServiceArea"
+).innerHTML = newServiceHtml;
+``
+  
 
 document.getElementById(
   "currentPointResult"
