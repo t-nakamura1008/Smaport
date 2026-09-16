@@ -237,6 +237,14 @@ body{
     </div>
     <div id="currentPlanArea"></div>
 
+   <div id="currentEntertainmentSection">
+  <div class="section-title">
+    映像・エンタメ
+  </div>
+  <div id="currentEntertainmentArea"></div>
+</div>
+
+
     <div class="section-title">
       通話
     </div>
@@ -263,6 +271,13 @@ body{
       プラン
     </div>
     <div id="newPlanArea"></div>
+
+   <div id="newEntertainmentSection">
+  <div class="section-title">
+    映像・エンタメ
+  </div>
+  <div id="newEntertainmentArea"></div>
+</div>
 
     <div class="section-title">
       通話
@@ -402,6 +417,126 @@ document.getElementById("currentCallArea").innerHTML = `
 </div>
 `;
 
+let currentEntertainmentHtml = "";
+
+if(data.currentLemino){
+  currentEntertainmentHtml += `
+    <div class="detail-row">
+      <span>Leminoプレミアム</span>
+      <span>1,540円</span>
+    </div>
+  `;
+}
+
+if(data.currentDAnime){
+  currentEntertainmentHtml += `
+    <div class="detail-row">
+      <span>dアニメストア</span>
+      <span>660円</span>
+    </div>
+  `;
+}
+
+if(data.currentNBA){
+  currentEntertainmentHtml += `
+    <div class="detail-row">
+      <span>NBA docomo</span>
+      <span>2,728円</span>
+    </div>
+  `;
+}
+
+if(data.currentDAZN){
+  currentEntertainmentHtml += `
+    <div class="detail-row">
+      <span>DAZN</span>
+      <span>4,200円</span>
+    </div>
+  `;
+}
+
+if(data.currentYoutube){
+  currentEntertainmentHtml += `
+    <div class="detail-row">
+      <span>YouTube Premium</span>
+      <span>1,280円</span>
+    </div>
+  `;
+}
+
+if(data.currentAmazonPrime){
+  currentEntertainmentHtml += `
+    <div class="detail-row">
+      <span>Amazon Prime</span>
+      <span>600円</span>
+    </div>
+  `;
+}
+
+if(data.currentSpotify){
+  currentEntertainmentHtml += `
+    <div class="detail-row">
+      <span>Spotify Premium</span>
+      <span>1,080円</span>
+    </div>
+  `;
+}
+
+if(data.currentJump){
+  currentEntertainmentHtml += `
+    <div class="detail-row">
+      <span>ジャンプ＋定期購読</span>
+      <span>980円</span>
+    </div>
+  `;
+}
+
+if(data.currentDPhoto){
+  currentEntertainmentHtml += `
+    <div class="detail-row">
+      <span>dフォト</span>
+      <span>594円</span>
+    </div>
+  `;
+}
+
+if(data.currentDHealthcare){
+  currentEntertainmentHtml += `
+    <div class="detail-row">
+      <span>dヘルスケア</span>
+      <span>440円</span>
+    </div>
+  `;
+}
+
+if(data.currentDMagazine){
+  currentEntertainmentHtml += `
+    <div class="detail-row">
+      <span>dマガジン</span>
+      <span>580円</span>
+    </div>
+  `;
+}
+
+if(data.currentDHits){
+  currentEntertainmentHtml += `
+    <div class="detail-row">
+      <span>dヒッツ</span>
+      <span>690円</span>
+    </div>
+  `;
+}
+
+document.getElementById(
+  "currentEntertainmentArea"
+).innerHTML = currentEntertainmentHtml;
+
+if(currentEntertainmentHtml === ""){
+  document.getElementById(
+    "currentEntertainmentSection"
+  ).style.display = "none";
+}
+  
 let currentOptionHtml = "";
 
 if(data.currentVoicemail){
@@ -495,6 +630,102 @@ document.getElementById("newCallArea").innerHTML = `
 </div>
 `;  
 
+let newEntertainmentHtml = "";
+
+newEntertainmentHtml += createOptionRow(
+  data.currentLemino,
+  data.newLemino,
+  "Leminoプレミアム",
+  1540
+);
+
+newEntertainmentHtml += createOptionRow(
+  data.currentDAnime,
+  data.newDAnime,
+  "dアニメストア",
+  660
+);
+
+newEntertainmentHtml += createOptionRow(
+  data.currentNBA,
+  data.newNBA,
+  "NBA docomo",
+  2728
+);
+
+newEntertainmentHtml += createOptionRow(
+  data.currentDAZN,
+  data.newDAZN,
+  "DAZN",
+  4200
+);
+
+newEntertainmentHtml += createOptionRow(
+  data.currentYoutube,
+  data.newYoutube,
+  "YouTube Premium",
+  1280
+);
+
+newEntertainmentHtml += createOptionRow(
+  data.currentAmazonPrime,
+  data.newAmazonPrime,
+  "Amazon Prime",
+  600
+);
+
+newEntertainmentHtml += createOptionRow(
+  data.currentSpotify,
+  data.newSpotify,
+  "Spotify Premium",
+  1080
+);
+
+newEntertainmentHtml += createOptionRow(
+  data.currentJump,
+  data.newJump,
+  "ジャンプ＋定期購読",
+  980
+);
+
+newEntertainmentHtml += createOptionRow(
+  data.currentDPhoto,
+  data.newDPhoto,
+  "dフォト",
+  594
+);
+
+newEntertainmentHtml += createOptionRow(
+  data.currentDHealthcare,
+  data.newDHealthcare,
+  "dヘルスケア",
+  440
+);
+
+newEntertainmentHtml += createOptionRow(
+  data.currentDMagazine,
+  data.newDMagazine,
+  "dマガジン",
+  580
+);
+
+newEntertainmentHtml += createOptionRow(
+  data.currentDHits,
+  data.newDHits,
+  "dヒッツ",
+  690
+);
+
+document.getElementById(
+  "newEntertainmentArea"
+).innerHTML = newEntertainmentHtml;
+
+if(newEntertainmentHtml === ""){
+  document.getElementById(
+    "newEntertainmentSection"
+  ).style.display = "none";
+}
+  
 let newOptionHtml = "";
 
 newOptionHtml += createOptionRow(
@@ -539,23 +770,19 @@ document.getElementById(
 
 let newServiceHtml = "";
 
-if(data.newHOZON){
-  newServiceHtml += `
-    <div class="detail-row">
-      <span>HOZON</span>
-      <span>330円</span>
-    </div>
-  `;
-}
+newServiceHtml += createOptionRow(
+  data.currentHOZON,
+  data.newHOZON,
+  "HOZON",
+  330
+);
 
-if(data.newADCleaner){
-  newServiceHtml += `
-    <div class="detail-row detail-added">
-      <span>★ ADCleaner</span>
-      <span>550円</span>
-    </div>
-  `;
-}
+newServiceHtml += createOptionRow(
+  data.currentADCleaner,
+  data.newADCleaner,
+  "ADCleaner",
+  550
+);
 
 document.getElementById(
   "newServiceArea"
