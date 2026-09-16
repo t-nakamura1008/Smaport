@@ -497,50 +497,40 @@ document.getElementById("newCallArea").innerHTML = `
 
 let newOptionHtml = "";
 
-if(data.newVoicemail){
-  newOptionHtml += `
-    <div class="detail-row">
-      <span>留守番電話</span>
-      <span>330円</span>
-    </div>
-  `;
-}
+newOptionHtml += createOptionRow(
+  data.currentVoicemail,
+  data.newVoicemail,
+  "留守番電話",
+  330
+);
 
-if(data.newCallWaiting){
-  newOptionHtml += `
-    <div class="detail-row">
-      <span>キャッチホン</span>
-      <span>220円</span>
-    </div>
-  `;
-}
+newOptionHtml += createOptionRow(
+  data.currentCallWaiting,
+  data.newCallWaiting,
+  "キャッチホン",
+  220
+);
 
-if(data.newMail){
-  newOptionHtml += `
-    <div class="detail-row">
-      <span>メール持ち運び</span>
-      <span>330円</span>
-    </div>
-  `;
-}
+newOptionHtml += createOptionRow(
+  data.currentMail,
+  data.newMail,
+  "メール持ち運び",
+  330
+);
 
-if(data.newOneNumber){
-  newOptionHtml += `
-    <div class="detail-row">
-      <span>ワンナンバーサービス</span>
-      <span>550円</span>
-    </div>
-  `;
-}
+newOptionHtml += createOptionRow(
+  data.currentOneNumber,
+  data.newOneNumber,
+  "ワンナンバーサービス",
+  550
+);
 
-if(data.newImadoco){
-  newOptionHtml += `
-    <div class="detail-row">
-      <span>イマドコサーチ</span>
-      <span>330円</span>
-    </div>
-  `;
-}
+newOptionHtml += createOptionRow(
+  data.currentImadoco,
+  data.newImadoco,
+  "イマドコサーチ",
+  330
+);
 
 document.getElementById(
   "newOptionArea"
