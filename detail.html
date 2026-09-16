@@ -402,12 +402,6 @@ document.getElementById("currentCallArea").innerHTML = `
 </div>
 `;
 
-document.getElementById("currentOptionArea").innerHTML = `
-<div class="detail-row">
-  <span>Lemino</span>
-  <span>1,540円</span>
-</div>
-
 let currentOptionHtml = "";
 
 if(data.currentVoicemail){
@@ -455,13 +449,8 @@ if(data.currentImadoco){
   `;
 }
 
-document.getElementById(
-  "currentOptionArea"
-).innerHTML = currentOptionHtml;
-
-document.getElementById(
-  "currentOptionArea"
-).innerHTML = currentOptionHtml;
+document.getElementById("currentOptionArea").innerHTML =
+  currentOptionHtml;
 
 
 let currentServiceHtml = "";
