@@ -260,6 +260,14 @@ body{
 
 </div>
 
+   <div id="currentSecuritySection">
+  <div class="section-title">
+    🛡️ 補償・セキュリティ
+  </div>
+
+  <div id="currentSecurityArea"></div>
+</div> 
+
     <div id="currentCloudSection">
   <div class="section-title">
     ☁️ バックアップ・クラウド
@@ -307,6 +315,14 @@ body{
   <div id="newOptionArea"></div>
 
 </div>
+
+  <div id="newSecuritySection">
+  <div class="section-title">
+    🛡️ 補償・セキュリティ
+  </div>
+
+  <div id="newSecurityArea"></div>
+</div>  
 
   <div id="newCloudSection">
   <div class="section-title">
@@ -624,6 +640,45 @@ if(currentOptionHtml === ""){
 
 }
 
+let currentSecurityHtml = "";
+
+if(data.currentPhoneWarranty){
+  currentSecurityHtml += `
+    <div class="detail-row">
+      <span>ケータイ補償</span>
+      <span>加入中</span>
+    </div>
+  `;
+}
+
+if(data.currentRemoteSupport){
+  currentSecurityHtml += `
+    <div class="detail-row">
+      <span>あんしん遠隔サポート</span>
+      <span>660円</span>
+    </div>
+  `;
+}
+
+if(data.currentAnshinSecurity){
+  currentSecurityHtml += `
+    <div class="detail-row">
+      <span>あんしんセキュリティ</span>
+      <span>220円</span>
+    </div>
+  `;
+}
+
+document.getElementById(
+  "currentSecurityArea"
+).innerHTML = currentSecurityHtml;
+
+if(currentSecurityHtml === ""){
+  document.getElementById(
+    "currentSecuritySection"
+  ).style.display = "none";
+}  
+
 let currentCloudHtml = "";
 
 if(data.currentCloud50){
@@ -856,6 +911,39 @@ if(newOptionHtml === ""){
   ).style.display = "none";
 
 }
+
+let newSecurityHtml = "";
+
+newSecurityHtml += createOptionRow(
+  data.currentPhoneWarranty,
+  data.newPhoneWarranty,
+  "ケータイ補償",
+  0
+);
+
+newSecurityHtml += createOptionRow(
+  data.currentRemoteSupport,
+  data.newRemoteSupport,
+  "あんしん遠隔サポート",
+  660
+);
+
+newSecurityHtml += createOptionRow(
+  data.currentAnshinSecurity,
+  data.newAnshinSecurity,
+  "あんしんセキュリティ",
+  220
+);
+
+document.getElementById(
+  "newSecurityArea"
+).innerHTML = newSecurityHtml;
+
+if(newSecurityHtml === ""){
+  document.getElementById(
+    "newSecuritySection"
+  ).style.display = "none";
+}  
 
 let newCloudHtml = "";
 
