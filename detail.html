@@ -642,11 +642,18 @@ if(currentOptionHtml === ""){
 
 let currentSecurityHtml = "";
 
-if(data.currentPhoneWarranty){
+if(
+  data.currentPhoneWarranty &&
+  Number(data.currentPhoneWarrantyFee) > 0
+){
   currentSecurityHtml += `
     <div class="detail-row">
       <span>ケータイ補償</span>
-      <span>加入中</span>
+      <span>
+        ${Number(
+          data.currentPhoneWarrantyFee
+        ).toLocaleString()}円
+      </span>
     </div>
   `;
 }
@@ -914,13 +921,27 @@ if(newOptionHtml === ""){
 
 let newSecurityHtml = "";
 
-newSecurityHtml += createOptionRow(
-  data.currentPhoneWarranty,
-  data.newPhoneWarranty,
-  "ケータイ補償",
-  0
-);
+if(data.newPhoneWarranty){
 
+  const isNew =
+    !data.currentPhoneWarranty;
+
+  newSecurityHtml += `
+    <div class="detail-row ${
+      isNew ? "detail-added" : ""
+    }">
+      <span>
+        ${isNew ? "★ " : ""}
+        ケータイ補償
+      </span>
+      <span>
+        ${Number(
+          data.newPhoneWarrantyFee
+        ).toLocaleString()}円
+      </span>
+    </div>
+  `;
+}
 newSecurityHtml += createOptionRow(
   data.currentRemoteSupport,
   data.newRemoteSupport,
@@ -1036,6 +1057,31 @@ function createOptionRow(
         ${name}
       </span>
       <span>${price}円</span>
+    </div>
+  `;
+}  
+
+function createPriceRow(
+  currentValue,
+  newValue,
+  name
+){
+  if(Number(newValue) <= 0) return "";
+
+  const isNew =
+    Number(currentValue) <= 0;
+
+  return `
+    <div class="detail-row ${
+      isNew ? "detail-added" : ""
+    }">
+      <span>
+        ${isNew ? "★ " : ""}
+        ${name}
+      </span>
+      <span>
+        ${Number(newValue).toLocaleString()}円
+      </span>
     </div>
   `;
 }  
