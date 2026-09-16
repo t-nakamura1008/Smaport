@@ -701,11 +701,14 @@ if(data.currentAnshinSecurity){
   `;
 }
 
-currentSecurityHtml += createPriceRow(
-  0,
-  data.currentSecurityPlan,
-  data.currentSecurityPlanName
-);
+if(Number(data.currentSecurityPlan) > 0){
+  currentSecurityHtml += `
+    <div class="detail-row">
+      <span>${data.currentSecurityPlanName}</span>
+      <span>${Number(data.currentSecurityPlan).toLocaleString()}円</span>
+    </div>
+  `;
+}
 
 if(
   data.currentPhoneWarranty &&
@@ -1214,15 +1217,15 @@ function createPlanRow(
 ){
   if(Number(newValue) <= 0) return "";
 
-  const isNew =
-    Number(currentValue) <= 0;
+  const isUpgrade =
+    Number(newValue) > Number(currentValue);
 
   return `
     <div class="detail-row ${
-      isNew ? "detail-added" : ""
+      isUpgrade ? "detail-added" : ""
     }">
       <span>
-        ${isNew ? "★ " : ""}
+        ${isUpgrade ? "★ " : ""}
         ${name}
       </span>
       <span>
