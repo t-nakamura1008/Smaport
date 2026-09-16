@@ -582,6 +582,29 @@ document.getElementById(
 function goBack(){
   window.history.back();
 }
+
+function createOptionRow(
+  currentValue,
+  newValue,
+  name,
+  price
+){
+  if(!newValue) return "";
+
+  const isNew = !currentValue;
+
+  return `
+    <div class="detail-row ${
+      isNew ? "detail-added" : ""
+    }">
+      <span>
+        ${isNew ? "★ " : ""}
+        ${name}
+      </span>
+      <span>${price}円</span>
+    </div>
+  `;
+}  
   
 </script>  
 
