@@ -132,6 +132,26 @@ body{
   background:#1d4ed8;
 }
 
+.total-box{
+  background:#eff6ff;
+  border:2px solid #2563eb;
+  border-radius:10px;
+  padding:12px;
+  text-align:center;
+  font-size:22px;
+  font-weight:bold;
+}
+
+.point-box{
+  background:#fff7ed;
+  border:2px solid #f59e0b;
+  border-radius:10px;
+  padding:12px;
+  text-align:center;
+  font-size:22px;
+  font-weight:bold;
+}
+  
 </style>
 </head>
 
@@ -149,46 +169,79 @@ body{
     <div class="detail-grid">
 
       <!-- 現在契約 -->
-      <div class="detail-column">
+<div class="detail-column">
 
-        <h3>📱 現在契約</h3>
+  <h3>📱 現在契約</h3>
 
-        <div class="section-title">
-          プラン
-        </div>
+  <div class="section-title">
+    プラン
+  </div>
+  <div id="currentPlanArea"></div>
 
-        <div id="currentPlanArea">
-        </div>
+  <div class="section-title">
+    通話
+  </div>
+  <div id="currentCallArea"></div>
 
-        <div class="section-title">
-          オプション
-        </div>
+  <div class="section-title">
+    オプション
+  </div>
+  <div id="currentOptionArea"></div>
 
-        <div id="currentOptionArea">
-        </div>
+  <div class="section-title">
+    独自サービス
+  </div>
+  <div id="currentServiceArea"></div>
 
-      </div>
+  <div class="section-title">
+    合計
+  </div>
+  <div id="currentTotalArea"></div>
 
-      <!-- 提案プラン -->
-      <div class="detail-column">
+  <div class="section-title">
+    ポイント
+  </div>
+  <div id="currentPointArea"></div>
 
-        <h3>✨ ご提案プラン</h3>
+</div>
 
-        <div class="section-title">
-          プラン
-        </div>
 
-        <div id="newPlanArea">
-        </div>
+  <!-- 提案プラン -->
+<div class="detail-column">
 
-        <div class="section-title">
-          オプション
-        </div>
+  <h3>✨ ご提案プラン</h3>
 
-        <div id="newOptionArea">
-        </div>
+  <div class="section-title">
+    プラン
+  </div>
+  <div id="newPlanArea"></div>
 
-      </div>
+  <div class="section-title">
+    通話
+  </div>
+  <div id="newCallArea"></div>
+
+  <div class="section-title">
+    オプション
+  </div>
+  <div id="newOptionArea"></div>
+
+  <div class="section-title">
+    独自サービス
+  </div>
+  <div id="newServiceArea"></div>
+
+  <div class="section-title">
+    合計
+  </div>
+  <div id="newTotalArea"></div>
+
+  <div class="section-title">
+    ポイント
+  </div>
+  <div id="newPointArea"></div>
+
+</div>
 
     </div>
 
@@ -249,6 +302,108 @@ body{
   </button>
 
 </div>
+
+<script>
+
+document.getElementById("currentPlanArea").innerHTML = `
+<div class="detail-row">
+  <span>ドコモMAX</span>
+  <span>8,448円</span>
+</div>
+`;
+
+document.getElementById("currentCallArea").innerHTML = `
+<div class="detail-row">
+  <span>5分通話</span>
+  <span>770円</span>
+</div>
+`;
+
+document.getElementById("currentOptionArea").innerHTML = `
+<div class="detail-row">
+  <span>Lemino</span>
+  <span>1,540円</span>
+</div>
+
+<div class="detail-row">
+  <span>留守番電話</span>
+  <span>330円</span>
+</div>
+`;
+
+document.getElementById("currentServiceArea").innerHTML = `
+<div class="detail-row">
+  <span>HOZON</span>
+  <span>330円</span>
+</div>
+`;
+
+document.getElementById("currentTotalArea").innerHTML = `
+<div class="total-box">
+  10,280円
+</div>
+`;
+
+document.getElementById("currentPointArea").innerHTML = `
+<div class="point-box">
+  120pt
+</div>
+`;
+
+
+// 提案側
+
+document.getElementById("newPlanArea").innerHTML = `
+<div class="detail-row">
+  <span>ドコモポイ活MAX</span>
+  <span>11,748円</span>
+</div>
+`;
+
+document.getElementById("newCallArea").innerHTML = `
+<div class="detail-row">
+  <span>5分通話</span>
+  <span>770円</span>
+</div>
+`;
+
+document.getElementById("newOptionArea").innerHTML = `
+<div class="detail-row">
+  <span>Lemino</span>
+  <span>1,540円</span>
+</div>
+
+<div class="detail-row detail-added">
+  <span>★ dアニメ</span>
+  <span>660円</span>
+</div>
+
+<div class="detail-row detail-added">
+  <span>★ DAZN</span>
+  <span>4,200円</span>
+</div>
+`;
+
+document.getElementById("newServiceArea").innerHTML = `
+<div class="detail-row detail-added">
+  <span>★ ADCleaner</span>
+  <span>550円</span>
+</div>
+`;
+
+document.getElementById("newTotalArea").innerHTML = `
+<div class="total-box">
+  8,980円
+</div>
+`;
+
+document.getElementById("newPointArea").innerHTML = `
+<div class="point-box">
+  6,120pt
+</div>
+`;
+
+</script>  
 
 </body>
 </html>
