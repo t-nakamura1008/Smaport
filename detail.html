@@ -171,13 +171,43 @@ body{
 
 .result-box strong{
   font-size:30px;
-}  
+} 
+
+.button-area{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-top:30px;
+}
+
+.back-btn{
+  background:#6b7280;
+  color:white;
+  border:none;
+  padding:15px 40px;
+  border-radius:12px;
+  font-size:18px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.back-btn:hover{
+  background:#4b5563;
+}
+  
   
 </style>
 </head>
 
 <body>
 
+<div class="container">
+
+  <div class="title-card">
+    <h1>📋 契約内容詳細</h1>
+    <p>ご提案内容の確認画面</p>
+  </div>
+  
 <div class="detail-grid">
 
   <!-- 現在契約 -->
@@ -315,6 +345,15 @@ body{
 
   </div>
 
+  <div class="button-area">
+
+  <button
+    class="back-btn"
+    onclick="goBack()"
+  >
+    ↩️ 戻る
+  </button>
+
   <button
     class="save-btn"
     id="saveEstimateBtn"
@@ -326,10 +365,15 @@ body{
 
 <script>
 
+ const data = JSON.parse(
+  localStorage.getItem("estimateData")
+);
+
+console.log(data); 
+
 document.getElementById("currentPlanArea").innerHTML = `
 <div class="detail-row">
-  <span>ドコモMAX</span>
-  <span>8,448円</span>
+  <span>${data.currentPlan}</span>
 </div>
 `;
 
@@ -363,9 +407,11 @@ document.getElementById(
   "currentTotalResult"
 ).textContent = "10,280円";
 
-document.getElementById(
-  "newTotalResult"
-).textContent = "8,980円";
+document.getElementById("newPlanArea").innerHTML = `
+<div class="detail-row">
+  <span>${data.newPlan}</span>
+</div>
+`;
 
 document.getElementById(
   "currentPointResult"
@@ -375,6 +421,10 @@ document.getElementById(
   "newPointResult"
 ).textContent = "6,120pt";
 
+function goBack(){
+  window.history.back();
+}
+  
 </script>  
 
 </body>
