@@ -408,11 +408,61 @@ document.getElementById("currentOptionArea").innerHTML = `
   <span>1,540円</span>
 </div>
 
-<div class="detail-row">
-  <span>留守番電話</span>
-  <span>330円</span>
-</div>
-`;
+let currentOptionHtml = "";
+
+if(data.currentVoicemail){
+  currentOptionHtml += `
+    <div class="detail-row">
+      <span>留守番電話</span>
+      <span>330円</span>
+    </div>
+  `;
+}
+
+if(data.currentCallWaiting){
+  currentOptionHtml += `
+    <div class="detail-row">
+      <span>キャッチホン</span>
+      <span>220円</span>
+    </div>
+  `;
+}
+
+if(data.currentMail){
+  currentOptionHtml += `
+    <div class="detail-row">
+      <span>メール持ち運び</span>
+      <span>330円</span>
+    </div>
+  `;
+}
+
+if(data.currentOneNumber){
+  currentOptionHtml += `
+    <div class="detail-row">
+      <span>ワンナンバーサービス</span>
+      <span>550円</span>
+    </div>
+  `;
+}
+
+if(data.currentImadoco){
+  currentOptionHtml += `
+    <div class="detail-row">
+      <span>イマドコサーチ</span>
+      <span>330円</span>
+    </div>
+  `;
+}
+
+document.getElementById(
+  "currentOptionArea"
+).innerHTML = currentOptionHtml;
+
+document.getElementById(
+  "currentOptionArea"
+).innerHTML = currentOptionHtml;
+
 
 let currentServiceHtml = "";
 
@@ -455,6 +505,58 @@ document.getElementById("newCallArea").innerHTML = `
   <span>${Number(data.newCallPrice).toLocaleString()}円</span>
 </div>
 `;  
+
+let newOptionHtml = "";
+
+if(data.newVoicemail){
+  newOptionHtml += `
+    <div class="detail-row">
+      <span>留守番電話</span>
+      <span>330円</span>
+    </div>
+  `;
+}
+
+if(data.newCallWaiting){
+  newOptionHtml += `
+    <div class="detail-row">
+      <span>キャッチホン</span>
+      <span>220円</span>
+    </div>
+  `;
+}
+
+if(data.newMail){
+  newOptionHtml += `
+    <div class="detail-row">
+      <span>メール持ち運び</span>
+      <span>330円</span>
+    </div>
+  `;
+}
+
+if(data.newOneNumber){
+  newOptionHtml += `
+    <div class="detail-row">
+      <span>ワンナンバーサービス</span>
+      <span>550円</span>
+    </div>
+  `;
+}
+
+if(data.newImadoco){
+  newOptionHtml += `
+    <div class="detail-row">
+      <span>イマドコサーチ</span>
+      <span>330円</span>
+    </div>
+  `;
+}
+
+document.getElementById(
+  "currentOptionArea"
+).innerHTML = currentOptionHtml;
+
 
 let newServiceHtml = "";
 
