@@ -606,7 +606,7 @@ button:hover{
   <input
     type="checkbox"
     id="currentVoicemail"
-    onchange="syncOptionPack('current'); calculateEstimate();"
+    onchange="syncOptionPack('current')"
   >
   留守番電話（330円）
 </label>
@@ -615,7 +615,7 @@ button:hover{
   <input
     type="checkbox"
     id="currentCallWaiting"
-    onchange="syncOptionPack('current'); calculateEstimate();"
+    onchange="syncOptionPack('current')"
   >
   キャッチホン（220円）
 </label>
@@ -624,7 +624,7 @@ button:hover{
   <input
     type="checkbox"
     id="currentMelodyCall"
-    onchange="syncOptionPack('current'); calculateEstimate();"
+    onchange="syncOptionPack('current')"
   >
   メロディコール（110円）
 </label>
@@ -664,7 +664,7 @@ button:hover{
   <input
     type="checkbox"
     id="newVoicemail"
-    onchange="syncOptionPack('new'); calculateEstimate();"
+    onchange="syncOptionPack('new')"
   >
   留守番電話（330円）
 </label>
@@ -673,7 +673,7 @@ button:hover{
   <input
     type="checkbox"
     id="newCallWaiting"
-    onchange="syncOptionPack('new'); calculateEstimate();"
+    onchange="syncOptionPack('new')"
   >
   キャッチホン（220円）
 </label>
@@ -682,7 +682,7 @@ button:hover{
   <input
     type="checkbox"
     id="newMelodyCall"
-    onchange="syncOptionPack('new'); calculateEstimate();"
+    onchange="syncOptionPack('new')"
   >
   メロディコール（110円）
 </label>
@@ -1937,6 +1937,15 @@ if(
   }
 
 }
+
+if(
+  document.getElementById("currentOptionPack").checked &&
+  document.getElementById("currentCallPlan").value !== "880" &&
+  document.getElementById("currentCallPlan").value !== "1980"
+){
+  currentTotal -= 220;
+  currentPointBase -= 220;
+}  
   
 
 // 提案後 通話・連絡サービス
@@ -2077,6 +2086,15 @@ if(document.getElementById("newMyDaiz").checked){
   newTotal += 110;
   newPointBase += 110;
 }
+
+if(
+  document.getElementById("newOptionPack").checked &&
+  document.getElementById("newCallPlan").value !== "880" &&
+  document.getElementById("newCallPlan").value !== "1980"
+){
+  newTotal -= 220;
+  newPointBase -= 220;
+}  
 
 // 現在契約 独自サービス
 
@@ -3378,7 +3396,7 @@ newCallWaiting:
   document.getElementById("newCallWaiting").checked,
 
 newMail:
-  document.getElementById("currentMail").checked,
+  document.getElementById("newMail").checked,
 
 newOneNumber:
   document.getElementById("newOneNumber").checked,
@@ -3493,6 +3511,12 @@ currentAnshinSecurity:
 
 newAnshinSecurity:
   document.getElementById("newAnshinSecurity").checked, 
+
+currentMelodyCall:
+  document.getElementById("currentMelodyCall").checked,
+
+newMelodyCall:
+  document.getElementById("newMelodyCall").checked,    
 
  currentPhoneWarrantyFee:
 document.getElementById(
