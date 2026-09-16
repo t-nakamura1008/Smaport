@@ -151,6 +151,27 @@ body{
   font-size:22px;
   font-weight:bold;
 }
+
+.result-compare{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+  margin-top:20px;
+}
+
+.result-box{
+  text-align:center;
+}
+
+.result-box span{
+  display:block;
+  margin-bottom:10px;
+  font-weight:bold;
+}
+
+.result-box strong{
+  font-size:30px;
+}  
   
 </style>
 </head>
@@ -338,70 +359,21 @@ document.getElementById("currentServiceArea").innerHTML = `
 </div>
 `;
 
-document.getElementById("currentTotalArea").innerHTML = `
-<div class="total-box">
-  10,280円
-</div>
-`;
+document.getElementById(
+  "currentTotalResult"
+).textContent = "10,280円";
 
-document.getElementById("currentPointArea").innerHTML = `
-<div class="point-box">
-  120pt
-</div>
-`;
+document.getElementById(
+  "newTotalResult"
+).textContent = "8,980円";
 
+document.getElementById(
+  "currentPointResult"
+).textContent = "120pt";
 
-// 提案側
-
-document.getElementById("newPlanArea").innerHTML = `
-<div class="detail-row">
-  <span>ドコモポイ活MAX</span>
-  <span>11,748円</span>
-</div>
-`;
-
-document.getElementById("newCallArea").innerHTML = `
-<div class="detail-row">
-  <span>5分通話</span>
-  <span>770円</span>
-</div>
-`;
-
-document.getElementById("newOptionArea").innerHTML = `
-<div class="detail-row">
-  <span>Lemino</span>
-  <span>1,540円</span>
-</div>
-
-<div class="detail-row detail-added">
-  <span>★ dアニメ</span>
-  <span>660円</span>
-</div>
-
-<div class="detail-row detail-added">
-  <span>★ DAZN</span>
-  <span>4,200円</span>
-</div>
-`;
-
-document.getElementById("newServiceArea").innerHTML = `
-<div class="detail-row detail-added">
-  <span>★ ADCleaner</span>
-  <span>550円</span>
-</div>
-`;
-
-document.getElementById("newTotalArea").innerHTML = `
-<div class="total-box">
-  8,980円
-</div>
-`;
-
-document.getElementById("newPointArea").innerHTML = `
-<div class="point-box">
-  6,120pt
-</div>
-`;
+document.getElementById(
+  "newPointResult"
+).textContent = "6,120pt";
 
 </script>  
 
