@@ -701,6 +701,11 @@ if(data.currentAnshinSecurity){
   `;
 }
 
+currentSecurityHtml += createPriceRow(
+  0,
+  data.currentSecurityPlan,
+  "上位セキュリティ"
+);  
 
 if(
   data.currentPhoneWarranty &&
@@ -712,15 +717,16 @@ if(
     418
   );
 }
-  
-if(data.currentAnshinSecurity &&
+
+if(
+  data.currentAnshinSecurity &&
   Number(data.currentSecurityPlan) > 0
 ){
   currentSecurityHtml += createDiscountRow(
     "セキュリティ重複割",
     110
   );
-}  
+}
 
 document.getElementById(
   "currentSecurityArea"
@@ -1033,6 +1039,12 @@ newSecurityHtml += createOptionRow(
   220
 );
 
+newSecurityHtml += createPriceRow(
+  data.currentSecurityPlan,
+  data.newSecurityPlan,
+  "上位セキュリティ"
+);  
+
 if(
   data.newPhoneWarranty &&
   data.newRemoteSupport &&
@@ -1042,7 +1054,7 @@ if(
     "あんしんパック割",
     418
   );
-}  
+}
 
 if(
   data.newAnshinSecurity &&
@@ -1052,7 +1064,7 @@ if(
     "セキュリティ重複割",
     110
   );
-}  
+}
 
 document.getElementById(
   "newSecurityArea"
