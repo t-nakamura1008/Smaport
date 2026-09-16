@@ -704,8 +704,8 @@ if(data.currentAnshinSecurity){
 currentSecurityHtml += createPriceRow(
   0,
   data.currentSecurityPlan,
-  "上位セキュリティ"
-);  
+  data.currentSecurityPlanName
+);
 
 if(
   data.currentPhoneWarranty &&
@@ -1042,7 +1042,7 @@ newSecurityHtml += createOptionRow(
 newSecurityHtml += createPriceRow(
   data.currentSecurityPlan,
   data.newSecurityPlan,
-  "上位セキュリティ"
+  data.newSecurityPlanName
 );  
 
 if(
