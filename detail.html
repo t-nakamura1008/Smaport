@@ -292,7 +292,27 @@ body{
     その他月額
   </div>
   <div id="currentOtherArea"></div>
-</div>    
+</div>   
+
+<div id="currentUniversalSection">
+
+  <div class="section-title">
+    ユニバーサルサービス料等
+  </div>
+
+ <div class="detail-row">
+  <span>ユニバーサルサービス料</span>
+  <span>2円</span>
+</div>
+
+<div class="detail-row">
+  <span>電話リレーサービス料</span>
+  <span>1円</span>
+</div>
+
+
+</div>
+    
 
   </div>
 
@@ -355,7 +375,27 @@ body{
     その他月額
   </div>
   <div id="newOtherArea"></div>
-</div>    
+</div>  
+
+<div id="newUniversalSection">
+
+  <div class="section-title">
+    ユニバーサルサービス料等
+  </div>
+
+  <div class="detail-row">
+  <span>ユニバーサルサービス料</span>
+  <span>2円</span>
+</div>
+
+<div class="detail-row">
+  <span>電話リレーサービス料</span>
+  <span>1円</span>
+</div>
+
+
+</div>
+    
 
  </div>    
 
@@ -1426,6 +1466,12 @@ document.getElementById(
   "detailFeeTotal"
 ).textContent =
   data.feeTotal;  
+
+document.getElementById(
+  "universalFee"
+).textContent =
+  data.universalFee + "円";
+  
 
 function goBack(){
   window.history.back();
