@@ -2040,8 +2040,27 @@ if (
   currentPlanValue === "2750" ||
   currentPlanValue === "3850"
 ) {
+  currentDcardDiscount = specialDiscount;
+
   currentTotal -= specialDiscount;
   currentPointBase -= specialDiscount;
+}
+else if (
+  currentPlanValue === "7315" ||
+  currentPlanValue === "10615" ||
+  currentPlanValue === "2167" ||
+  currentPlanValue === "2827" ||
+  currentPlanValue === "3377" ||
+  currentPlanValue === "6765" ||
+  currentPlanValue === "1815" ||
+  currentPlanValue === "7865" ||
+  currentPlanValue === "8415" ||
+  currentPlanValue === "7316"
+) {
+  currentDcardDiscount = normalDiscount;
+
+  currentTotal -= normalDiscount;
+  currentPointBase -= normalDiscount;
 }
 
 // 通常割引
@@ -2069,17 +2088,29 @@ if (
   newPlanValue === "3850"
 ) {
 
-  newTotal -= specialDiscount;
-newPointBase -= specialDiscount;
+  newDcardDiscount = specialDiscount;
 
+  newTotal -= specialDiscount;
+  newPointBase -= specialDiscount;
 
 }
 else if (
-  newPlanValue === "1815"
+  newPlanValue === "7315" ||
+  newPlanValue === "10615" ||
+  newPlanValue === "2167" ||
+  newPlanValue === "2827" ||
+  newPlanValue === "3377" ||
+  newPlanValue === "6765" ||
+  newPlanValue === "1815" ||
+  newPlanValue === "7865" ||
+  newPlanValue === "8415" ||
+  newPlanValue === "7316"
 ) {
 
+  newDcardDiscount = normalDiscount;
+
   newTotal -= normalDiscount;
-newPointBase -= normalDiscount;
+  newPointBase -= normalDiscount;
 
 }  
 
