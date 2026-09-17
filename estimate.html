@@ -1540,9 +1540,6 @@ if (
 
 }
 
-currentPlanAmount = currentTotal;
-newPlanAmount = newTotal;  
-
 if (
   document.getElementById("currentPlan").value === "6765"
 ) {
@@ -3720,10 +3717,10 @@ monthlyUsage:
   ].text,
 
 currentPlanCalculatedPrice:
-  currentPlanAmount,
+  window.currentPlanAmount,
 
 newPlanCalculatedPrice:
-  newPlanAmount,    
+  window.newPlanAmount,    
     
 };
   
