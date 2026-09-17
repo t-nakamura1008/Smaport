@@ -1540,6 +1540,9 @@ if (
 
 }
 
+currentPlanAmount = currentTotal;
+newPlanAmount = newTotal;  
+
 if (
   document.getElementById("currentPlan").value === "6765"
 ) {
@@ -1609,7 +1612,10 @@ if (
   }
 
 }  
- 
+
+let currentPlanAmount = currentTotal;
+let newPlanAmount = newTotal;
+  
 currentPointBase += currentTotal;
 newPointBase += newTotal;  
 
@@ -3715,6 +3721,12 @@ monthlyUsage:
       "monthlyUsage"
     ).selectedIndex
   ].text,
+
+currentPlanCalculatedPrice:
+  currentPlanAmount,
+
+newPlanCalculatedPrice:
+  newPlanAmount,    
     
 };
   
