@@ -470,8 +470,11 @@ document.getElementById("currentPlanArea").innerHTML = `
 <div class="detail-row">
   <span>
     ${data.currentPlanName}
-    <br>
-    <small>${data.monthlyUsage}</small>
+    ${
+      needsUsage(data.currentPlanName)
+        ? `<br><small>${data.monthlyUsage}</small>`
+        : ""
+    }
   </span>
   <span>
     ${Number(data.currentPlanCalculatedPrice).toLocaleString()}円
@@ -939,8 +942,11 @@ document.getElementById("newPlanArea").innerHTML = `
 <div class="detail-row">
   <span>
     ${data.newPlanName}
-    <br>
-    <small>${data.monthlyUsage}</small>
+    ${
+      needsUsage(data.newPlanName)
+        ? `<br><small>${data.monthlyUsage}</small>`
+        : ""
+    }
   </span>
   <span>
     ${Number(data.newPlanCalculatedPrice).toLocaleString()}円
@@ -1444,6 +1450,18 @@ function createDiscountRow(
       <span>-${price}円</span>
     </div>
   `;
+}
+
+function needsUsage(planName){
+  return (
+    planName.includes("ドコモMAX") ||
+    planName.includes("5Gギガホ") ||
+    planName.includes("5Gギガホプレミア") ||
+    planName.includes("ドコモポイ活20") ||
+    planName.includes("eximo") ||
+    planName.includes("5Gギガライト") ||
+    planName.includes("ギガホ")
+  );
 }  
   
 </script>  
