@@ -536,6 +536,13 @@ if(data.currentHikariDiscount > 0){
   );
 }
 
+if(data.currentDcardDiscount > 0){
+  currentPlanHtml += createDiscountRow(
+    "dカードお支払割",
+    data.currentDcardDiscount
+  );
+}  
+
 if(data.currentDenkiDiscount > 0){
   currentPlanHtml += createDiscountRow(
     "ドコモでんきセット割",
@@ -1039,6 +1046,13 @@ if(data.newHikariDiscount > 0){
     data.newHikariDiscount
   );
 }
+
+if(data.newDcardDiscount > 0){
+  newPlanHtml += createDiscountRow(
+    "dカードお支払割",
+    data.newDcardDiscount
+  );
+}  
 
 if(data.newDenkiDiscount > 0){
   newPlanHtml += createDiscountRow(
