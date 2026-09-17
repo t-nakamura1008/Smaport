@@ -2348,12 +2348,10 @@ if(document.getElementById("newADCleaner").checked){
 
 if(document.getElementById("currentPaperBill").checked){
   currentTotal += 252;
-  currentPointBase += 252;
 }
 
 if(document.getElementById("newPaperBill").checked){
   newTotal += 252;
-  newPointBase += 252;
 }  
 
 if(document.getElementById("currentOtherSub").checked){
@@ -2607,10 +2605,7 @@ newPointBase =
     document.getElementById("newPlan").value,
     newPointBase
   );
-  
 
-currentPointBase = currentTotal;
-newPointBase = newTotal;
 
   
 window.currentPlanAmount = currentPlanAmount;
