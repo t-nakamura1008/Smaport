@@ -924,6 +924,11 @@ document.getElementById(
 ).textContent =
   data.currentTotal;
 
+document.getElementById(
+  "currentPointResult"
+).textContent =
+  data.currentPointTotal;  
+
 document.getElementById("newPlanArea").innerHTML = `
 <div class="detail-row">
   <span>${data.newPlanName}</span>
@@ -1306,15 +1311,38 @@ if(newOtherHtml === ""){
 document.getElementById(
   "newTotalResult"
 ).textContent =
-  data.newTotal;  
-
-document.getElementById(
-  "currentPointResult"
-).textContent = "120pt";
+  data.newTotal;
 
 document.getElementById(
   "newPointResult"
-).textContent = "6,120pt";
+).textContent =
+  data.newPointTotal;  
+
+
+document.getElementById(
+  "detailDifference"
+).textContent =
+  data.difference;
+
+document.getElementById(
+  "detailPointDifference"
+).textContent =
+  data.pointDifference;
+
+document.getElementById(
+  "detailTodayTotal"
+).textContent =
+  data.todayTotal;
+
+document.getElementById(
+  "detailInstallment"
+).textContent =
+  data.deviceInstallment;
+
+document.getElementById(
+  "detailFeeTotal"
+).textContent =
+  data.feeTotal;  
 
 function goBack(){
   window.history.back();
