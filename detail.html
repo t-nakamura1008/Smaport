@@ -921,7 +921,8 @@ if(currentOtherHtml === ""){
 
 document.getElementById(
   "currentTotalResult"
-).textContent = "10,280円";
+).textContent =
+  data.currentTotal;
 
 document.getElementById("newPlanArea").innerHTML = `
 <div class="detail-row">
@@ -1301,6 +1302,11 @@ if(newOtherHtml === ""){
     "newOtherSection"
   ).style.display = "none";
 }  
+
+document.getElementById(
+  "newTotalResult"
+).textContent =
+  data.newTotal;  
 
 document.getElementById(
   "currentPointResult"
