@@ -1808,9 +1808,166 @@ else if (
 
 }
 
+const familyType =
+  document.getElementById("familyType").value;
+
+const hikariType =
+  document.getElementById("hikariType").value;
+
+const denkiType =
+  document.getElementById("denkiType").value;
+
+  
 const currentPlanValue =
   document.getElementById("currentPlan").value;
 
+// 現在契約の割引記録
+
+if(
+  currentPlanValue === "8448" ||
+  currentPlanValue === "11748" ||
+  currentPlanValue === "7898"
+){
+
+  if(familyType === "2"){
+    currentFamilyDiscount = 550;
+  }
+
+  if(familyType === "3"){
+    currentFamilyDiscount = 1210;
+  }
+
+  if(hikariType === "1"){
+    currentHikariDiscount = 1210;
+  }
+
+  if(denkiType === "1"){
+    currentDenkiDiscount = 110;
+  }
+
+}
+else if(
+  currentPlanValue === "7315" ||
+  currentPlanValue === "10615" ||
+  currentPlanValue === "7316" ||
+  currentPlanValue === "7865" ||
+  currentPlanValue === "8415"
+){
+
+  if(familyType === "2"){
+    currentFamilyDiscount = 550;
+  }
+
+  if(familyType === "3"){
+    currentFamilyDiscount = 1100;
+  }
+
+  if(hikariType === "1"){
+    currentHikariDiscount = 1100;
+  }
+
+}
+else if(currentPlanValue === "6765"){
+
+  if(familyType === "2"){
+    currentFamilyDiscount = 550;
+  }
+
+  if(familyType === "3"){
+    currentFamilyDiscount = 1100;
+  }
+
+  if(hikariType === "1"){
+
+    if(monthlyUsage === "over1"){
+      currentHikariDiscount = 550;
+    }
+    else if(
+      monthlyUsage === "over3" ||
+      monthlyUsage === "over5" ||
+      monthlyUsage === "over20"
+    ){
+      currentHikariDiscount = 1100;
+    }
+
+  }
+
+}
+
+// 提案後の割引記録
+
+if(
+  newPlanValue === "8448" ||
+  newPlanValue === "11748" ||
+  newPlanValue === "7898"
+){
+
+  if(familyType === "2"){
+    newFamilyDiscount = 550;
+  }
+
+  if(familyType === "3"){
+    newFamilyDiscount = 1210;
+  }
+
+  if(hikariType === "1"){
+    newHikariDiscount = 1210;
+  }
+
+  if(denkiType === "1"){
+    newDenkiDiscount = 110;
+  }
+
+}
+else if(
+  newPlanValue === "7315" ||
+  newPlanValue === "10615" ||
+  newPlanValue === "7316" ||
+  newPlanValue === "7865" ||
+  newPlanValue === "8415"
+){
+
+  if(familyType === "2"){
+    newFamilyDiscount = 550;
+  }
+
+  if(familyType === "3"){
+    newFamilyDiscount = 1100;
+  }
+
+  if(hikariType === "1"){
+    newHikariDiscount = 1100;
+  }
+
+}
+else if(newPlanValue === "6765"){
+
+  if(familyType === "2"){
+    newFamilyDiscount = 550;
+  }
+
+  if(familyType === "3"){
+    newFamilyDiscount = 1100;
+  }
+
+  if(hikariType === "1"){
+
+    if(monthlyUsage === "over1"){
+      newHikariDiscount = 550;
+    }
+    else if(
+      monthlyUsage === "over3" ||
+      monthlyUsage === "over5" ||
+      monthlyUsage === "over20"
+    ){
+      newHikariDiscount = 1100;
+    }
+
+  }
+
+}
+  
+  
 // 特別割引
 if (
   currentPlanValue === "8448" ||
