@@ -466,7 +466,7 @@ body{
 
 console.log(data); 
 
-document.getElementById("currentPlanArea").innerHTML = `
+let currentPlanHtml = `
 <div class="detail-row">
   <span>
     ${data.currentPlanName}
@@ -481,6 +481,38 @@ document.getElementById("currentPlanArea").innerHTML = `
   </span>
 </div>
 `;
+
+if(data.currentFamilyDiscount > 0){
+  currentPlanHtml += createDiscountRow(
+    "みんなドコモ割",
+    data.currentFamilyDiscount
+  );
+}
+
+if(data.currentHikariDiscount > 0){
+  currentPlanHtml += createDiscountRow(
+    "ドコモ光セット割",
+    data.currentHikariDiscount
+  );
+}
+
+if(data.currentDenkiDiscount > 0){
+  currentPlanHtml += createDiscountRow(
+    "ドコモでんきセット割",
+    data.currentDenkiDiscount
+  );
+}
+
+if(data.currentLoyaltyDiscount > 0){
+  currentPlanHtml += createDiscountRow(
+    "長期利用割",
+    data.currentLoyaltyDiscount
+  );
+}
+  
+document.getElementById(
+  "currentPlanArea"
+).innerHTML = currentPlanHtml;
 
 document.getElementById("currentCallArea").innerHTML = `
 <div class="detail-row">
@@ -938,7 +970,7 @@ document.getElementById(
 ).textContent =
   data.currentPointTotal;  
 
-document.getElementById("newPlanArea").innerHTML = `
+let newPlanHtml = `
 <div class="detail-row">
   <span>
     ${data.newPlanName}
@@ -953,6 +985,39 @@ document.getElementById("newPlanArea").innerHTML = `
   </span>
 </div>
 `;
+
+if(data.newFamilyDiscount > 0){
+  newPlanHtml += createDiscountRow(
+    "みんなドコモ割",
+    data.newFamilyDiscount
+  );
+}
+
+if(data.newHikariDiscount > 0){
+  newPlanHtml += createDiscountRow(
+    "ドコモ光セット割",
+    data.newHikariDiscount
+  );
+}
+
+if(data.newDenkiDiscount > 0){
+  newPlanHtml += createDiscountRow(
+    "ドコモでんきセット割",
+    data.newDenkiDiscount
+  );
+}
+
+if(data.newLoyaltyDiscount > 0){
+  newPlanHtml += createDiscountRow(
+    "長期利用割",
+    data.newLoyaltyDiscount
+  );
+}
+
+document.getElementById(
+  "newPlanArea"
+).innerHTML = newPlanHtml;
+
 
 document.getElementById("newCallArea").innerHTML = `
 <div class="detail-row">
