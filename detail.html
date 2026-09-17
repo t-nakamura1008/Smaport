@@ -287,6 +287,13 @@ body{
   <div id="currentServiceArea"></div>
 </div>
 
+<div id="currentOtherSection">
+  <div class="section-title">
+    その他月額
+  </div>
+  <div id="currentOtherArea"></div>
+</div>    
+
   </div>
 
   <!-- 提案プラン -->
@@ -342,6 +349,13 @@ body{
   </div>
   <div id="newServiceArea"></div>
 </div>
+
+<div id="newOtherSection">
+  <div class="section-title">
+    その他月額
+  </div>
+  <div id="newOtherArea"></div>
+</div>    
 
  </div>    
 
@@ -545,6 +559,15 @@ if(Number(data.currentDisney) > 0){
     <div class="detail-row">
       <span>${data.currentDisneyName}</span>
       <span>${Number(data.currentDisney).toLocaleString()}円</span>
+    </div>
+  `;
+}
+
+if(Number(data.currentNetflix) > 0){
+  currentEntertainmentHtml += `
+    <div class="detail-row">
+      <span>${data.currentNetflixName}</span>
+      <span>${Number(data.currentNetflix).toLocaleString()}円</span>
     </div>
   `;
 }  
@@ -788,6 +811,24 @@ if(
     "dバリューパスパック割",
     418
   );
+} 
+
+if(Number(data.currentGoogleOne) > 0){
+  currentCloudHtml += `
+    <div class="detail-row">
+      <span>${data.currentGoogleOneName}</span>
+      <span>${Number(data.currentGoogleOne).toLocaleString()}円</span>
+    </div>
+  `;
+}
+
+if(Number(data.currentAppleOne) > 0){
+  currentCloudHtml += `
+    <div class="detail-row">
+      <span>${data.currentAppleOneName}</span>
+      <span>${Number(data.currentAppleOne).toLocaleString()}円</span>
+    </div>
+  `;
 }  
 
 document.getElementById(
@@ -821,6 +862,15 @@ if(data.currentADCleaner){
   `;
 }
 
+if(Number(data.currentKeitaiSupport) > 0){
+  currentServiceHtml += `
+    <div class="detail-row">
+      <span>${data.currentKeitaiSupportName}</span>
+      <span>${Number(data.currentKeitaiSupport).toLocaleString()}円</span>
+    </div>
+  `;
+}  
+
 document.getElementById(
   "currentServiceArea"
 ).innerHTML = currentServiceHtml;
@@ -829,7 +879,45 @@ if(currentServiceHtml === ""){
   document.getElementById(
     "currentServiceSection"
   ).style.display = "none";
+}  
+
+let currentOtherHtml = "";
+
+if(data.currentPaperBill){
+  currentOtherHtml += `
+    <div class="detail-row">
+      <span>請求書送付</span>
+      <span>252円</span>
+    </div>
+  `;
 }
+
+if(
+  data.currentOtherSub &&
+  Number(data.currentOtherSubFee) > 0
+){
+  currentOtherHtml += `
+    <div class="detail-row">
+      <span>その他・サブスク</span>
+      <span>
+        ${Number(
+          data.currentOtherSubFee
+        ).toLocaleString()}円
+      </span>
+    </div>
+  `;
+}
+
+document.getElementById(
+  "currentOtherArea"
+).innerHTML = currentOtherHtml;
+
+if(currentOtherHtml === ""){
+  document.getElementById(
+    "currentOtherSection"
+  ).style.display = "none";
+}
+  
 
 document.getElementById(
   "currentTotalResult"
@@ -847,7 +935,7 @@ document.getElementById("newCallArea").innerHTML = `
   <span>${data.newCallName}</span>
   <span>${Number(data.newCallPrice).toLocaleString()}円</span>
 </div>
-`;  
+`;
 
 let newEntertainmentHtml = "";
 
@@ -913,7 +1001,12 @@ newEntertainmentHtml += createPlanRow(
   data.newDisneyName
 );
 
-  
+newEntertainmentHtml += createPlanRow(
+  data.currentNetflix,
+  data.newNetflix,
+  data.newNetflixName
+);
+
 newEntertainmentHtml += createOptionRow(
   data.currentDPhoto,
   data.newDPhoto,
@@ -1127,7 +1220,19 @@ if(
     "dバリューパスパック割",
     418
   );
-}  
+}
+
+newCloudHtml += createPlanRow(
+  data.currentGoogleOne,
+  data.newGoogleOne,
+  data.newGoogleOneName
+);
+
+newCloudHtml += createPlanRow(
+  data.currentAppleOne,
+  data.newAppleOne,
+  data.newAppleOneName
+);  
 
 document.getElementById(
   "newCloudArea"
@@ -1156,6 +1261,12 @@ newServiceHtml += createOptionRow(
   550
 );
 
+newServiceHtml += createPlanRow(
+  data.currentKeitaiSupport,
+  data.newKeitaiSupport,
+  data.newKeitaiSupportName
+);  
+
 document.getElementById(
   "newServiceArea"
 ).innerHTML = newServiceHtml;
@@ -1164,7 +1275,32 @@ if(newServiceHtml === ""){
   document.getElementById(
     "newServiceSection"
   ).style.display = "none";
-}
+}  
+
+let newOtherHtml = "";
+
+newOtherHtml += createOptionRow(
+  data.currentPaperBill,
+  data.newPaperBill,
+  "請求書送付",
+  252
+);
+
+newOtherHtml += createPlanRow(
+  data.currentOtherSubFee,
+  data.newOtherSubFee,
+  "その他・サブスク"
+);
+
+document.getElementById(
+  "newOtherArea"
+).innerHTML = newOtherHtml;
+
+if(newOtherHtml === ""){
+  document.getElementById(
+    "newOtherSection"
+  ).style.display = "none";
+}  
 
 document.getElementById(
   "currentPointResult"
