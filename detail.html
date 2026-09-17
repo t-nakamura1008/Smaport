@@ -540,6 +540,15 @@ if(data.currentJump){
   `;
 }
 
+if(Number(data.currentDisney) > 0){
+  currentEntertainmentHtml += `
+    <div class="detail-row">
+      <span>${data.currentDisneyName}</span>
+      <span>${Number(data.currentDisney).toLocaleString()}円</span>
+    </div>
+  `;
+}  
+
 if(data.currentDPhoto){
   currentEntertainmentHtml += `
     <div class="detail-row">
@@ -898,6 +907,13 @@ newEntertainmentHtml += createOptionRow(
   980
 );
 
+newEntertainmentHtml += createPlanRow(
+  data.currentDisney,
+  data.newDisney,
+  data.newDisneyName
+);
+
+  
 newEntertainmentHtml += createOptionRow(
   data.currentDPhoto,
   data.newDPhoto,
