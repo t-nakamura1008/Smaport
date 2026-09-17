@@ -1613,8 +1613,8 @@ if (
 let currentPlanAmount = currentTotal;
 let newPlanAmount = newTotal;
 
-let currentPointBase = currentTotal;
-let newPointBase = newTotal;
+currentPointBase = currentTotal;
+newPointBase = newTotal;
 
   const currentCallFee =
   Number(
@@ -2677,7 +2677,12 @@ else{
   newPoiPoint = 0;
 }
 
-
+console.log({
+  currentPointBase,
+  currentTaxExcluded,
+  currentBasePoint,
+  currentTotal
+});
 currentPointTotal =
   currentBasePoint +
   currentPoiPoint +
