@@ -2391,7 +2391,7 @@ console.log(
 
 // 現在契約
 const currentTaxExcluded =
-  Math.floor(currentPointBase / 1.1);
+  Math.round(currentPointBase / 1.1);
 
 const selectedBonus =
   Number(
@@ -2552,7 +2552,7 @@ else{
 
 // 提案後
 const newTaxExcluded =
-  Math.floor(newPointBase / 1.1);
+  Math.round(newPointBase / 1.1);
 
  const newPlan =
   document.getElementById("newPlan").value;
