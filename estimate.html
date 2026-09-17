@@ -1446,16 +1446,6 @@ let newPointBase = 0;
 let currentPoiBonus = 0;
 let newPoiBonus = 0;  
 
-let currentFamilyDiscount = 0;
-let currentHikariDiscount = 0;
-let currentDenkiDiscount = 0;
-let currentLoyaltyDiscount = 0;
-
-let newFamilyDiscount = 0;
-let newHikariDiscount = 0;
-let newDenkiDiscount = 0;
-let newLoyaltyDiscount = 0;  
-
   const monthlyUsage =
   document.getElementById("monthlyUsage").value;
   
@@ -2385,6 +2375,16 @@ newTotal =
 
 window.currentPlanAmount = currentTotal;
 window.newPlanAmount = newTotal;
+
+let currentFamilyDiscount = 0;
+let currentHikariDiscount = 0;
+let currentDenkiDiscount = 0;
+let currentLoyaltyDiscount = 0;
+
+let newFamilyDiscount = 0;
+let newHikariDiscount = 0;
+let newDenkiDiscount = 0;
+let newLoyaltyDiscount = 0;    
 
 console.log(
   "プラン料金",
@@ -3751,15 +3751,29 @@ currentPlanCalculatedPrice:
 newPlanCalculatedPrice:
   window.newPlanAmount,  
 
-currentFamilyDiscount,
-currentHikariDiscount,
-currentDenkiDiscount,
-currentLoyaltyDiscount,
+currentFamilyDiscount:
+  window.currentFamilyDiscount,
 
-newFamilyDiscount,
-newHikariDiscount,
-newDenkiDiscount,
-newLoyaltyDiscount,    
+currentHikariDiscount:
+  window.currentHikariDiscount,
+
+currentDenkiDiscount:
+  window.currentDenkiDiscount,
+
+currentLoyaltyDiscount:
+  window.currentLoyaltyDiscount,
+
+newFamilyDiscount:
+  window.newFamilyDiscount,
+
+newHikariDiscount:
+  window.newHikariDiscount,
+
+newDenkiDiscount:
+  window.newDenkiDiscount,
+
+newLoyaltyDiscount:
+  window.newLoyaltyDiscount,   
     
 };
   
