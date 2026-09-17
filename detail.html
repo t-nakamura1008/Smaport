@@ -736,6 +736,7 @@ if(data.currentMelodyCall){
 }  
 
 if(
+  data.currentVoiceOptionDiscount === 0 &&
   data.currentVoicemail &&
   data.currentCallWaiting &&
   data.currentMelodyCall
@@ -1219,6 +1220,7 @@ newOptionHtml += createOptionRow(
 );
 
 if(
+  data.newVoiceOptionDiscount === 0 &&
   data.newVoicemail &&
   data.newCallWaiting &&
   data.newMelodyCall
