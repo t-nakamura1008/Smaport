@@ -1429,8 +1429,11 @@ function calculateEstimate() {
       document.getElementById("newPlan").value
     );
 
-  let currentPointTotal = 0;
+let currentPointTotal = 0;
 let newPointTotal = 0;
+
+let currentDcardDiscount = 0;
+let newDcardDiscount = 0;  
 
 let currentBasePoint = 0;
 let currentPoiPoint = 0;
@@ -4013,25 +4016,13 @@ newDenkiDiscount:
 newLoyaltyDiscount:
   window.newLoyaltyDiscount,
 
-universalFee: 3, 
-
 currentDcardDiscount:
-  currentPlanValue === "8448" ||
-  currentPlanValue === "11748" ||
-  currentPlanValue === "7898" ||
-  currentPlanValue === "2750" ||
-  currentPlanValue === "3850"
-    ? specialDiscount
-    : normalDiscount,
+  window.currentDcardDiscount,
 
 newDcardDiscount:
-  newPlanValue === "8448" ||
-  newPlanValue === "11748" ||
-  newPlanValue === "7898" ||
-  newPlanValue === "2750" ||
-  newPlanValue === "3850"
-    ? specialDiscount
-    : normalDiscount,    
+  window.newDcardDiscount,    
+
+universalFee: 3,     
     
 };
   
