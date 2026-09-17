@@ -4013,7 +4013,25 @@ newDenkiDiscount:
 newLoyaltyDiscount:
   window.newLoyaltyDiscount,
 
-universalFee: 3,    
+universalFee: 3, 
+
+currentDcardDiscount:
+  currentPlanValue === "8448" ||
+  currentPlanValue === "11748" ||
+  currentPlanValue === "7898" ||
+  currentPlanValue === "2750" ||
+  currentPlanValue === "3850"
+    ? specialDiscount
+    : normalDiscount,
+
+newDcardDiscount:
+  newPlanValue === "8448" ||
+  newPlanValue === "11748" ||
+  newPlanValue === "7898" ||
+  newPlanValue === "2750" ||
+  newPlanValue === "3850"
+    ? specialDiscount
+    : normalDiscount,    
     
 };
   
