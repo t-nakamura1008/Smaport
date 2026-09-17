@@ -747,12 +747,10 @@ if(
 }
 
 if(data.currentVoiceOptionDiscount > 0){
-  currentHtml += `
-    <div class="detail-row">
-      <span>音声オプション定額料割引</span>
-      <span>-${data.currentVoiceOptionDiscount}円</span>
-    </div>
-  `;
+  currentOptionHtml += createDiscountRow(
+    "音声オプション定額料割引",
+    data.currentVoiceOptionDiscount
+  );
 }  
 
 if(data.currentMail){
@@ -1232,12 +1230,10 @@ if(
 } 
   
 if(data.newVoiceOptionDiscount > 0){
-  newHtml += `
-    <div class="detail-row">
-      <span>音声オプション定額料割引</span>
-      <span>-${data.newVoiceOptionDiscount}円</span>
-    </div>
-  `;
+  newOptionHtml += createDiscountRow(
+    "音声オプション定額料割引",
+    data.newVoiceOptionDiscount
+  );
 }  
 
 newOptionHtml += createOptionRow(
