@@ -1785,6 +1785,7 @@ if (
   document.getElementById("currentPlan").value === "11748"
 ) {
   currentTotal -= loyaltyDiscount;
+  currentPointBase -= loyaltyDiscount;
   currentLoyaltyDiscount = loyaltyDiscount;
 }
 
@@ -1793,8 +1794,9 @@ if (
   document.getElementById("newPlan").value === "11748"
 ) {
   newTotal -= loyaltyDiscount;
+  newPointBase -= loyaltyDiscount;
   newLoyaltyDiscount = loyaltyDiscount;
-} 
+}
 
   if(document.getElementById("currentPhoneWarranty").checked){
 
