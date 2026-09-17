@@ -1433,7 +1433,10 @@ let currentPointTotal = 0;
 let newPointTotal = 0;
 
 let currentDcardDiscount = 0;
-let newDcardDiscount = 0;  
+let newDcardDiscount = 0; 
+
+let currentVoiceOptionDiscount = 0;
+let newVoiceOptionDiscount = 0;  
 
 let currentBasePoint = 0;
 let currentPoiPoint = 0;
@@ -2191,14 +2194,15 @@ if(
 ){
 
   if(document.getElementById("currentVoicemail").checked){
-    currentTotal -= 330;
-    currentPointBase -= 330;
+    currentVoiceOptionDiscount += 330;
   }
 
   if(document.getElementById("currentCallWaiting").checked){
-    currentTotal -= 220;
-    currentPointBase -= 220;
+    currentVoiceOptionDiscount += 220;
   }
+
+  currentTotal -= currentVoiceOptionDiscount;
+  currentPointBase -= currentVoiceOptionDiscount;
 
 }
 
@@ -2250,14 +2254,15 @@ if(
 ){
 
   if(document.getElementById("newVoicemail").checked){
-    newTotal -= 330;
-    newPointBase -= 330;
+    newVoiceOptionDiscount += 330;
   }
 
   if(document.getElementById("newCallWaiting").checked){
-    newTotal -= 220;
-    newPointBase -= 220;
+    newVoiceOptionDiscount += 220;
   }
+
+  newTotal -= newVoiceOptionDiscount;
+  newPointBase -= newVoiceOptionDiscount;
 
 }  
 
@@ -2658,7 +2663,12 @@ window.newHikariDiscount = newHikariDiscount;
 window.newDenkiDiscount = newDenkiDiscount;
 window.newLoyaltyDiscount = newLoyaltyDiscount;
 window.currentDcardDiscount = currentDcardDiscount;
-window.newDcardDiscount = newDcardDiscount;  
+window.newDcardDiscount = newDcardDiscount;
+window.currentVoiceOptionDiscount =
+  currentVoiceOptionDiscount;
+
+window.newVoiceOptionDiscount =
+  newVoiceOptionDiscount;  
 
 console.log(
   "プラン料金",
@@ -4053,7 +4063,13 @@ currentDcardDiscount:
   window.currentDcardDiscount,
 
 newDcardDiscount:
-  window.newDcardDiscount,    
+  window.newDcardDiscount,
+
+currentVoiceOptionDiscount:
+  window.currentVoiceOptionDiscount,
+
+newVoiceOptionDiscount:
+  window.newVoiceOptionDiscount,    
 
 universalFee: 3,     
     
