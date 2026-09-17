@@ -1821,6 +1821,10 @@ const denkiType =
 const currentPlanValue =
   document.getElementById("currentPlan").value;
 
+const newPlanValue =
+  document.getElementById("newPlan").value;
+
+  
 // 現在契約の割引記録
 
 if(
@@ -1996,9 +2000,6 @@ else if (
   currentTotal -= normalDiscount;
   currentPointBase -= normalDiscount;
 }
-
-const newPlanValue =
-  document.getElementById("newPlan").value;
 
 if (
   newPlanValue === "8448" ||
