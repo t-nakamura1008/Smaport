@@ -1678,6 +1678,35 @@ function applyDiscounts(plan, total){
 
   }
 
+else if(
+  plan === "2750" ||
+  plan === "3850"
+){
+
+  if(hikariType === "1"){
+    total -= 1210;
+  }
+
+  if(denkiType === "1"){
+    total -= 110;
+  }
+
+}
+
+// irumo 3GB～9GB
+else if(
+  plan === "2167" ||
+  plan === "2827" ||
+  plan === "3377"
+){
+
+  if(hikariType === "1"){
+    total -= 1100;
+  }
+
+}
+  
+
  // eximo系・ギガホ系
 else if(
   plan === "7315" ||
@@ -1898,6 +1927,19 @@ else if(currentPlanValue === "6765"){
 
 }
 
+else if(
+  currentPlanValue === "2167" ||
+  currentPlanValue === "2827" ||
+  currentPlanValue === "3377"
+){
+
+  if(hikariType === "1"){
+    currentHikariDiscount = 1100;
+  }
+
+}
+  
+
 // 提案後の割引記録
 
 if(
@@ -1970,6 +2012,19 @@ else if(newPlanValue === "6765"){
   }
 
 }
+
+else if(
+  newPlanValue === "2167" ||
+  newPlanValue === "2827" ||
+  newPlanValue === "3377"
+){
+
+  if(hikariType === "1"){
+    newHikariDiscount = 1100;
+  }
+
+}
+  
   
   
 // 特別割引
