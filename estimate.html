@@ -1446,6 +1446,16 @@ let newPointBase = 0;
 let currentPoiBonus = 0;
 let newPoiBonus = 0;  
 
+let currentFamilyDiscount = 0;
+let currentHikariDiscount = 0;
+let currentDenkiDiscount = 0;
+let currentLoyaltyDiscount = 0;
+
+let newFamilyDiscount = 0;
+let newHikariDiscount = 0;
+let newDenkiDiscount = 0;
+let newLoyaltyDiscount = 0;  
+
   const monthlyUsage =
   document.getElementById("monthlyUsage").value;
   
@@ -1746,6 +1756,7 @@ if (
   document.getElementById("currentPlan").value === "11748"
 ) {
   currentTotal -= loyaltyDiscount;
+  currentLoyaltyDiscount = loyaltyDiscount;
 }
 
 if (
@@ -1753,6 +1764,7 @@ if (
   document.getElementById("newPlan").value === "11748"
 ) {
   newTotal -= loyaltyDiscount;
+  newLoyaltyDiscount = loyaltyDiscount;
 } 
 
   if(document.getElementById("currentPhoneWarranty").checked){
@@ -3738,6 +3750,16 @@ currentPlanCalculatedPrice:
 
 newPlanCalculatedPrice:
   window.newPlanAmount,  
+
+currentFamilyDiscount,
+currentHikariDiscount,
+currentDenkiDiscount,
+currentLoyaltyDiscount,
+
+newFamilyDiscount,
+newHikariDiscount,
+newDenkiDiscount,
+newLoyaltyDiscount,    
     
 };
   
