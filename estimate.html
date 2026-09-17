@@ -1444,7 +1444,17 @@ let currentPointBase = 0;
 let newPointBase = 0;
 
 let currentPoiBonus = 0;
-let newPoiBonus = 0;  
+let newPoiBonus = 0; 
+
+let currentFamilyDiscount = 0;
+let currentHikariDiscount = 0;
+let currentDenkiDiscount = 0;
+let currentLoyaltyDiscount = 0;
+
+let newFamilyDiscount = 0;
+let newHikariDiscount = 0;
+let newDenkiDiscount = 0;
+let newLoyaltyDiscount = 0;  
 
   const monthlyUsage =
   document.getElementById("monthlyUsage").value;
@@ -2374,17 +2384,17 @@ newTotal =
   );
 
 window.currentPlanAmount = currentTotal;
-window.newPlanAmount = newTotal;
+window.newPlanAmount = newTotal; 
 
-let currentFamilyDiscount = 0;
-let currentHikariDiscount = 0;
-let currentDenkiDiscount = 0;
-let currentLoyaltyDiscount = 0;
+window.currentFamilyDiscount = currentFamilyDiscount;
+window.currentHikariDiscount = currentHikariDiscount;
+window.currentDenkiDiscount = currentDenkiDiscount;
+window.currentLoyaltyDiscount = currentLoyaltyDiscount;
 
-let newFamilyDiscount = 0;
-let newHikariDiscount = 0;
-let newDenkiDiscount = 0;
-let newLoyaltyDiscount = 0;    
+window.newFamilyDiscount = newFamilyDiscount;
+window.newHikariDiscount = newHikariDiscount;
+window.newDenkiDiscount = newDenkiDiscount;
+window.newLoyaltyDiscount = newLoyaltyDiscount;  
 
 console.log(
   "プラン料金",
