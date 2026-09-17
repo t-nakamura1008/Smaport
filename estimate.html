@@ -2596,6 +2596,19 @@ newTotal =
     newTotal
   );
 
+currentPointBase =
+  applyDiscounts(
+    document.getElementById("currentPlan").value,
+    currentPointBase
+  );
+
+newPointBase =
+  applyDiscounts(
+    document.getElementById("newPlan").value,
+    newPointBase
+  );
+  
+
 currentPointBase = currentTotal;
 newPointBase = newTotal;
 
