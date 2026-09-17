@@ -474,7 +474,7 @@ document.getElementById("currentPlanArea").innerHTML = `
     <small>${data.monthlyUsage}</small>
   </span>
   <span>
-    ${Number(data.currentPlanPrice).toLocaleString()}円
+    ${Number(data.currentPlanCalculatedPrice).toLocaleString()}円
   </span>
 </div>
 `;
@@ -943,7 +943,7 @@ document.getElementById("newPlanArea").innerHTML = `
     <small>${data.monthlyUsage}</small>
   </span>
   <span>
-    ${Number(data.newPlanPrice).toLocaleString()}円
+    ${Number(data.newPlanCalculatedPrice).toLocaleString()}円
   </span>
 </div>
 `;
