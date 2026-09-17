@@ -744,6 +744,15 @@ if(
     "オプションパック割",
     220
   );
+}
+
+if(data.currentVoiceOptionDiscount > 0){
+  currentHtml += `
+    <div class="detail-row">
+      <span>音声オプション定額料割引</span>
+      <span>-${data.currentVoiceOptionDiscount}円</span>
+    </div>
+  `;
 }  
 
 if(data.currentMail){
@@ -1220,9 +1229,16 @@ if(
     "オプションパック割",
     220
   );
-}
-``  
+} 
   
+if(data.newVoiceOptionDiscount > 0){
+  newHtml += `
+    <div class="detail-row">
+      <span>音声オプション定額料割引</span>
+      <span>-${data.newVoiceOptionDiscount}円</span>
+    </div>
+  `;
+}  
 
 newOptionHtml += createOptionRow(
   data.currentMail,
