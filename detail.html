@@ -581,44 +581,41 @@ document.getElementById("currentCallArea").innerHTML = `
 </div>
 `;
 
+const currentBenefits =
+  data.currentSelectedBenefits || [];  
+  
 let currentEntertainmentHtml = "";
 
-if(data.currentLemino){
-  currentEntertainmentHtml += `
-    <div class="detail-row">
-      <span>Leminoプレミアム</span>
-      <span>1,540円</span>
-    </div>
-  `;
+const benefits =
+  data.currentSelectedBenefits || [];
+
+if(
+  data.currentDAZN &&
+  !benefits.includes("DAZN")
+){
+  addService("DAZN",4200);
 }
 
-if(data.currentDAnime){
-  currentEntertainmentHtml += `
-    <div class="detail-row">
-      <span>dアニメストア</span>
-      <span>660円</span>
-    </div>
-  `;
+if(
+  data.currentNBA &&
+  !benefits.includes("NBA docomo")
+){
+  addService("NBA docomo",2728);
 }
 
-if(data.currentNBA){
-  currentEntertainmentHtml += `
-    <div class="detail-row">
-      <span>NBA docomo</span>
-      <span>2,728円</span>
-    </div>
-  `;
+if(
+  data.currentLemino &&
+  !benefits.includes("Leminoプレミアム")
+){
+  addService("Leminoプレミアム",1540);
 }
 
-if(data.currentDAZN){
-  currentEntertainmentHtml += `
-    <div class="detail-row">
-      <span>DAZN</span>
-      <span>4,200円</span>
-    </div>
-  `;
+if(
+  data.currentDAnime &&
+  !benefits.includes("dアニメストア")
+){
+  addService("dアニメストア",660);
 }
-
 if(data.currentYoutube){
   currentEntertainmentHtml += `
     <div class="detail-row">
