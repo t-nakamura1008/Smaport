@@ -1164,33 +1164,44 @@ document.getElementById("newCallArea").innerHTML = `
 
 let newEntertainmentHtml = "";
 
-newEntertainmentHtml += createOptionRow(
-  data.currentLemino,
-  data.newLemino,
-  "Leminoプレミアム",
-  1540
-);
+const newBenefits =
+  data.newSelectedBenefits || [];
 
-newEntertainmentHtml += createOptionRow(
-  data.currentDAnime,
-  data.newDAnime,
-  "dアニメストア",
-  660
-);
+if(!newBenefits.includes("Leminoプレミアム")){
+  newEntertainmentHtml += createOptionRow(
+    data.currentLemino,
+    data.newLemino,
+    "Leminoプレミアム",
+    1540
+  );
+}
 
-newEntertainmentHtml += createOptionRow(
-  data.currentNBA,
-  data.newNBA,
-  "NBA docomo",
-  2728
-);
+if(!newBenefits.includes("dアニメストア")){
+  newEntertainmentHtml += createOptionRow(
+    data.currentDAnime,
+    data.newDAnime,
+    "dアニメストア",
+    660
+  );
+}
 
-newEntertainmentHtml += createOptionRow(
-  data.currentDAZN,
-  data.newDAZN,
-  "DAZN",
-  4200
-);
+if(!newBenefits.includes("NBA docomo")){
+  newEntertainmentHtml += createOptionRow(
+    data.currentNBA,
+    data.newNBA,
+    "NBA docomo",
+    2728
+  );
+}
+
+if(!newBenefits.includes("DAZN")){
+  newEntertainmentHtml += createOptionRow(
+    data.currentDAZN,
+    data.newDAZN,
+    "DAZN",
+    4200
+  );
+}
 
 newEntertainmentHtml += createOptionRow(
   data.currentYoutube,
