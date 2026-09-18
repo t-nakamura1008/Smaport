@@ -254,6 +254,12 @@ body{
   <div id="currentEntertainmentArea"></div>
 </div>
 
+<div id="currentBenefitSection">
+  <div class="section-title">
+    🎁 選べる特典
+  </div>
+  <div id="currentBenefitArea"></div>
+</div>   
 
     <div id="currentOptionSection">
 
@@ -337,6 +343,13 @@ body{
   </div>
   <div id="newEntertainmentArea"></div>
 </div>
+
+ <div id="newBenefitSection">
+  <div class="section-title">
+    🎁 選べる特典
+  </div>
+  <div id="newBenefitArea"></div>
+</div>  
 
     <div id="newOptionSection">
 
@@ -792,6 +805,70 @@ if(currentOptionHtml === ""){
   ).style.display = "none";
 
 }
+
+
+
+const isCurrentMaxPlan =
+  data.currentPlanName.includes("ドコモMAX") ||
+  data.currentPlanName.includes("ポイ活MAX");
+
+const isNewMaxPlan =
+  data.newPlanName.includes("ドコモMAX") ||
+  data.newPlanName.includes("ポイ活MAX"); 
+
+if(isCurrentMaxPlan){
+
+  let currentBenefitHtml = "";
+
+  (data.currentSelectedBenefits || []).forEach(item => {
+
+    currentBenefitHtml += `
+      <div class="detail-row">
+        <span>${item}</span>
+        <span>無料</span>
+      </div>
+    `;
+
+  });
+
+  document.getElementById(
+    "currentBenefitArea"
+  ).innerHTML = currentBenefitHtml;
+
+}else{
+
+  document.getElementById(
+    "currentBenefitSection"
+  ).style.display = "none";
+
+}
+
+if(isNewMaxPlan){
+
+  let newBenefitHtml = "";
+
+  (data.newSelectedBenefits || []).forEach(item => {
+
+    newBenefitHtml += `
+      <div class="detail-row">
+        <span>${item}</span>
+        <span>無料</span>
+      </div>
+    `;
+
+  });
+
+  document.getElementById(
+    "newBenefitArea"
+  ).innerHTML = newBenefitHtml;
+
+}else{
+
+  document.getElementById(
+    "newBenefitSection"
+  ).style.display = "none";
+
+}  
 
 let currentSecurityHtml = "";
 
