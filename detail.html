@@ -596,29 +596,51 @@ if(
   data.currentDAZN &&
   !currentFreeBenefits.includes("DAZN")
 ){
-  addService("DAZN",4200);
+  currentEntertainmentHtml += `
+    <div class="detail-row">
+      <span>DAZN</span>
+      <span>4,200円</span>
+    </div>
+  `;
 }
 
 if(
   data.currentNBA &&
-!currentFreeBenefits.includes("NBA docomo")
+  !currentFreeBenefits.includes("NBA docomo")
 ){
-  addService("NBA docomo",2728);
+  currentEntertainmentHtml += `
+    <div class="detail-row">
+      <span>NBA docomo</span>
+      <span>2,728円</span>
+    </div>
+  `;
 }
 
 if(
   data.currentLemino &&
   !currentFreeBenefits.includes("Leminoプレミアム")
 ){
-  addService("Leminoプレミアム",1540);
+  currentEntertainmentHtml += `
+    <div class="detail-row">
+      <span>Leminoプレミアム</span>
+      <span>1,540円</span>
+    </div>
+  `;
 }
 
 if(
   data.currentDAnime &&
   !currentFreeBenefits.includes("dアニメストア")
 ){
-  addService("dアニメストア",660);
+  currentEntertainmentHtml += `
+    <div class="detail-row">
+      <span>dアニメストア</span>
+      <span>660円</span>
+    </div>
+  `;
 }
+
+  
 if(data.currentYoutube){
   currentEntertainmentHtml += `
     <div class="detail-row">
@@ -816,6 +838,7 @@ const isNewMaxPlan =
   data.newPlanName.includes("ドコモMAX") ||
   data.newPlanName.includes("ポイ活MAX"); 
 
+
 if(isCurrentMaxPlan){
 
   let currentBenefitHtml = "";
@@ -842,10 +865,6 @@ if(isCurrentMaxPlan){
   ).style.display = "none";
 
 }
-
-if(isCurrentMaxPlan){
-
-  let currentBenefitHtml = "";
 
   const freeBenefits =
     data.currentFreeBenefits || [];
