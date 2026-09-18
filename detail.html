@@ -839,44 +839,44 @@ if(isCurrentMaxPlan){
 
 }
 
-if(isNewMaxPlan){
+if(isCurrentMaxPlan){
 
-  let newBenefitHtml = "";
+  let currentBenefitHtml = "";
 
-const freeBenefits =
-  data.newFreeBenefits || [];
+  const freeBenefits =
+    data.currentFreeBenefits || [];
 
-  (data.newSelectedBenefits || []).forEach(item => {
+  (data.currentSelectedBenefits || []).forEach(item => {
 
-  const fee =
-    freeBenefits.includes(item)
-      ? "無料"
-      : (
-          item === "DAZN"
-            ? "4,200円"
-          : item === "NBA docomo"
-            ? "2,728円"
-          : item === "Leminoプレミアム"
-            ? "1,540円"
-            : "660円"
-        );
+    const fee =
+      freeBenefits.includes(item)
+        ? "無料"
+        : (
+            item === "DAZN"
+              ? "4,200円"
+            : item === "NBA docomo"
+              ? "2,728円"
+            : item === "Leminoプレミアム"
+              ? "1,540円"
+              : "660円"
+          );
 
-  newBenefitHtml += `
-    <div class="detail-row">
-      <span>${item}</span>
-      <span>${fee}</span>
-    </div>
-  `;
-});
+    currentBenefitHtml += `
+      <div class="detail-row">
+        <span>${item}</span>
+        <span>${fee}</span>
+      </div>
+    `;
+  });
 
   document.getElementById(
-    "newBenefitArea"
-  ).innerHTML = newBenefitHtml;
+    "currentBenefitArea"
+  ).innerHTML = currentBenefitHtml;
 
 }else{
 
   document.getElementById(
-    "newBenefitSection"
+    "currentBenefitSection"
   ).style.display = "none";
 
 }  
