@@ -819,15 +819,31 @@ if(isCurrentMaxPlan){
 
   (data.currentSelectedBenefits || []).forEach(item => {
 
-    currentBenefitHtml += `
-      <div class="detail-row">
-        <span>${item}</span>
-        <span>無料</span>
-      </div>
-    `;
+    const freeBenefits =
+  data.newFreeBenefits || [];
 
-  });
+(data.newSelectedBenefits || []).forEach(item => {
 
+  const fee =
+    freeBenefits.includes(item)
+      ? "無料"
+      : (
+          item === "DAZN"
+            ? "4,200円"
+          : item === "NBA docomo"
+            ? "2,728円"
+          : item === "Leminoプレミアム"
+            ? "1,540円"
+            : "660円"
+        );
+
+  newBenefitHtml += `
+    <div class="detail-row">
+      <span>${item}</span>
+      <span>${fee}</span>
+    </div>
+  `;
+});
   document.getElementById(
     "currentBenefitArea"
   ).innerHTML = currentBenefitHtml;
