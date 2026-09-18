@@ -2471,7 +2471,6 @@ const currentFreeServices = [];
 window.currentSelectedBenefits = [];
 window.currentFreeBenefits = [];
 
-
 if(document.getElementById("currentDAZN").checked){
   currentFreeServices.push(4200);
   window.currentSelectedBenefits.push("DAZN");
@@ -2497,8 +2496,6 @@ if(
   document.getElementById("currentPlan").value === "11748"
 ){
 
-  currentFreeServices.sort((a,b) => b-a);
-
   const sortedBenefits = [
     { name:"DAZN", price:4200 },
     { name:"NBA docomo", price:2728 },
@@ -2511,11 +2508,11 @@ if(
   .sort((a,b)=>b.price-a.price);
 
   window.currentFreeBenefits =
-    sortedBenefits.slice(0,2).map(item => item.name);
+    sortedBenefits.slice(0,2).map(item=>item.name);
 
-  currentFreeServices.slice(2).forEach(price => {
-    currentTotal += price;
-    currentPointBase += price;
+  sortedBenefits.slice(2).forEach(item => {
+    currentTotal += item.price;
+    currentPointBase += item.price;
   });
 
 }else{
