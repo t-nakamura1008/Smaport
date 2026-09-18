@@ -1223,42 +1223,53 @@ let newEntertainmentHtml = "";
 const newBenefits =
   data.newSelectedBenefits || [];
 
-if(!newBenefits.includes("Leminoプレミアム")){
-  newEntertainmentHtml += createOptionRow(
-    data.currentLemino,
-    data.newLemino,
-    "Leminoプレミアム",
-    1540
-  );
+if(
+  data.newLemino &&
+  !freeBenefits.includes("Leminoプレミアム")
+){
+  newEntertainmentHtml += `
+    <div class="detail-row">
+      <span>Leminoプレミアム</span>
+      <span>1,540円</span>
+    </div>
+  `;
 }
 
-if(!newBenefits.includes("dアニメストア")){
-  newEntertainmentHtml += createOptionRow(
-    data.currentDAnime,
-    data.newDAnime,
-    "dアニメストア",
-    660
-  );
+if(
+  data.newDAnime &&
+  !freeBenefits.includes("dアニメストア")
+){
+  newEntertainmentHtml += `
+    <div class="detail-row">
+      <span>dアニメストア</span>
+      <span>660円</span>
+    </div>
+  `;
 }
 
-if(!newBenefits.includes("NBA docomo")){
-  newEntertainmentHtml += createOptionRow(
-    data.currentNBA,
-    data.newNBA,
-    "NBA docomo",
-    2728
-  );
+if(
+  data.newNBA &&
+  !freeBenefits.includes("NBA docomo")
+){
+  newEntertainmentHtml += `
+    <div class="detail-row">
+      <span>NBA docomo</span>
+      <span>2,728円</span>
+    </div>
+  `;
 }
 
-if(!newBenefits.includes("DAZN")){
-  newEntertainmentHtml += createOptionRow(
-    data.currentDAZN,
-    data.newDAZN,
-    "DAZN",
-    4200
-  );
+iif(
+  data.newDAZN &&
+  !freeBenefits.includes("DAZN")
+){
+  newEntertainmentHtml += `
+    <div class="detail-row">
+      <span>DAZN</span>
+      <span>4,200円</span>
+    </div>
+  `;
 }
-
 newEntertainmentHtml += createOptionRow(
   data.currentYoutube,
   data.newYoutube,
