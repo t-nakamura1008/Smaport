@@ -586,33 +586,36 @@ const currentBenefits =
   
 let currentEntertainmentHtml = "";
 
+const freeBenefits =
+  data.currentFreeBenefits || [];  
+
 const benefits =
   data.currentSelectedBenefits || [];
 
 if(
   data.currentDAZN &&
-  !benefits.includes("DAZN")
+  !freeBenefits.includes("DAZN")
 ){
   addService("DAZN",4200);
 }
 
 if(
   data.currentNBA &&
-  !benefits.includes("NBA docomo")
+ !freeBenefits.includes("NBA docomo")
 ){
   addService("NBA docomo",2728);
 }
 
 if(
   data.currentLemino &&
-  !benefits.includes("Leminoプレミアム")
+  !freeBenefits.includes("Leminoプレミアム")
 ){
   addService("Leminoプレミアム",1540);
 }
 
 if(
   data.currentDAnime &&
-  !benefits.includes("dアニメストア")
+  !freeBenefits.includes("dアニメストア")
 ){
   addService("dアニメストア",660);
 }
@@ -817,7 +820,10 @@ if(isCurrentMaxPlan){
 
   let currentBenefitHtml = "";
 
-  (data.currentSelectedBenefits || []).forEach(item => {
+  const freeBenefits =
+    data.currentFreeBenefits || [];
+
+  freeBenefits.forEach(item => {
 
     currentBenefitHtml += `
       <div class="detail-row">
