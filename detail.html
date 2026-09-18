@@ -1223,6 +1223,9 @@ let newEntertainmentHtml = "";
 const newBenefits =
   data.newSelectedBenefits || [];
 
+const freeBenefits =
+  data.newFreeBenefits || [];
+
 if(
   data.newLemino &&
   !freeBenefits.includes("Leminoプレミアム")
@@ -1259,7 +1262,7 @@ if(
   `;
 }
 
-iif(
+if(
   data.newDAZN &&
   !freeBenefits.includes("DAZN")
 ){
