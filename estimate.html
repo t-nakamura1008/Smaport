@@ -1963,6 +1963,20 @@ else if(currentPlanValue === "6765"){
 }
 
 else if(
+  currentPlanValue === "2750" ||
+  currentPlanValue === "3850"
+){
+
+  if(hikariType === "1"){
+    currentHikariDiscount = 1210;
+  }
+
+  if(denkiType === "1"){
+    currentDenkiDiscount = 110;
+  }
+
+}
+else if(
   currentPlanValue === "2167" ||
   currentPlanValue === "2827" ||
   currentPlanValue === "3377"
@@ -2048,6 +2062,21 @@ else if(newPlanValue === "6765"){
 
 }
 
+else if(
+  newPlanValue === "2750" ||
+  newPlanValue === "3850"
+){
+
+  if(hikariType === "1"){
+    newHikariDiscount = 1210;
+  }
+
+  if(denkiType === "1"){
+    newDenkiDiscount = 110;
+  }
+
+}
+ 
 else if(
   newPlanValue === "2167" ||
   newPlanValue === "2827" ||
