@@ -2492,7 +2492,10 @@ if(document.getElementById("currentDAnime").checked){
   window.currentSelectedBenefits.push("dアニメストア");
 }
 
-if(isCurrentMaxPlan){
+if(
+  document.getElementById("currentPlan").value === "8448" ||
+  document.getElementById("currentPlan").value === "11748"
+){
 
   currentFreeServices.sort((a,b) => b-a);
 
