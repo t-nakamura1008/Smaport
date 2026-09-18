@@ -2466,26 +2466,26 @@ if(document.getElementById("newOtherSub").checked){
 
   
   
- const currentFreeServices = [];
+const currentFreeServices = [];
 
 window.currentSelectedBenefits = [];
 
-if(currentDAZN){
+if(document.getElementById("currentDAZN").checked){
   currentFreeServices.push(4200);
   window.currentSelectedBenefits.push("DAZN");
 }
 
-if(currentNBA){
+if(document.getElementById("currentNBA").checked){
   currentFreeServices.push(2728);
   window.currentSelectedBenefits.push("NBA docomo");
 }
 
-if(currentLemino){
+if(document.getElementById("currentLemino").checked){
   currentFreeServices.push(1540);
   window.currentSelectedBenefits.push("Leminoプレミアム");
 }
 
-if(currentDAnime){
+if(document.getElementById("currentDAnime").checked){
   currentFreeServices.push(660);
   window.currentSelectedBenefits.push("dアニメストア");
 }
@@ -2609,20 +2609,24 @@ const newFreeServices = [];
 
 window.newSelectedBenefits = [];
 
-if(newDAZN){
+if(document.getElementById("newDAZN").checked){
   newFreeServices.push(4200);
+  window.newSelectedBenefits.push("DAZN");
 }
 
-if(newNBA){
+if(document.getElementById("newNBA").checked){
   newFreeServices.push(2728);
+  window.newSelectedBenefits.push("NBA docomo");
 }
 
-if(newLemino){
+if(document.getElementById("newLemino").checked){
   newFreeServices.push(1540);
+  window.newSelectedBenefits.push("Leminoプレミアム");
 }
 
-if(newDAnime){
+if(document.getElementById("newDAnime").checked){
   newFreeServices.push(660);
+  window.newSelectedBenefits.push("dアニメストア");
 }
 
 const isMaxPlan =
