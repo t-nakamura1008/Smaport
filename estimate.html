@@ -2469,6 +2469,8 @@ if(document.getElementById("newOtherSub").checked){
 const currentFreeServices = [];
 
 window.currentSelectedBenefits = [];
+window.currentFreeBenefits = [];
+
 
 if(document.getElementById("currentDAZN").checked){
   currentFreeServices.push(4200);
@@ -2490,13 +2492,23 @@ if(document.getElementById("currentDAnime").checked){
   window.currentSelectedBenefits.push("dアニメストア");
 }
 
-const isCurrentMaxPlan =
-  document.getElementById("currentPlan").value === "8448" ||
-  document.getElementById("currentPlan").value === "11748";  
-
 if(isCurrentMaxPlan){
 
   currentFreeServices.sort((a,b) => b-a);
+
+  const sortedBenefits = [
+    { name:"DAZN", price:4200 },
+    { name:"NBA docomo", price:2728 },
+    { name:"Leminoプレミアム", price:1540 },
+    { name:"dアニメストア", price:660 }
+  ]
+  .filter(item =>
+    window.currentSelectedBenefits.includes(item.name)
+  )
+  .sort((a,b)=>b.price-a.price);
+
+  window.currentFreeBenefits =
+    sortedBenefits.slice(0,2).map(item => item.name);
 
   currentFreeServices.slice(2).forEach(price => {
     currentTotal += price;
@@ -4156,6 +4168,9 @@ newVoiceOptionDiscount:
 
 currentSelectedBenefits:
   window.currentSelectedBenefits || [],
+
+currentFreeBenefits:
+  window.currentFreeBenefits || [],    
 
 newSelectedBenefits:
   window.newSelectedBenefits || [], 
