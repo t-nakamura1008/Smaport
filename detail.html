@@ -586,7 +586,7 @@ const currentBenefits =
   
 let currentEntertainmentHtml = "";
 
-const freeBenefits =
+const currentFreeBenefits =
   data.currentFreeBenefits || [];  
 
 const benefits =
@@ -594,28 +594,28 @@ const benefits =
 
 if(
   data.currentDAZN &&
-  !freeBenefits.includes("DAZN")
+  !currentFreeBenefits.includes("DAZN")
 ){
   addService("DAZN",4200);
 }
 
 if(
   data.currentNBA &&
- !freeBenefits.includes("NBA docomo")
+!currentFreeBenefits.includes("NBA docomo")
 ){
   addService("NBA docomo",2728);
 }
 
 if(
   data.currentLemino &&
-  !freeBenefits.includes("Leminoプレミアム")
+  !currentFreeBenefits.includes("Leminoプレミアム")
 ){
   addService("Leminoプレミアム",1540);
 }
 
 if(
   data.currentDAnime &&
-  !freeBenefits.includes("dアニメストア")
+  !currentFreeBenefits.includes("dアニメストア")
 ){
   addService("dアニメストア",660);
 }
@@ -820,10 +820,7 @@ if(isCurrentMaxPlan){
 
   let currentBenefitHtml = "";
 
-  const freeBenefits =
-    data.currentFreeBenefits || [];
-
-  freeBenefits.forEach(item => {
+  currentFreeBenefits.forEach(item => {
 
     currentBenefitHtml += `
       <div class="detail-row">
@@ -837,6 +834,7 @@ if(isCurrentMaxPlan){
     "currentBenefitArea"
   ).innerHTML = currentBenefitHtml;
 
+}
 }else{
 
   document.getElementById(
@@ -1229,12 +1227,12 @@ let newEntertainmentHtml = "";
 const newBenefits =
   data.newSelectedBenefits || [];
 
-const freeBenefits =
+const newFreeBenefits =
   data.newFreeBenefits || [];
 
 if(
   data.newLemino &&
-  !freeBenefits.includes("Leminoプレミアム")
+  !newFreeBenefits.includes("Leminoプレミアム")
 ){
   newEntertainmentHtml += `
     <div class="detail-row">
@@ -1246,7 +1244,7 @@ if(
 
 if(
   data.newDAnime &&
-  !freeBenefits.includes("dアニメストア")
+  !newFreeBenefits.includes("dアニメストア")
 ){
   newEntertainmentHtml += `
     <div class="detail-row">
@@ -1258,7 +1256,7 @@ if(
 
 if(
   data.newNBA &&
-  !freeBenefits.includes("NBA docomo")
+  !newFreeBenefits.includes("NBA docomo")
 ){
   newEntertainmentHtml += `
     <div class="detail-row">
@@ -1270,7 +1268,7 @@ if(
 
 if(
   data.newDAZN &&
-  !freeBenefits.includes("DAZN")
+  !newFreeBenefits.includes("DAZN")
 ){
   newEntertainmentHtml += `
     <div class="detail-row">
