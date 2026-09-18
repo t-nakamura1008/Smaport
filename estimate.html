@@ -2605,28 +2605,24 @@ newTotal +=
 
 // 提案後サービス
 
-const freeServices = [];
+const newFreeServices = [];
 
 window.newSelectedBenefits = [];
 
 if(newDAZN){
   newFreeServices.push(4200);
-  window.newSelectedBenefits.push("DAZN");
 }
 
 if(newNBA){
   newFreeServices.push(2728);
-  window.newSelectedBenefits.push("NBA docomo");
 }
 
 if(newLemino){
   newFreeServices.push(1540);
-  window.newSelectedBenefits.push("Leminoプレミアム");
 }
 
 if(newDAnime){
   newFreeServices.push(660);
-  window.newSelectedBenefits.push("dアニメストア");
 }
 
 const isMaxPlan =
@@ -2635,19 +2631,19 @@ const isMaxPlan =
 
 if(isMaxPlan){
 
-  freeServices.sort((a,b) => b-a);
+  newFreeServices.sort((a,b) => b-a);
 
-  freeServices.slice(2).forEach(price => {
-    newTotal += price;
-    newPointBase += price;
-  });
+newFreeServices.slice(2).forEach(price => {
+  newTotal += price;
+  newPointBase += price;
+});
 
 }else{
 
-  freeServices.forEach(price => {
-    newTotal += price;
-    newPointBase += price;
-  });
+  newFreeServices.forEach(price => {
+  newTotal += price;
+  newPointBase += price;
+});
 
 }
   
