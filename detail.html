@@ -1665,12 +1665,14 @@ document.getElementById(
 
 const currentBase =
   Number(
-    String(data.currentTotal).replace(/[^\d]/g, "")
+    String(data.currentWithDevice || data.currentTotal)
+      .replace(/[^\d]/g, "")
   );
 
 const newBase =
   Number(
-    String(data.newTotal).replace(/[^\d]/g, "")
+    String(data.newTotal)
+      .replace(/[^\d]/g, "")
   );
 
 // 区切り回数
