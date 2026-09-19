@@ -1786,8 +1786,21 @@ ranges.push({
   end:null
 });
 
-console.log(proposalPeriods);
-console.log(ranges);  
+console.log(
+  JSON.stringify(
+    proposalPeriods,
+    null,
+    2
+  )
+);
+
+console.log(
+  JSON.stringify(
+    ranges,
+    null,
+    2
+  )
+);
 
 // ヘッダー
 let html = `
