@@ -1663,6 +1663,12 @@ document.getElementById(
 ).textContent =
   data.feeTotal;
 
+const first23 =
+  Number(data.kaedokiFirst || 0);
+
+const second24 =
+  Number(data.kaedokiSecond || 0);
+
 document.getElementById(
   "installmentTable"
 ).innerHTML = `
@@ -1682,8 +1688,8 @@ document.getElementById(
 
 <tr>
   <td>提案</td>
-  <td>4,500円</td>
-  <td>1,200円</td>
+  <td>${first23.toLocaleString()}円</td>
+  <td>${second24.toLocaleString()}円</td>
   <td>0円</td>
 </tr>
 `;  
