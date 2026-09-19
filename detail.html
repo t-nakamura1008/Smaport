@@ -1669,9 +1669,15 @@ const currentBase =
       .replace(/[^\d]/g, "")
   );
 
-const newBase =
+const newWithDevice =
   Number(
-    String(data.newTotal)
+    String(data.newWithDevice)
+      .replace(/[^\d]/g, "")
+  );
+
+const currentBase =
+  Number(
+    String(data.currentWithDevice)
       .replace(/[^\d]/g, "")
   );
 
@@ -1837,10 +1843,20 @@ ranges.forEach(r => {
 
   });
 
-  const total =
-    r.end === null
-      ? newBase
-      : newBase + installment;
+  const fullInstallment =
+  proposalPeriods.reduce(
+    (sum,p) => sum + p.amount,
+    0
+  );
+
+const total =
+  r.end === null
+    ? newWithDevice - fullInstallment
+    : (
+        newWithDevice -
+        fullInstallment +
+        installment
+      );
 
   html += `
     <td>
