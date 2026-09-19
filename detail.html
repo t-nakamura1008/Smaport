@@ -1828,11 +1828,39 @@ html += `</tr>`;
 // 現在行
 html += `<tr><td>現在</td>`;
 
-ranges.forEach(() => {
+const currentPlanOnly =
+  Number(
+    String(data.currentTotal)
+      .replace(/[^\d]/g,"")
+  );
+
+ranges.forEach(r => {
+
+  let installment = 0;
+
+  proposalPeriods.forEach(p => {
+
+    const active =
+      r.start <= p.end &&
+      (
+        r.end === null ||
+        r.end >= p.start
+      );
+
+    if(active){
+      installment += p.amount;
+    }
+
+  });
+
+  const total =
+    r.end === null
+      ? currentPlanOnly
+      : currentPlanOnly + installment;
 
   html += `
     <td>
-      ${currentBase.toLocaleString()}円
+      ${total.toLocaleString()}円
     </td>
   `;
 
