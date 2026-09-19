@@ -1663,36 +1663,196 @@ document.getElementById(
 ).textContent =
   data.feeTotal;
 
-const first23 =
-  Number(data.kaedokiFirst || 0);
+const currentBase =
+  Number(
+    String(data.currentTotal).replace(/[^\d]/g, "")
+  );
 
-const second24 =
-  Number(data.kaedokiSecond || 0);
+const newBase =
+  Number(
+    String(data.newTotal).replace(/[^\d]/g, "")
+  );
+
+// 区切り回数
+const points = [];
+
+// 提案金額管理
+const proposalPeriods = [];
+
+// 本体
+if(data.devicePaymentType === "23"){
+
+  points.push(23);
+  points.push(47);
+
+  proposalPeriods.push({
+    start:1,
+    end:23,
+    amount:Number(data.kaedokiFirst || 0)
+  });
+
+  proposalPeriods.push({
+    start:24,
+    end:47,
+    amount:Number(data.kaedokiSecond || 0)
+  });
+
+}
+
+// 分割②
+const device2Monthly =
+  Math.round(
+    (
+      Number(data.device2Price || 0)
+      - Number(data.device2DownPayment || 0)
+      - Number(data.device2Discount || 0)
+    )
+    /
+    Number(data.device2Months || 1)
+  );
+
+if(device2Monthly > 0){
+
+  const months =
+    Number(data.device2Months);
+
+  points.push(months);
+
+  proposalPeriods.push({
+    start:1,
+    end:months,
+    amount:device2Monthly
+  });
+
+}
+
+// 分割③
+const device3Monthly =
+  Math.round(
+    (
+      Number(data.device3Price || 0)
+      - Number(data.device3DownPayment || 0)
+      - Number(data.device3Discount || 0)
+    )
+    /
+    Number(data.device3Months || 1)
+  );
+
+if(device3Monthly > 0){
+
+  const months =
+    Number(data.device3Months);
+
+  points.push(months);
+
+  proposalPeriods.push({
+    start:1,
+    end:months,
+    amount:device3Monthly
+  });
+
+}
+
+// 重複削除して並べる
+const uniquePoints =
+  [...new Set(points)]
+  .sort((a,b)=>a-b);
+
+// 表の期間作成
+const ranges = [];
+
+let start = 1;
+
+uniquePoints.forEach(end => {
+
+  ranges.push({
+    start,
+    end
+  });
+
+  start = end + 1;
+
+});
+
+ranges.push({
+  start,
+  end:null
+});
+
+// ヘッダー
+let html = `
+<tr>
+  <th></th>
+`;
+
+ranges.forEach(r => {
+
+  const title =
+    r.end === null
+      ? `${r.start}回～`
+      : `${r.start}～${r.end}回`;
+
+  html += `<th>${title}</th>`;
+
+});
+
+html += `</tr>`;
+
+// 現在行
+html += `<tr><td>現在</td>`;
+
+ranges.forEach(() => {
+
+  html += `
+    <td>
+      ${currentBase.toLocaleString()}円
+    </td>
+  `;
+
+});
+
+html += `</tr>`;
+
+// 提案行
+html += `<tr><td>提案</td>`;
+
+ranges.forEach(r => {
+
+  let installment = 0;
+
+  proposalPeriods.forEach(p => {
+
+    const active =
+      r.start <= p.end &&
+      (
+        r.end === null ||
+        r.end >= p.start
+      );
+
+    if(active){
+      installment += p.amount;
+    }
+
+  });
+
+  const total =
+    r.end === null
+      ? newBase
+      : newBase + installment;
+
+  html += `
+    <td>
+      ${total.toLocaleString()}円
+    </td>
+  `;
+
+});
+
+html += `</tr>`;
 
 document.getElementById(
   "installmentTable"
-).innerHTML = `
-<tr>
-  <th></th>
-  <th>1～23回</th>
-  <th>24～47回</th>
-  <th>48回～</th>
-</tr>
-
-<tr>
-  <td>現在</td>
-  <td>0円</td>
-  <td>0円</td>
-  <td>0円</td>
-</tr>
-
-<tr>
-  <td>提案</td>
-  <td>${first23.toLocaleString()}円</td>
-  <td>${second24.toLocaleString()}円</td>
-  <td>0円</td>
-</tr>
-`;  
+).innerHTML = html;  
   
 function goBack(){
   window.history.back();
