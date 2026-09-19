@@ -1665,20 +1665,16 @@ document.getElementById(
 
 const currentBase =
   Number(
-    String(data.currentWithDevice || data.currentTotal)
-      .replace(/[^\d]/g, "")
+    String(
+      data.currentWithDevice || data.currentTotal
+    ).replace(/[^\d]/g,"")
   );
 
 const newWithDevice =
   Number(
-    String(data.newWithDevice)
-      .replace(/[^\d]/g, "")
-  );
-
-const currentBase =
-  Number(
-    String(data.currentWithDevice)
-      .replace(/[^\d]/g, "")
+    String(
+      data.newWithDevice
+    ).replace(/[^\d]/g,"")
   );
 
 // 区切り回数
