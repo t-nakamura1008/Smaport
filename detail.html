@@ -1670,11 +1670,10 @@ const currentBase =
     ).replace(/[^\d]/g,"")
   );
 
-const newWithDevice =
+const newBase =
   Number(
-    String(
-      data.newWithDevice
-    ).replace(/[^\d]/g,"")
+    String(data.newTotal)
+      .replace(/[^\d]/g,"")
   );
 
 // 区切り回数
@@ -1685,6 +1684,12 @@ const proposalPeriods = [];
 
 // 本体
 if(data.devicePaymentType === "23"){
+
+ console.log("devicePaymentType",data.devicePaymentType);
+console.log("kaedokiFirst",data.kaedokiFirst);
+console.log("kaedokiSecond",data.kaedokiSecond);
+console.log(proposalPeriods);
+console.log(ranges);  
 
   points.push(23);
   points.push(47);
@@ -1839,20 +1844,10 @@ ranges.forEach(r => {
 
   });
 
-  const fullInstallment =
-  proposalPeriods.reduce(
-    (sum,p) => sum + p.amount,
-    0
-  );
-
-const total =
+ const total =
   r.end === null
-    ? newWithDevice - fullInstallment
-    : (
-        newWithDevice -
-        fullInstallment +
-        installment
-      );
+    ? newBase
+    : newBase + installment;
 
   html += `
     <td>
