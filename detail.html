@@ -546,11 +546,15 @@ body{
 
 <script>
 
- const data = JSON.parse(
+const data = JSON.parse(
   localStorage.getItem("estimateData")
 );
 
-console.log(data); 
+console.log(data);
+
+console.log("newTotal", data.newTotal);
+console.log("currentTotal", data.currentTotal);
+console.log("newWithDevice", data.newWithDevice);
 
 let currentPlanHtml = `
 <div class="detail-row">
