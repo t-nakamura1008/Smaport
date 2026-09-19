@@ -515,29 +515,13 @@ body{
 
   <h2>📱端末お支払いイメージ</h2>
 
-  <table class="installment-table">
+  <table
+    class="installment-table"
+    id="installmentTable"
+  >
+  </table>
 
-    <tr>
-      <th></th>
-      <th>1～23回</th>
-      <th>24～47回</th>
-      <th>48回～</th>
-    </tr>
-
-    <tr>
-      <td>現在</td>
-      <td>0円</td>
-      <td>0円</td>
-      <td>0円</td>
-    </tr>
-
-    <tr>
-      <td>提案</td>
-      <td>4,500円</td>
-      <td>1,200円</td>
-      <td>0円</td>
-    </tr>
-
+</div>
   </table>
 
 </div>
@@ -1677,7 +1661,32 @@ document.getElementById(
 document.getElementById(
   "detailFeeTotal"
 ).textContent =
-  data.feeTotal;  
+  data.feeTotal;
+
+document.getElementById(
+  "installmentTable"
+).innerHTML = `
+<tr>
+  <th></th>
+  <th>1～23回</th>
+  <th>24～47回</th>
+  <th>48回～</th>
+</tr>
+
+<tr>
+  <td>現在</td>
+  <td>0円</td>
+  <td>0円</td>
+  <td>0円</td>
+</tr>
+
+<tr>
+  <td>提案</td>
+  <td>4,500円</td>
+  <td>1,200円</td>
+  <td>0円</td>
+</tr>
+`;  
   
 function goBack(){
   window.history.back();
