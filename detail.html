@@ -94,7 +94,7 @@ body{
 
 .detail-summary{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:repeat(2,1fr);
   gap:15px;
 }
 
@@ -216,6 +216,33 @@ body{
 .detail-discount{
   color:#dc2626;
   font-weight:bold;
+} 
+
+.installment-table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:15px;
+}
+
+.installment-table th{
+  background:#2563eb;
+  color:white;
+  padding:12px;
+}
+
+.installment-table td{
+  border:1px solid #ddd;
+  padding:12px;
+  text-align:center;
+}
+
+.installment-table tr:nth-child(even){
+  background:#f8fafc;
+}
+
+.installment-table td:first-child{
+  font-weight:bold;
+  width:100px;
 }  
   
 </style>
@@ -452,46 +479,68 @@ body{
 
     <div class="detail-summary">
 
-      <div class="summary-box">
-        <span>月額差額</span>
-        <strong id="detailDifference">
-          0円
-        </strong>
-      </div>
+  <div class="summary-box">
+    <span>月額差額</span>
+    <strong id="detailDifference">
+      0円
+    </strong>
+  </div>
 
-      <div class="summary-box">
-        <span>ポイント差額</span>
-        <strong id="detailPointDifference">
-          0pt
-        </strong>
-      </div>
+  <div class="summary-box">
+    <span>ポイント差額</span>
+    <strong id="detailPointDifference">
+      0pt
+    </strong>
+  </div>
 
-      <div class="summary-box">
-        <span>本日お支払い額</span>
-        <strong id="detailTodayTotal">
-          0円
-        </strong>
-      </div>
+  <div class="summary-box">
+    <span>初期手数料</span>
+    <strong id="detailFeeTotal">
+      0円
+    </strong>
+  </div>
 
-    </div>
+  <div class="summary-box">
+    <span>本日お支払い額</span>
+    <strong id="detailTodayTotal">
+      0円
+    </strong>
+  </div>
+
+</div>
 
     <br>
 
-    <div class="detail-row">
-      <span>本体分割額</span>
-      <strong id="detailInstallment">
-        0円
-      </strong>
-    </div>
+    <div class="card">
 
-    <div class="detail-row">
-      <span>初期手数料</span>
-      <strong id="detailFeeTotal">
-        0円
-      </strong>
-    </div>
+  <h2>📱端末お支払いイメージ</h2>
 
-  </div>
+  <table class="installment-table">
+
+    <tr>
+      <th></th>
+      <th>1～23回</th>
+      <th>24～47回</th>
+      <th>48回～</th>
+    </tr>
+
+    <tr>
+      <td>現在</td>
+      <td>0円</td>
+      <td>0円</td>
+      <td>0円</td>
+    </tr>
+
+    <tr>
+      <td>提案</td>
+      <td>4,500円</td>
+      <td>1,200円</td>
+      <td>0円</td>
+    </tr>
+
+  </table>
+
+</div>
 
   <div class="button-area">
 
