@@ -3753,17 +3753,21 @@ function goToDetail() {
     newPlanSelect.value,
 
   currentCallName:
-    currentCallSelect.options[
-      currentCallSelect.selectedIndex
-    ].text,
+  currentCallSelect.selectedIndex >= 0
+    ? currentCallSelect.options[
+        currentCallSelect.selectedIndex
+      ].text
+    : "",
 
   currentCallPrice:
     currentCallSelect.value,
 
   newCallName:
-    newCallSelect.options[
-      newCallSelect.selectedIndex
-    ].text,
+  newCallSelect.selectedIndex >= 0
+    ? newCallSelect.options[
+        newCallSelect.selectedIndex
+      ].text
+    : "",
 
   newCallPrice:
     newCallSelect.value,
