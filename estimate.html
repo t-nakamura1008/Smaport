@@ -1558,13 +1558,19 @@ async function loadPhoneData() {
   }
 
   document.getElementById("devicePrice").value =
-    phone.price || "";
-
+  String(phone.price || "")
+    .replace(/,/g, "")
+    .replace(/円/g, "");
+  
   document.getElementById("kaedokiFirst").value =
-    phone.monthly_1_23 || "";
+  String(phone.monthly_1_23 || "")
+    .replace(/,/g, "")
+    .replace(/円/g, "");
 
-  document.getElementById("kaedokiSecond").value =
-    phone.monthly_24_47 || "";
+document.getElementById("kaedokiSecond").value =
+  String(phone.monthly_24_47 || "")
+    .replace(/,/g, "")
+    .replace(/円/g, "");
 
 }  
 
