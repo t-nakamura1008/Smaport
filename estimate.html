@@ -1536,7 +1536,15 @@ async function loadModels() {
   modelSelect.innerHTML =
     '<option value="">機種を選択</option>';
 
-  data.forEach(phone => {
+ data
+  .sort((a,b) =>
+    a.model.localeCompare(
+      b.model,
+      "ja",
+      { numeric: true }
+    )
+  )
+  .forEach(phone => {
 
     modelSelect.innerHTML += `
       <option value="${phone.id}">
