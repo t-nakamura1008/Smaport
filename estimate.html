@@ -1147,7 +1147,10 @@ h3{
   <h2>📱 分割①（本体）</h2>
 
   <label>メーカー</label>
-<select id="phoneMaker">
+<select
+  id="phoneMaker"
+  onchange="loadModels()"
+>
   <option value="">
     メーカーを選択
   </option>
@@ -1498,7 +1501,41 @@ async function loadMakers() {
 window.addEventListener(
   "DOMContentLoaded",
   loadMakers
-);  
+); 
+
+async function loadModels() {
+
+  const maker =
+    document.getElementById("phoneMaker").value;
+
+  const { data, error } = await sbClient
+    .from("Phones")
+    .select("*")
+    .eq("maker", maker)
+    .eq("deleted", false);
+
+  if(error){
+    console.error(error);
+    return;
+  }
+
+  const modelSelect =
+    document.getElementById("phoneModel");
+
+  modelSelect.innerHTML =
+    '<option value="">機種を選択</option>';
+
+  data.forEach(phone => {
+
+    modelSelect.innerHTML += `
+      <option value="${phone.id}">
+        ${phone.model}
+      </option>
+    `;
+
+  });
+
+}  
 
 function calculateEstimate() {
 
