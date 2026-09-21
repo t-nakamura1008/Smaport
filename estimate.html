@@ -1552,39 +1552,72 @@ async function loadPhoneData() {
       .eq("id", phoneId)
       .single();
 
-  if(error){
+  if (error) {
     console.error(error);
     return;
   }
 
+  // 本体価格
   document.getElementById("devicePrice").value =
-  String(phone.price || "")
-    .replace(/,/g, "")
-    .replace(/円/g, "");
-  
+    String(phone.price || "")
+      .replace(/,/g, "")
+      .replace(/円/g, "");
+
+  // カエドキ
   document.getElementById("kaedokiFirst").value =
-  String(phone.monthly_1_23 || "")
-    .replace(/,/g, "")
-    .replace(/円/g, "");
+    String(phone.monthly_1_23 || "")
+      .replace(/,/g, "")
+      .replace(/円/g, "");
 
-document.getElementById("kaedokiSecond").value =
-  String(phone.monthly_24_47 || "")
-    .replace(/,/g, "")
-    .replace(/円/g, "");
+  document.getElementById("kaedokiSecond").value =
+    String(phone.monthly_24_47 || "")
+      .replace(/,/g, "")
+      .replace(/円/g, "");
 
-}  
+  // 補償初期化
+  document.getElementById("currentPhoneWarranty").checked = false;
+  document.getElementById("newPhoneWarranty").checked = false;
 
-function calculateEstimate() {
+  document.getElementById("currentPhoneWarrantyFee").value = "";
+  document.getElementById("newPhoneWarrantyFee").value = "";
 
-  let currentTotal =
-    Number(
-      document.getElementById("currentPlan").value
-    );
+  toggleWarrantyInput("current");
+  toggleWarrantyInput("new");
 
-  let newTotal =
-    Number(
-      document.getElementById("newPlan").value
-    );
+  // ケータイ補償自動入力
+  if (phone.keitai_hosho) {
+
+    const hoshoFee =
+      String(phone.keitai_hosho)
+        .replace(/,/g, "")
+        .replace(/円/g, "");
+
+    // 現在
+    document.getElementById(
+      "currentPhoneWarranty"
+    ).checked = true;
+
+    toggleWarrantyInput("current");
+
+    document.getElementById(
+      "currentPhoneWarrantyFee"
+    ).value = hoshoFee;
+
+    // 提案
+    document.getElementById(
+      "newPhoneWarranty"
+    ).checked = true;
+
+    toggleWarrantyInput("new");
+
+    document.getElementById(
+      "newPhoneWarrantyFee"
+    ).value = hoshoFee;
+  }
+
+  calculateEstimate();
+
+}
 
 let currentPointTotal = 0;
 let newPointTotal = 0;
