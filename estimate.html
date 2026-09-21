@@ -1157,7 +1157,10 @@ h3{
 </select>
 
 <label>機種</label>
-<select id="phoneModel">
+<select
+  id="phoneModel"
+  onchange="loadPhoneData()"
+>
   <option value="">
     機種を選択
   </option>
@@ -1534,6 +1537,34 @@ async function loadModels() {
     `;
 
   });
+
+}
+
+async function loadPhoneData() {
+
+  const phoneId =
+    document.getElementById("phoneModel").value;
+
+  const { data: phone, error } =
+    await sbClient
+      .from("Phones")
+      .select("*")
+      .eq("id", phoneId)
+      .single();
+
+  if(error){
+    console.error(error);
+    return;
+  }
+
+  document.getElementById("devicePrice").value =
+    phone.price || "";
+
+  document.getElementById("kaedokiFirst").value =
+    phone.monthly_1_23 || "";
+
+  document.getElementById("kaedokiSecond").value =
+    phone.monthly_24_47 || "";
 
 }  
 
