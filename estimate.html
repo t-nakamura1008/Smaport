@@ -426,7 +426,10 @@ h3{
   <h2>📱 分割②（付属品）</h2> 
 
 <label>商品名</label>
-<select id="device2Name">
+<select
+  id="device2Name"
+  onchange="setDevice2Price()"
+>
   <option value="">選択してください</option>
   <option value="PhotoCube C SE 128GB">
     PhotoCube C SE 128GB
@@ -437,11 +440,12 @@ h3{
 </select>
 
 <label>付属品価格</label>
-<select
-  id="device2Name"
-  onchange="setDevice2Price()"
+<input
+  type="number"
+  id="device2Price"
+  placeholder="金額"
 >
-
+  
 <label>頭金</label>
 <input
   type="number"
