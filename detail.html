@@ -260,6 +260,11 @@ body{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:30px;
+
+  background:#fff7ed;
+  border:2px solid #f59e0b;
+  border-radius:16px;
+  padding:25px;
   margin-top:20px;
 }
 
@@ -675,16 +680,19 @@ if(currentPoikatsu){
   ).style.display = "none";
 
   document.getElementById(
-    "currentPointSimple"
-  ).innerHTML =
-    `
-      <strong style="
-        font-size:32px;
-        color:#2563eb;
-      ">
-        ${data.currentPointTotal}
-      </strong>
-    `;
+  "currentPointSimple"
+).innerHTML =
+`
+  <div>
+    <div>基本</div>
+    <strong style="
+      font-size:32px;
+      color:#2563eb;
+    ">
+      ${data.currentBasePoint}pt
+    </strong>
+  </div>
+`;
 }  
 
 const newPoikatsu =
@@ -703,17 +711,20 @@ if(newPoikatsu){
     "newPointDetail"
   ).style.display = "none";
 
-  document.getElementById(
-    "newPointSimple"
-  ).innerHTML =
-    `
-      <strong style="
-        font-size:32px;
-        color:#2563eb;
-      ">
-        ${data.newPointTotal}
-      </strong>
-    `;
+ document.getElementById(
+  "newPointSimple"
+).innerHTML =
+`
+  <div>
+    <div>基本</div>
+    <strong style="
+      font-size:32px;
+      color:#2563eb;
+    ">
+      ${data.newBasePoint}pt
+    </strong>
+  </div>
+`;
 }  
 
 document.getElementById("currentBasePoint").textContent =
