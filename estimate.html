@@ -343,6 +343,237 @@ h3{
 </div>
   </section>
 
+
+  <!-- 分割① -->
+<section class="card">
+
+  <h2>📱 分割①（本体）</h2>
+
+  <label>メーカー</label>
+<select
+  id="phoneMaker"
+  onchange="loadModels()"
+>
+  <option value="">
+    メーカーを選択
+  </option>
+</select>
+
+<label>機種</label>
+<select
+  id="phoneModel"
+  onchange="loadPhoneData()"
+>
+  <option value="">
+    機種を選択
+  </option>
+</select>
+
+  <label>購入方法</label>
+ <select
+ id="devicePaymentType"
+ onchange="toggleKaedoki()"
+>
+  <option value="0">一括</option>
+  <option value="23">カエドキ</option>
+  <option value="12">12回</option>
+  <option value="24">24回</option>
+  <option value="36">36回</option>
+</select>
+
+  <label>一括価格</label>
+ <input
+  type="number"
+  id="devicePrice"
+  placeholder="金額"
+>
+
+  <label>頭金</label>
+ <input
+  type="number"
+  id="downPayment"
+  placeholder="金額"
+>
+
+  <label>割引額</label>
+  <input
+  type="number"
+  id="deviceDiscount"
+  placeholder="0"
+>
+
+<div id="kaedokiArea" style="display:none;">
+  <label>1～23回目月額</label>
+  <input
+    type="number"
+    id="kaedokiFirst"
+    placeholder="例 2500"
+  >
+
+  <label>24～47回目月額</label>
+  <input
+    type="number"
+    id="kaedokiSecond"
+    placeholder="例 4500"
+  >
+</div>  
+
+</section>
+
+ <!-- 分割② -->
+<section class="card">
+
+  <h2>📱 分割②（付属品）</h2> 
+
+<label>商品名</label>
+<input type="text" placeholder="商品名">
+
+<label>付属品価格</label>
+<input
+  type="number"
+  id="device2Price"
+  placeholder="金額"
+>
+
+<label>頭金</label>
+<input
+  type="number"
+  id="device2DownPayment"
+  placeholder="金額"
+>
+
+<label>割引額</label>
+<input
+  type="number"
+  id="device2Discount"
+  placeholder="0"
+>
+
+<label>回数</label>
+<select id="device2PaymentType">
+  <option value="12">12回</option>
+  <option value="24">24回</option>
+  <option value="36">36回</option>
+</select>
+
+</section>  
+
+<!-- 分割③ -->
+ <section class="card"> 
+
+ <h2>📱 分割③（付属品）</h2> 
+  
+<label>商品名</label>
+<input type="text" placeholder="商品名">
+
+<label>付属品価格</label>
+<input
+  type="number"
+  id="device3Price"
+  placeholder="金額"
+>
+
+<label>頭金</label>
+<input
+  type="number"
+  id="device3DownPayment"
+  placeholder="金額"
+>
+
+<label>割引額</label>
+<input
+  type="number"
+  id="device3Discount"
+  placeholder="0"
+>
+
+<label>回数</label>
+<select id="device3PaymentType">
+  <option value="12">12回</option>
+  <option value="24">24回</option>
+  <option value="36">36回</option>
+</select>
+
+</section>
+
+ <!-- 本日購入品 -->
+<section class="card">
+
+  <h2>🛍️ 本日購入品</h2>
+
+  <div class="purchase-row">
+  <input type="text" placeholder="商品名">
+  <input
+    type="number"
+    id="purchase1Price"
+    placeholder="金額"
+  >
+</div>
+
+<div class="purchase-row">
+  <input type="text" placeholder="商品名">
+  <input
+    type="number"
+    id="purchase2Price"
+    placeholder="金額"
+  >
+</div>
+
+<div class="purchase-row">
+  <input type="text" placeholder="商品名">
+  <input
+    type="number"
+    id="purchase3Price"
+    placeholder="金額"
+  >
+</div>
+
+<div class="purchase-row">
+  <input type="text" placeholder="商品名">
+  <input
+    type="number"
+    id="purchase4Price"
+    placeholder="金額"
+  >
+</div>
+
+<div class="purchase-row">
+  <input type="text" placeholder="商品名">
+  <input
+    type="number"
+    id="purchase5Price"
+    placeholder="金額"
+  >
+</div>
+
+</section>  
+
+
+  <!-- 手数料 -->
+<section class="card">
+
+  <h2>🧾 手数料</h2>
+
+  <label><input type="checkbox" id="filmService">
+     フィルム貼り付け（1,100円）</label>
+
+  <label><input type="checkbox" id="dataTransfer">
+         データ移行（2,200円）</label>
+
+  <label><input type="checkbox" id="irumoTransfer">
+    irumo・mini・ahamoデータ移行（3,300円）</label>
+
+  <label><input type="checkbox" id="appTransfer">
+      アプリ移行（30分）（3,300円）</label>
+
+  <label><input type="checkbox" id="deviceChange">
+          機種変更（4,950円）</label>
+
+  <label><input type="checkbox" id="planChange">
+       4G→5Gプラン変更のみ（4,950円）</label>
+
+</section>
+
   <!-- 現在契約・変更後契約 -->
   <div class="compare-grid">
 
@@ -1139,237 +1370,7 @@ h3{
 
 </div>
 
-</section>
-
-  <!-- 分割① -->
-<section class="card">
-
-  <h2>📱 分割①（本体）</h2>
-
-  <label>メーカー</label>
-<select
-  id="phoneMaker"
-  onchange="loadModels()"
->
-  <option value="">
-    メーカーを選択
-  </option>
-</select>
-
-<label>機種</label>
-<select
-  id="phoneModel"
-  onchange="loadPhoneData()"
->
-  <option value="">
-    機種を選択
-  </option>
-</select>
-
-  <label>購入方法</label>
- <select
- id="devicePaymentType"
- onchange="toggleKaedoki()"
->
-  <option value="0">一括</option>
-  <option value="23">カエドキ</option>
-  <option value="12">12回</option>
-  <option value="24">24回</option>
-  <option value="36">36回</option>
-</select>
-
-  <label>一括価格</label>
- <input
-  type="number"
-  id="devicePrice"
-  placeholder="金額"
->
-
-  <label>頭金</label>
- <input
-  type="number"
-  id="downPayment"
-  placeholder="金額"
->
-
-  <label>割引額</label>
-  <input
-  type="number"
-  id="deviceDiscount"
-  placeholder="0"
->
-
-<div id="kaedokiArea" style="display:none;">
-  <label>1～23回目月額</label>
-  <input
-    type="number"
-    id="kaedokiFirst"
-    placeholder="例 2500"
-  >
-
-  <label>24～47回目月額</label>
-  <input
-    type="number"
-    id="kaedokiSecond"
-    placeholder="例 4500"
-  >
-</div>  
-
-</section>
-
- <!-- 分割② -->
-<section class="card">
-
-  <h2>📱 分割②（付属品）</h2> 
-
-<label>商品名</label>
-<input type="text" placeholder="商品名">
-
-<label>付属品価格</label>
-<input
-  type="number"
-  id="device2Price"
-  placeholder="金額"
->
-
-<label>頭金</label>
-<input
-  type="number"
-  id="device2DownPayment"
-  placeholder="金額"
->
-
-<label>割引額</label>
-<input
-  type="number"
-  id="device2Discount"
-  placeholder="0"
->
-
-<label>回数</label>
-<select id="device2PaymentType">
-  <option value="12">12回</option>
-  <option value="24">24回</option>
-  <option value="36">36回</option>
-</select>
-
 </section>  
-
-<!-- 分割③ -->
- <section class="card"> 
-
- <h2>📱 分割③（付属品）</h2> 
-  
-<label>商品名</label>
-<input type="text" placeholder="商品名">
-
-<label>付属品価格</label>
-<input
-  type="number"
-  id="device3Price"
-  placeholder="金額"
->
-
-<label>頭金</label>
-<input
-  type="number"
-  id="device3DownPayment"
-  placeholder="金額"
->
-
-<label>割引額</label>
-<input
-  type="number"
-  id="device3Discount"
-  placeholder="0"
->
-
-<label>回数</label>
-<select id="device3PaymentType">
-  <option value="12">12回</option>
-  <option value="24">24回</option>
-  <option value="36">36回</option>
-</select>
-
-</section>
-
-
-  <!-- 手数料 -->
-<section class="card">
-
-  <h2>🧾 手数料</h2>
-
-  <label><input type="checkbox" id="filmService">
-     フィルム貼り付け（1,100円）</label>
-
-  <label><input type="checkbox" id="dataTransfer">
-         データ移行（2,200円）</label>
-
-  <label><input type="checkbox" id="irumoTransfer">
-    irumo・mini・ahamoデータ移行（3,300円）</label>
-
-  <label><input type="checkbox" id="appTransfer">
-      アプリ移行（30分）（3,300円）</label>
-
-  <label><input type="checkbox" id="deviceChange">
-          機種変更（4,950円）</label>
-
-  <label><input type="checkbox" id="planChange">
-       4G→5Gプラン変更のみ（4,950円）</label>
-
-</section>
-
- <!-- 本日購入品 -->
-<section class="card">
-
-  <h2>🛍️ 本日購入品</h2>
-
-  <div class="purchase-row">
-  <input type="text" placeholder="商品名">
-  <input
-    type="number"
-    id="purchase1Price"
-    placeholder="金額"
-  >
-</div>
-
-<div class="purchase-row">
-  <input type="text" placeholder="商品名">
-  <input
-    type="number"
-    id="purchase2Price"
-    placeholder="金額"
-  >
-</div>
-
-<div class="purchase-row">
-  <input type="text" placeholder="商品名">
-  <input
-    type="number"
-    id="purchase3Price"
-    placeholder="金額"
-  >
-</div>
-
-<div class="purchase-row">
-  <input type="text" placeholder="商品名">
-  <input
-    type="number"
-    id="purchase4Price"
-    placeholder="金額"
-  >
-</div>
-
-<div class="purchase-row">
-  <input type="text" placeholder="商品名">
-  <input
-    type="number"
-    id="purchase5Price"
-    placeholder="金額"
-  >
-</div>
-
-</section>
 
 <button onclick="calculateEstimate()">
   ✨ 見積作成
