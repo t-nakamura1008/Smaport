@@ -1619,7 +1619,17 @@ async function loadPhoneData() {
 
 }
 
-function calculateEstimate() {  
+function calculateEstimate() {
+
+let currentTotal =
+  Number(
+    document.getElementById("currentPlan").value || 0
+  );
+
+let newTotal =
+  Number(
+    document.getElementById("newPlan").value || 0
+  );
 
 let currentPointTotal = 0;
 let newPointTotal = 0;
