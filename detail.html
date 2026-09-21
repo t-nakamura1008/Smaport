@@ -263,17 +263,29 @@ body{
   margin-top:20px;
 }
 
-.point-column{
-  background:#fff;
+.point-card{
+  background:white;
   border-radius:12px;
   padding:20px;
-  border:1px solid #e5e7eb;
+  border:2px solid #f59e0b;
 }
 
-.point-column h3{
+.point-card h3{
   text-align:center;
-  margin-top:0;
   margin-bottom:15px;
+}
+
+.point-row{
+  display:flex;
+  justify-content:space-between;
+  padding:12px 0;
+  border-bottom:1px solid #eee;
+}
+
+.point-row.total{
+  font-size:22px;
+  font-weight:bold;
+  color:#2563eb;
 }
   
 </style>
@@ -489,60 +501,55 @@ body{
   </div>
 
 <div class="point-compare">
-  
-  <div class="point-column">
- <h3>📱現在ポイント</h3>
-  <strong id="currentPointTotal"></strong>
-</div>
 
-<div class="point-summary">
-  <div class="point-box">
-    <span>基本</span>
-    <strong id="currentBasePoint"></strong>
+  <div class="point-card">
+    <h3>📱現在ポイント</h3>
+
+    <div class="point-row">
+      <span>基本</span>
+      <strong id="currentBasePoint"></strong>
+    </div>
+
+    <div class="point-row">
+      <span>ポイ活</span>
+      <strong id="currentPoiPoint"></strong>
+    </div>
+
+    <div class="point-row">
+      <span>ファミリー</span>
+      <strong id="currentFamilyPoint"></strong>
+    </div>
+
+    <div class="point-row total">
+      <span>合計</span>
+      <strong id="currentTotalPoint"></strong>
+    </div>
   </div>
 
-  <div id="currentPoiArea" class="point-box">
-    <span>ポイ活</span>
-    <strong id="currentPoiPoint"></strong>
+  <div class="point-card">
+    <h3>✨提案後ポイント</h3>
+
+    <div class="point-row">
+      <span>基本</span>
+      <strong id="newBasePoint"></strong>
+    </div>
+
+    <div class="point-row">
+      <span>ポイ活</span>
+      <strong id="newPoiPoint"></strong>
+    </div>
+
+    <div class="point-row">
+      <span>ファミリー</span>
+      <strong id="newFamilyPoint"></strong>
+    </div>
+
+    <div class="point-row total">
+      <span>合計</span>
+      <strong id="newTotalPoint"></strong>
+    </div>
   </div>
 
-  <div id="currentFamilyArea" class="point-box">
-    <span>ファミリー</span>
-    <strong id="currentFamilyPoint"></strong>
-  </div>
-
-  <div class="point-box total">
-    <span>合計</span>
-    <strong id="currentTotalPoint"></strong>
-  </div>
-</div>
-
-  <div class="point-column">
- <h3>✨提案後ポイント</h3>
-  <strong id="newPointTotal"></strong>
-</div>
-
-<div class="point-summary">
-  <div class="point-box">
-    <span>基本</span>
-    <strong id="newBasePoint"></strong>
-  </div>
-
-  <div id="newPoiArea" class="point-box">
-    <span>ポイ活</span>
-    <strong id="newPoiPoint"></strong>
-  </div>
-
-  <div id="newFamilyArea" class="point-box">
-    <span>ファミリー</span>
-    <strong id="newFamilyPoint"></strong>
-  </div>
-
-  <div class="point-box total">
-    <span>合計</span>
-    <strong id="newTotalPoint"></strong>
-  </div>
-  
 </div>
 
   <div class="card">
