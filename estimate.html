@@ -426,13 +426,20 @@ h3{
   <h2>📱 分割②（付属品）</h2> 
 
 <label>商品名</label>
-<input type="text" placeholder="商品名">
+<select id="device2Name">
+  <option value="">選択してください</option>
+  <option value="PhotoCube C SE 128GB">
+    PhotoCube C SE 128GB
+  </option>
+  <option value="PhotoCube C SE 256GB">
+    PhotoCube C SE 256GB
+  </option>
+</select>
 
 <label>付属品価格</label>
-<input
-  type="number"
-  id="device2Price"
-  placeholder="金額"
+<select
+  id="device2Name"
+  onchange="setDevice2Price()"
 >
 
 <label>頭金</label>
@@ -4430,6 +4437,21 @@ universalFee: 3,
   window.location.href = "detail.html";
 
 }
+
+function setDevice2Price(){
+
+  const prices = {
+    "PhotoCube C SE 128GB": 30261,
+    "PhotoCube C SE 256GB": 38181
+  };
+
+  const name =
+    document.getElementById("device2Name").value;
+
+  document.getElementById("device2Price").value =
+    prices[name] || "";
+
+}  
 
 </script>
 
