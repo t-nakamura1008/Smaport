@@ -1466,6 +1466,40 @@ const sbClient = window.supabase.createClient(
     supabaseKey
 );
 
+async function loadMakers() {
+
+  const { data, error } = await sbClient
+    .from("Phones")
+    .select("maker")
+    .eq("deleted", false);
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  const makers = [...new Set(data.map(p => p.maker))];
+
+  const makerSelect =
+    document.getElementById("phoneMaker");
+
+  makers.forEach(maker => {
+
+    makerSelect.innerHTML += `
+      <option value="${maker}">
+        ${maker}
+      </option>
+    `;
+
+  });
+
+}
+
+window.addEventListener(
+  "DOMContentLoaded",
+  loadMakers
+);  
+
 function calculateEstimate() {
 
   let currentTotal =
