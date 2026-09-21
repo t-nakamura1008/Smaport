@@ -1674,7 +1674,15 @@ let currentFamilyPoint = 0;
 
 let newBasePoint = 0;
 let newPoiPoint = 0;
-let newFamilyPoint = 0;  
+let newFamilyPoint = 0;
+
+window.currentBasePoint = currentBasePoint;
+window.currentPoiPoint = currentPoiPoint;
+window.currentFamilyPoint = currentFamilyPoint;
+
+window.newBasePoint = newBasePoint;
+window.newPoiPoint = newPoiPoint;
+window.newFamilyPoint = newFamilyPoint;  
 
 let currentPointBase = 0;
 let newPointBase = 0;
@@ -4428,31 +4436,23 @@ newWithDevice:
     "newWithDevice"
   ).textContent,
 
-currentBasePoint,
-currentPoiPoint,
-currentFamilyPoint,
-
-newBasePoint,
-newPoiPoint,
-newFamilyPoint,   
-
 currentBasePoint:
-  currentBasePoint,
+  window.currentBasePoint,
 
 currentPoiPoint:
-  currentPoiPoint,
+  window.currentPoiPoint,
 
 currentFamilyPoint:
-  currentFamilyPoint,
+  window.currentFamilyPoint,
 
 newBasePoint:
-  newBasePoint,
+  window.newBasePoint,
 
 newPoiPoint:
-  newPoiPoint,
+  window.newPoiPoint,
 
 newFamilyPoint:
-  newFamilyPoint,
+  window.newFamilyPoint,
     
 universalFee: 3,     
     
