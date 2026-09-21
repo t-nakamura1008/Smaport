@@ -504,9 +504,11 @@ body{
 
   <h3>📱現在ポイント</h3>
 
-  <div id="currentPointDetail">
+  <div id="currentPointSimple"></div>
 
-    <div class="point-formula">
+    <div id="currentPointDetail">
+
+   <div class="point-formula">   
 
       <span>
         基本<br>
@@ -544,7 +546,9 @@ body{
 
    <h3>✨提案後ポイント</h3>
 
-<div id="newPointDetail">
+<div id="newPointSimple"></div>
+
+  <div id="newPointDetail">  
 
   <div class="point-formula">
 
@@ -739,26 +743,6 @@ document.getElementById("newTotalPoint").textContent =
   
 
 console.log(data);
-
-const currentPoikatsu =
-  Number(data.currentPoiPoint) > 0 ||
-  Number(data.currentFamilyPoint) > 0;
-
-if(!currentPoikatsu){
-  document.getElementById(
-    "currentPointDetail"
-  ).style.display = "none";
-}
-
-const newPoikatsu =
-  Number(data.newPoiPoint) > 0 ||
-  Number(data.newFamilyPoint) > 0;
-
-if(!newPoikatsu){
-  document.getElementById(
-    "newPointDetail"
-  ).style.display = "none";
-}  
 
 console.log("newTotal", data.newTotal);
 console.log("currentTotal", data.currentTotal);
