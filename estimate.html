@@ -1484,12 +1484,20 @@ async function loadMakers() {
     return;
   }
 
-  const makers = [...new Set(data.map(p => p.maker))];
+ const fixedMakers = [
+    "Apple",
+    "Google",
+    "Samsung",
+    "SONY",
+    "SHARP",
+    "FCNT",
+    "タブレット"
+];
 
   const makerSelect =
     document.getElementById("phoneMaker");
 
-  makers.forEach(maker => {
+  fixedMakers.forEach(maker => {
 
     makerSelect.innerHTML += `
       <option value="${maker}">
