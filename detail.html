@@ -256,26 +256,55 @@ body{
   font-weight:700;
 }  
 
+.point-compare{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  margin-top:20px;
+}
+
+.point-side{
+  background:#fff7ed;
+  border:2px solid #f59e0b;
+  border-radius:16px;
+  padding:20px;
+}
+
 .point-side h3{
   font-size:24px;
+  margin-bottom:20px;
 }
 
 .point-row{
-  font-size:18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
   padding:10px 0;
+  border-bottom:1px solid #ddd;
+  font-size:18px;
+  font-weight:700;
 }
 
 .point-row strong{
-  font-size:26px;
   color:#2563eb;
+  font-size:26px;
 }
 
 .point-total{
+  margin-top:15px;
+  padding:15px;
+  background:#eff6ff;
+  border:2px solid #2563eb;
+  border-radius:12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-weight:bold;
   font-size:20px;
 }
 
 .point-total strong{
-  font-size:34px;
+  font-size:40px;
   color:#2563eb;
 }
   
