@@ -722,6 +722,20 @@ else if(
 
 console.log(data);
 
+console.log("現在ポイント", {
+  base: data.currentBasePoint,
+  poi: data.currentPoiPoint,
+  family: data.currentFamilyPoint,
+  total: data.currentPointTotal
+});
+
+console.log("提案ポイント", {
+  base: data.newBasePoint,
+  poi: data.newPoiPoint,
+  family: data.newFamilyPoint,
+  total: data.newPointTotal
+});  
+
 console.log("newTotal", data.newTotal);
 console.log("currentTotal", data.currentTotal);
 console.log("newWithDevice", data.newWithDevice);
