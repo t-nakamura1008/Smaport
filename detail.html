@@ -503,6 +503,16 @@ body{
  </div>    
 
 </div>
+
+<div class="point-row">
+  <span>月額料金</span>
+  <strong id="currentTotalResult"></strong>
+</div>
+
+<div class="point-row">
+  <span>月額料金</span>
+  <strong id="newTotalResult"></strong>
+</div> 
   
 <div class="point-compare">
 
@@ -1280,7 +1290,11 @@ if(currentOtherHtml === ""){
     "currentOtherSection"
   ).style.display = "none";
 }
-   
+
+document.getElementById(
+  "currentTotalResult"
+).textContent =
+  data.currentTotal;
 
 let newPlanHtml = `
 <div class="detail-row">
@@ -1739,7 +1753,12 @@ if(newOtherHtml === ""){
   document.getElementById(
     "newOtherSection"
   ).style.display = "none";
-}    
+}
+
+document.getElementById(
+  "newTotalResult"
+).textContent =
+  data.newTotal;  
 
 document.getElementById(
   "detailDifference"
