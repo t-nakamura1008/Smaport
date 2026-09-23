@@ -603,47 +603,7 @@ body{
 
 const data = JSON.parse(
   localStorage.getItem("estimateData")
-);
-
-  <div>
-    <div>基本</div>
-    <strong style="
-      font-size:32px;
-      color:#2563eb;
-    ">
-      ${data.currentBasePoint}pt
-    </strong>
-  </div>
-`;
-}  
-
-if(newPoikatsu){
-
-  document.getElementById(
-    "newPointSimple"
-  ).style.display = "none";
-
-}else{
-
-  document.getElementById(
-    "newPointDetail"
-  ).style.display = "none";
-
- document.getElementById(
-  "newPointSimple"
-).innerHTML =
-`
-  <div>
-    <div>基本</div>
-    <strong style="
-      font-size:32px;
-      color:#2563eb;
-    ">
-      ${data.newBasePoint}pt
-    </strong>
-  </div>
-`;
-}  
+); 
 
 document.getElementById("currentBasePoint").textContent =
   data.currentBasePoint + "pt";
