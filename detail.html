@@ -259,7 +259,7 @@ body{
 .point-compare{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:15px;
+  gap:20px;
   margin-top:20px;
 }
 
@@ -268,41 +268,42 @@ body{
   border:2px solid #f59e0b;
   border-radius:16px;
   padding:20px;
+}
+
+.point-side h3{
   text-align:center;
+  margin-bottom:20px;
 }
 
-.point-breakdown{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
+.point-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 0;
+  border-bottom:1px solid #ddd;
+  font-size:18px;
 }
 
-.point-item{
-  background:white;
-  border-radius:12px;
-  padding:12px;
-}
-
-.point-item strong{
-  display:block;
-  margin-top:8px;
-  font-size:26px;
+.point-row strong{
   color:#2563eb;
+  font-size:26px;
 }
 
 .point-total{
-  grid-column:1 / 4;
-  margin-top:10px;
+  margin-top:15px;
+  padding:15px;
   background:#eff6ff;
   border:2px solid #2563eb;
   border-radius:12px;
-  padding:15px;
-  font-size:20px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
   font-weight:bold;
 }
 
 .point-total strong{
-  display:block;
   font-size:34px;
   color:#2563eb;
 }
@@ -503,93 +504,61 @@ body{
 
 </div>
   
-<div class="result-compare">
-
-  <div class="result-box total-box">
-    <span>📱現在合計</span>
-    <strong id="currentTotalResult">
-      0円
-    </strong>
-  </div>
-
-  <div class="result-box total-box">
-    <span>✨提案合計</span>
-    <strong id="newTotalResult">
-      0円
-    </strong>
-  </div>
-
-</div> <!-- result-compare -->
-  
 <div class="point-compare">
-
-<div class="point-side">
-
-  <h3>📱現在ポイント</h3>
-
-  <div id="currentPointSimple"></div>
-
-    <div id="currentPointDetail">
-
-  <div class="point-breakdown">
-
-  <div class="point-item">
-    <div>基本</div>
-    <strong id="currentBasePoint"></strong>
-  </div>
-
-  <div class="point-item">
-    <div>ポイ活還元</div>
-    <strong id="currentPoiPoint"></strong>
-  </div>
-
-  <div class="point-item">
-    <div>ファミリー特典</div>
-    <strong id="currentFamilyPoint"></strong>
-  </div>
-
-  <div class="point-total">
-    合計
-    <strong id="currentTotalPoint"></strong>
-  </div>
-
-</div>
-
-</div>
 
   <div class="point-side">
 
-  <h3>✨提案後ポイント</h3>
+    <h3>📱現在ポイント</h3>
 
-  <div id="newPointSimple"></div>
+    <div class="point-row">
+      <span>基本</span>
+      <strong id="currentBasePoint"></strong>
+    </div>
 
-  <div id="newPointDetail">
+    <div class="point-row">
+      <span>ポイ活還元</span>
+      <strong id="currentPoiPoint"></strong>
+    </div>
 
-    <div class="point-breakdown">
+    <div class="point-row">
+      <span>ファミリー特典</span>
+      <strong id="currentFamilyPoint"></strong>
+    </div>
 
-      <div class="point-item">
-        <div>基本</div>
-        <strong id="newBasePoint"></strong>
-      </div>
-
-      <div class="point-item">
-        <div>ポイ活還元</div>
-        <strong id="newPoiPoint"></strong>
-      </div>
-
-      <div class="point-item">
-        <div>ファミリー特典</div>
-        <strong id="newFamilyPoint"></strong>
-      </div>
-
-      <div class="point-total">
-        合計
-        <strong id="newTotalPoint"></strong>
-      </div>
-
+    <div class="point-total">
+      <span>合計</span>
+      <strong id="currentTotalPoint"></strong>
     </div>
 
   </div>
+
+  <div class="point-side">
+
+    <h3>✨提案後ポイント</h3>
+
+    <div class="point-row">
+      <span>基本</span>
+      <strong id="newBasePoint"></strong>
+    </div>
+
+    <div class="point-row">
+      <span>ポイ活還元</span>
+      <strong id="newPoiPoint"></strong>
+    </div>
+
+    <div class="point-row">
+      <span>ファミリー特典</span>
+      <strong id="newFamilyPoint"></strong>
+    </div>
+
+    <div class="point-total">
+      <span>合計</span>
+      <strong id="newTotalPoint"></strong>
+    </div>
+
+  </div>
+
+</div>
 
 </div>  
   
