@@ -271,23 +271,40 @@ body{
   text-align:center;
 }
 
-.point-formula{
-  display:flex;
-  justify-content:center;
-  align-items:center;
+.point-breakdown{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
   gap:15px;
-  font-size:18px;
-  flex-wrap:wrap;
 }
 
-.point-formula strong{
+.point-item{
+  background:white;
+  border-radius:12px;
+  padding:12px;
+}
+
+.point-item strong{
   display:block;
-  font-size:28px;
+  margin-top:8px;
+  font-size:26px;
   color:#2563eb;
 }
 
-.point-formula span{
+.point-total{
+  grid-column:1 / 4;
+  margin-top:10px;
+  background:#eff6ff;
+  border:2px solid #2563eb;
+  border-radius:12px;
+  padding:15px;
+  font-size:20px;
   font-weight:bold;
+}
+
+.point-total strong{
+  display:block;
+  font-size:34px;
+  color:#2563eb;
 }
   
 </style>
@@ -514,76 +531,52 @@ body{
 
     <div id="currentPointDetail">
 
-   <div class="point-formula">   
+  <div class="point-breakdown">
 
-      <span>
-        基本<br>
-        <strong id="currentBasePoint"></strong>
-      </span>
+  <div class="point-item">
+    <div>基本</div>
+    <strong id="currentBasePoint"></strong>
+  </div>
 
-      <span>＋</span>
+  <div class="point-item">
+    <div>ポイ活還元</div>
+    <strong id="currentPoiPoint"></strong>
+  </div>
 
-      <span>
-        ポイ活還元<br>
-        <strong id="currentPoiPoint"></strong>
-      </span>
+  <div class="point-item">
+    <div>ファミリー特典</div>
+    <strong id="currentFamilyPoint"></strong>
+  </div>
 
-      <span>＋</span>
-
-      <span>
-        ファミリー特典<br>
-        <strong id="currentFamilyPoint"></strong>
-      </span>
-
-      <span>＝</span>
-
-      <span>
-        合計<br>
-        <strong id="currentTotalPoint"></strong>
-      </span>
-
-    </div>
-
+  <div class="point-total">
+    合計
+    <strong id="currentTotalPoint"></strong>
   </div>
 
 </div>
 
-  <div class="point-side">
+</div>
 
-   <h3>✨提案後ポイント</h3>
+  <div class="point-breakdown">
 
-<div id="newPointSimple"></div>
+  <div class="point-item">
+    <div>基本</div>
+    <strong id="newBasePoint"></strong>
+  </div>
 
-  <div id="newPointDetail">  
+  <div class="point-item">
+    <div>ポイ活還元</div>
+    <strong id="newPoiPoint"></strong>
+  </div>
 
-  <div class="point-formula">
+  <div class="point-item">
+    <div>ファミリー特典</div>
+    <strong id="newFamilyPoint"></strong>
+  </div>
 
-    <span>
-      基本<br>
-      <strong id="newBasePoint"></strong>
-    </span>
-
-    <span>＋</span>
-
-    <span>
-      ポイ活還元<br>
-      <strong id="newPoiPoint"></strong>
-    </span>
-
-    <span>＋</span>
-
-    <span>
-      ファミリー特典<br>
-      <strong id="newFamilyPoint"></strong>
-    </span>
-
-    <span>＝</span>
-
-    <span>
-      合計<br>
-      <strong id="newTotalPoint"></strong>
-    </span>
-
+  <div class="point-total">
+    合計
+    <strong id="newTotalPoint"></strong>
   </div>
 
 </div>
@@ -669,8 +662,10 @@ const data = JSON.parse(
 );
 
 const currentPoikatsu =
-  Number(data.currentPoiPoint) > 0 ||
-  Number(data.currentFamilyPoint) > 0;
+  data.currentPlanName.includes("ポイ活");
+
+const newPoikatsu =
+  data.newPlanName.includes("ポイ活");
 
 if(currentPoikatsu){
 
