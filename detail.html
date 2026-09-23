@@ -504,15 +504,20 @@ body{
 
 </div>
 
-<div class="point-row">
-  <span>月額料金</span>
-  <strong id="currentTotalResult"></strong>
+<div class="result-compare">
+
+  <div class="total-box result-box">
+    <span>📱 現在月額料金</span>
+    <strong id="currentTotalResult"></strong>
+  </div>
+
+  <div class="total-box result-box">
+    <span>✨ 提案後月額料金</span>
+    <strong id="newTotalResult"></strong>
+  </div>
+
 </div>
 
-<div class="point-row">
-  <span>月額料金</span>
-  <strong id="newTotalResult"></strong>
-</div> 
   
 <div class="point-compare">
 
@@ -673,6 +678,35 @@ document.getElementById("newFamilyPoint").textContent =
 document.getElementById("newTotalPoint").textContent =
   data.newPointTotal;
 
+const isCurrentPoikatsu =
+  data.currentPlanName.includes("ポイ活");
+
+if(!isCurrentPoikatsu){
+
+  document.getElementById("currentPoiPoint")
+    .parentElement.style.display = "none";
+
+  document.getElementById("currentFamilyPoint")
+    .parentElement.style.display = "none";
+
+  document.getElementById("currentTotalPoint")
+    .parentElement.parentElement.style.display = "none";
+}
+
+const isNewPoikatsu =
+  data.newPlanName.includes("ポイ活");
+
+if(!isNewPoikatsu){
+
+  document.getElementById("newPoiPoint")
+    .parentElement.style.display = "none";
+
+  document.getElementById("newFamilyPoint")
+    .parentElement.style.display = "none";
+
+  document.getElementById("newTotalPoint")
+    .parentElement.parentElement.style.display = "none";
+}  
   
 
 console.log(data);
