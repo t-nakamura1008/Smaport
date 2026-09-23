@@ -259,53 +259,19 @@ body{
 .point-compare{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:20px;
-  margin-top:20px;
+  gap:0;
+  border:2px solid #f59e0b;
+  border-radius:16px;
+  overflow:hidden;
 }
 
 .point-side{
   background:#fff7ed;
-  border:2px solid #f59e0b;
-  border-radius:16px;
   padding:20px;
 }
 
-.point-side h3{
-  text-align:center;
-  margin-bottom:20px;
-}
-
-.point-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:10px 0;
-  border-bottom:1px solid #ddd;
-  font-size:18px;
-}
-
-.point-row strong{
-  color:#2563eb;
-  font-size:26px;
-}
-
-.point-total{
-  margin-top:15px;
-  padding:15px;
-  background:#eff6ff;
-  border:2px solid #2563eb;
-  border-radius:12px;
-
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  font-weight:bold;
-}
-
-.point-total strong{
-  font-size:34px;
-  color:#2563eb;
+.point-side:first-child{
+  border-right:1px solid #f59e0b;
 }
   
 </style>
@@ -639,28 +605,6 @@ const data = JSON.parse(
   localStorage.getItem("estimateData")
 );
 
-const currentPoikatsu =
-  data.currentPlanName.includes("ポイ活");
-
-const newPoikatsu =
-  data.newPlanName.includes("ポイ活");
-
-if(currentPoikatsu){
-
-  document.getElementById(
-    "currentPointSimple"
-  ).style.display = "none";
-
-}else{
-
-  document.getElementById(
-    "currentPointDetail"
-  ).style.display = "none";
-
-  document.getElementById(
-  "currentPointSimple"
-).innerHTML =
-`
   <div>
     <div>基本</div>
     <strong style="
