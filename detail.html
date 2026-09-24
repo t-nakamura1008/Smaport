@@ -789,10 +789,13 @@ if(data.currentHikariDiscount > 0){
 
 if(data.currentDcardDiscount > 0){
   currentPlanHtml += createDiscountRow(
-  `dカードお支払割（${data.dcardType}）`,
-  data.currentDcardDiscount
- );
-}  
+    getDcardDiscountLabel(
+      data.currentPlanName,
+      data.dcardType
+    ),
+    data.currentDcardDiscount
+  );
+}
 
 if(data.currentDenkiDiscount > 0){
   currentPlanHtml += createDiscountRow(
@@ -1403,10 +1406,13 @@ if(data.newHikariDiscount > 0){
 
 if(data.newDcardDiscount > 0){
   newPlanHtml += createDiscountRow(
-  `dカードお支払割（${data.dcardType}）`,
-  data.newDcardDiscount
- );
-}  
+    getDcardDiscountLabel(
+      data.newPlanName,
+      data.dcardType
+    ),
+    data.newDcardDiscount
+  );
+}
 
 if(data.newDenkiDiscount > 0){
   newPlanHtml += createDiscountRow(
@@ -2207,6 +2213,30 @@ function needsUsage(planName){
     planName.includes("5Gギガライト") ||
     planName.includes("ギガホ")
   );
+}
+
+function getDcardDiscountLabel(
+  planName,
+  dcardType
+){
+
+  const targetPlans = [
+    "ドコモMAX",
+    "ドコモポイ活MAX",
+    "ドコモポイ活20",
+    "ドコモ mini"
+  ];
+
+  const isTarget =
+    targetPlans.some(plan =>
+      planName.includes(plan)
+    );
+
+  if(isTarget){
+    return `dカードお支払割（${dcardType}）`;
+  }
+
+  return "dカードお支払割";
 }  
   
 </script>  
