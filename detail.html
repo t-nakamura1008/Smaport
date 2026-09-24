@@ -1111,8 +1111,7 @@ if(isNewMaxPlan){
   const freeBenefits =
     data.newFreeBenefits || [];
 
-  (data.newSelectedBenefits || []).forEach(item => {
-
+ (data.newFreeBenefits || []).forEach(item => {
     const fee =
       freeBenefits.includes(item)
         ? "無料"
