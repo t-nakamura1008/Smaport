@@ -1895,18 +1895,18 @@ console.log("kaedokiSecond",data.kaedokiSecond);
   points.push(47);
 
   proposalPeriods.push({
-    start:1,
-    end:23,
-    amount:Number(data.kaedokiFirst || 0)
-  });
+  type:"①",
+  start:1,
+  end:23,
+  amount:Number(data.kaedokiFirst || 0)
+});
 
   proposalPeriods.push({
-    start:24,
-    end:47,
-    amount:Number(data.kaedokiSecond || 0)
-  });
-
-}
+  type:"①",
+  start:24,
+  end:47,
+  amount:Number(data.kaedokiSecond || 0)
+});
 
 // 分割②
 const device2Monthly =
@@ -1928,12 +1928,11 @@ if(device2Monthly > 0){
   points.push(months);
 
   proposalPeriods.push({
-    start:1,
-    end:months,
-    amount:device2Monthly
-  });
-
-}
+  type:"②",
+  start:1,
+  end:months,
+  amount:device2Monthly
+});
 
 // 分割③
 const device3Monthly =
@@ -1954,12 +1953,13 @@ if(device3Monthly > 0){
 
   points.push(months);
 
-  proposalPeriods.push({
-    start:1,
-    end:months,
-    amount:device3Monthly
-  });
-
+ proposalPeriods.push({
+  type:"③",
+  start:1,
+  end:months,
+  amount:device3Monthly
+});
+  
 }
 
 // 重複削除して並べる
@@ -2037,20 +2037,20 @@ ranges.forEach(r => {
 
   let installment = 0;
 
-  proposalPeriods.forEach(p => {
+  pproposalPeriods.forEach(p => {
 
-    const active =
-      r.start <= p.end &&
-      (
-        r.end === null ||
-        r.end >= p.start
-      );
+  const active =
+    r.start <= p.end &&
+    (
+      r.end === null ||
+      r.end >= p.start
+    );
 
-    if(active){
-      installment += p.amount;
-    }
+  if(active){
+    labels.push(p.type);
+  }
 
-  });
+});
 
   const currentTotal =
     currentPlanOnly + installment;
