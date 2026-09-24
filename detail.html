@@ -789,9 +789,9 @@ if(data.currentHikariDiscount > 0){
 
 if(data.currentDcardDiscount > 0){
   currentPlanHtml += createDiscountRow(
-    "dカードお支払割",
-    data.currentDcardDiscount
-  );
+  `dカードお支払割（${data.currentDcardType}）`,
+  data.currentDcardDiscount
+ );
 }  
 
 if(data.currentDenkiDiscount > 0){
@@ -1403,9 +1403,9 @@ if(data.newHikariDiscount > 0){
 
 if(data.newDcardDiscount > 0){
   newPlanHtml += createDiscountRow(
-    "dカードお支払割",
-    data.newDcardDiscount
-  );
+  `dカードお支払割（${data.newDcardType}）`,
+  data.newDcardDiscount
+ );
 }  
 
 if(data.newDenkiDiscount > 0){
