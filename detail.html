@@ -1973,6 +1973,14 @@ const uniquePoints =
   [...new Set(points)]
   .sort((a,b)=>a-b);
 
+if(points.length === 0){
+
+  document.getElementById(
+    "installmentTable"
+  ).closest(".card").style.display = "none";
+
+}  
+
 // 表の期間作成
 const ranges = [];
 
