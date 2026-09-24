@@ -2277,6 +2277,38 @@ async function saveEstimate() {
   const store =
     localStorage.getItem("store");
 
+  const today = new Date();
+
+  const mmdd =
+    String(today.getMonth() + 1).padStart(2, "0") +
+    String(today.getDate()).padStart(2, "0");
+
+  const startOfDay = new Date();
+  startOfDay.setHours(0, 0, 0, 0);
+
+  const endOfDay = new Date();
+  endOfDay.setHours(23, 59, 59, 999);
+
+  const { count } =
+    await mySupabase
+      .from("estimates")
+      .select("*", {
+        count: "exact",
+        head: true
+      })
+      .eq("store", store)
+      .gte(
+        "created_at",
+        startOfDay.toISOString()
+      )
+      .lte(
+        "created_at",
+        endOfDay.toISOString()
+      );
+
+  const printNo =
+    `${mmdd}-${String(count + 1).padStart(4, "0")}`;
+
   const estimateData =
     JSON.parse(
       localStorage.getItem("estimateData")
@@ -2286,21 +2318,28 @@ async function saveEstimate() {
     await mySupabase
       .from("estimates")
       .insert({
+        print_no: printNo,
         store: store,
         estimate_data: estimateData
       });
 
-  if(error){
-  console.error(error);
+  if (error) {
+    console.error(error);
+
+    alert(
+      "保存失敗\n" +
+      JSON.stringify(error)
+    );
+
+    return;
+  }
 
   alert(
-    "保存失敗\n" +
-    JSON.stringify(error)
-  );
+`保存しました
 
-  return;
-}
-  alert("保存成功");
+印刷番号
+${printNo}`
+  );
 }
 
 </script>  
