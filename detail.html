@@ -2041,62 +2041,67 @@ ranges.forEach(r => {
 
   let installment = 0;
 
-const labels = ["基本"];
+  const labels = ["基本"];
 
-proposalPeriods.forEach(p => {
+  proposalPeriods.forEach(p => {
 
-  const active =
-    r.start <= p.end &&
-    (
-      r.end === null ||
-      r.end >= p.start
-    );
+    const active =
+      r.start <= p.end &&
+      (
+        r.end === null ||
+        r.end >= p.start
+      );
 
-  if(active){
-    installment += p.amount;
-    labels.push(p.type);
-  }
+    if(active){
+      installment += p.amount;
+      labels.push(p.type);
+    }
 
-});
+  });
 
-const formula =
-  labels.join("＋");
+  const currentTotal =
+    currentPlanOnly + installment;
 
-const formula =
-  labels.join("＋");
+  const newTotal =
+    newBase + installment;
 
+  const title =
+    r.end === null
+      ? `${r.start}回～`
+      : `${r.start}～${r.end}回`;
 
-const formula =
-  labels.join("＋");
+  const formula =
+    labels.join("＋");
 
-html += `
-  <tr>
-    <td>${title}</td>
+  html += `
+    <tr>
+      <td>${title}</td>
 
-    <td>
-      <div style="font-size:14px;color:#666;">
-        ${formula}
-      </div>
-      <div>
-        <strong>
-          ${currentTotal.toLocaleString()}円
-        </strong>
-      </div>
-    </td>
+      <td>
+        <div style="font-size:14px;color:#666;">
+          ${formula}
+        </div>
+        <div>
+          <strong>
+            ${currentTotal.toLocaleString()}円
+          </strong>
+        </div>
+      </td>
 
-    <td>
-      <div style="font-size:14px;color:#666;">
-        ${formula}
-      </div>
-      <div>
-        <strong>
-          ${newTotal.toLocaleString()}円
-        </strong>
-      </div>
-    </td>
+      <td>
+        <div style="font-size:14px;color:#666;">
+          ${formula}
+        </div>
+        <div>
+          <strong>
+            ${newTotal.toLocaleString()}円
+          </strong>
+        </div>
+      </td>
 
-  </tr>
-`;
+    </tr>
+  `;
+
 });
   
 document.getElementById(
