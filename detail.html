@@ -2021,8 +2021,56 @@ console.log(
 // ヘッダー
 let html = `
 <tr>
-  <th></th>
+  <th>期間</th>
+  <th>現在</th>
+  <th>提案</th>
+</tr>
 `;
+
+ranges.forEach(r => {
+
+  let installment = 0;
+
+  proposalPeriods.forEach(p => {
+
+    const active =
+      r.start <= p.end &&
+      (
+        r.end === null ||
+        r.end >= p.start
+      );
+
+    if(active){
+      installment += p.amount;
+    }
+
+  });
+
+  const currentTotal =
+    r.end === null
+      ? currentPlanOnly
+      : currentPlanOnly + installment;
+
+  const newTotal =
+    r.end === null
+      ? newBase
+      : newBase + installment;
+
+  const title =
+    r.end === null
+      ? `${r.start}回～`
+      : `${r.start}～${r.end}回`;
+
+  html += `
+    <tr>
+      <td>${title}</td>
+      <td>${currentTotal.toLocaleString()}円</td>
+      <td>${newTotal.toLocaleString()}円</td>
+    </tr>
+  `;
+
+});
+  
 
 ranges.forEach(r => {
 
