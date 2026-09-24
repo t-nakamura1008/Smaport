@@ -2293,11 +2293,15 @@ alert("保存クリック");
       });
 
   if(error){
-    console.error(error);
-    alert("保存失敗");
-    return;
-  }
+  console.error(error);
 
+  alert(
+    "保存失敗\n" +
+    JSON.stringify(error)
+  );
+
+  return;
+}
   alert("保存成功");
 }
 
