@@ -2250,5 +2250,52 @@ function getDcardDiscountLabel(
   
 </script>  
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  
+<script>   
+
+const supabaseUrl =
+  "https://butujlsbdxaiuxitfyty.supabase.co";
+
+const supabaseKey =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1dHVqbHNiZHhhaXV4aXRmeXR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3MjI2OTUsImV4cCI6MjEwMzI5ODY5NX0.yDC6HpV6rQzeG88sVwDlLOPB1dC_I-r5ID1JXoTeCAU";
+
+const supabase =
+  window.supabase.createClient(
+    supabaseUrl,
+    supabaseKey
+  );
+
+ document
+  .getElementById("saveEstimateBtn")
+  .addEventListener("click", saveEstimate);
+
+async function saveEstimate() {
+
+  const store =
+    localStorage.getItem("store");
+
+  const estimateData =
+    JSON.parse(
+      localStorage.getItem("estimateData")
+    );
+
+  const { error } =
+    await supabase
+      .from("estimates")
+      .insert({
+        store: store,
+        estimate_data: estimateData
+      });
+
+  if(error){
+    console.error(error);
+    alert("保存失敗");
+    return;
+  }
+
+  alert("保存成功");
+} 
+
 </body>
 </html>
