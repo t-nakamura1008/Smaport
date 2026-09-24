@@ -2033,6 +2033,46 @@ let html = `
 </tr>
 `;
 
+ranges.forEach(r => {
+
+  let installment = 0;
+
+  proposalPeriods.forEach(p => {
+
+    const active =
+      r.start <= p.end &&
+      (
+        r.end === null ||
+        r.end >= p.start
+      );
+
+    if(active){
+      installment += p.amount;
+    }
+
+  });
+
+  const currentTotal =
+    currentPlanOnly + installment;
+
+  const newTotal =
+    newBase + installment;
+
+  const title =
+    r.end === null
+      ? `${r.start}回～`
+      : `${r.start}～${r.end}回`;
+
+  html += `
+    <tr>
+      <td>${title}</td>
+      <td>${currentTotal.toLocaleString()}円</td>
+      <td>${newTotal.toLocaleString()}円</td>
+    </tr>
+  `;
+
+});
+  
 document.getElementById(
   "installmentTable"
 ).innerHTML = html;  
