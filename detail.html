@@ -2073,30 +2073,34 @@ ranges.forEach(r => {
   const formula =
     labels.join("＋");
 
+    const breakdown =
+    installment > 0
+      ? `${newBase.toLocaleString()}円＋${installment.toLocaleString()}円`
+      : `${newBase.toLocaleString()}円`;
+
   html += `
     <tr>
       <td>${title}</td>
 
       <td>
         <div style="font-size:14px;color:#666;">
-          ${formula}
-        </div>
-        <div>
-          <strong>
-            ${currentTotal.toLocaleString()}円
-          </strong>
-        </div>
-      </td>
+  ${formula}
+</div>
 
-      <td>
-        <div style="font-size:14px;color:#666;">
-          ${formula}
-        </div>
-        <div>
-          <strong>
-            ${newTotal.toLocaleString()}円
-          </strong>
-        </div>
+<div style="font-size:16px;color:#555;">
+  ${breakdown}
+</div>
+
+</td>
+
+<td>
+
+<div>
+  <strong>
+    ＝${newTotal.toLocaleString()}円
+  </strong>
+</div>
+     
       </td>
 
     </tr>
