@@ -2058,19 +2058,71 @@ ranges.forEach(r => {
   const newTotal =
     newBase + installment;
 
-  const title =
-    r.end === null
-      ? `${r.start}回～`
-      : `${r.start}～${r.end}回`;
+ const title =
+  r.end === null
+    ? `${r.start}回～`
+    : `${r.start}～${r.end}回`;
 
-  html += `
-    <tr>
-      <td>${title}</td>
-      <td>${currentTotal.toLocaleString()}円</td>
-      <td>${newTotal.toLocaleString()}円</td>
-    </tr>
-  `;
+const labels = ["基本"];
 
+proposalPeriods.forEach((p,index) => {
+
+  const active =
+    r.start <= p.end &&
+    (
+      r.end === null ||
+      r.end >= p.start
+    );
+
+  if(active){
+
+    if(index === 0){
+      labels.push("①");
+    }
+
+    if(index === 1){
+      labels.push("②");
+    }
+
+    if(index === 2){
+      labels.push("③");
+    }
+
+  }
+
+});
+
+const formula =
+  labels.join("＋");
+
+html += `
+  <tr>
+    <td>${title}</td>
+
+    <td>
+      <div style="font-size:14px;color:#666;">
+        ${formula}
+      </div>
+      <div>
+        <strong>
+          ${currentTotal.toLocaleString()}円
+        </strong>
+      </div>
+    </td>
+
+    <td>
+      <div style="font-size:14px;color:#666;">
+        ${formula}
+      </div>
+      <div>
+        <strong>
+          ${newTotal.toLocaleString()}円
+        </strong>
+      </div>
+    </td>
+
+  </tr>
+`;
 });
   
 document.getElementById(
