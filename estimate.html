@@ -518,9 +518,9 @@ h3{
   dカード種別
   <select id="dcardType">
     <option>なし</option>
-    <option>dカード</option>
-    <option>dカード GOLD</option>
-    <option>dカード GOLD U</option>
+    <option>レギュラー</option>
+    <option>GOLD</option>
+    <option>GOLD U</option>
     <option>PLATINUM ～10万</option>
     <option>PLATINUM 10万～20万</option>
     <option>PLATINUM 20万～</option>
@@ -2063,15 +2063,15 @@ const dcardType =
 let specialDiscount = 0;
 let normalDiscount = 0;
 
-if (dcardType === "dカード") {
+if (dcardType === "レギュラー") {
 
   specialDiscount = 220;
   normalDiscount = 187;
 
 }
 else if (
-  dcardType === "dカード GOLD" ||
-  dcardType === "dカード GOLD U" ||
+  dcardType === "GOLD" ||
+  dcardType === "GOLD U" ||
   dcardType === "PLATINUM ～10万" ||
   dcardType === "PLATINUM 10万～20万" ||
   dcardType === "PLATINUM 20万～"
@@ -3006,13 +3006,13 @@ const familyCount =
 
 let poikatsuFamilyPoint = 0;
 
-if(dcardType === "dカード"){
+if(dcardType === "レギュラー"){
   poikatsuFamilyPoint =
     familyCount * 50;
 }
 else if(
-  dcardType === "dカード GOLD" ||
-  dcardType === "dカード GOLD U"
+  dcardType === "GOLD" ||
+  dcardType === "GOLD U"
 ){
   poikatsuFamilyPoint =
     familyCount * 100;
@@ -3053,10 +3053,10 @@ if(
 
   let pointMultiplier = 1;
 
-if(dcardType === "dカード GOLD"){
+if(dcardType === "GOLD"){
   pointMultiplier = 10;
 }
-else if(dcardType === "dカード GOLD U"){
+else if(dcardType === "GOLD U"){
   pointMultiplier = 5;
 }
 else if(dcardType === "PLATINUM ～10万"){
@@ -3115,10 +3115,10 @@ else{
 
   let pointMultiplier = 1;
 
-  if(dcardType === "dカード GOLD"){
+  if(dcardType === "GOLD"){
     pointMultiplier = 10;
   }
-  else if(dcardType === "dカード GOLD U"){
+  else if(dcardType === "GOLD U"){
     pointMultiplier = 5;
   }
   else if(dcardType === "PLATINUM ～10万"){
@@ -3182,10 +3182,10 @@ newPoiBonus = selectedBonus;
 
   let pointMultiplier = 1;
 
-if(dcardType === "dカード GOLD"){
+if(dcardType === "GOLD"){
   pointMultiplier = 10;
 }
-else if(dcardType === "dカード GOLD U"){
+else if(dcardType === "GOLD U"){
   pointMultiplier = 5;
 }
 else if(dcardType === "PLATINUM ～10万"){
@@ -3243,10 +3243,10 @@ else{
 
   let pointMultiplier = 1;
 
-  if(dcardType === "dカード GOLD"){
+  if(dcardType === "GOLD"){
     pointMultiplier = 10;
   }
-  else if(dcardType === "dカード GOLD U"){
+  else if(dcardType === "GOLD U"){
     pointMultiplier = 5;
   }
   else if(dcardType === "PLATINUM ～10万"){
