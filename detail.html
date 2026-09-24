@@ -1878,12 +1878,6 @@ const currentBase =
     ).replace(/[^\d]/g,"")
   );
 
-const newBase =
-  Number(
-    String(data.newTotal)
-      .replace(/[^\d]/g,"")
-  );
-
 // 区切り回数
 const points = [];
 
@@ -2018,6 +2012,18 @@ console.log(
   )
 );
 
+const currentPlanOnly =
+  Number(
+    String(data.currentTotal)
+      .replace(/[^\d]/g,"")
+  );
+
+const newBase =
+  Number(
+    String(data.newTotal)
+      .replace(/[^\d]/g,"")
+  );  
+  
 // ヘッダー
 let html = `
 <tr>
@@ -2087,12 +2093,6 @@ html += `</tr>`;
 
 // 現在行
 html += `<tr><td>現在</td>`;
-
-const currentPlanOnly =
-  Number(
-    String(data.currentTotal)
-      .replace(/[^\d]/g,"")
-  );
 
 ranges.forEach(r => {
 
