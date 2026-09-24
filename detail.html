@@ -2041,7 +2041,9 @@ ranges.forEach(r => {
 
   let installment = 0;
 
-  proposalPeriods.forEach(p => {
+const labels = ["基本"];
+
+proposalPeriods.forEach(p => {
 
   const active =
     r.start <= p.end &&
@@ -2051,23 +2053,17 @@ ranges.forEach(r => {
     );
 
   if(active){
+    installment += p.amount;
     labels.push(p.type);
   }
 
 });
 
-  const currentTotal =
-    currentPlanOnly + installment;
+const formula =
+  labels.join("＋");
 
-  const newTotal =
-    newBase + installment;
-
- const title =
-  r.end === null
-    ? `${r.start}回～`
-    : `${r.start}～${r.end}回`;
-
-const labels = ["基本"];
+const formula =
+  labels.join("＋");
 
 
 const formula =
