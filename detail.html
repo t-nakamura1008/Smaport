@@ -2065,6 +2065,38 @@ ranges.forEach(r => {
 
   });
 
+  const labels = ["基本"];
+
+proposalPeriods.forEach((p,index) => {
+
+  const active =
+    r.start <= p.end &&
+    (
+      r.end === null ||
+      r.end >= p.start
+    );
+
+  if(active){
+
+    if(index === 0){
+      labels.push("①");
+    }
+
+    if(index === 1){
+      labels.push("②");
+    }
+
+    if(index === 2){
+      labels.push("③");
+    }
+
+  }
+
+});
+
+const formula =
+  labels.join("＋");
+
   const total =
     r.end === null
       ? currentPlanOnly
@@ -2072,8 +2104,13 @@ ranges.forEach(r => {
 
   html += `
     <td>
+  <div>基本＋①＋②</div>
+  <div>
+    <strong>
       ${total.toLocaleString()}円
-    </td>
+    </strong>
+  </div>
+</td>
   `;
 
 });
