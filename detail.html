@@ -2342,6 +2342,31 @@ ${printNo}`
   );
 }
 
+if(
+  localStorage.getItem("adminView")
+  === "true"
+){
+
+  const saveBtn =
+    document.querySelector(
+      ".save-btn"
+    );
+
+  const backBtn =
+    document.querySelector(
+      ".back-btn"
+    );
+
+  if(saveBtn){
+    saveBtn.style.display = "none";
+  }
+
+  if(backBtn){
+    backBtn.style.display = "none";
+  }
+
+}
+  
 </script>  
 
 </body>
