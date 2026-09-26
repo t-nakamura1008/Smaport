@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>管理者画面</title>
+<title>見積管理</title>
 
 <style>
 
@@ -28,6 +28,7 @@ body{
 
 h1{
   text-align:center;
+  margin-top:0;
 }
 
 input[type="date"]{
@@ -55,12 +56,14 @@ button:hover{
 
 .result-row{
   background:#f8fafc;
-  padding:15px;
   border-radius:12px;
+  padding:15px;
   margin-bottom:10px;
   cursor:pointer;
+
   display:flex;
   justify-content:space-between;
+  align-items:center;
 }
 
 .result-row:hover{
@@ -68,37 +71,45 @@ button:hover{
 }
 
 .print-no{
+  font-size:20px;
   font-weight:bold;
-  font-size:18px;
+}
+
+.time{
+  color:#666;
 }
 
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
 
-<div class="card">
+  <div class="card">
 
-<h1>📋 見積管理</h1>
+    <h1 id="adminTitle">
+      📋 見積管理
+    </h1>
 
-<input
-  type="date"
-  id="searchDate"
->
+    <input
+      type="date"
+      id="searchDate"
+    >
 
-<button onclick="searchByDate()">
-検索
-</button>
+    <button onclick="searchByDate()">
+      検索
+    </button>
 
-</div>
+  </div>
 
-<div
-  class="card"
-  id="resultArea"
->
-</div>
+  <div
+    class="card"
+    id="resultArea"
+  >
+    検索してください
+  </div>
 
 </div>
 
@@ -107,10 +118,10 @@ button:hover{
 <script>
 
 const supabaseUrl =
-  "https://butujlsbdxaiuxitfyty.supabase.co";
+  "あなたのSupabaseURL";
 
 const supabaseKey =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1dHVqbHNiZHhhaXV4aXRmeXR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3MjI2OTUsImV4cCI6MjEwMzI5ODY5NX0.yDC6HpV6rQzeG88sVwDlLOPB1dC_I-r5ID1JXoTeCAU";
+  "あなたのAnonKey";
 
 const mySupabase =
   window.supabase.createClient(
@@ -118,16 +129,27 @@ const mySupabase =
     supabaseKey
   );
 
+const store =
+  localStorage.getItem("store") || "";
+
+document.getElementById(
+  "adminTitle"
+).textContent =
+  `📋 ${store} 見積管理`;
+
 document.getElementById(
   "searchDate"
 ).value =
-  new Date().toISOString().split("T")[0];
+  new Date()
+    .toISOString()
+    .split("T")[0];
 
 async function searchByDate(){
 
   const date =
-    document.getElementById("searchDate")
-      .value;
+    document.getElementById(
+      "searchDate"
+    ).value;
 
   const start =
     date + "T00:00:00";
@@ -139,18 +161,24 @@ async function searchByDate(){
     await mySupabase
       .from("estimates")
       .select("*")
+      .eq("store", store)
       .gte("created_at", start)
       .lte("created_at", end)
       .order(
         "created_at",
-        { ascending:false }
+        {
+          ascending:false
+        }
       );
 
   if(error){
 
+    console.error(error);
+
     alert("検索失敗");
 
     return;
+
   }
 
   let html = "";
@@ -177,7 +205,7 @@ async function searchByDate(){
           ${item.print_no}
         </div>
 
-        <div>
+        <div class="time">
           ${time}
         </div>
 
@@ -189,7 +217,7 @@ async function searchByDate(){
   document.getElementById(
     "resultArea"
   ).innerHTML =
-    html || "データなし";
+    html || "該当データなし";
 
 }
 
@@ -204,9 +232,12 @@ async function openEstimate(id){
 
   if(error){
 
+    console.error(error);
+
     alert("取得失敗");
 
     return;
+
   }
 
   localStorage.setItem(
