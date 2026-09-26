@@ -4469,12 +4469,16 @@ universalFee: 3,
 };
   
 
-  localStorage.setItem(
+localStorage.setItem(
     "estimateData",
     JSON.stringify(estimateData)
-  );
+);
 
-  window.location.href = "detail.html";
+localStorage.removeItem(
+    "adminView"
+);
+
+window.location.href = "detail.html";
 
 }
 
