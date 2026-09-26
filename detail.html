@@ -2279,10 +2279,11 @@ async function saveEstimate() {
 
   const today = new Date();
 
-  const mmdd =
-    String(today.getMonth() + 1).padStart(2, "0") +
-    String(today.getDate()).padStart(2, "0");
-
+  const yymmdd =
+  String(today.getFullYear()).slice(-2) +
+  String(today.getMonth() + 1).padStart(2, "0") +
+  String(today.getDate()).padStart(2, "0");
+  
   const startOfDay = new Date();
   startOfDay.setHours(0, 0, 0, 0);
 
