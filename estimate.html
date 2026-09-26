@@ -4470,15 +4470,15 @@ universalFee: 3,
   
 
 localStorage.setItem(
-    "estimateData",
-    JSON.stringify(estimateData)
+  "estimateData",
+  JSON.stringify(estimateData)
 );
 
-localStorage.removeItem(
-    "adminView"
-);
+localStorage.removeItem("adminView");
+localStorage.removeItem("adminStore");
 
-window.location.href = "detail.html";
+window.location.href =
+  "detail.html";
 
 }
 
