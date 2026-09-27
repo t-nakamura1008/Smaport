@@ -188,18 +188,14 @@ async function searchByDate(){
       "searchDate"
     ).value;
 
-  const { data, error } =
+const { data, error } =
   await mySupabase
     .from("estimates")
     .select("*")
     .eq("store", store)
-    .eq*"save_date", date)
-    .order(
-   *  "created_at",
-      {
-        as*ending:false
-      }
-    );
+    .order("created_at", {
+      ascending:false
+    });
 
   if(error){
 
