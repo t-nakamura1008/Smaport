@@ -2315,14 +2315,21 @@ async function saveEstimate() {
       localStorage.getItem("estimateData")
     );
 
-  const { error } =
-    await mySupabase
-      .from("estimates")
-      .insert({
-        print_no: printNo,
-        store: store,
-        estimate_data: estimateData
-      });
+const saveDate =
+  new Date().toLocaleDateString(
+    "sv-SE",
+    { timeZone: "Asia/Tokyo" }
+  );
+
+const { error } =
+  await mySupabase
+    .from("estimates")
+    .insert({
+      print_no: printNo,
+      store: store,
+      save_date: saveDate,
+      estimate_data: estimateData
+    });
 
   if (error) {
     console.error(error);
