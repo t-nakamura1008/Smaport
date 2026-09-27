@@ -1589,9 +1589,8 @@ console.log("price=", phone.price);
 
   // 本体価格
   document.getElementById("devicePrice").value =
-    String(phone.price || "")
-      .replace(/,/g, "")
-      .replace(/円/g, "");
+  String(phone.price || "")
+    .replace(/[^\d]/g, "");
 
   // カエドキ
   document.getElementById("kaedokiFirst").value =
