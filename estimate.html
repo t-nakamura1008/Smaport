@@ -1495,9 +1495,6 @@ async function loadMakers() {
     return;
   }
 
-  console.log(phone);
-console.log("price=", phone.price);
-
  const fixedMakers = [
     "Apple",
     "Google",
@@ -1586,6 +1583,9 @@ async function loadPhoneData() {
     console.error(error);
     return;
   }
+
+console.log(phone);
+console.log("price=", phone.price);  
 
   // 本体価格
   document.getElementById("devicePrice").value =
