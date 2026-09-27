@@ -153,7 +153,24 @@ footer{
 
 .btn-logout{
     width:180px;
-}    
+}
+
+.logo{
+    margin-bottom:10px;
+}
+
+.catch{
+    font-size:24px;
+    font-weight:bold;
+    color:#2563EB;
+}
+
+.sub{
+    margin-top:10px;
+    font-size:16px;
+    color:#6B7280;
+}
+    
     
 </style>
 
@@ -169,19 +186,35 @@ footer{
 
     <h2 id="welcome"></h2>
 
-    <h1>Smaport</h1>
+  <h1 class="logo">
+📱 Smaport
+</h1>
 
-    <p>スマホ比較 × スマホ図鑑 × 接客支援ツール</p>
+<div class="concept">
 
+    <div class="catch">
+        接客をもっとスマートに。
+    </div>
+
+    <div class="sub">
+        比較・見積もり・シミュレーションをひとつに。
+    </div>
+
+</div>
   <div class="btn-area">
 
-    <a href="compare.html" class="btn btn-primary">
-        📱 機種を比較する
-    </a>
+  <a href="compare.html" class="btn btn-primary">
+      📱 機種を比較する
+  </a>
 
-    <a href="#" class="btn btn-ranking" onclick="comingSoon(); return false">
-    🏆 迷ったらココ！
-</a>
+  <a href="estimate.html" class="btn btn-primary" id="estimateBtn"
+     style="display:none;">
+      📋 みつもりさん
+  </a>
+
+  # return false">
+      🏆 迷ったらココ！
+  </a>
 
 </div>
 
@@ -260,6 +293,13 @@ if(store){
 
     document.getElementById("welcome").innerHTML =
     `🏪 ${store}店へようこそ！`;
+
+    // 桜井店だけ表示
+    if(store === "桜井"){
+        document.getElementById(
+          "estimateBtn"
+        ).style.display = "inline-flex";
+    }
 
 }else{
 
