@@ -1515,47 +1515,6 @@ async function loadMakers() {
 
 }
 
-window.addEventListener(
-  "DOMContentLoaded",
-  async () => {
-
-    await loadMakers();
-
-    const estimatePhone =
-      JSON.parse(
-        localStorage.getItem("estimatePhone")
-      );
-
-    if(!estimatePhone) return;
-
-    document.getElementById(
-      "phoneMaker"
-    ).value = estimatePhone.maker;
-
-    await loadModels();
-
-    const modelSelect =
-      document.getElementById("phoneModel");
-
-    for(const option of modelSelect.options){
-
-      if(
-        option.text.trim() ===
-        estimatePhone.model.trim()
-      ){
-
-        modelSelect.value =
-          option.value;
-
-        break;
-
-      }
-
-    }
-
-  }
-);
-  
 async function loadPhoneData() {
 
   const phoneId =
