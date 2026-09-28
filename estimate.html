@@ -1558,7 +1558,14 @@ async function loadMakers() {
 async function loadPhoneData() {
 
   const phoneId =
-    document.getElementById("phoneModel").value;
+    document.getElementById(
+      "phoneModel"
+    ).value;
+
+  if(!phoneId){
+    console.log("phoneId empty");
+    return;
+  }
 
   const { data: phone, error } =
     await sbClient
@@ -1572,13 +1579,15 @@ async function loadPhoneData() {
     return;
   }
 
-console.log(phone);
-console.log("price=", phone.price);  
+  console.log(phone);
+  console.log("price=", phone.price);
 
-  // 本体価格
+  // ↓ここから既存処理
   document.getElementById("devicePrice").value =
-  String(phone.price || "")
-    .replace(/[^\d]/g, "");
+    String(phone.price || "")
+      .replace(/[^\d]/g, "");
+
+}
 
   // カエドキ
   document.getElementById("kaedokiFirst").value =
