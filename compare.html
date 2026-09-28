@@ -1066,40 +1066,58 @@ async function saveStaffDecision(){
         return;
     }
 
-   await saveComparisonLog();
+    await saveComparisonLog();
 
-const selectedPhone =
-    decision === "①購入"
-    ? document.getElementById("phone1").value
-    : document.getElementById("phone2").value;
+    const selectedPhone =
+        decision === "①購入"
+        ? document.getElementById("phone1").value
+        : document.getElementById("phone2").value;
 
-const phone =
-    phonesData.find(
-        p => p.id == selectedPhone
-    );
+    const phone =
+        phonesData.find(
+            p => p.id == selectedPhone
+        );
 
-const makeEstimate =
-    confirm(
+    const makeEstimate =
+        confirm(
 `見積を作成しますか？
 
 機種：${phone.model}`
-    );
+        );
 
-if(!makeEstimate){
+    if(!makeEstimate){
 
-    location.href = "index.html";
-    return;
+        location.href = "index.html";
+        return;
+
+    }
+
+    const store =
+        localStorage.getItem("store");
+
+    // 桜井店だけみつもりさん
+    if(store === "桜井店"){
+
+        localStorage.setItem(
+            "estimatePhone",
+            JSON.stringify({
+                id: phone.id,
+                maker: phone.maker,
+                model: phone.model
+            })
+        );
+
+        location.href = "estimate.html";
+
+    }else{
+
+        // 他店舗は今まで通り
+        location.href =
+            `smartphone.html?id=${phone.id}`;
+
+    }
 
 }
-
-localStorage.setItem(
-  "estimatePhone",
-  JSON.stringify({
-    id: phone.id,
-    maker: phone.maker,
-    model: phone.model
-  })
-);
         price:
             decision === "①購入"
             ? document.getElementById("price1").textContent
