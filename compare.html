@@ -1066,12 +1066,62 @@ async function saveStaffDecision(){
         return;
     }
 
-    await saveComparisonLog();
+   await saveComparisonLog();
+
+const selectedPhone =
+    decision === "①購入"
+    ? document.getElementById("phone1").value
+    : document.getElementById("phone2").value;
+
+const phone =
+    phonesData.find(
+        p => p.id == selectedPhone
+    );
+
+const makeEstimate =
+    confirm(
+`見積を作成しますか？
+
+機種：${phone.model}`
+    );
+
+if(!makeEstimate){
 
     location.href = "index.html";
+    return;
 
 }
 
+localStorage.setItem(
+    "estimatePhone",
+    JSON.stringify({
+
+        model: phone.model,
+
+        price:
+            decision === "①購入"
+            ? document.getElementById("price1").textContent
+            : document.getElementById("price2").textContent,
+
+        monthly123:
+            decision === "①購入"
+            ? document.getElementById("monthly123_1").textContent
+            : document.getElementById("monthly123_2").textContent,
+
+        total23:
+            decision === "①購入"
+            ? document.getElementById("total23_1").textContent
+            : document.getElementById("total23_2").textContent,
+
+        hosho:
+            decision === "①購入"
+            ? document.getElementById("hosho1").textContent
+            : document.getElementById("hosho2").textContent
+
+    })
+);
+
+}    
     
 </script>
 
