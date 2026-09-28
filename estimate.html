@@ -1500,6 +1500,46 @@ async function loadMakers() {
     "タブレット"
 ];
 
+ async function loadModels() {
+
+  const maker =
+    document.getElementById(
+      "phoneMaker"
+    ).value;
+
+  const { data, error } =
+    await sbClient
+      .from("Phones")
+      .select("*")
+      .eq("maker", maker)
+      .eq("deleted", false)
+      .order("model");
+
+  if(error){
+    console.error(error);
+    return;
+  }
+
+  const modelSelect =
+    document.getElementById(
+      "phoneModel"
+    );
+
+  modelSelect.innerHTML =
+    '<option value="">機種を選択</option>';
+
+  data.forEach(phone => {
+
+    modelSelect.innerHTML += `
+      <option value="${phone.id}">
+        ${phone.model}
+      </option>
+    `;
+
+  });
+
+} 
+
   const makerSelect =
     document.getElementById("phoneMaker");
 
