@@ -4507,27 +4507,36 @@ window.addEventListener(
         localStorage.getItem("estimatePhone")
       );
 
-     console.log("estimatePhone", estimatePhone);   
+    console.log("estimatePhone", estimatePhone);
 
-    if(!estimatePhone) return;
+    // 直接みつもりさんを開いた場合
+    if(!estimatePhone){
 
-    // メーカー選択
+      document.getElementById("currentGoogleOne").value = "0";
+      document.getElementById("newGoogleOne").value = "0";
+
+      document.getElementById("currentAppleOne").value = "0";
+      document.getElementById("newAppleOne").value = "0";
+
+      document.getElementById("currentPhoneWarranty").checked = false;
+      document.getElementById("newPhoneWarranty").checked = false;
+
+      return;
+    }
+
+    // Smaportから来た場合のみ自動入力
     document.getElementById(
       "phoneMaker"
     ).value = estimatePhone.maker;
 
-    // 機種一覧読込
     await loadModels();
 
-    // IDで直接選択
     document.getElementById(
       "phoneModel"
     ).value = estimatePhone.id;
 
-    // 端末情報読込
     await loadPhoneData();
 
-    // カエドキ設定
     document.getElementById(
       "devicePaymentType"
     ).value = "23";
