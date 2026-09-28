@@ -4506,33 +4506,32 @@ window.addEventListener(
     if(!estimatePhone) return;
 
     // メーカー選択
-    document.getElementById(
-      "phoneMaker"
-    ).value = estimatePhone.maker;
+    document.getElementById("phoneMaker").value =
+  estimatePhone.maker;
 
-    await loadModels();
+await loadModels();
 
-    // 機種選択
-    const modelSelect =
-      document.getElementById(
-        "phoneModel"
-      );
+setTimeout(() => {
 
-    for(const option of modelSelect.options){
+  const modelSelect =
+    document.getElementById("phoneModel");
 
-      if(
-        option.text.trim() ===
-        estimatePhone.model.trim()
-      ){
+  for(const option of modelSelect.options){
 
-        modelSelect.value =
-          option.value;
+    if(
+      option.text.trim() ===
+      estimatePhone.model.trim()
+    ){
 
-        break;
+      modelSelect.value = option.value;
 
-      }
+      loadPhoneData();
 
+      break;
     }
+  }
+
+},300);
 
     // 一括価格
     document.getElementById(
