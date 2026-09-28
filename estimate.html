@@ -1583,11 +1583,11 @@ async function loadPhoneData() {
   console.log("price=", phone.price);
 
   // ↓ここから既存処理
-  document.getElementById("devicePrice").value =
+document.getElementById("devicePrice").value =
     String(phone.price || "")
       .replace(/[^\d]/g, "");
 
-}
+// ←ここで閉じない
 
   // カエドキ
   document.getElementById("kaedokiFirst").value =
