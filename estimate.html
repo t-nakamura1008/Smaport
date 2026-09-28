@@ -1500,6 +1500,21 @@ async function loadMakers() {
     "タブレット"
 ];
 
+  const makerSelect =
+    document.getElementById("phoneMaker");
+
+  fixedMakers.forEach(maker => {
+
+    makerSelect.innerHTML += `
+      <option value="${maker}">
+        ${maker}
+      </option>
+    `;
+
+  });
+
+}  
+
  async function loadModels() {
 
   const maker =
@@ -1539,21 +1554,6 @@ async function loadMakers() {
   });
 
 } 
-
-  const makerSelect =
-    document.getElementById("phoneMaker");
-
-  fixedMakers.forEach(maker => {
-
-    makerSelect.innerHTML += `
-      <option value="${maker}">
-        ${maker}
-      </option>
-    `;
-
-  });
-
-}
 
 async function loadPhoneData() {
 
