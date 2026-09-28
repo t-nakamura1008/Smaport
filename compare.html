@@ -1093,12 +1093,13 @@ if(!makeEstimate){
 }
 
 localStorage.setItem(
-    "estimatePhone",
-    JSON.stringify({
-
-        maker: phone.maker,
-        model: phone.model,
-
+  "estimatePhone",
+  JSON.stringify({
+    id: phone.id,
+    maker: phone.maker,
+    model: phone.model
+  })
+);
         price:
             decision === "①購入"
             ? document.getElementById("price1").textContent
