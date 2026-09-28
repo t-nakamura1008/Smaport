@@ -4503,6 +4503,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
   console.log(estimatePhone);
 
+  if(!estimatePhone) return;
+
+  document.getElementById("devicePrice").value =
+  estimatePhone.price.replace(/[^\d]/g, "");
+
 });
   
 </script>
