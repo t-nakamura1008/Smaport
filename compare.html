@@ -1095,7 +1095,6 @@ async function saveStaffDecision(){
     const store =
         localStorage.getItem("store");
 
-    // 桜井店だけみつもりさん
     if(store === "桜井店"){
 
         localStorage.setItem(
@@ -1111,44 +1110,12 @@ async function saveStaffDecision(){
 
     }else{
 
-        // 他店舗は今まで通り
         location.href =
             `smartphone.html?id=${phone.id}`;
 
     }
 
 }
-        price:
-            decision === "①購入"
-            ? document.getElementById("price1").textContent
-            : document.getElementById("price2").textContent,
-
-        monthly123:
-            decision === "①購入"
-            ? document.getElementById("monthly123_1").textContent
-            : document.getElementById("monthly123_2").textContent,
-
-        total23:
-            decision === "①購入"
-            ? document.getElementById("total23_1").textContent
-            : document.getElementById("total23_2").textContent,
-
-        monthly2447:
-            decision === "①購入"
-            ? document.getElementById("monthly2447_1").textContent
-            : document.getElementById("monthly2447_2").textContent,
-
-        hosho:
-            decision === "①購入"
-            ? document.getElementById("hosho1").textContent
-            : document.getElementById("hosho2").textContent
-
-    })
-);
-
-/* みつもりさんへ移動 */
-location.href = "estimate.html";
-}    
     
 </script>
 
