@@ -4492,6 +4492,8 @@ window.addEventListener(
   "DOMContentLoaded",
   async () => {
 
+    await loadMakers();
+
     const estimatePhone =
       JSON.parse(
         localStorage.getItem("estimatePhone")
@@ -4500,77 +4502,32 @@ window.addEventListener(
     if(!estimatePhone) return;
 
     // メーカー選択
-    document.getElementById("phoneMaker").value =
-  estimatePhone.maker;
-
-await loadModels();
-
-setTimeout(() => {
-
-  const modelSelect =
-    document.getElementById("phoneModel");
-
-  for(const option of modelSelect.options){
-
-    if(
-      option.text.trim() ===
-      estimatePhone.model.trim()
-    ){
-
-      modelSelect.value = option.value;
-
-      loadPhoneData();
-
-      break;
-    }
-  }
-
-},300);
-
-    // 一括価格
     document.getElementById(
-      "devicePrice"
-    ).value =
-      estimatePhone.price
-      .replace(/[^\d]/g,"");
+      "phoneMaker"
+    ).value = estimatePhone.maker;
 
-    // カエドキ選択
+    // 機種一覧読込
+    await loadModels();
+
+    // IDで直接選択
+    document.getElementById(
+      "phoneModel"
+    ).value = estimatePhone.id;
+
+    // 端末情報読込
+    await loadPhoneData();
+
+    // カエドキ設定
     document.getElementById(
       "devicePaymentType"
     ).value = "23";
 
     toggleKaedoki();
 
-    // 1～23回目
-    document.getElementById(
-      "kaedokiFirst"
-    ).value =
-      estimatePhone.monthly123
-      .replace(/[^\d]/g,"");
-
-    // 24～47回目
-    document.getElementById(
-      "kaedokiSecond"
-    ).value =
-      estimatePhone.monthly2447
-      .replace(/[^\d]/g,"");
-
-    // ケータイ補償
-    document.getElementById(
-      "newPhoneWarranty"
-    ).checked = true;
-
-    toggleWarrantyInput("new");
-
-    document.getElementById(
-      "newPhoneWarrantyFee"
-    ).value =
-      estimatePhone.hosho
-      .replace(/[^\d]/g,"");
-
     calculateEstimate();
 
-});
+  }
+);
   
 </script>
 
