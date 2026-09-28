@@ -1517,51 +1517,45 @@ async function loadMakers() {
 
 window.addEventListener(
   "DOMContentLoaded",
-  loadMakers
-); 
+  async () => {
 
-async function loadModels() {
+    await loadMakers();
 
-  const maker =
-    document.getElementById("phoneMaker").value;
+    const estimatePhone =
+      JSON.parse(
+        localStorage.getItem("estimatePhone")
+      );
 
-  const { data, error } = await sbClient
-    .from("Phones")
-    .select("*")
-    .eq("maker", maker)
-    .eq("deleted", false);
+    if(!estimatePhone) return;
 
-  if(error){
-    console.error(error);
-    return;
+    document.getElementById(
+      "phoneMaker"
+    ).value = estimatePhone.maker;
+
+    await loadModels();
+
+    const modelSelect =
+      document.getElementById("phoneModel");
+
+    for(const option of modelSelect.options){
+
+      if(
+        option.text.trim() ===
+        estimatePhone.model.trim()
+      ){
+
+        modelSelect.value =
+          option.value;
+
+        break;
+
+      }
+
+    }
+
   }
-
-  const modelSelect =
-    document.getElementById("phoneModel");
-
-  modelSelect.innerHTML =
-    '<option value="">機種を選択</option>';
-
- data
-  .sort((a,b) =>
-    a.model.localeCompare(
-      b.model,
-      "ja",
-      { numeric: true }
-    )
-  )
-  .forEach(phone => {
-
-    modelSelect.innerHTML += `
-      <option value="${phone.id}">
-        ${phone.model}
-      </option>
-    `;
-
-  });
-
-}
-
+);
+  
 async function loadPhoneData() {
 
   const phoneId =
