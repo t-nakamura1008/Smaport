@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ランキング</title>
+
+<style>
+body{
+    font-family:sans-serif;
+    background:#f5f7fb;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:20px;
+}
+
+h2{
+    color:#2563eb;
+}
+
+button{
+    padding:10px 20px;
+    border:none;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <div id="storeRankingArea"></div>
+
+    <button
+        id="otherRankingBtn"
+        onclick="toggleOtherRanking()"
+    >
+        ➡️ 他店ランキングを見る
+    </button>
+
+    <div
+        id="otherRankingArea"
+        style="display:none;"
+    ></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const sbClient =
+supabase.createClient(
+    "https://butujlsbdxaiuxitfyty.supabase.co/",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1dHVqbHNiZHhhaXV4aXRmeXR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3MjI2OTUsImV4cCI6MjEwMzI5ODY5NX0.yDC6HpV6rQzeG88sVwDlLOPB1dC_I-r5ID1JXoTeCAU"
+);
+
+async function loadRanking(){
+
+    const loginStore =
+        localStorage.getItem("store");
+
+    const { data } =
+        await sbClient
+        .from("ComparisonLog")
+        .select("*");
+
+    const storeRanking = {};
+    const otherRanking = {};
+
+    data.forEach(log => {
+
+        if(
+            log.status === "成約" &&
+            log.result_phone
+        ){
+
+            if(
+                log.store_name === loginStore
+            ){
+
+                storeRanking[
+                    log.result_phone
+                ] =
+                (storeRanking[
+                    log.result_phone
+                ] || 0) + 1;
+
+            }else{
+
+                otherRanking[
+                    log.result_phone
+                ] =
+                (otherRanking[
+                    log.result_phone
+                ] || 0) + 1;
+
+            }
+
+        }
+
+    });
+
+    const medals =
+        ["🥇","🥈","🥉"];
+
+    const storeHtml =
+    Object.entries(storeRanking)
+    .sort((a,b)=>b[1]-a[1])
+    .slice(0,3)
+    .map((item,index)=>
+        `<div>
+            ${medals[index]}
+            ${item[0]}
+        </div>`
+    )
+    .join("");
+
+    document.getElementById(
+        "storeRankingArea"
+    ).innerHTML=`
+
+    <h2>
+    🏆 ${loginStore}店 人気ランキング
+    </h2>
+
+    ${storeHtml}
+
+    `;
+
+    const otherHtml =
+    Object.entries(otherRanking)
+    .sort((a,b)=>b[1]-a[1])
+    .slice(0,3)
+    .map((item,index)=>
+        `<div>
+            ${medals[index]}
+            ${item[0]}
+        </div>`
+    )
+    .join("");
+
+    document.getElementById(
+        "otherRankingArea"
+    ).innerHTML=`
+
+    <h2>
+    🌎 他店人気ランキング
+    </h2>
+
+    ${otherHtml}
+
+    `;
+
+}
+
+function toggleOtherRanking(){
+
+    const area =
+        document.getElementById(
+            "otherRankingArea"
+        );
+
+    const btn =
+        document.getElementById(
+            "otherRankingBtn"
+        );
+
+    if(area.style.display==="none"){
+
+        area.style.display="block";
+        btn.textContent=
+        "⬅️ 閉じる";
+
+    }else{
+
+        area.style.display="none";
+        btn.textContent=
+        "➡️ 他店ランキングを見る";
+
+    }
+
+}
+
+loadRanking();
+
+</script>
+
+</body>
+</html>
