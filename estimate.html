@@ -1483,7 +1483,7 @@ async function loadMakers() {
   const { data, error } = await sbClient
     .from("Phones")
     .select("maker")
-    .eq("deleted", false);
+    .eq("estimate_enabled", true);
 
   if (error) {
     console.error(error);
@@ -1527,7 +1527,7 @@ async function loadMakers() {
       .from("Phones")
       .select("*")
       .eq("maker", maker)
-      .eq("deleted", false)
+      .eq("estimate_enabled", true)
       .order("model");
 
   if(error){
