@@ -183,11 +183,9 @@ async function loadRanking(){
 
     logs.forEach(log=>{
 
-        if(
-            log.store_name === loginStore &&
-            log.status === "成約" &&
-            log.result_phone
-        ){
+       if(
+    log.store_name === store
+          )
 
             ranking[log.result_phone] =
                 (ranking[log.result_phone] || 0) + 1;
