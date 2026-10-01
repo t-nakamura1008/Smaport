@@ -183,17 +183,18 @@ async function loadRanking(){
 
     logs.forEach(log=>{
 
-       if(
-    log.store_name === store
-          )
+    if(
+        log.store_name === loginStore &&
+        log.status === "成約" &&
+        log.result_phone
+    ){
 
-            ranking[log.result_phone] =
-                (ranking[log.result_phone] || 0) + 1;
+        ranking[log.result_phone] =
+            (ranking[log.result_phone] || 0) + 1;
 
-        }
+    }
 
-    });
-
+});
     const top3 =
         Object.entries(ranking)
         .sort((a,b)=>b[1]-a[1])
@@ -286,6 +287,96 @@ function toggleOtherRanking(){
 
     }
 
+  async function loadOtherStoreRanking(){
+
+    const store =
+        document.getElementById(
+            "otherStoreSelect"
+        ).value;
+
+    if(!store) return;
+
+    const { data: logs } =
+        await sbClient
+            .from("ComparisonLog")
+            .select("*");
+
+    const ranking = {};
+
+    logs.forEach(log=>{
+
+        if(
+            log.store_name === store &&
+            log.status === "成約" &&
+            log.result_phone
+        ){
+
+            ranking[log.result_phone] =
+                (ranking[log.result_phone] || 0) + 1;
+
+        }
+
+    });
+
+    const top3 =
+        Object.entries(ranking)
+        .sort((a,b)=>b[1]-a[1])
+        .slice(0,3);
+
+    const medals =
+        ["🥇","🥈","🥉"];
+
+    let html = `
+        <h2>📍${store}店 人気ランキング</h2>
+        <div class="ranking-grid">
+    `;
+
+    for(let i=0;i<top3.length;i++){
+
+        const model = top3[i][0];
+
+        const { data: phone } =
+            await sbClient
+                .from("Phones")
+                .select("*")
+                .eq("model", model)
+                .single();
+
+        if(!phone) continue;
+
+        html += `
+
+        <div class="rank-card">
+
+            <div class="rank-title">
+                ${medals[i]}
+            </div>
+
+            ${phone.image_url}
+
+            <div class="rank-model">
+                ${phone.model}
+            </div>
+
+            <button
+                class="compare-btn"
+                onclick="comparePhone(${phone.id})"
+            >
+                📊 比較する
+            </button>
+
+        </div>
+
+        `;
+    }
+
+    html += "</div>";
+
+    document.getElementById(
+        "otherStoreRanking"
+    ).innerHTML = html;
+}  
+
 }
     
 async function comparePhone(phoneId){
@@ -305,7 +396,7 @@ async function comparePhone(phoneId){
     location.href =
         "compare.html";
 
-}
+}    
     
 </script>
 
