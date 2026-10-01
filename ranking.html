@@ -348,30 +348,27 @@ function toggleOtherRanking(){
 
         html += `
 
-        <div class="rank-card">
+<div class="rank-card">
 
-            <div class="rank-title">
-                ${medals[i]}
-            </div>
+    <div class="rank-title">
+        ${medals[i]}
+    </div>
 
-            <img
-    src="${phone.image_url}"
-    class="rank-image"
-    
-            <div class="rank-model">
-                ${phone.model}
-            </div>
+    <img
+        src="${phone.image_url}"
+        class      ${phone.model}
+    </div>
 
-            <button
-                class="compare-btn"
-                onclick="comparePhone(${phone.id})"
-            >
-                📊 比較する
-            </button>
+    <button
+        class="compare-btn"
+        onclick="comparePhone(${phone.id})"
+    >
+        📊 比較する
+    </button>
 
-        </div>
+</div>
 
-        `;
+`;
     }
 
     html += "</div>";
