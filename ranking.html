@@ -233,7 +233,11 @@ async function loadRanking(){
             ${medals[i]}
         </div>
 
-        ${phone.image_url}
+        <img
+    src="${phone.image_url}"
+    class="rank-image"
+    alt="${phone.model}"
+>
 
         <div class="rank-model">
             ${phone.model}
