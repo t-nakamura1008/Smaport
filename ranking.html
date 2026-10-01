@@ -225,7 +225,7 @@ async function loadRanking(){
 
         if(!phone) continue;
 
-        html += `
+                html += `
 
         <div class="rank-card">
 
@@ -233,10 +233,7 @@ async function loadRanking(){
                 ${medals[i]}
             </div>
 
-            <img
-                src="${phone.image_url}"
-                class="rank-image"
-            >
+            ${phone.image_url}
 
             <div class="rank-model">
                 ${phone.model}
@@ -252,12 +249,13 @@ async function loadRanking(){
         </div>
 
         `;
+
     }
 
     html += "</div>";
 
     document.getElementById(
-        "storeRankingArea"
+        "otherStoreRanking"
     ).innerHTML = html;
 
 }
