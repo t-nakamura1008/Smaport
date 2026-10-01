@@ -332,4 +332,58 @@ async function loadOtherStoreRanking(){
 
             <img
                 src="${phone.image_url}"
+
+                }
+                `
+
+                function toggleOtherRanking(){
+
+    const area =
+        document.getElementById(
+            "otherRankingArea"
+        );
+
+    const btn =
+        document.getElementById(
+            "otherRankingBtn"
+        );
+
+    if(area.style.display==="none"){
+
+        area.style.display="block";
+        btn.textContent="⬅️ 閉じる";
+
+    }else{
+
+        area.style.display="none";
+        btn.textContent=
+            "🌎 他店ランキングを見る";
+
+    }
+
+}
+
+async function comparePhone(phoneId){
+
+    const { data: phone } =
+        await sbClient
+            .from("Phones")
+            .select("*")
+            .eq("id", phoneId)
+            .single();
+
+    localStorage.setItem(
+        "rankingPhone",
+        JSON.stringify(phone)
+    );
+
+    location.href =
+        "compare.html";
+
+}
+
+</script>
+
+</body>
+</html>
          
