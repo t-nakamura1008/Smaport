@@ -2,9 +2,12 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>ランキング</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>迷ったらココ！</title>
 
 <style>
+
 body{
     font-family:sans-serif;
     background:#f5f7fb;
@@ -13,42 +16,105 @@ body{
 
 .card{
     background:white;
-    border-radius:15px;
-    padding:20px;
-    margin-bottom:20px;
+    border-radius:20px;
+    padding:25px;
 }
 
-h2{
+h1{
+    text-align:center;
     color:#2563eb;
 }
 
-button{
-    padding:10px 20px;
-    border:none;
-    border-radius:10px;
+h2{
+    text-align:center;
+}
+
+.ranking-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.rank-card{
+    background:white;
+    border-radius:20px;
+    padding:20px;
+    text-align:center;
+    box-shadow:0 4px 12px rgba(0,0,0,.1);
+}
+
+.rank-image{
+    width:180px;
+    height:180px;
+    object-fit:contain;
+    display:block;
+    margin:auto;
+}
+
+.rank-title{
+    font-size:24px;
+    font-weight:bold;
+}
+
+.rank-model{
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.compare-btn{
+    margin-top:10px;
     background:#2563eb;
     color:white;
+    border:none;
+    border-radius:10px;
+    padding:8px 12px;
     cursor:pointer;
 }
+
+#otherRankingBtn{
+    margin-top:20px;
+}
+
 </style>
 </head>
 
 <body>
 
 <div class="card">
+
+    <h1>🏆 迷ったらココ！</h1>
+
     <div id="storeRankingArea"></div>
 
-    <button
-        id="otherRankingBtn"
-        onclick="toggleOtherRanking()"
-    >
-        ➡️ 他店ランキングを見る
-    </button>
+    <div style="text-align:center;">
+        <button
+            id="otherRankingBtn"
+            onclick="toggleOtherRanking()"
+        >
+            🌎 他店ランキングを見る
+        </button>
+    </div>
 
     <div
         id="otherRankingArea"
-        style="display:none;"
-    ></div>
+        style="display:none; margin-top:30px;"
+    >
+
+        <h2>🌎 他店ランキング</h2>
+
+        <select
+            id="otherStoreSelect"
+            onchange="loadOtherStoreRanking()"
+        >
+            <option value="">
+                店舗を選択してください
+            </option>
+        </select>
+
+        <div id="otherStoreRanking"></div>
+
+    </div>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -57,8 +123,50 @@ button{
 
 const sbClient =
 supabase.createClient(
-    "https://butujlsbdxaiuxitfyty.supabase.co/",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1dHVqbHNiZHhhaXV4aXRmeXR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3MjI2OTUsImV4cCI6MjEwMzI5ODY5NX0.yDC6HpV6rQzeG88sVwDlLOPB1dC_I-r5ID1JXoTeCAU"
+    "SUPABASE_URL",
+    "SUPABASE_ANON_KEY"
+);
+
+const stores = [
+    "イオンモール高の原",
+    "葛城南",
+    "北野白梅町",
+    "西大寺",
+    "桜井",
+    "天理",
+    "桃谷",
+    "大和高田"
+];
+
+document.addEventListener(
+    "DOMContentLoaded",
+    async () => {
+
+        await loadRanking();
+
+        const loginStore =
+            localStorage.getItem("store");
+
+        const select =
+            document.getElementById(
+                "otherStoreSelect"
+            );
+
+        stores.forEach(store=>{
+
+            if(store !== loginStore){
+
+                select.innerHTML += `
+                    <option value="${store}">
+                        ${store}
+                    </option>
+                `;
+
+            }
+
+        });
+
+    }
 );
 
 async function loadRanking(){
@@ -66,131 +174,162 @@ async function loadRanking(){
     const loginStore =
         localStorage.getItem("store");
 
-    const { data } =
+    const { data: logs } =
         await sbClient
-        .from("ComparisonLog")
-        .select("*");
+            .from("ComparisonLog")
+            .select("*");
 
-    const storeRanking = {};
-    const otherRanking = {};
+    const ranking = {};
 
-    data.forEach(log => {
+    logs.forEach(log=>{
 
         if(
+            log.store_name === loginStore &&
             log.status === "成約" &&
             log.result_phone
         ){
 
-            if(
-                log.store_name === loginStore
-            ){
-
-                storeRanking[
-                    log.result_phone
-                ] =
-                (storeRanking[
-                    log.result_phone
-                ] || 0) + 1;
-
-            }else{
-
-                otherRanking[
-                    log.result_phone
-                ] =
-                (otherRanking[
-                    log.result_phone
-                ] || 0) + 1;
-
-            }
+            ranking[log.result_phone] =
+                (ranking[log.result_phone] || 0) + 1;
 
         }
 
     });
 
+    const top3 =
+        Object.entries(ranking)
+        .sort((a,b)=>b[1]-a[1])
+        .slice(0,3);
+
     const medals =
         ["🥇","🥈","🥉"];
 
-    const storeHtml =
-    Object.entries(storeRanking)
-    .sort((a,b)=>b[1]-a[1])
-    .slice(0,3)
-    .map((item,index)=>
-        `<div>
-            ${medals[index]}
-            ${item[0]}
-        </div>`
-    )
-    .join("");
+    let html = `
+        <h2>
+            📍${loginStore}店 人気ランキング
+        </h2>
+
+        <div class="ranking-grid">
+    `;
+
+    for(let i=0;i<top3.length;i++){
+
+        const model = top3[i][0];
+
+        const { data: phone } =
+            await sbClient
+                .from("Phones")
+                .select("*")
+                .eq("model", model)
+                .single();
+
+        if(!phone) continue;
+
+        html += `
+
+        <div class="rank-card">
+
+            <div class="rank-title">
+                ${medals[i]}
+            </div>
+
+            <img
+                src="${phone.image_url}"
+                class="rank-image"
+            >
+
+            <div class="rank-model">
+                ${phone.model}
+            </div>
+
+            <button
+                class="compare-btn"
+                onclick="comparePhone(${phone.id})"
+            >
+                📊 比較する
+            </button>
+
+        </div>
+
+        `;
+    }
+
+    html += "</div>";
 
     document.getElementById(
         "storeRankingArea"
-    ).innerHTML=`
-
-    <h2>
-    🏆 ${loginStore}店 人気ランキング
-    </h2>
-
-    ${storeHtml}
-
-    `;
-
-    const otherHtml =
-    Object.entries(otherRanking)
-    .sort((a,b)=>b[1]-a[1])
-    .slice(0,3)
-    .map((item,index)=>
-        `<div>
-            ${medals[index]}
-            ${item[0]}
-        </div>`
-    )
-    .join("");
-
-    document.getElementById(
-        "otherRankingArea"
-    ).innerHTML=`
-
-    <h2>
-    🌎 他店人気ランキング
-    </h2>
-
-    ${otherHtml}
-
-    `;
+    ).innerHTML = html;
 
 }
 
-function toggleOtherRanking(){
+async function loadOtherStoreRanking(){
 
-    const area =
+    const store =
         document.getElementById(
-            "otherRankingArea"
-        );
+            "otherStoreSelect"
+        ).value;
 
-    const btn =
-        document.getElementById(
-            "otherRankingBtn"
-        );
+    if(!store) return;
 
-    if(area.style.display==="none"){
+    const { data: logs } =
+        await sbClient
+            .from("ComparisonLog")
+            .select("*");
 
-        area.style.display="block";
-        btn.textContent=
-        "⬅️ 閉じる";
+    const ranking = {};
 
-    }else{
+    logs.forEach(log=>{
 
-        area.style.display="none";
-        btn.textContent=
-        "➡️ 他店ランキングを見る";
+        if(
+            log.store_name === store &&
+            log.status === "成約" &&
+            log.result_phone
+        ){
 
-    }
+            ranking[log.result_phone] =
+                (ranking[log.result_phone] || 0) + 1;
 
-}
+        }
 
-loadRanking();
+    });
 
-</script>
+    const top3 =
+        Object.entries(ranking)
+        .sort((a,b)=>b[1]-a[1])
+        .slice(0,3);
 
-</body>
-</html>
+    const medals =
+        ["🥇","🥈","🥉"];
+
+    let html = `
+        <h2>
+            📍${store}店 人気ランキング
+        </h2>
+
+        <div class="ranking-grid">
+    `;
+
+    for(let i=0;i<top3.length;i++){
+
+        const model = top3[i][0];
+
+        const { data: phone } =
+            await sbClient
+                .from("Phones")
+                .select("*")
+                .eq("model", model)
+                .single();
+
+        if(!phone) continue;
+
+        html += `
+
+        <div class="rank-card">
+
+            <div class="rank-title">
+                ${medals[i]}
+            </div>
+
+            <img
+                src="${phone.image_url}"
+         
