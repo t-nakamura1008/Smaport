@@ -220,16 +220,16 @@ async function loadRanking(){
         await sbClient
             .from("Phones")
             .select("*")
-            .eq("model", mode*)
+            .eq("model", model)
             .single();
 
-    if(!*hone) continue;
+    if(!phone) continue;
 
     html += `
 
-  * <div class="rank-card">
+    <div class="rank-card">
 
-        *div class="rank-title">
+        <div class="rank-title">
             ${medals[i]}
         </div>
 
@@ -249,13 +249,12 @@ async function loadRanking(){
     </div>
 
     `;
-
 }
 
 html += "</div>";
 
 document.getElementById(
-    "otherStoreRanking"
+    "storeRankingArea"
 ).innerHTML = html;
 
 }
