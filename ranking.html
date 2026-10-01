@@ -354,16 +354,22 @@ function toggleOtherRanking(){
         ${medals[i]}
     </div>
 
-    <img
-        src="${phone.image_url}"
-        class      ${phone.model}
+   <img
+    src="${phone.image_url}"
+    class="rank-image"
+    </div>
+
+    <div class="rank-model-row">
+
+    <div class="rank-model">
+        ${phone.model}
     </div>
 
     <button
         class="compare-btn"
         onclick="comparePhone(${phone.id})"
     >
-        📊 比較する
+        📊比較
     </button>
 
 </div>
