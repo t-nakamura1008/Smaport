@@ -4547,6 +4547,40 @@ await loadPhoneData();
 
     calculateEstimate();
 
+    document.getElementById(
+  "phoneModel"
+).value = estimatePhone.id;
+
+await loadPhoneData();
+
+// ←ここに追加
+document.getElementById(
+  "devicePrice"
+).value =
+  String(estimatePhone.price || "")
+    .replace(/[^\d]/g,"");
+
+document.getElementById(
+  "kaedokiFirst"
+).value =
+  String(estimatePhone.monthly_1_23 || "")
+    .replace(/[^\d]/g,"");
+
+document.getElementById(
+  "kaedokiSecond"
+).value =
+  String(estimatePhone.monthly_24_47 || "")
+    .replace(/[^\d]/g,"");
+
+
+document.getElementById(
+  "devicePaymentType"
+).value = "23";
+
+toggleKaedoki();
+
+calculateEstimate();
+
   }
 );
   
