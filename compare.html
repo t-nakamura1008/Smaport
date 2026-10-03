@@ -1100,13 +1100,18 @@ if(store && store.includes("桜井")){
     }
 
     localStorage.setItem(
-        "estimatePhone",
-        JSON.stringify({
-            id: phone.id,
-            maker: phone.maker,
-            model: phone.model
-        })
-    );
+  "estimatePhone",
+  JSON.stringify({
+    id: phone.id,
+    maker: phone.maker,
+    model: phone.model,
+
+    price: phone.price,
+    monthly_1_23: phone.monthly_1_23,
+    monthly_24_47: phone.monthly_24_47,
+    keitai_hosho: phone.keitai_hosho
+  })
+);
 
     location.href = "estimate.html";
 
