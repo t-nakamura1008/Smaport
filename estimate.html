@@ -293,13 +293,6 @@ h3{
   placeholder="金額"
 >
 
-  <label>割引額</label>
-  <input
-  type="number"
-  id="deviceDiscount"
-  placeholder="0"
->
-
 <div id="kaedokiArea" style="display:none;">
   <label>1～23回目月額</label>
   <input
@@ -351,13 +344,6 @@ h3{
   placeholder="金額"
 >
 
-<label>割引額</label>
-<input
-  type="number"
-  id="device2Discount"
-  placeholder="0"
->
-
 <label>回数</label>
 <select id="device2PaymentType">
   <option value="12">12回</option>
@@ -387,13 +373,6 @@ h3{
   type="number"
   id="device3DownPayment"
   placeholder="金額"
->
-
-<label>割引額</label>
-<input
-  type="number"
-  id="device3Discount"
-  placeholder="0"
 >
 
 <label>回数</label>
@@ -3313,13 +3292,6 @@ const price =
     ).value || 0
   );
 
-const discount =
-  Number(
-    document.getElementById(
-      "deviceDiscount"
-    ).value || 0
-  );
-
 const downPayment =
   Number(
     document.getElementById(
@@ -3364,11 +3336,6 @@ const device2DownPayment =
     document.getElementById("device2DownPayment").value || 0
   );
 
-const device2Discount =
-  Number(
-    document.getElementById("device2Discount").value || 0
-  );
-
 const device2Months =
   Number(
     document.getElementById("device2PaymentType").value || 0
@@ -3395,11 +3362,6 @@ const device3Price =
 const device3DownPayment =
   Number(
     document.getElementById("device3DownPayment").value || 0
-  );
-
-const device3Discount =
-  Number(
-    document.getElementById("device3Discount").value || 0
   );
 
 const device3Months =
@@ -4417,8 +4379,6 @@ device2Months:
 device2DownPayment:
   document.getElementById("device2DownPayment").value || 0,
 
-device2Discount:
-  document.getElementById("device2Discount").value || 0,
 
 device3Price:
   document.getElementById("device3Price").value || 0,
@@ -4428,9 +4388,6 @@ device3Months:
 
 device3DownPayment:
   document.getElementById("device3DownPayment").value || 0,
-
-device3Discount:
-  document.getElementById("device3Discount").value || 0,
 
 currentWithDevice:
   document.getElementById(
