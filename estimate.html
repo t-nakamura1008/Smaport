@@ -3300,7 +3300,7 @@ const downPayment =
   );
 
 const netPrice =
-  price - discount - downPayment;
+  price - downPayment;
 
 let installmentFee = 0;
 
@@ -3344,13 +3344,12 @@ const device2Months =
 if(device2Price > 0 && device2Months > 0){
 
   installmentFee +=
-    Math.round(
-      (
-        device2Price -
-        device2DownPayment -
-        device2Discount
-      ) / device2Months
-    );
+  Math.round(
+    (
+      device2Price -
+      device2DownPayment
+    ) / device2Months
+  );
 
 }  
 
@@ -3371,14 +3370,13 @@ const device3Months =
 
 if(device3Price > 0 && device3Months > 0){
 
-  installmentFee +=
-    Math.round(
-      (
-        device3Price -
-        device3DownPayment -
-        device3Discount
-      ) / device3Months
-    );
+ installmentFee +=
+  Math.round(
+    (
+      device3Price -
+      device3DownPayment
+    ) / device3Months
+  );
 
 }  
 
@@ -3404,8 +3402,7 @@ let todayTotal = 0;
 
 if(paymentType === "0"){
 
-  todayTotal +=
-    price - discount;
+  todayTotal += price;
 
 }else{
 
