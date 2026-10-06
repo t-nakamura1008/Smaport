@@ -1108,14 +1108,26 @@ if(isCurrentMaxPlan){
 
   currentFreeBenefits.forEach(item => {
 
-    currentBenefitHtml += `
-      <div class="detail-row">
-        <span>${item}</span>
-        <span>無料</span>
-      </div>
-    `;
+  let fee = "0円";
 
-  });
+  if(item === "DAZN"){
+    fee = "4,200円 → 0円";
+  }else if(item === "NBA docomo"){
+    fee = "2,728円 → 0円";
+  }else if(item === "Leminoプレミアム"){
+    fee = "1,540円 → 0円";
+  }else if(item === "dアニメストア"){
+    fee = "660円 → 0円";
+  }
+
+  currentBenefitHtml += `
+    <div class="detail-row">
+      <span>${item}</span>
+      <span>${fee}</span>
+    </div>
+  `;
+
+});
 
   document.getElementById(
     "currentBenefitArea"
@@ -1138,9 +1150,15 @@ if(isNewMaxPlan){
 
  (data.newFreeBenefits || []).forEach(item => {
     const fee =
-      freeBenefits.includes(item)
-        ? "無料"
-        : (
+  item === "DAZN"
+    ? "4,200円 → 0円"
+  : item === "NBA docomo"
+    ? "2,728円 → 0円"
+  : item === "Leminoプレミアム"
+    ? "1,540円 → 0円"
+  : item === "dアニメストア"
+    ? "660円 → 0円"
+  : "0円";
             item === "DAZN"
               ? "4,200円"
             : item === "NBA docomo"
