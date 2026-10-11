@@ -1,0 +1,3057 @@
+<title>みつもりさん</title>
+
+<style>
+.compare-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.card{
+  background:#fff;
+  padding:20px;
+  border-radius:12px;
+  margin-bottom:20px;
+}
+
+.result-card{
+  background:#f8fbff;
+}
+
+.new-option{
+  color:#16a34a;
+  font-weight:bold;
+}
+
+.changed-option{
+  color:#d97706;
+}
+
+.removed-option{
+  color:#dc2626;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+input,
+select{
+  width:100%;
+  padding:10px;
+  border:1px solid #ddd;
+  border-radius:8px;
+  margin-top:5px;
+}
+
+.result-item{
+  display:flex;
+  justify-content:space-between;
+  padding:12px 0;
+  border-bottom:1px solid #eee;
+}
+
+.result-item strong{
+  color:#0066ff;
+  font-size:20px;
+}
+
+body{
+  background:#f5f7fb;
+  font-family:'Segoe UI',sans-serif;
+  margin:0;
+}
+
+.estimate-container{
+  max-width:1400px;
+  margin:auto;
+  padding:20px;
+}  
+
+h1{
+  font-size:32px;
+  color:#2563eb;
+  margin-bottom:5px;
+}
+
+.subtitle{
+  color:#666;
+  margin-bottom:20px;
+}
+  
+h1{
+  text-align:center;
+  font-size:36px;
+  color:#2563eb;
+  margin-bottom:8px;
+}
+
+.subtitle{
+  color:white;
+  text-align:center;
+  font-size:15px;
+  margin-top:10px;
+}
+
+.title-card{
+  background:linear-gradient(
+    135deg,
+    #d6001c,
+    #ff4d4f
+  );
+
+  color:white;
+
+  padding:35px;
+
+  border-radius:20px;
+
+  margin-bottom:25px;
+
+  text-align:center;
+
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+}
+
+.title-card h1{
+  color:white;
+  margin:0;
+  font-size:38px;
+}
+
+.compare-grid h3{
+  background:#f3f4f6;
+  padding:10px;
+  border-radius:8px;
+  text-align:center;
+  margin-bottom:15px;
+}  
+
+input[type="checkbox"]{
+  width:auto;
+  margin-right:8px;
+}
+
+label{
+  display:block;
+  margin-bottom:6px;
+}
+
+input[type="checkbox"]{
+  width:auto;
+  margin-right:8px;
+}  
+
+button{
+  display:block;
+  margin:20px auto;
+
+  background:#d6001c;
+  color:white;
+
+  border:none;
+  border-radius:12px;
+
+  padding:15px 40px;
+
+  font-size:18px;
+  font-weight:bold;
+
+  cursor:pointer;
+
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+
+button:hover{
+  background:#b80018;
+}
+
+.summary-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-bottom:20px;
+}
+
+.summary-box{
+  background:#f8f9fa;
+  border-radius:12px;
+  padding:15px;
+  text-align:center;
+}
+
+.summary-box span{
+  display:block;
+  font-size:14px;
+  margin-bottom:8px;
+}
+
+.summary-box strong{
+  display:block;
+  font-size:24px;
+  color:#000;
+}
+
+.payment-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  width:100%;
+}
+
+.payment-row .summary-box{
+  width:35%;
+}
+
+body{
+  background:#f5f7fb;
+  font-family:'Segoe UI',sans-serif;
+  margin:0;
+}
+
+label{
+  font-weight:600;
+}
+
+select,
+input{
+  font-weight:600;
+  font-size:15px;
+}
+
+h2{
+  font-weight:700;
+}
+
+h3{
+  font-weight:700;
+}
+
+  
+</style>
+
+<div class="estimate-container">
+
+ <div class="title-card">
+  <h1>📱 みつもりさん ✨</h1>
+
+  <p class="subtitle">
+    料金・ポイント・お支払額をかんたん比較！📱✨
+  </p>
+</div>
+
+  <!-- 分割① -->
+<section class="card">
+
+  <h2>📱 分割①（本体）</h2>
+
+  <label>メーカー</label>
+<select
+  id="phoneMaker"
+  onchange="loadModels()"
+>
+  <option value="">
+    メーカーを選択
+  </option>
+</select>
+
+<label>機種</label>
+<select
+  id="phoneModel"
+  onchange="loadPhoneData()"
+>
+  <option value="">
+    機種を選択
+  </option>
+</select>
+
+  <label>購入方法</label>
+ <select
+ id="devicePaymentType"
+ onchange="toggleKaedoki()"
+>
+  <option value="0">一括</option>
+  <option value="23">カエドキ</option>
+  <option value="12">12回</option>
+  <option value="24">24回</option>
+  <option value="36">36回</option>
+</select>
+
+  <label>一括価格</label>
+ <input
+  type="number"
+  id="devicePrice"
+  placeholder="金額"
+>
+
+  <label>頭金</label>
+ <input
+  type="number"
+  id="downPayment"
+  placeholder="金額"
+>
+
+<div id="kaedokiArea" style="display:none;">
+  <label>1～23回目月額</label>
+  <input
+    type="number"
+    id="kaedokiFirst"
+    placeholder="例 2500"
+  >
+
+  <label>24～47回目月額</label>
+  <input
+    type="number"
+    id="kaedokiSecond"
+    placeholder="例 4500"
+  >
+</div>  
+
+</section>
+
+ <!-- 分割② -->
+<section class="card">
+
+  <h2>📱 分割②（付属品）</h2> 
+
+<label>商品名</label>
+<select
+  id="device2Name"
+  onchange="setDevice2Price()"
+>
+  <option value="">選択してください</option>
+  <option value="PhotoCube C SE 128GB">
+    PhotoCube C SE 128GB
+  </option>
+  <option value="PhotoCube C SE 256GB">
+    PhotoCube C SE 256GB
+  </option>
+</select>
+
+<label>付属品価格</label>
+<input
+  type="number"
+  id="device2Price"
+  placeholder="金額"
+>
+  
+<label>頭金</label>
+<input
+  type="number"
+  id="device2DownPayment"
+  placeholder="金額"
+>
+
+<label>回数</label>
+<select id="device2PaymentType">
+  <option value="12">12回</option>
+  <option value="24">24回</option>
+  <option value="36">36回</option>
+</select>
+
+</section>  
+
+<!-- 分割③ -->
+ <section class="card"> 
+
+ <h2>📱 分割③（付属品）</h2> 
+  
+<label>商品名</label>
+<input type="text" placeholder="商品名">
+
+<label>付属品価格</label>
+<input
+  type="number"
+  id="device3Price"
+  placeholder="金額"
+>
+
+<label>頭金</label>
+<input
+  type="number"
+  id="device3DownPayment"
+  placeholder="金額"
+>
+
+<label>回数</label>
+<select id="device3PaymentType">
+  <option value="12">12回</option>
+  <option value="24">24回</option>
+  <option value="36">36回</option>
+</select>
+
+</section>
+
+ <!-- 本日購入品 -->
+<section class="card">
+
+  <h2>🛍️ 本日購入品</h2>
+
+  <div class="purchase-row">
+  <input type="text" placeholder="商品名">
+  <input
+    type="number"
+    id="purchase1Price"
+    placeholder="金額"
+  >
+</div>
+
+<div class="purchase-row">
+  <input type="text" placeholder="商品名">
+  <input
+    type="number"
+    id="purchase2Price"
+    placeholder="金額"
+  >
+</div>
+
+<div class="purchase-row">
+  <input type="text" placeholder="商品名">
+  <input
+    type="number"
+    id="purchase3Price"
+    placeholder="金額"
+  >
+</div>
+
+<div class="purchase-row">
+  <input type="text" placeholder="商品名">
+  <input
+    type="number"
+    id="purchase4Price"
+    placeholder="金額"
+  >
+</div>
+
+<div class="purchase-row">
+  <input type="text" placeholder="商品名">
+  <input
+    type="number"
+    id="purchase5Price"
+    placeholder="金額"
+  >
+</div>
+
+</section>  
+
+
+  <!-- 手数料 -->
+<section class="card">
+
+  <h2>🧾 手数料</h2>
+
+  <label><input type="checkbox" id="filmService">
+     フィルム貼り付け（1,100円）</label>
+
+  <label><input type="checkbox" id="dataTransfer">
+         データ移行（2,200円）</label>
+
+  <label><input type="checkbox" id="irumoTransfer">
+    irumo・mini・ahamoデータ移行（3,300円）</label>
+
+  <label><input type="checkbox" id="appTransfer">
+      アプリ移行（30分）（3,300円）</label>
+
+  <label><input type="checkbox" id="deviceChange">
+          機種変更（4,950円）</label>
+
+  <label><input type="checkbox" id="planChange">
+       4G→5Gプラン変更のみ（4,950円）</label>
+
+</section>
+
+ <!-- 基本情報 -->
+  <section class="card">
+    <h2>基本情報</h2>
+
+    <div class="grid">
+
+<label>
+  利用年数
+  <select id="usageYears">
+    <option>10年未満</option>
+    <option>10年以上</option>
+    <option>20年以上</option>
+  </select>
+</label>
+
+<label>
+  毎月の通信量
+  <select id="monthlyUsage">
+    <option value="under1">1GB未満</option>
+    <option value="over1">1GB以上～3GB未満</option>
+    <option value="over3">3GB以上～5GB未満</option>
+    <option value="over5">5GB以上～20GB未満</option>
+    <option value="over20">20GB以上</option>
+  </select>
+</label>    
+
+<label>
+  dカード種別
+  <select id="dcardType">
+    <option>なし</option>
+    <option>レギュラー</option>
+    <option>GOLD</option>
+    <option>GOLD U</option>
+    <option>PLATINUM ～10万</option>
+    <option>PLATINUM 10万～20万</option>
+    <option>PLATINUM 20万～</option>
+  </select>
+</label>
+
+<label>
+  ポイ活還元見込み額
+  <select id="poiBonus">
+   <option value="0">0</option>
+<option value="1000">1000</option>
+<option value="2000">2000</option>
+<option value="2500">2500</option>
+<option value="3000">3000</option>
+<option value="4000">4000</option>
+<option value="5000">5000</option>
+  </select>
+</label>
+      
+<label>
+  ファミリー回線数
+  <select id="familyType">
+    <option value="0">回線なし</option>
+    <option value="2">2回線</option>
+    <option value="3">3回線以上</option>
+  </select>
+</label>
+
+<label>
+  ドコモ光
+  <select id="hikariType">
+    <option value="0">なし</option>
+    <option value="1">あり</option>
+  </select>
+</label>
+
+<label>
+  ドコモでんき
+  <select id="denkiType">
+    <option value="0">なし</option>
+    <option value="1">あり</option>
+  </select>
+</label>  
+
+<label>
+  ポイ活ファミリー特典 対象
+  <select id="poikatsuFamily">
+    <option value="0">なし</option>
+    <option value="2">2回線</option>
+    <option value="3">3回線</option>
+    <option value="4">4回線</option>
+    <option value="5">5回線</option>
+    <option value="6">6回線</option>
+    <option value="7">7回線</option>
+    <option value="8">8回線</option>
+    <option value="9">9回線</option>
+    <option value="10">10回線</option>
+  </select>
+</label> 
+
+</div>
+  </section>  
+
+ <div class="compare-grid">
+
+<section class="card">
+
+<h2>📱 現在ご利用中</h2>
+
+<label>キャリア</label>
+<select id="currentCarrier">
+  <option>au</option>
+  <option>UQ mobile</option>
+  <option>Povo</option>
+  <option>SoftBank</option>
+  <option>Y!mobile</option>
+  <option>LINEMO</option>
+  <option>楽天モバイル</option>
+</select>
+
+<label>毎月料金</label>
+<input
+ type="number"
+ id="currentMonthlyFee"
+>
+
+<label>内 分割料金</label>
+<input
+ type="number"
+ id="currentDeviceFee"
+>
+
+<label>ネット・固定</label>
+<select id="currentInternet">
+  <option>なし</option>
+  <option>auひかり</option>
+  <option>UQ WiMAX</option>
+  <option>SoftBank光</option>
+  <option>SoftBank Air</option>
+  <option>楽天ひかり</option>
+  <option>NURO光</option>
+</select>
+
+<label>ネット料金</label>
+<input
+ type="number"
+ id="currentInternetFee"
+>
+
+</section>
+
+    <!-- 提案後 -->
+    <div>
+
+      <h3>✨ 提案後</h3>
+
+      <label>
+  <input type="checkbox" id="newLemino">
+  Leminoプレミアム（1,540円）
+</label>
+
+<label>
+  <input type="checkbox" id="newDAnime">
+  dアニメストア（660円）
+</label>
+
+<label>
+  <input type="checkbox" id="newNBA">
+  NBA docomo（2,728円）
+</label>
+
+<label>
+  <input type="checkbox" id="newDAZN">
+  DAZN（4,200円）
+</label>
+
+<label>
+  <input type="checkbox" id="newYoutube">
+  YouTube Premium（1,280円）
+</label>
+
+<label>
+  <input type="checkbox" id="newAmazonPrime">
+  Amazon Prime（600円）
+</label>
+
+<label>
+  <input type="checkbox" id="newSpotify">
+  Spotify Premium（1,080円）
+</label>
+
+<label>
+  <input type="checkbox" id="newJump">
+  ジャンプ＋定期購読（980円）
+</label>
+
+      <label>Disney+</label>
+
+<select id="newDisney">
+  <option value="0">なし</option>
+  <option value="1250">Disney+スタンダード（1,250円）</option>
+  <option value="1670">Disney+プレミアム（1,670円）</option>
+</select>
+
+<label>Netflix</label>
+
+<select id="newNetflix">
+  <option value="0">なし</option>
+  <option value="890">Netflix広告付きスタンダード（890円）</option>
+  <option value="1590">Netflixスタンダード（1,590円）</option>
+  <option value="2290">Netflixプレミアム（2,290円）</option>
+</select>
+
+     <label>
+  <input type="checkbox" id="newDPhoto">
+  dフォト（594円）
+</label>
+
+<label>
+  <input type="checkbox" id="newDHealthcare">
+  dヘルスケア（440円）
+</label>
+
+<label>
+  <input type="checkbox" id="newDMagazine">
+  dマガジン（580円）
+</label>
+
+<label>
+  <input type="checkbox" id="newDHits">
+  dヒッツ（690円）
+</label>
+
+    </div>
+
+  </div>
+
+</section>
+  
+<section class="card">
+
+  <h2>📞 通話・連絡サービス</h2>
+
+  <div class="compare-grid">
+
+    <!-- 提案後 -->
+    <div>
+
+      <h3>✨ 提案後</h3>
+
+    <label>
+  <input
+    type="checkbox"
+    id="newOptionPack"
+    onchange="toggleOptionPack('new')"
+  >
+  オプションパック
+</label>
+
+<label>
+  <input
+    type="checkbox"
+    id="newVoicemail"
+    onchange="syncOptionPack('new')"
+  >
+  留守番電話（330円）
+</label>
+
+<label>
+  <input
+    type="checkbox"
+    id="newCallWaiting"
+    onchange="syncOptionPack('new')"
+  >
+  キャッチホン（220円）
+</label>
+
+<label>
+  <input
+    type="checkbox"
+    id="newMelodyCall"
+    onchange="syncOptionPack('new')"
+  >
+  メロディコール（110円）
+</label>
+
+<label>
+  <input type="checkbox" id="newMail">
+  メール持ち運び（330円）
+</label>
+
+<label>
+  <input type="checkbox" id="newOneNumber">
+  ワンナンバーサービス（550円）
+</label>
+
+<label>
+  <input type="checkbox" id="newImadoco">
+  イマドコサーチ（330円）
+</label>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+  <!-- 補償・セキュリティ -->
+<section class="card">
+
+  <h2>🛡️ 補償・セキュリティ</h2>
+
+  <div class="compare-grid">
+
+    <!-- 提案後 -->
+    <div>
+
+     <h3>✨ 提案後</h3>
+
+<label>
+  <input
+    type="checkbox"
+    id="newAnshinPack"
+    onchange="toggleAnshinPack('new')"
+  >
+  あんしんパック
+</label>
+
+<label>
+  <input
+    type="checkbox"
+    id="newPhoneWarranty"
+    onchange="
+      toggleWarrantyInput('new');
+      syncAnshinPack('new');
+    "
+  >
+  ケータイ補償
+</label>
+
+<div
+  id="newWarrantyArea"
+  style="display:none;"
+>
+  <input
+    type="number"
+    id="newPhoneWarrantyFee"
+    placeholder="補償料金（税込）"
+  >
+</div>
+
+<label>
+  <input
+    type="checkbox"
+    id="newRemoteSupport"
+    onchange="syncAnshinPack('new')"
+  >
+  あんしん遠隔サポート（660円）
+</label>
+
+<label>
+  <input
+    type="checkbox"
+    id="newAnshinSecurity"
+    onchange="syncAnshinPack('new')"
+  >
+  あんしんセキュリティ（220円）
+</label>
+
+    
+     <label>上位セキュリティ</label>
+
+<select id="newSecurityPlan">
+  <option value="0">なし</option>
+  <option value="550">スタンダード（550円）</option>
+  <option value="999">スタンダード詐欺対策（999円）</option>
+  <option value="1815">トータル詐欺対策プラス（1,815円）</option>
+</select>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="card">
+
+  <h2>☁️ バックアップ・クラウド</h2>
+
+  <div class="compare-grid">
+
+    <!-- 提案後 -->
+    <div>
+
+      <h3>✨ 提案後</h3>
+
+      <label>
+        <input
+          type="checkbox"
+          id="newDValuePack"
+          onchange="toggleDValuePack('new')"
+        >
+        dバリューパスパック
+      </label>
+
+      <label>
+        <input
+          type="checkbox"
+          id="newCloud50"
+          onchange="syncDValuePack('new')"
+        >
+        クラウド容量50GB（440円）
+      </label>
+
+      <label>
+        <input
+          type="checkbox"
+          id="newDValuePass"
+          onchange="syncDValuePack('new')"
+        >
+        dバリューパス（550円）
+      </label>
+
+      <label>
+        <input
+          type="checkbox"
+          id="newMyDaiz"
+          onchange="syncDValuePack('new')"
+        >
+        my daiz（110円）
+      </label>
+
+      <label>Google One</label>
+
+      <select id="newGoogleOne">
+        <option value="0">なし</option>
+        <option value="290">Google One100GB（290円）</option>
+        <option value="440">Google One200GB（440円）</option>
+        <option value="1450">Google One AI Plus 1TB（1,450円）</option>
+      </select>
+
+      <label>Apple One</label>
+
+      <select id="newAppleOne">
+        <option value="0">なし</option>
+        <option value="1200">Apple One個人（1,200円）</option>
+        <option value="1980">Apple Oneファミリー（1,980円）</option>
+      </select>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="card">
+
+  <h2>💎 独自サービス</h2>
+
+  <div class="compare-grid">
+
+    <div>
+
+      <h3>✨ 提案後</h3>
+
+      <label>
+        <input type="checkbox" id="newHOZON">
+        HOZON（330円）
+      </label>
+
+      <label>
+        <input type="checkbox" id="newADCleaner">
+        ADCleaner（550円）
+      </label>
+
+      <label>ケータイサポート</label>
+
+      <select id="newKeitaiSupport">
+        <option value="0">なし</option>
+        <option value="770">ケータイサポートM（770円）</option>
+        <option value="990">ケータイサポートL（990円）</option>
+        <option value="1210">ケータイサポートPlus（1,210円）</option>
+      </select>
+
+    </div>
+
+  </div>
+
+</section>
+
+  <section class="card">
+
+  <h2>🧾 その他月額</h2>
+
+  <div class="compare-grid">
+
+ <div>    
+<h3>✨ 提案後</h3>
+
+ <label>
+  <input
+    type="checkbox"
+    id="newPaperBill"
+  >
+  請求書送付（252円）
+</label>
+   
+<label>
+  <input
+    type="checkbox"
+    id="newOtherSub"
+    onchange="
+      document.getElementById('newOtherSubFee').disabled=!this.checked
+    "
+  >
+  その他・サブスク
+</label>  
+
+<input
+  type="number"
+  id="newOtherSubFee"
+  placeholder="金額"
+  disabled
+>
+
+</div>
+
+</div>
+
+</section>  
+
+<button onclick="calculateEstimate()">
+  ✨ 見積作成
+</button>  
+
+<!-- 結果 -->
+<section class="card result-card">
+
+  <h2>⭐ 結果</h2>
+
+  <div class="summary-row">
+
+  <div class="summary-box">
+    <span>現在の契約</span>
+    <strong id="currentMonthlyTotal">0円</strong>
+  </div>
+
+  <div class="summary-box">
+    <span>提案プラン</span>
+    <strong id="newMonthlyTotal">0円</strong>
+  </div>
+
+  <div class="summary-box">
+    <span>今と比べて</span>
+    <strong id="difference">0円</strong>
+  </div>
+
+ <div class="result-item">
+  <span>現在のポイント</span>
+  <strong id="currentPointTotal">0pt</strong>
+</div>
+
+<div class="result-item">
+  <span>提案後ポイント</span>
+  <strong id="newPointTotal">0pt</strong>
+</div>
+
+<div class="result-item">
+  <span>ポイント差額</span>
+  <strong id="pointDifference">0pt</strong>
+</div>   
+
+</div>
+
+<div class="result-item">
+  <span>本体分割額</span>
+  <strong id="deviceInstallment">0円</strong>
+</div>
+  
+  <div class="result-item">
+    <span>初期手数料（1回のみ）</span>
+    <strong id="feeTotal">0円</strong>
+  </div>
+
+  <div class="result-item">
+  <span>本日お支払い額</span>
+  <strong id="todayTotal">0円</strong>
+</div>
+
+</section>
+
+<section class="card">
+
+  <h2>📈分割込み料金</h2>
+
+  <div class="payment-row">
+
+    <div class="summary-box">
+      <span>現在プランのお支払い</span>
+      <strong id="currentWithDevice">0円</strong>
+    </div>
+
+    <div class="summary-box">
+      <span>提案プランのお支払い</span>
+      <strong id="newWithDevice">0円</strong>
+    </div>
+
+  </div>
+
+</section>
+
+<button
+  id="toggleDetailBtn"
+  onclick="goToDetail()"
+>
+  📋 内訳詳細を見る
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>  
+  
+<script>
+
+const supabaseUrl =
+    "https://butujlsbdxaiuxitfyty.supabase.co";
+    
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1dHVqbHNiZHhhaXV4aXRmeXR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3MjI2OTUsImV4cCI6MjEwMzI5ODY5NX0.yDC6HpV6rQzeG88sVwDlLOPB1dC_I-r5ID1JXoTeCAU";
+
+const sbClient = window.supabase.createClient(
+    supabaseUrl,
+    supabaseKey
+);
+
+async function loadMakers() {
+
+  const { data, error } = await sbClient
+    .from("Phones")
+    .select("maker")
+    .eq("estimate_enabled", true);
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+ const fixedMakers = [
+    "Apple",
+    "Google",
+    "Samsung",
+    "SONY",
+    "SHARP",
+    "FCNT",
+    "タブレット"
+];
+
+  const makerSelect =
+    document.getElementById("phoneMaker");
+
+  makerSelect.innerHTML =
+  '<option value="">メーカーを選択</option>';
+
+fixedMakers.forEach(maker => {
+
+  makerSelect.innerHTML += `
+    <option value="${maker}">
+      ${maker}
+    </option>
+  `;
+
+});
+
+makerSelect.value = "";
+
+}  
+
+ async function loadModels() {
+
+  const maker =
+    document.getElementById(
+      "phoneMaker"
+    ).value;
+
+  const { data, error } =
+    await sbClient
+      .from("Phones")
+      .select("*")
+      .eq("maker", maker)
+      .eq("estimate_enabled", true)
+      .order("model");
+
+  if(error){
+    console.error(error);
+    return;
+  }
+
+  const modelSelect =
+    document.getElementById(
+      "phoneModel"
+    );
+
+  modelSelect.innerHTML =
+    '<option value="">機種を選択</option>';
+
+  data.forEach(phone => {
+
+    modelSelect.innerHTML += `
+      <option value="${phone.id}">
+        ${phone.model}
+      </option>
+    `;
+
+  });
+
+} 
+
+async function loadPhoneData() {
+
+  const phoneId =
+    document.getElementById(
+      "phoneModel"
+    ).value;
+
+  if(!phoneId){
+    console.log("phoneId empty");
+    return;
+  }
+
+  const { data: phone, error } =
+    await sbClient
+      .from("Phones")
+      .select("*")
+      .eq("id", phoneId)
+      .single();
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  console.log(phone);
+  console.log("price=", phone.price);
+
+  document.getElementById("devicePrice").value =
+  String(phone.price_mnp || "")
+    .replace(/[^\d]/g, "");
+
+document.getElementById("kaedokiFirst").value =
+  String(phone.monthly_1_23_mnp || "")
+    .replace(/,/g, "")
+    .replace(/円/g, "");
+
+document.getElementById("kaedokiSecond").value =
+  String(phone.monthly_24_47_mnp || "")
+    .replace(/,/g, "")
+    .replace(/円/g, "");
+
+  // 補償初期化
+  document.getElementById("newPhoneWarranty").checked = false;
+
+  document.getElementById("newPhoneWarrantyFee").value = "";
+
+  toggleWarrantyInput("new");
+
+  // ケータイ補償自動入力
+  if (phone.keitai_hosho) {
+
+    const hoshoFee =
+      String(phone.keitai_hosho)
+        .replace(/,/g, "")
+        .replace(/円/g, "");
+
+    // 提案
+    document.getElementById(
+      "newPhoneWarranty"
+    ).checked = true;
+
+    toggleWarrantyInput("new");
+
+    document.getElementById(
+      "newPhoneWarrantyFee"
+    ).value = hoshoFee;
+  }
+
+  calculateEstimate();
+
+}
+
+function calculateEstimate() {
+
+let newTotal =
+  Number(
+    document.getElementById("newPlan").value || 0
+  );
+
+let newPointTotal = 0;
+
+let newDcardDiscount = 0; 
+
+let newVoiceOptionDiscount = 0;  
+
+let newBasePoint = 0;
+let newPoiPoint = 0;
+let newFamilyPoint = 0;
+
+window.newBasePoint = newBasePoint;
+window.newPoiPoint = newPoiPoint;
+window.newFamilyPoint = newFamilyPoint;  
+
+let newPointBase = 0;
+
+let newPoiBonus = 0; 
+
+let newFamilyDiscount = 0;
+let newHikariDiscount = 0;
+let newDenkiDiscount = 0;
+let newLoyaltyDiscount = 0;  
+
+  const monthlyUsage =
+  document.getElementById("monthlyUsage").value;
+  
+if (
+  document.getElementById("newPlan").value === "8448"
+) {
+
+  if(monthlyUsage === "under1"){
+    newTotal = 5698;
+  }
+  else if(monthlyUsage === "over1"){
+    newTotal = 6798;
+  }
+  else{
+    newTotal = 8448;
+  }
+
+}
+
+if (
+  document.getElementById("newPlan").value === "7898"
+) {
+
+  if(monthlyUsage === "over20"){
+    newTotal = 9570;
+  }else{
+    newTotal = 7898;
+  }
+
+}
+  
+if (
+  document.getElementById("newPlan").value === "7315"
+) {
+
+  if(monthlyUsage === "under1"){
+    newTotal = 4565;
+  }
+  else if(monthlyUsage === "over1"){
+    newTotal = 5665;
+  }
+  else{
+    newTotal = 7315;
+  }
+
+}
+
+if (
+  document.getElementById("newPlan").value === "6765"
+) {
+
+  if(monthlyUsage === "under1"){
+    newTotal = 3465;
+  }
+  else if(monthlyUsage === "over1"){
+    newTotal = 4565;
+  }
+  else if(monthlyUsage === "over3"){
+    newTotal = 5665;
+  }
+  else{
+    newTotal = 6765;
+  }
+
+}  
+
+if (
+  document.getElementById("newPlan").value === "7316"
+) {
+
+  if(
+    monthlyUsage === "under1" ||
+    monthlyUsage === "over1"
+  ){
+    newTotal = 5665;
+  }
+  else{
+    newTotal = 7315;
+  }
+
+}  
+
+let newPlanAmount = newTotal;
+
+newPointBase = newTotal;
+
+const newCallFee =
+  Number(
+    document.getElementById("newCallPlan").value
+  );
+
+newTotal += newCallFee;
+newPointBase += newCallFee;
+
+function applyDiscounts(plan, total){
+
+  const familyType =
+    document.getElementById("familyType").value;
+
+  const hikariType =
+    document.getElementById("hikariType").value;
+
+  const denkiType =
+    document.getElementById("denkiType").value;
+
+  // MAX系
+  if(
+    plan === "8448" ||
+    plan === "11748" ||
+    plan === "7898"
+  ){
+
+    if(familyType === "2"){
+      total -= 550;
+    }
+
+    if(familyType === "3"){
+      total -= 1210;
+    }
+
+    if(hikariType === "1"){
+      total -= 1210;
+    }
+
+    if(denkiType === "1"){
+      total -= 110;
+    }
+
+  }
+
+else if(
+  plan === "2750" ||
+  plan === "3850"
+){
+
+  if(hikariType === "1"){
+    total -= 1210;
+  }
+
+  if(denkiType === "1"){
+    total -= 110;
+  }
+
+}
+
+// irumo 3GB～9GB
+else if(
+  plan === "2167" ||
+  plan === "2827" ||
+  plan === "3377"
+){
+
+  if(hikariType === "1"){
+    total -= 1100;
+  }
+
+}
+  
+
+ // eximo系・ギガホ系
+else if(
+  plan === "7315" ||
+  plan === "10615" ||
+  plan === "7316" ||
+  plan === "7865" ||
+  plan === "8415"
+){
+
+  if(familyType === "2"){
+    total -= 550;
+  }
+
+  if(familyType === "3"){
+    total -= 1100;
+  }
+
+  if(hikariType === "1"){
+    total -= 1100;
+  }
+
+}
+
+// ギガライト
+else if(plan === "6765"){
+
+  if(familyType === "2"){
+    total -= 550;
+  }
+
+  if(familyType === "3"){
+    total -= 1100;
+  }
+
+  if(hikariType === "1"){
+
+    const monthlyUsage =
+      document.getElementById("monthlyUsage").value;
+
+    if(monthlyUsage === "over1"){
+      total -= 550;
+    }
+    else if(
+      monthlyUsage === "over3" ||
+      monthlyUsage === "over5" ||
+      monthlyUsage === "over20"
+    ){
+      total -= 1100;
+    }
+
+  }
+
+}
+
+  return total;
+
+}
+
+
+// 長期利用割
+const usageYears =
+  document.getElementById("usageYears").value;
+
+let loyaltyDiscount = 0;
+
+if (usageYears === "10年以上") {
+  loyaltyDiscount = 110;
+}
+
+if (usageYears === "20年以上") {
+  loyaltyDiscount = 220;
+}
+
+if (
+  document.getElementById("newPlan").value === "8448" ||
+  document.getElementById("newPlan").value === "11748"
+) {
+  newTotal -= loyaltyDiscount;
+  newPointBase -= loyaltyDiscount;
+  newLoyaltyDiscount = loyaltyDiscount;
+}
+
+
+// dカードお支払割
+
+const dcardType =
+  document.getElementById("dcardType").value;
+
+let specialDiscount = 0;
+let normalDiscount = 0;
+
+if (dcardType === "レギュラー") {
+
+  specialDiscount = 220;
+  normalDiscount = 187;
+
+}
+else if (
+  dcardType === "GOLD" ||
+  dcardType === "GOLD U" ||
+  dcardType === "PLATINUM ～10万" ||
+  dcardType === "PLATINUM 10万～20万" ||
+  dcardType === "PLATINUM 20万～"
+) {
+
+  specialDiscount = 550;
+  normalDiscount = 187;
+
+}
+
+const familyType =
+  document.getElementById("familyType").value;
+
+const hikariType =
+  document.getElementById("hikariType").value;
+
+const denkiType =
+  document.getElementById("denkiType").value;
+
+
+const newPlanValue =
+  document.getElementById("newPlan").value;
+
+  
+// 提案後の割引記録
+
+if(
+  newPlanValue === "8448" ||
+  newPlanValue === "11748" ||
+  newPlanValue === "7898"
+){
+
+  if(familyType === "2"){
+    newFamilyDiscount = 550;
+  }
+
+  if(familyType === "3"){
+    newFamilyDiscount = 1210;
+  }
+
+  if(hikariType === "1"){
+    newHikariDiscount = 1210;
+  }
+
+  if(denkiType === "1"){
+    newDenkiDiscount = 110;
+  }
+
+}
+else if(
+  newPlanValue === "7315" ||
+  newPlanValue === "10615" ||
+  newPlanValue === "7316" ||
+  newPlanValue === "7865" ||
+  newPlanValue === "8415"
+){
+
+  if(familyType === "2"){
+    newFamilyDiscount = 550;
+  }
+
+  if(familyType === "3"){
+    newFamilyDiscount = 1100;
+  }
+
+  if(hikariType === "1"){
+    newHikariDiscount = 1100;
+  }
+
+}
+else if(newPlanValue === "6765"){
+
+  if(familyType === "2"){
+    newFamilyDiscount = 550;
+  }
+
+  if(familyType === "3"){
+    newFamilyDiscount = 1100;
+  }
+
+  if(hikariType === "1"){
+
+    if(monthlyUsage === "over1"){
+      newHikariDiscount = 550;
+    }
+    else if(
+      monthlyUsage === "over3" ||
+      monthlyUsage === "over5" ||
+      monthlyUsage === "over20"
+    ){
+      newHikariDiscount = 1100;
+    }
+
+  }
+
+}
+
+else if(
+  newPlanValue === "2750" ||
+  newPlanValue === "3850"
+){
+
+  if(hikariType === "1"){
+    newHikariDiscount = 1210;
+  }
+
+  if(denkiType === "1"){
+    newDenkiDiscount = 110;
+  }
+
+}
+ 
+else if(
+  newPlanValue === "2167" ||
+  newPlanValue === "2827" ||
+  newPlanValue === "3377"
+){
+
+  if(hikariType === "1"){
+    newHikariDiscount = 1100;
+  }
+
+}
+
+if (
+  newPlanValue === "8448" ||
+  newPlanValue === "11748" ||
+  newPlanValue === "7898" ||
+  newPlanValue === "2750" ||
+  newPlanValue === "3850"
+) {
+
+  newDcardDiscount = specialDiscount;
+
+  newTotal -= specialDiscount;
+  newPointBase -= specialDiscount;
+
+}
+else if (
+  newPlanValue === "7315" ||
+  newPlanValue === "10615" ||
+  newPlanValue === "2167" ||
+  newPlanValue === "2827" ||
+  newPlanValue === "3377" ||
+  newPlanValue === "6765" ||
+  newPlanValue === "1815" ||
+  newPlanValue === "7865" ||
+  newPlanValue === "8415" ||
+  newPlanValue === "7316"
+) {
+
+  newDcardDiscount = normalDiscount;
+
+  newTotal -= normalDiscount;
+  newPointBase -= normalDiscount;
+
+}  
+
+if(document.getElementById("newPhoneWarranty").checked){
+
+  const warrantyFee =
+    Number(
+      document.getElementById(
+        "newPhoneWarrantyFee"
+      ).value || 0
+    );
+
+  newTotal += warrantyFee;
+  newPointBase += warrantyFee;
+
+}
+
+const newDisneyFee =
+  Number(document.getElementById("newDisney").value);
+
+newTotal += newDisneyFee;
+newPointBase += newDisneyFee;
+
+const newNetflixFee =
+  Number(document.getElementById("newNetflix").value);
+
+newTotal += newNetflixFee;
+newPointBase += newNetflixFee;
+  
+// 提案後 通話・連絡サービス
+
+if(document.getElementById("newVoicemail").checked){
+  newTotal += 330;
+  newPointBase += 330;
+}
+
+if(document.getElementById("newCallWaiting").checked){
+  newTotal += 220;
+  newPointBase += 220;
+}
+
+if(document.getElementById("newMelodyCall").checked){
+  newTotal += 110;
+  newPointBase += 110;
+}  
+
+if(document.getElementById("newMail").checked){
+  newTotal += 330;
+  newPointBase += 330;
+}
+
+if(document.getElementById("newOneNumber").checked){
+  newTotal += 550;
+  newPointBase += 550;
+}
+
+if(document.getElementById("newImadoco").checked){
+  newTotal += 330;
+  newPointBase += 330;
+}
+
+if(
+  document.getElementById("newCallPlan").value === "880" ||
+  document.getElementById("newCallPlan").value === "1980"
+){
+
+  if(document.getElementById("newVoicemail").checked){
+    newVoiceOptionDiscount += 330;
+  }
+
+  if(document.getElementById("newCallWaiting").checked){
+    newVoiceOptionDiscount += 220;
+  }
+
+  newTotal -= newVoiceOptionDiscount;
+  newPointBase -= newVoiceOptionDiscount;
+
+}  
+
+if(document.getElementById("newAnshinPack").checked){
+  newTotal -= 418;
+  newPointBase -= 418;
+}  
+
+if(document.getElementById("newDValuePack").checked){
+  newTotal -= 418;
+  newPointBase -= 418;
+}
+
+if(
+  document.getElementById("newAnshinSecurity").checked &&
+  Number(document.getElementById("newSecurityPlan").value) > 0
+){
+  newTotal -= 110;
+  newPointBase -= 110;
+}
+
+if(document.getElementById("newRemoteSupport").checked){
+  newTotal += 660;
+  newPointBase += 660;
+}
+
+if(document.getElementById("newAnshinSecurity").checked){
+  newTotal += 220;
+  newPointBase += 220;
+}  
+  
+// 提案後 クラウド系
+
+if(document.getElementById("newCloud50").checked){
+  newTotal += 440;
+  newPointBase += 440;
+}
+
+if(document.getElementById("newDValuePass").checked){
+  newTotal += 550;
+  newPointBase += 550;
+}
+
+if(document.getElementById("newMyDaiz").checked){
+  newTotal += 110;
+  newPointBase += 110;
+}
+
+if(
+  document.getElementById("newOptionPack").checked &&
+  document.getElementById("newCallPlan").value !== "880" &&
+  document.getElementById("newCallPlan").value !== "1980"
+){
+  newTotal -= 220;
+  newPointBase -= 220;
+}  
+
+// 提案後 独自サービス
+
+if(document.getElementById("newHOZON").checked){
+  newTotal += 330;
+}
+
+if(document.getElementById("newADCleaner").checked){
+  newTotal += 550;
+}  
+
+// その他サブスク
+
+if(document.getElementById("newOtherSub").checked){
+  newTotal += Number(
+    document.getElementById("newOtherSubFee").value || 0
+  );
+}
+
+const newSecurityFee =
+  Number(
+    document.getElementById("newSecurityPlan").value
+  );
+
+newTotal += newSecurityFee;
+newPointBase += newSecurityFee;
+
+const newGoogleOneFee =
+  Number(document.getElementById("newGoogleOne").value);
+
+newTotal += newGoogleOneFee;
+newPointBase += newGoogleOneFee;
+
+const newAppleOneFee =
+  Number(document.getElementById("newAppleOne").value);
+
+newTotal += newAppleOneFee;
+newPointBase +=newAppleOneFee;
+
+
+newTotal +=
+  Number(document.getElementById("newKeitaiSupport").value);  
+
+// 提案後サービス
+
+const newFreeServices = [];
+
+window.newSelectedBenefits = [];
+window.newFreeBenefits = [];  
+
+if(document.getElementById("newDAZN").checked){
+  newFreeServices.push(4200);
+  window.newSelectedBenefits.push("DAZN");
+}
+
+if(document.getElementById("newNBA").checked){
+  newFreeServices.push(2728);
+  window.newSelectedBenefits.push("NBA docomo");
+}
+
+if(document.getElementById("newLemino").checked){
+  newFreeServices.push(1540);
+  window.newSelectedBenefits.push("Leminoプレミアム");
+}
+
+if(document.getElementById("newDAnime").checked){
+  newFreeServices.push(660);
+  window.newSelectedBenefits.push("dアニメストア");
+}
+
+const isMaxPlan =
+  document.getElementById("newPlan").value === "8448" ||
+  document.getElementById("newPlan").value === "11748";
+
+if(isMaxPlan){
+
+  newFreeServices.sort((a,b) => b-a);
+
+  const sortedBenefits = [
+  { name:"DAZN", price:4200 },
+  { name:"NBA docomo", price:2728 },
+  { name:"Leminoプレミアム", price:1540 },
+  { name:"dアニメストア", price:660 }
+]
+.filter(item =>
+  window.newSelectedBenefits.includes(item.name)
+)
+.sort((a,b)=>b.price-a.price);
+
+window.newFreeBenefits =
+  sortedBenefits.slice(0,2).map(item => item.name);
+
+newFreeServices.slice(2).forEach(price => {
+  newTotal += price;
+  newPointBase += price;
+});
+
+}else{
+
+  newFreeServices.forEach(price => {
+  newTotal += price;
+  newPointBase += price;
+});
+
+}
+  
+if(document.getElementById("newDPhoto").checked){
+  newTotal += 594;
+ newPointBase += 594;
+}
+
+if(document.getElementById("newDHealthcare").checked){
+  newTotal += 440;
+  newPointBase += 440;
+}
+
+if(document.getElementById("newDMagazine").checked){
+  newTotal += 580;
+  newPointBase += 580;
+}
+
+if(document.getElementById("newDHits").checked){
+  newTotal += 690;
+  newPointBase += 690;
+}
+
+if(document.getElementById("newYoutube").checked){
+  newTotal += 1280;
+  newPointBase += 1280;
+}
+
+if(document.getElementById("newAmazonPrime").checked){
+  newTotal += 600;
+  newPointBase += 600;
+}
+
+if(document.getElementById("newSpotify").checked){
+  newTotal += 1080;
+  newPointBase += 1080;
+}
+
+if(document.getElementById("newJump").checked){
+  newTotal += 980;
+  newPointBase += 980;
+}
+
+newTotal =
+  applyDiscounts(
+    document.getElementById("newPlan").value,
+    newTotal
+  );
+
+newPointBase =
+  applyDiscounts(
+    document.getElementById("newPlan").value,
+    newPointBase
+  );
+
+window.newPlanAmount = newPlanAmount;
+
+
+window.newFamilyDiscount = newFamilyDiscount;
+window.newHikariDiscount = newHikariDiscount;
+window.newDenkiDiscount = newDenkiDiscount;
+window.newLoyaltyDiscount = newLoyaltyDiscount;
+window.newDcardDiscount = newDcardDiscount;
+
+window.newVoiceOptionDiscount =
+  newVoiceOptionDiscount;  
+
+console.log(
+  "プラン料金",
+  window.currentPlanAmount,
+  window.newPlanAmount
+);  
+
+  const irumoMiniPlans = [
+  "2750", // mini4GB
+  "3850", // mini10GB
+  "550",  // irumo0.5GB
+  "2167", // irumo3GB
+  "2827", // irumo6GB
+  "3377"  // irumo9GB
+];
+
+const familyCount =
+  Number(
+    document.getElementById("poikatsuFamily").value
+  );
+
+let poikatsuFamilyPoint = 0;
+
+if(dcardType === "レギュラー"){
+  poikatsuFamilyPoint =
+    familyCount * 50;
+}
+else if(
+  dcardType === "GOLD" ||
+  dcardType === "GOLD U"
+){
+  poikatsuFamilyPoint =
+    familyCount * 100;
+}
+else if(
+  dcardType === "PLATINUM ～10万" ||
+  dcardType === "PLATINUM 10万～20万" ||
+  dcardType === "PLATINUM 20万～"
+){
+  poikatsuFamilyPoint =
+    familyCount * 300;
+}
+
+// 提案後
+const newTaxExcluded =
+  Math.round(newPointBase / 1.1);
+
+ const newPlan =
+  document.getElementById("newPlan").value;
+
+if(
+  newPlan === "11748" ||
+  newPlan === "10615" ||
+  newPlan === "7898"
+){
+
+newPoiBonus = selectedBonus;
+
+  if(
+    newPlan === "7898" &&
+    newPoiBonus > 2500
+  ){
+    newPoiBonus = 2500;
+  }
+
+  newBasePoint = 
+  Math.floor(
+    Math.floor(
+      (newPointBase - newPoiBonus) / 1.1
+    ) / 1000
+  ) * 10;
+
+  let pointMultiplier = 1;
+
+if(dcardType === "GOLD"){
+  pointMultiplier = 10;
+}
+else if(dcardType === "GOLD U"){
+  pointMultiplier = 5;
+}
+else if(dcardType === "PLATINUM ～10万"){
+  pointMultiplier = 10;
+}
+else if(dcardType === "PLATINUM 10万～20万"){
+  pointMultiplier = 15;
+}
+else if(dcardType === "PLATINUM 20万～"){
+  pointMultiplier = 20;
+}
+
+const pointUpPlans = [
+  "8448",  // ドコモMAX
+  "11748", // ポイ活MAX
+  "7898",  // ポイ活20
+  "7315",  // eximo
+  "10615", // eximoポイ活
+  "6765",  // ギガライト
+  "7865",  // ギガホ
+  "8415",  // 5Gギガホ
+  "7316"   // 5Gギガホプレミア
+];
+
+if(pointUpPlans.includes(newPlan)){
+  newBasePoint *= pointMultiplier;
+}
+
+newPoiPoint = newPoiBonus;
+
+
+  if(
+  Number(document.getElementById("poikatsuFamily").value) >= 2 &&
+  (
+    newPlan === "11748" ||
+    newPlan === "10615"
+  )
+){
+  newFamilyPoint =
+poikatsuFamilyPoint;
+}
+
+}
+
+else if(
+  irumoMiniPlans.includes(newPlan)
+){
+  newBasePoint =
+  Math.floor(newTaxExcluded / 1000) * 5;
+}
+else{
+
+  newBasePoint =
+    Math.floor(newTaxExcluded / 1000) * 10;
+
+  let pointMultiplier = 1;
+
+  if(dcardType === "GOLD"){
+    pointMultiplier = 10;
+  }
+  else if(dcardType === "GOLD U"){
+    pointMultiplier = 5;
+  }
+  else if(dcardType === "PLATINUM ～10万"){
+    pointMultiplier = 10;
+  }
+  else if(dcardType === "PLATINUM 10万～20万"){
+    pointMultiplier = 15;
+  }
+  else if(dcardType === "PLATINUM 20万～"){
+    pointMultiplier = 20;
+  }
+
+  const pointUpPlans = [
+    "8448",
+    "11748",
+    "7898",
+    "7315",
+    "10615",
+    "6765",
+    "7865",
+    "8415",
+    "7316"
+  ];
+
+  if(pointUpPlans.includes(newPlan)){
+    newBasePoint *= pointMultiplier;
+  }
+
+  newPoiPoint = 0;
+}
+
+console.log({
+  currentPointBase,
+  currentTaxExcluded,
+  currentBasePoint,
+  currentTotal
+});
+currentPointTotal =
+  currentBasePoint +
+  currentPoiPoint +
+  currentFamilyPoint;
+
+newPointTotal =
+  newBasePoint +
+  newPoiPoint +
+  newFamilyPoint;
+
+window.newBasePoint = newBasePoint;
+window.newPoiPoint = newPoiPoint;
+window.newFamilyPoint = newFamilyPoint;  
+
+const paymentType =
+  document.getElementById(
+    "devicePaymentType"
+  ).value;
+
+const price =
+  Number(
+    document.getElementById(
+      "devicePrice"
+    ).value || 0
+  );
+
+const downPayment =
+  Number(
+    document.getElementById(
+      "downPayment"
+    ).value || 0
+  );
+
+const netPrice =
+  price - downPayment;
+
+let installmentFee = 0;
+
+if(paymentType === "23"){
+
+  installmentFee =
+    Number(
+      document.getElementById("kaedokiFirst").value || 0
+    );
+
+}  
+
+else if(
+  paymentType === "12" ||
+  paymentType === "24" ||
+  paymentType === "36"
+){
+
+  installmentFee =
+    Math.round(
+      netPrice / Number(paymentType)
+    );
+
+}  
+
+const device2Price =
+  Number(
+    document.getElementById("device2Price").value || 0
+  );
+
+const device2DownPayment =
+  Number(
+    document.getElementById("device2DownPayment").value || 0
+  );
+
+const device2Months =
+  Number(
+    document.getElementById("device2PaymentType").value || 0
+  );
+
+if(device2Price > 0 && device2Months > 0){
+
+  installmentFee +=
+  Math.round(
+    (
+      device2Price -
+      device2DownPayment
+    ) / device2Months
+  );
+
+}  
+
+const device3Price =
+  Number(
+    document.getElementById("device3Price").value || 0
+  );
+
+const device3DownPayment =
+  Number(
+    document.getElementById("device3DownPayment").value || 0
+  );
+
+const device3Months =
+  Number(
+    document.getElementById("device3PaymentType").value || 0
+  );
+
+if(device3Price > 0 && device3Months > 0){
+
+ installmentFee +=
+  Math.round(
+    (
+      device3Price -
+      device3DownPayment
+    ) / device3Months
+  );
+
+}  
+
+const monthlyTotalWithDevice =
+  newTotal + installmentFee;
+
+document.getElementById(
+  "newWithDevice"
+).textContent =
+  monthlyTotalWithDevice.toLocaleString()
+  + "円";
+
+let todayTotal = 0;
+
+if(paymentType === "0"){
+
+  todayTotal += price;
+
+}else{
+
+  todayTotal += downPayment;
+
+}
+
+todayTotal += device2DownPayment;
+todayTotal += device3DownPayment;
+
+todayTotal += Number(
+  document.getElementById("purchase1Price").value || 0
+);
+
+todayTotal += Number(
+  document.getElementById("purchase2Price").value || 0
+);
+
+todayTotal += Number(
+  document.getElementById("purchase3Price").value || 0
+);
+
+let feeTotal = 0;
+
+if(document.getElementById("filmService").checked){
+  feeTotal += 1100;
+}
+
+if(document.getElementById("dataTransfer").checked){
+  feeTotal += 2200;
+}
+
+if(document.getElementById("irumoTransfer").checked){
+  feeTotal += 3300;
+}
+
+if(document.getElementById("appTransfer").checked){
+  feeTotal += 3300;
+}
+
+if(document.getElementById("deviceChange").checked){
+  feeTotal += 4950;
+}
+
+if(document.getElementById("planChange").checked){
+  feeTotal += 4950;
+}
+
+document.getElementById(
+  "deviceInstallment"
+).textContent =
+  installmentFee.toLocaleString()
+  + "円";
+  
+document.getElementById(
+  "feeTotal"
+).textContent =
+  feeTotal.toLocaleString() + "円";  
+
+ document.getElementById(
+  "todayTotal"
+).textContent =
+  todayTotal.toLocaleString() + "円"; 
+
+  document.getElementById(
+  "newMonthlyTotal"
+).textContent =
+  newTotal.toLocaleString()
+  + "円";
+
+document.getElementById(
+  "newPointTotal"
+).textContent =
+  newPointTotal.toLocaleString() + "pt";
+
+const pointDiffElement =
+  document.getElementById("pointDifference");
+
+pointDiffElement.textContent =
+  (pointDiff >= 0 ? "+" : "") +
+  pointDiff.toLocaleString() +
+  "pt";
+
+if(pointDiff > 0){
+  pointDiffElement.style.color = "#16a34a";
+}else if(pointDiff < 0){
+  pointDiffElement.style.color = "#dc2626";
+}else{
+  pointDiffElement.style.color = "#000";
+}
+
+const diffElement =
+  document.getElementById("difference");
+
+diffElement.textContent =
+  (difference >= 0 ? "+" : "") +
+  difference.toLocaleString() +
+  "円";
+
+if (difference > 0) {
+
+  diffElement.style.color = "#2563eb"; // 青
+
+} else if (difference < 0) {
+
+  diffElement.style.color = "#dc2626"; // 赤
+
+} else {
+
+  diffElement.style.color = "#000"; // 黒
+
+}
+
+}  
+
+function updateCallOptions(planId, callId) {
+
+  const plan =
+    document.getElementById(planId).value;
+
+  const callSelect =
+    document.getElementById(callId);
+
+  callSelect.innerHTML = "";
+
+  const isMailPlan =
+    plan === "2970" ||
+    plan === "4950" ||
+    plan === "2750" ||
+    plan === "3850" ||
+    plan === "550" ||
+    plan === "2167" ||
+    plan === "2827" ||
+    plan === "3377";
+
+  document.getElementById(
+    prefix + "Mail"
+  ).disabled = !isMailPlan;
+
+  if(!isMailPlan){
+    document.getElementById(
+      prefix + "Mail"
+    ).checked = false;
+  }
+
+
+  // 提案後プランの通話オプション引継ぎ判定
+if (callId === "newCallPlan") {
+
+  // ahamo・はじめてスマホは引継ぎなし
+  if (
+    plan === "2970" ||
+    plan === "4950" ||
+    plan === "1815"
+  ) {
+
+    callSelect.innerHTML = `
+      <option value="0">5分通話込み</option>
+      <option value="1100">かけ放題 1,100円</option>
+    `;
+
+    return;
+  }
+
+function toggleWarrantyInput(type){
+
+  const checkbox =
+    document.getElementById(
+      type + "PhoneWarranty"
+    );
+
+  const area =
+    document.getElementById(
+      type + "WarrantyArea"
+    );
+
+  if(checkbox.checked){
+
+    area.style.display = "block";
+
+  }else{
+
+    area.style.display = "none";
+
+    document.getElementById(
+      type + "PhoneWarrantyFee"
+    ).value = "";
+
+  }
+
+}
+
+function toggleAnshinPack(type){
+
+  const checked =
+    document.getElementById(type + "AnshinPack").checked;
+
+  document.getElementById(
+    type + "PhoneWarranty"
+  ).checked = checked;
+
+  document.getElementById(
+    type + "RemoteSupport"
+  ).checked = checked;
+
+  document.getElementById(
+    type + "AnshinSecurity"
+  ).checked = checked;
+
+  // ←追加
+  toggleWarrantyInput(type);
+
+}
+
+function toggleDValuePack(type){
+
+  const checked =
+    document.getElementById(
+      type + "DValuePack"
+    ).checked;
+
+  document.getElementById(
+    type + "DValuePass"
+  ).checked = checked;
+
+  document.getElementById(
+    type + "Cloud50"
+  ).checked = checked;
+
+  document.getElementById(
+    type + "MyDaiz"
+  ).checked = checked;
+
+}  
+
+function syncAnshinPack(type){
+
+  const warranty =
+    document.getElementById(type + "PhoneWarranty").checked;
+
+  const remote =
+    document.getElementById(type + "RemoteSupport").checked;
+
+  const security =
+    document.getElementById(type + "AnshinSecurity").checked;
+
+  document.getElementById(
+    type + "AnshinPack"
+  ).checked =
+    warranty && remote && security;
+
+}  
+
+function syncDValuePack(type){
+
+  const dValue =
+    document.getElementById(type + "DValuePass").checked;
+
+  const cloud =
+    document.getElementById(type + "Cloud50").checked;
+
+  const myDaiz =
+    document.getElementById(type + "MyDaiz").checked;
+
+  document.getElementById(
+    type + "DValuePack"
+  ).checked =
+    dValue && cloud && myDaiz;
+
+}
+
+function syncOptionPack(type){
+
+  const voicemail =
+    document.getElementById(
+      type + "Voicemail"
+    ).checked;
+
+  const waiting =
+    document.getElementById(
+      type + "CallWaiting"
+    ).checked;
+
+  const melody =
+    document.getElementById(
+      type + "MelodyCall"
+    ).checked;
+
+  document.getElementById(
+    type + "OptionPack"
+  ).checked =
+    voicemail &&
+    waiting &&
+    melody;
+} 
+
+function toggleOptionPack(type){
+
+  const checked =
+    document.getElementById(
+      type + "OptionPack"
+    ).checked;
+
+  document.getElementById(
+    type + "Voicemail"
+  ).checked = checked;
+
+  document.getElementById(
+    type + "CallWaiting"
+  ).checked = checked;
+
+  document.getElementById(
+    type + "MelodyCall"
+  ).checked = checked;
+}
+
+function toggleKaedoki(){
+
+  const paymentType =
+    document.getElementById("devicePaymentType").value;
+
+  document.getElementById("kaedokiArea").style.display =
+    paymentType === "23"
+      ? "block"
+      : "none";
+
+}  
+
+function toggleDetailArea(){
+
+  const detailArea =
+    document.getElementById("detailArea");
+
+  if(detailArea.style.display === "none"){
+
+    detailArea.style.display = "block";
+
+  }else{
+
+    detailArea.style.display = "none";
+
+  }
+
+} 
+
+function goToDetail() {
+
+
+  const newPlanSelect =
+    document.getElementById("newPlan");
+
+  const newCallSelect =
+    document.getElementById("newCallPlan");
+
+  const estimateData = {
+
+  newPlanName:
+    newPlanSelect.options[
+      newPlanSelect.selectedIndex
+    ].text,
+
+  newPlanPrice:
+    newPlanSelect.value,
+
+
+  newCallName:
+  newCallSelect.selectedIndex >= 0
+    ? newCallSelect.options[
+        newCallSelect.selectedIndex
+      ].text
+    : "",
+
+  newCallPrice:
+    newCallSelect.value,
+
+
+  newHOZON:
+    document.getElementById("newHOZON").checked,
+
+  newADCleaner:
+    document.getElementById("newADCleaner").checked,
+
+newVoicemail:
+  document.getElementById("newVoicemail").checked,
+
+newCallWaiting:
+  document.getElementById("newCallWaiting").checked,
+
+newMail:
+  document.getElementById("newMail").checked,
+
+newOneNumber:
+  document.getElementById("newOneNumber").checked,
+
+newImadoco:
+  document.getElementById("newImadoco").checked, 
+
+newLemino:
+  document.getElementById("newLemino").checked,
+
+
+newDAnime:
+  document.getElementById("newDAnime").checked,
+
+newNBA:
+  document.getElementById("newNBA").checked,
+
+newDAZN:
+  document.getElementById("newDAZN").checked,
+
+newYoutube:
+  document.getElementById("newYoutube").checked,
+
+newAmazonPrime:
+  document.getElementById("newAmazonPrime").checked,
+
+newSpotify:
+  document.getElementById("newSpotify").checked,
+
+newJump:
+  document.getElementById("newJump").checked,
+
+newDPhoto:
+  document.getElementById("newDPhoto").checked,
+
+newDHealthcare:
+  document.getElementById("newDHealthcare").checked,
+
+newDMagazine:
+  document.getElementById("newDMagazine").checked,
+
+newDHits:
+  document.getElementById("newDHits").checked, 
+
+newCloud50:
+  document.getElementById("newCloud50").checked,
+
+newDValuePass:
+  document.getElementById("newDValuePass").checked,
+
+newMyDaiz:
+  document.getElementById("newMyDaiz").checked,  
+
+newPhoneWarranty:
+  document.getElementById("newPhoneWarranty").checked,
+
+newRemoteSupport:
+  document.getElementById("newRemoteSupport").checked,
+
+newAnshinSecurity:
+  document.getElementById("newAnshinSecurity").checked, 
+
+newMelodyCall:
+  document.getElementById("newMelodyCall").checked,    
+
+newPhoneWarrantyFee:
+document.getElementById(
+  "newPhoneWarrantyFee"
+).value || 0, 
+
+newSecurityPlan:
+  document.getElementById(
+    "newSecurityPlan"
+  ).value,   
+
+newSecurityPlanName:
+  document.getElementById(
+    "newSecurityPlan"
+  ).options[
+    document.getElementById(
+      "newSecurityPlan"
+    ).selectedIndex
+  ].text, 
+
+newDisney:
+  document.getElementById("newDisney").value,
+    
+newDisneyName:
+  document.getElementById("newDisney")
+    .options[
+      document.getElementById("newDisney").selectedIndex
+    ].text, 
+
+newNetflix:
+  document.getElementById("newNetflix").value,
+
+newNetflixName:
+  document.getElementById("newNetflix")
+    .options[
+      document.getElementById("newNetflix").selectedIndex
+    ].text,
+
+newGoogleOne:
+  document.getElementById("newGoogleOne").value,
+
+newGoogleOneName:
+  document.getElementById("newGoogleOne")
+    .options[
+      document.getElementById("newGoogleOne").selectedIndex
+    ].text,
+
+newAppleOne:
+  document.getElementById("newAppleOne").value,
+
+newAppleOneName:
+  document.getElementById("newAppleOne")
+    .options[
+      document.getElementById("newAppleOne").selectedIndex
+    ].text,
+
+newKeitaiSupport:
+  document.getElementById("newKeitaiSupport").value,
+
+newKeitaiSupportName:
+  document.getElementById("newKeitaiSupport")
+    .options[
+      document.getElementById("newKeitaiSupport").selectedIndex
+    ].text,
+
+newPaperBill:
+  document.getElementById("newPaperBill").checked,
+
+newOtherSub:
+  document.getElementById("newOtherSub").checked,
+
+newOtherSubFee:
+  document.getElementById("newOtherSubFee").value || 0, 
+
+newTotal:
+  document.getElementById(
+    "newMonthlyTotal"
+  ).textContent,
+
+newPointTotal:
+  document.getElementById(
+    "newPointTotal"
+  ).textContent,
+
+pointDifference:
+  document.getElementById(
+    "pointDifference"
+  ).textContent,
+
+difference:
+  document.getElementById(
+    "difference"
+  ).textContent,
+
+todayTotal:
+  document.getElementById(
+    "todayTotal"
+  ).textContent,
+
+feeTotal:
+  document.getElementById(
+    "feeTotal"
+  ).textContent,
+
+deviceInstallment:
+  document.getElementById(
+    "deviceInstallment"
+  ).textContent,    
+    
+monthlyUsage:
+  document.getElementById(
+    "monthlyUsage"
+  ).options[
+    document.getElementById(
+      "monthlyUsage"
+    ).selectedIndex
+  ].text,
+
+newPlanCalculatedPrice:
+  window.newPlanAmount,  
+
+newFamilyDiscount:
+  window.newFamilyDiscount,
+
+newHikariDiscount:
+  window.newHikariDiscount,
+
+newDenkiDiscount:
+  window.newDenkiDiscount,
+
+newLoyaltyDiscount:
+  window.newLoyaltyDiscount,
+
+newDcardDiscount:
+  window.newDcardDiscount,
+
+newVoiceOptionDiscount:
+  window.newVoiceOptionDiscount,   
+
+newSelectedBenefits:
+  window.newSelectedBenefits || [], 
+
+newFreeBenefits:
+  window.newFreeBenefits || [],
+
+devicePaymentType:
+  document.getElementById("devicePaymentType").value,
+
+kaedokiFirst:
+  document.getElementById("kaedokiFirst").value || 0,
+
+kaedokiSecond:
+  document.getElementById("kaedokiSecond").value || 0,
+
+device2Price:
+  document.getElementById("device2Price").value || 0,
+
+device2Months:
+  document.getElementById("device2PaymentType").value || 0,
+
+device2DownPayment:
+  document.getElementById("device2DownPayment").value || 0,
+
+
+device3Price:
+  document.getElementById("device3Price").value || 0,
+
+device3Months:
+  document.getElementById("device3PaymentType").value || 0,
+
+device3DownPayment:
+  document.getElementById("device3DownPayment").value || 0,
+
+newWithDevice:
+  document.getElementById(
+    "newWithDevice"
+  ).textContent,
+
+newBasePoint:
+  window.newBasePoint,
+
+newPoiPoint:
+  window.newPoiPoint,
+
+newFamilyPoint:
+  window.newFamilyPoint,
+
+dcardType:
+  document.getElementById("dcardType").value, 
+    
+universalFee: 3,     
+    
+};
+  
+
+localStorage.setItem(
+  "estimateData",
+  JSON.stringify(estimateData)
+);
+
+localStorage.removeItem("adminView");
+localStorage.removeItem("adminStore");
+
+window.location.href =
+  "detail.html";
+
+}
+
+function setDevice2Price(){
+
+  const prices = {
+    "PhotoCube C SE 128GB": 30261,
+    "PhotoCube C SE 256GB": 38181
+  };
+
+  const name =
+    document.getElementById("device2Name").value;
+
+  document.getElementById("device2Price").value =
+    prices[name] || "";
+
+}  
+
+window.addEventListener(
+  "DOMContentLoaded",
+  async () => {
+
+    await loadMakers();
+
+　document.getElementById("phoneMaker").selectedIndex = 0;
+
+document.getElementById("phoneModel").innerHTML =
+  '<option value="">機種を選択</option>';
+    
+    const estimatePhone =
+      JSON.parse(
+        localStorage.getItem("estimatePhone")
+      );
+
+    console.log("estimatePhone", estimatePhone);
+
+    // 直接みつもりさんを開いた場合
+    if(!estimatePhone){
+
+      document.getElementById("phoneMaker").value = "";
+
+document.getElementById("phoneModel").innerHTML =
+  '<option value="">機種を選択</option>';
+
+      document.getElementById("newGoogleOne").value = "0";
+      
+      document.getElementById("newAppleOne").value = "0";
+
+      document.getElementById("newPhoneWarranty").checked = false;
+
+      return;
+    }
+
+    // Smaportから来た場合のみ自動入力
+   /*
+document.getElementById(
+  "phoneMaker"
+).value = estimatePhone.maker;
+
+await loadModels();
+
+document.getElementById(
+  "phoneModel"
+).value = estimatePhone.id;
+
+await loadPhoneData();
+*/
+
+    document.getElementById(
+      "devicePaymentType"
+    ).value = "23";
+
+    toggleKaedoki();
+
+    calculateEstimate();
+
+   document.getElementById(
+  "phoneMaker"
+).value = estimatePhone.maker;
+
+await loadModels();
+
+document.getElementById(
+  "phoneModel"
+).value = estimatePhone.id;
+
+await loadPhoneData();
+
+document.getElementById(
+  "devicePaymentType"
+).value = "23";
+
+toggleKaedoki();
+
+calculateEstimate(); 
+
+  }
+);
+  
+</script>
+
+</body>
+</html>　
