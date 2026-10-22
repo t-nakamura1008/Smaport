@@ -603,12 +603,19 @@ h3{
 
 </section>
 
+    <!-- 提案後 -->
    <section class="card">
 
-<h2>✨ ご提案プラン</h2>
+      <h3>✨ 提案後</h3>
 
-<label>料金プラン</label>
-<select id="newPlan">
+     <label>料金プラン</label>
+<select
+  id="newPlan"
+  onchange="
+    updateCallOptions('newPlan','newCallPlan');
+    calculateEstimate();
+  "
+>
   <option value="8448">ドコモMAX</option>
   <option value="11748">ドコモポイ活MAX</option>
   <option value="7898">ドコモポイ活20</option>
@@ -617,18 +624,16 @@ h3{
 </select>
 
 <label>通話オプション</label>
-<select id="newCallPlan">
+<select
+  id="newCallPlan"
+  onchange="calculateEstimate()"
+>
   <option value="0">なし</option>
   <option value="880">5分通話無料</option>
   <option value="1980">かけ放題</option>
 </select>
 
-</section>
-
-    <!-- 提案後 -->
-   <section class="card">
-
-      <h3>✨ 提案後</h3>
+<hr style="margin:15px 0;">
 
       <label>
   <input type="checkbox" id="newLemino">
@@ -2384,6 +2389,26 @@ pointDiffElement.textContent =
   pointDiff.toLocaleString() +
   "pt";
 
+ const currentTotal =
+  Number(
+    document.getElementById(
+      "currentMonthlyFee"
+    ).value || 0
+  ) +
+  Number(
+    document.getElementById(
+      "currentInternetFee"
+    ).value || 0
+  );
+
+const currentPointTotal = 0;
+
+const difference =
+  currentTotal - newTotal;
+
+const pointDiff =
+  currentPointTotal - newPointTotal; 
+
 if(pointDiff > 0){
   pointDiffElement.style.color = "#16a34a";
 }else if(pointDiff < 0){
@@ -2399,6 +2424,16 @@ diffElement.textContent =
   (difference >= 0 ? "+" : "") +
   difference.toLocaleString() +
   "円";
+
+document.getElementById(
+  "currentMonthlyTotal"
+).textContent =
+  currentTotal.toLocaleString() + "円";
+
+document.getElementById(
+  "currentPointTotal"
+).textContent =
+  currentPointTotal.toLocaleString() + "pt";  
 
 if (difference > 0) {
 
@@ -2417,6 +2452,11 @@ if (difference > 0) {
 }  
 
 function updateCallOptions(planId, callId) {
+
+  const prefix =
+    callId === "newCallPlan"
+      ? "new"
+      : "current";
 
   const plan =
     document.getElementById(planId).value;
