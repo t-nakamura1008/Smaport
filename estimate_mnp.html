@@ -997,7 +997,7 @@ h3{
     type="checkbox"
     id="newPaperBill"
   >
-  請求書送付（252円）
+  請求書送付（253円）
 </label>
    
 <label>
@@ -1869,6 +1869,10 @@ if(document.getElementById("newADCleaner").checked){
 }  
 
 // その他サブスク
+
+ if(document.getElementById("newPaperBill").checked){
+  newTotal += 253;
+}  
 
 if(document.getElementById("newOtherSub").checked){
   newTotal += Number(
