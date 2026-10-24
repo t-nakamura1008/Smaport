@@ -2406,14 +2406,6 @@ document.getElementById(
 ).textContent =
   newPointTotal.toLocaleString() + "pt";
 
-const pointDiffElement =
-  document.getElementById("pointDifference");
-
-pointDiffElement.textContent =
-  (pointDiff >= 0 ? "+" : "") +
-  pointDiff.toLocaleString() +
-  "pt";
-
  const currentTotal =
   Number(
     document.getElementById(
@@ -2433,6 +2425,14 @@ const difference =
 
 const pointDiff =
   currentPointTotal - newPointTotal; 
+
+ const pointDiffElement =
+  document.getElementById("pointDifference");
+
+pointDiffElement.textContent =
+  (pointDiff >= 0 ? "+" : "") +
+  pointDiff.toLocaleString() +
+  "pt"; 
 
 if(pointDiff > 0){
   pointDiffElement.style.color = "#16a34a";
