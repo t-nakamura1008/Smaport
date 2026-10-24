@@ -618,13 +618,11 @@ h3{
       <h3>✨ 提案後</h3>
 
      <label>料金プラン</label>
-<select
-  id="newPlan"
-  onchange="
-    updateCallOptions('newPlan','newCallPlan');
-    calculateEstimate();
-  "
->
+<select id="newPlan"
+        onchange="updateCallOptions('newPlan','newCallPlan')">
+  <option value="" selected disabled>
+  選択してください
+</option>
   <option value="8448">ドコモMAX</option>
   <option value="11748">ドコモポイ活MAX</option>
   <option value="7898">ドコモポイ活20</option>
