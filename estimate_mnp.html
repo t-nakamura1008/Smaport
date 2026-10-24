@@ -2372,7 +2372,10 @@ if(document.getElementById("deviceChange").checked){
   feeTotal += 4950;
 }
 
-if(document.getElementById("planChange").checked){
+const planChange =
+  document.getElementById("planChange");
+
+if(planChange && planChange.checked){
   feeTotal += 4950;
 }
 
