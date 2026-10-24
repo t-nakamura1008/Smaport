@@ -2498,7 +2498,20 @@ function updateCallOptions(planId, callId) {
   const callSelect =
     document.getElementById(callId);
 
-  callSelect.innerHTML = "";
+callSelect.innerHTML = `
+  <option value="" selected disabled>
+    選択してください
+  </option>
+  <option value="0">
+    通話した分
+  </option>
+  <option value="880">
+    ５分通話 880円
+  </option>
+  <option value="1980">
+    かけ放題 1980円
+  </option>
+`;
 
   const isMailPlan =
     plan === "2970" ||
