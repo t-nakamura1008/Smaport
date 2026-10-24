@@ -635,9 +635,21 @@ h3{
   id="newCallPlan"
   onchange="calculateEstimate()"
 >
-  <option value="0">なし</option>
-  <option value="880">5分通話無料</option>
-  <option value="1980">かけ放題</option>
+  <option value="" selected disabled>
+    選択してください
+  </option>
+
+  <option value="0">
+    通話した分
+  </option>
+
+  <option value="880">
+    ５分通話 880円
+  </option>
+
+  <option value="1980">
+    かけ放題 1980円
+  </option>
 </select>
 
 <hr style="margin:15px 0;">
