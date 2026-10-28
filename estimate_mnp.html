@@ -2441,7 +2441,7 @@ document.getElementById(
 const currentPointTotal = 0;
 
 const difference =
-  currentTotal - newTotal;
+  newTotal - currentTotal;
 
 const pointDiff =
   currentPointTotal - newPointTotal; 
@@ -2480,17 +2480,19 @@ document.getElementById(
 ).textContent =
   currentPointTotal.toLocaleString() + "pt";  
 
-if (difference > 0) {
+if (difference < 0) {
 
-  diffElement.style.color = "#2563eb"; // 青
+  // 今より安い
+  diffElement.style.color = "#2563eb";
 
-} else if (difference < 0) {
+} else if (difference > 0) {
 
-  diffElement.style.color = "#dc2626"; // 赤
+  // 今より高い
+  diffElement.style.color = "#dc2626";
 
 } else {
 
-  diffElement.style.color = "#000"; // 黒
+  diffElement.style.color = "#000";
 
 }
 
