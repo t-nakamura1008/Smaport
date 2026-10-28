@@ -652,6 +652,14 @@ h3{
   </option>
 </select>
 
+<label>ドコモ光</label>
+<select id="newHikariPlan">
+  <option value="0">なし</option>
+  <option value="4400">1GB（マンション）</option>
+  <option value="5720">1GB（戸建て）</option>
+  <option value="6380">10GB</option>
+</select>
+     
 </section>
 
 <section class="card">
@@ -1406,6 +1414,13 @@ const newCallFee =
 
 newTotal += newCallFee;
 newPointBase += newCallFee;
+
+const newHikariFee =
+  Number(
+    document.getElementById("newHikariPlan").value || 0
+  );
+
+newTotal += newHikariFee;  
 
 function applyDiscounts(plan, total){
 
