@@ -1405,6 +1405,9 @@ if (
 
 let newPlanAmount = newTotal;
 
+// 携帯ポイント計算用
+let mobilePointBase = newTotal;
+
 newPointBase = newTotal;
 
 const newCallFee =
@@ -2241,7 +2244,7 @@ newPointTotal =
 
 document.getElementById("hikariPoint")
   .textContent =
-  hikariPoint.toLocaleString() + "pt"; 
+  hikariPoint.toLocaleString() + "pt";
 
   // ドコモ光ポイント加算
 const newHikariPlan =
