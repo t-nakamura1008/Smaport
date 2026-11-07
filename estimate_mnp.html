@@ -2095,7 +2095,7 @@ else if(
 
 // 提案後
 const newTaxExcluded =
-  Math.round(newPointBase / 1.1);
+  Math.round(mobilePointBase / 1.1);
 
  const newPlan =
   document.getElementById("newPlan").value;
@@ -2228,7 +2228,20 @@ else{
 newPointTotal =
   newBasePoint +
   newPoiPoint +
-  newFamilyPoint;
+  newFamilyPoint +
+  hikariPoint;
+
+ document.getElementById("mobilePoint")
+  .textContent =
+  (
+    newBasePoint +
+    newPoiPoint +
+    newFamilyPoint
+  ).toLocaleString() + "pt";
+
+document.getElementById("hikariPoint")
+  .textContent =
+  hikariPoint.toLocaleString() + "pt"; 
 
   // ドコモ光ポイント加算
 const newHikariPlan =
