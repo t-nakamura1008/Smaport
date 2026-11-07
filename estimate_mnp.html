@@ -2299,6 +2299,8 @@ document.getElementById("hikariPoint")
   .textContent =
   hikariPoint.toLocaleString() + "pt";
 
+  window.hikariPoint = hikariPoint;
+
 window.newBasePoint = newBasePoint;
 window.newPoiPoint = newPoiPoint;
 window.newFamilyPoint = newFamilyPoint;  
@@ -3114,13 +3116,12 @@ newFamilyPoint:
   window.newFamilyPoint,
 
 dcardType:
-  document.getElementById("dcardType").value, 
+  document.getElementById("dcardType").value,
 
-window.hikariPoint = hikariPoint;
-  
-hikariPoint: window.hikariPoint || 0, 
-    
-universalFee: 3,     
+hikariPoint:
+  window.hikariPoint || 0,
+
+universalFee: 3,
     
 };
   
