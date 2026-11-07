@@ -1062,9 +1062,19 @@ h3{
     <strong id="difference">0円</strong>
   </div>
 
- <div class="result-item">
+<div class="result-item">
   <span>現在のポイント</span>
   <strong id="currentPointTotal">0pt</strong>
+</div>
+
+<div class="result-item">
+  <span>携帯ポイント</span>
+  <strong id="mobilePoint">0pt</strong>
+</div>
+
+<div class="result-item">
+  <span>ドコモ光ポイント</span>
+  <strong id="hikariPoint">0pt</strong>
 </div>
 
 <div class="result-item">
@@ -1075,7 +1085,7 @@ h3{
 <div class="result-item">
   <span>ポイント差額</span>
   <strong id="pointDifference">0pt</strong>
-</div>   
+</div>
 
 </div>
 
@@ -1405,7 +1415,7 @@ if (
 
 let newPlanAmount = newTotal;
 
-// 携帯ポイント計算用
+// 携帯ポイント用
 let mobilePointBase = newTotal;
 
 newPointBase = newTotal;
@@ -2228,24 +2238,6 @@ else{
   newPoiPoint = 0;
 }
 
-newPointTotal =
-  newBasePoint +
-  newPoiPoint +
-  newFamilyPoint +
-  hikariPoint;
-
- document.getElementById("mobilePoint")
-  .textContent =
-  (
-    newBasePoint +
-    newPoiPoint +
-    newFamilyPoint
-  ).toLocaleString() + "pt";
-
-document.getElementById("hikariPoint")
-  .textContent =
-  hikariPoint.toLocaleString() + "pt";
-
   // ドコモ光ポイント加算
 const newHikariPlan =
   document.getElementById("newHikariPlan").value;
@@ -2294,6 +2286,18 @@ newPointTotal =
   newPoiPoint +
   newFamilyPoint +
   hikariPoint;
+
+ document.getElementById("mobilePoint")
+  .textContent =
+  (
+    newBasePoint +
+    newPoiPoint +
+    newFamilyPoint
+  ).toLocaleString() + "pt";
+
+document.getElementById("hikariPoint")
+  .textContent =
+  hikariPoint.toLocaleString() + "pt";
 
 window.newBasePoint = newBasePoint;
 window.newPoiPoint = newPoiPoint;
@@ -3112,7 +3116,9 @@ newFamilyPoint:
 dcardType:
   document.getElementById("dcardType").value, 
 
-hikariPoint: hikariPoint,    
+window*hikariPoint = hikariPoint;   
+  
+hikariPoint: wi*dow.hikariPoint || 0, 
     
 universalFee: 3,     
     
