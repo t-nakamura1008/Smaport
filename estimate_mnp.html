@@ -2230,6 +2230,55 @@ newPointTotal =
   newPoiPoint +
   newFamilyPoint;
 
+  // ドコモ光ポイント加算
+const newHikariPlan =
+  document.getElementById("newHikariPlan").value;
+
+let hikariPoint = 0;
+
+if(
+  newHikariPlan === "4400" // 1GBマンション
+){
+
+  if(
+    dcardType === "GOLD" ||
+    dcardType === "GOLD U" ||
+    dcardType === "PLATINUM ～10万" ||
+    dcardType === "PLATINUM 10万～20万" ||
+    dcardType === "PLATINUM 20万～"
+  ){
+    hikariPoint = 400;
+  }else{
+    hikariPoint = 40;
+  }
+
+}
+
+if(
+  newHikariPlan === "5720" || // 1GB戸建て
+  newHikariPlan === "6380"    // 10GB
+){
+
+  if(
+    dcardType === "GOLD" ||
+    dcardType === "GOLD U" ||
+    dcardType === "PLATINUM ～10万" ||
+    dcardType === "PLATINUM 10万～20万" ||
+    dcardType === "PLATINUM 20万～"
+  ){
+    hikariPoint = 500;
+  }else{
+    hikariPoint = 50;
+  }
+
+}
+
+newPointTotal =
+  newBasePoint +
+  newPoiPoint +
+  newFamilyPoint +
+  hikariPoint;
+
 window.newBasePoint = newBasePoint;
 window.newPoiPoint = newPoiPoint;
 window.newFamilyPoint = newFamilyPoint;  
@@ -3046,6 +3095,8 @@ newFamilyPoint:
 
 dcardType:
   document.getElementById("dcardType").value, 
+
+hikariPoint: hikariPoint,    
     
 universalFee: 3,     
     
