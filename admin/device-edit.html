@@ -541,6 +541,56 @@ monthly_24_47_poikatsu: monthly_24_47_poikatsu.value,
     location.href = "device-manage.html";
 }
 
+async function saveReservation(){
+
+  const phoneId =
+    document.getElementById("phoneId")?.value;
+
+  if(!phoneId){
+    alert("先に機種を保存してください");
+    return;
+  }
+
+  const { error } =
+    await sbClient
+      .from("price_reservations")
+      .insert([{
+
+        phone_id: Number(phoneId),
+
+        start_date:
+          document.getElementById("reserveDate").value,
+
+        price_mnp:
+          Number(
+            document.getElementById("reservePriceMnp").value || 0
+          ),
+
+        monthly_1_23_mnp:
+          Number(
+            document.getElementById("reserveFirstMnp").value || 0
+          ),
+
+        monthly_24_47_mnp:
+          Number(
+            document.getElementById("reserveSecondMnp").value || 0
+          )
+
+      }]);
+
+  if(error){
+
+    console.error(error);
+
+    alert("予約登録失敗");
+
+    return;
+
+  }
+
+  alert("価格変更予約を登録しました！");
+} 
+
 </script>
 
 </body>
