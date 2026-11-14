@@ -225,6 +225,92 @@ ROM
 
 <br><br>
 
+<hr>
+
+<h2>📅価格変更予約</h2>
+
+適用日
+<input type="date" id="reserveDate">
+
+<h3>【機種変更】</h3>
+
+<input
+  id="reservePrice"
+  placeholder="機種変更 一括価格"
+>
+
+<input
+  id="reserveFirst"
+  placeholder="機種変更 1～23回目"
+>
+
+<input
+  id="reserveSecond"
+  placeholder="機種変更 24～47回目"
+>
+
+<h3>【MNP】</h3>
+
+<input
+  id="reservePriceMnp"
+  placeholder="MNP 一括価格"
+>
+
+<input
+  id="reserveFirstMnp"
+  placeholder="MNP 1～23回目"
+>
+
+<input
+  id="reserveSecondMnp"
+  placeholder="MNP 24～47回目"
+>
+
+<h3>【新規】</h3>
+
+<input
+  id="reservePriceNew"
+  placeholder="新規 一括価格"
+>
+
+<input
+  id="reserveFirstNew"
+  placeholder="新規 1～23回目"
+>
+
+<input
+  id="reserveSecondNew"
+  placeholder="新規 24～47回目"
+>
+
+<h3>【ポイ活】</h3>
+
+<input
+  id="reservePricePoikatsu"
+  placeholder="ポイ活 一括価格"
+>
+
+<input
+  id="reserveFirstPoikatsu"
+  placeholder="ポイ活 1～23回目"
+>
+
+<input
+  id="reserveSecondPoikatsu"
+  placeholder="ポイ活 24～47回目"
+>
+
+<br><br>
+
+<button
+  type="button"
+  onclick="saveReservation()"
+>
+📅価格変更予約
+</button>
+
+<br><br>     
+
 <button
 class="update-btn"
 onclick="updatePhone()">
@@ -552,31 +638,56 @@ async function saveReservation(){
   }
 
   const { error } =
-    await sbClient
-      .from("price_reservations")
-      .insert([{
+    await sb
+  .from("price_reservations")
+  .insert([{
 
-        phone_id: Number(phoneId),
+    phone_id: Number(id),
 
-        start_date:
-          document.getElementById("reserveDate").value,
+    start_date:
+      document.getElementById("reserveDate").value,
 
-        price_mnp:
-          Number(
-            document.getElementById("reservePriceMnp").value || 0
-          ),
+    // 機種変更
+    price:
+      document.getElementById("reservePrice").value || null,
 
-        monthly_1_23_mnp:
-          Number(
-            document.getElementById("reserveFirstMnp").value || 0
-          ),
+    monthly_1_23:
+      document.getElementById("reserveFirst").value || null,
 
-        monthly_24_47_mnp:
-          Number(
-            document.getElementById("reserveSecondMnp").value || 0
-          )
+    monthly_24_47:
+      document.getElementById("reserveSecond").value || null,
 
-      }]);
+    // MNP
+    price_mnp:
+      document.getElementById("reservePriceMnp").value || null,
+
+    monthly_1_23_mnp:
+      document.getElementById("reserveFirstMnp").value || null,
+
+    monthly_24_47_mnp:
+      document.getElementById("reserveSecondMnp").value || null,
+
+    // 新規
+    price_new:
+      document.getElementById("reservePriceNew").value || null,
+
+    monthly_1_23_new:
+      document.getElementById("reserveFirstNew").value || null,
+
+    monthly_24_47_new:
+      document.getElementById("reserveSecondNew").value || null,
+
+    // ポイ活
+    price_poikatsu:
+      document.getElementById("reservePricePoikatsu").value || null,
+
+    monthly_1_23_poikatsu:
+      document.getElementById("reserveFirstPoikatsu").value || null,
+
+    monthly_24_47_poikatsu:
+      document.getElementById("reserveSecondPoikatsu").value || null
+
+  }]);
 
   if(error){
 
